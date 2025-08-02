@@ -310,7 +310,7 @@ function renderFolderStructure(structure, depth = 0) {
   return html;
 }
 
-// Enhanced index generation with organized structure
+// Enhanced index generation with folder-based organization
 function generateIndex() {
   console.log(`📋 Generating index page for ${VIEW_MODE.toUpperCase()} view...`);
 
@@ -319,94 +319,42 @@ function generateIndex() {
                    file !== 'index.md' &&
                    file !== 'README.md');
 
-  // Create enhanced file objects
+  // Create enhanced file objects with original path information
   const pages = generatedFiles
     .map(file => {
       const filePath = path.join('./', file);
       const { data } = matter(fs.readFileSync(filePath, 'utf8'));
       const baseName = path.basename(file, '.md');
 
+      // Try to find original path from obsidian-notes structure
+      let originalPath = '';
+      try {
+        if (fs.existsSync(OBSIDIAN_FOLDER)) {
+          const allObsidianFiles = findMarkdownFilesWithPath(OBSIDIAN_FOLDER);
+          const originalFile = allObsidianFiles.find(f => {
+            const originalBaseName = sanitizeFilename(path.basename(f, '.md'));
+            return originalBaseName === baseName;
+          });
+          if (originalFile) {
+            originalPath = originalFile;
+          }
+        }
+      } catch (error) {
+        console.log(`⚠️  Could not find original path for ${file}: ${error.message}`);
+      }
+
       return {
         title: data.title || baseName.replace(/-/g, ' '),
         filename: file,
         permalink: data.permalink || `/${baseName}/`,
-        tags: data.tags || ['general'],
-        access_level: data.access_level || ACCESS_LEVELS.PUBLIC
+        tags: data.tags || [],
+        access_level: data.access_level || ACCESS_LEVELS.PUBLIC,
+        originalPath: originalPath
       };
     });
 
-  // Organize by logical categories instead of folder structure
-  const categories = {
-    'World Building': [],
-    'Locations': [],
-    'NPCs & Characters': [],
-    'Adventures & Sessions': [],
-    'Player Resources': [],
-    'Game Mechanics': [],
-    'Reference Materials': [],
-    'Templates': [],
-    'General': []
-  };
-
-  // Categorize files based on content analysis
-  pages.forEach(page => {
-    const title = page.title.toLowerCase();
-    const filename = page.filename.toLowerCase();
-    const tags = page.tags.map(tag => tag.toLowerCase());
-
-    // Check for world building content
-    if (tags.includes('world') || tags.includes('culture') || tags.includes('religion') || tags.includes('history') ||
-        title.includes('alkebulan') || title.includes('cataclysm') || title.includes('timeline') ||
-        title.includes('culture') || title.includes('religion') || title.includes('magic') ||
-        filename.includes('religion') || filename.includes('history') || filename.includes('culture')) {
-      categories['World Building'].push(page);
-    }
-    // Check for location content
-    else if (tags.includes('location') || title.includes('port zephyr') || title.includes('district') ||
-             title.includes('mountains') || title.includes('wastes') || title.includes('reach') ||
-             filename.includes('location') || filename.includes('port-zephyr') || filename.includes('district')) {
-      categories['Locations'].push(page);
-    }
-    // Check for NPC content
-    else if (tags.includes('npc') || tags.includes('character') || title.includes('npc') ||
-             filename.includes('npc') || filename.includes('character') ||
-             title.includes('merchant') || title.includes('official') || title.includes('criminal')) {
-      categories['NPCs & Characters'].push(page);
-    }
-    // Check for adventure content
-    else if (tags.includes('adventure') || tags.includes('session') || tags.includes('quests') ||
-             title.includes('lvl ') || title.includes('act ') || title.includes('adventure') ||
-             title.includes('session') || title.includes('encounter') ||
-             filename.includes('lvl-') || filename.includes('act-') || filename.includes('session')) {
-      categories['Adventures & Sessions'].push(page);
-    }
-    // Check for player resources
-    else if (tags.includes('player') || title.includes('player') || title.includes('character creation') ||
-             title.includes('handout') || title.includes('guide') || title.includes('class') ||
-             title.includes('race') || filename.includes('player') || filename.includes('handout')) {
-      categories['Player Resources'].push(page);
-    }
-    // Check for game mechanics
-    else if (tags.includes('mechanics') || tags.includes('rules') || title.includes('rules') ||
-             title.includes('magic') || title.includes('combat') || title.includes('remnant') ||
-             filename.includes('rules') || filename.includes('mechanics')) {
-      categories['Game Mechanics'].push(page);
-    }
-    // Check for templates
-    else if (tags.includes('template') || title.includes('template') || filename.includes('template')) {
-      categories['Templates'].push(page);
-    }
-    // Check for reference materials
-    else if (tags.includes('reference') || tags.includes('inspiration') || title.includes('inspiration') ||
-             title.includes('music') || title.includes('visual') || title.includes('reference') ||
-             filename.includes('inspiration') || filename.includes('music')) {
-      categories['Reference Materials'].push(page);
-    }
-    // Everything else goes to general
-    else {
-      categories['General'].push(page);
-    }
-  });
+  // Create folder hierarchy
+  const folderStructure = createFolderHierarchy(pages);
 
   let indexContent = `---
 layout: default
@@ -432,26 +380,25 @@ ${VIEW_MODE === 'player'
 
 `;
 
-  // Render each category
-  Object.keys(categories).forEach(categoryName => {
-    const categoryPages = categories[categoryName];
+  // Render root level files first (files with no folder structure)
+  if (folderStructure.files && folderStructure.files.length > 0) {
+    const icon = VIEW_MODE === 'player' ? '📁' : '☢️';
+    indexContent += `### ${icon} General\n`;
 
-    if (categoryPages.length > 0) {
-      const icon = VIEW_MODE === 'player' ? '📁' : '☢️';
-      indexContent += `### ${icon} ${categoryName}\n`;
-
-      if (VIEW_MODE === 'dm') {
-        indexContent += `*Contamination Level: MODERATE*\n\n`;
-      } else {
-        indexContent += `*Public Information*\n\n`;
-      }
-
-      categoryPages.sort((a, b) => a.title.localeCompare(b.title)).forEach(page => {
-        indexContent += `- [${page.title}]({{ site.baseurl }}${page.permalink})\n`;
-      });
-      indexContent += '\n';
+    if (VIEW_MODE === 'dm') {
+      indexContent += `*Contamination Level: MODERATE*\n\n`;
+    } else {
+      indexContent += `*Public Information*\n\n`;
     }
-  });
+
+    folderStructure.files.sort((a, b) => a.title.localeCompare(b.title)).forEach(file => {
+      indexContent += `- [${file.title}]({{ site.baseurl }}${file.permalink})\n`;
+    });
+    indexContent += '\n';
+  }
+
+  // Render folder structure
+  indexContent += renderFolderStructure(folderStructure);
 
   if (VIEW_MODE === 'player') {
     indexContent += `---
@@ -527,6 +474,124 @@ title: "Setup in Progress"
 The site is being configured. Please check back soon!
 `;
   fs.writeFileSync('./index.md', errorIndex);
+}
+
+// Helper function to create folder hierarchy from Obsidian structure
+function createFolderHierarchy(pages) {
+  const hierarchy = {
+    folders: {},
+    files: []
+  };
+
+  pages.forEach(page => {
+    const originalPath = page.originalPath || '';
+
+    if (!originalPath) {
+      // No folder structure found, put in root
+      hierarchy.files.push(page);
+      return;
+    }
+
+    // Split path into folders (remove the filename)
+    const pathParts = originalPath.split('/').filter(part => part && !part.endsWith('.md'));
+
+    if (pathParts.length === 0) {
+      // Root level file
+      hierarchy.files.push(page);
+    } else {
+      // Navigate through folder structure
+      let current = hierarchy;
+
+      pathParts.forEach((folderName, index) => {
+        // Ensure this folder exists
+        if (!current.folders[folderName]) {
+          current.folders[folderName] = {
+            folders: {},
+            files: []
+          };
+        }
+
+        // If this is the last part of the path, this is where the file belongs
+        if (index === pathParts.length - 1) {
+          current.folders[folderName].files.push(page);
+        } else {
+          // Move deeper into the hierarchy
+          current = current.folders[folderName];
+        }
+      });
+    }
+  });
+
+  return hierarchy;
+}
+
+// Recursive function to render folder structure
+function renderFolderStructure(structure, depth = 0) {
+  let content = '';
+
+  // Get sorted folder names
+  const folderNames = Object.keys(structure.folders).sort();
+
+  folderNames.forEach(folderName => {
+    const folder = structure.folders[folderName];
+    const icon = VIEW_MODE === 'player' ? '📁' : '☢️';
+
+    // Create clean folder title
+    const folderTitle = folderName
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, letter => letter.toUpperCase());
+
+    // Use appropriate header level based on depth
+    const headerLevel = Math.min(3 + depth, 6);
+    const headers = '#'.repeat(headerLevel);
+
+    content += `${headers} ${icon} ${folderTitle}\n`;
+
+    if (VIEW_MODE === 'dm') {
+      content += `*Contamination Level: MODERATE*\n\n`;
+    } else {
+      content += `*Public Information*\n\n`;
+    }
+
+    // Add files in this folder
+    if (folder.files && folder.files.length > 0) {
+      folder.files
+        .sort((a, b) => a.title.localeCompare(b.title))
+        .forEach(file => {
+          content += `- [${file.title}]({{ site.baseurl }}${file.permalink})\n`;
+        });
+      content += '\n';
+    }
+
+    // Recursively add subfolders
+    if (Object.keys(folder.folders).length > 0) {
+      content += renderFolderStructure(folder, depth + 1);
+    }
+  });
+
+  return content;
+}
+
+// Helper function to find markdown files with their full paths
+function findMarkdownFilesWithPath(dir, fileList = []) {
+  if (!fs.existsSync(dir)) {
+    return fileList;
+  }
+
+  const files = fs.readdirSync(dir);
+  files.forEach(file => {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+
+    if (stat.isDirectory()) {
+      findMarkdownFilesWithPath(filePath, fileList);
+    } else if (file.endsWith('.md')) {
+      const relativePath = path.relative(OBSIDIAN_FOLDER, filePath);
+      fileList.push(relativePath);
+    }
+  });
+
+  return fileList;
 }
 
 // Helper function for copying images (unchanged)
