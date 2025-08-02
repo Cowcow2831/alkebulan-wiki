@@ -382,19 +382,31 @@ ${VIEW_MODE === 'player'
 
   // Render root level files first (files with no folder structure)
   if (folderStructure.files && folderStructure.files.length > 0) {
-    const icon = VIEW_MODE === 'player' ? '📁' : '☢️';
-    indexContent += `### ${icon} General\n`;
+    // Filter out any files that match folder names at root level
+    const rootFolderNames = Object.keys(folderStructure.folders).map(name =>
+      name.toLowerCase().replace(/\s+/g, '-')
+    );
 
-    if (VIEW_MODE === 'dm') {
-      indexContent += `*Contamination Level: MODERATE*\n\n`;
-    } else {
-      indexContent += `*Public Information*\n\n`;
-    }
-
-    folderStructure.files.sort((a, b) => a.title.localeCompare(b.title)).forEach(file => {
-      indexContent += `- [${file.title}]({{ site.baseurl }}${file.permalink})\n`;
+    const rootFiles = folderStructure.files.filter(file => {
+      const sanitizedFilename = file.filename.replace('.md', '').toLowerCase();
+      return !rootFolderNames.includes(sanitizedFilename);
     });
-    indexContent += '\n';
+
+    if (rootFiles.length > 0) {
+      const icon = VIEW_MODE === 'player' ? '📁' : '☢️';
+      indexContent += `### ${icon} General\n`;
+
+      if (VIEW_MODE === 'dm') {
+        indexContent += `*Contamination Level: MODERATE*\n\n`;
+      } else {
+        indexContent += `*Public Information*\n\n`;
+      }
+
+      rootFiles.sort((a, b) => a.title.localeCompare(b.title)).forEach(file => {
+        indexContent += `- [${file.title}]({{ site.baseurl }}${file.permalink})\n`;
+      });
+      indexContent += '\n';
+    }
   }
 
   // Render folder structure
@@ -483,6 +495,13 @@ function createFolderHierarchy(pages) {
     files: []
   };
 
+  // Create a lookup map for files by their sanitized names
+  const fileMap = new Map();
+  pages.forEach(page => {
+    const sanitizedName = page.filename.replace('.md', '').toLowerCase();
+    fileMap.set(sanitizedName, page);
+  });
+
   pages.forEach(page => {
     const originalPath = page.originalPath || '';
 
@@ -507,13 +526,24 @@ function createFolderHierarchy(pages) {
         if (!current.folders[folderName]) {
           current.folders[folderName] = {
             folders: {},
-            files: []
+            files: [],
+            folderFile: null // Will store the matching .md file if found
           };
+        }
+
+        // Check if there's a matching .md file for this folder
+        const sanitizedFolderName = folderName.toLowerCase().replace(/\s+/g, '-');
+        if (fileMap.has(sanitizedFolderName)) {
+          current.folders[folderName].folderFile = fileMap.get(sanitizedFolderName);
         }
 
         // If this is the last part of the path, this is where the file belongs
         if (index === pathParts.length - 1) {
-          current.folders[folderName].files.push(page);
+          // Only add the file if it's not the folder's main file
+          if (!current.folders[folderName].folderFile ||
+              current.folders[folderName].folderFile.filename !== page.filename) {
+            current.folders[folderName].files.push(page);
+          }
         } else {
           // Move deeper into the hierarchy
           current = current.folders[folderName];
@@ -545,7 +575,14 @@ function renderFolderStructure(structure, depth = 0) {
     const headerLevel = Math.min(3 + depth, 6);
     const headers = '#'.repeat(headerLevel);
 
-    content += `${headers} ${icon} ${folderTitle}\n`;
+    // Check if this folder has a matching .md file
+    if (folder.folderFile) {
+      // Make the folder title a link to the .md file
+      content += `${headers} ${icon} [${folderTitle}]({{ site.baseurl }}${folder.folderFile.permalink})\n`;
+    } else {
+      // Regular folder title without link
+      content += `${headers} ${icon} ${folderTitle}\n`;
+    }
 
     if (VIEW_MODE === 'dm') {
       content += `*Contamination Level: MODERATE*\n\n`;
@@ -553,7 +590,7 @@ function renderFolderStructure(structure, depth = 0) {
       content += `*Public Information*\n\n`;
     }
 
-    // Add files in this folder
+    // Add files in this folder (excluding the folder's main file)
     if (folder.files && folder.files.length > 0) {
       folder.files
         .sort((a, b) => a.title.localeCompare(b.title))
