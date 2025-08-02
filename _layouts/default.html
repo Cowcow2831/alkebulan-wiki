@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
-    
+
     <!-- SEO -->
     {% seo %}
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/assets/favicon.ico">
-    
+
     <!-- Styles -->
     <style>
         /* Modern D&D Wiki Styling */
@@ -27,13 +27,13 @@
             --border-color: #444;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
             line-height: 1.6;
@@ -41,13 +41,13 @@
             background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Header */
         header {
             background: var(--bg-secondary);
@@ -57,14 +57,14 @@
             top: 0;
             z-index: 100;
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
         }
-        
+
         .site-title {
             font-size: 2rem;
             font-weight: bold;
@@ -72,18 +72,18 @@
             text-decoration: none;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        
+
         .site-title:hover {
             color: #fff;
             transition: color 0.3s ease;
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
-        
+
         nav a {
             color: var(--text-secondary);
             text-decoration: none;
@@ -91,25 +91,25 @@
             border-radius: 4px;
             transition: all 0.3s ease;
         }
-        
+
         nav a:hover {
             background: var(--accent-color);
             color: white;
         }
-        
+
         /* Main Content */
         main {
             padding: 2rem 0;
             min-height: calc(100vh - 200px);
         }
-        
+
         .content-wrapper {
             display: grid;
             grid-template-columns: 1fr 250px;
             gap: 2rem;
             align-items: start;
         }
-        
+
         .main-content {
             background: var(--bg-secondary);
             padding: 2rem;
@@ -117,7 +117,7 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
-        
+
         .sidebar {
             background: var(--bg-accent);
             padding: 1.5rem;
@@ -127,57 +127,57 @@
             position: sticky;
             top: 100px;
         }
-        
+
         /* Typography */
         h1, h2, h3, h4, h5, h6 {
             color: var(--link-color);
             margin-bottom: 1rem;
             font-weight: bold;
         }
-        
+
         h1 {
             font-size: 2.5rem;
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
         }
-        
+
         h2 {
             font-size: 2rem;
             margin-top: 2rem;
         }
-        
+
         h3 {
             font-size: 1.5rem;
             margin-top: 1.5rem;
         }
-        
+
         p {
             margin-bottom: 1rem;
             text-align: justify;
         }
-        
+
         /* Links */
         a {
             color: var(--link-color);
             text-decoration: none;
         }
-        
+
         a:hover {
             color: #fff;
             text-decoration: underline;
         }
-        
+
         /* Lists */
         ul, ol {
             margin-left: 2rem;
             margin-bottom: 1rem;
         }
-        
+
         li {
             margin-bottom: 0.5rem;
         }
-        
+
         /* Images */
         img {
             max-width: 100%;
@@ -186,7 +186,7 @@
             box-shadow: var(--shadow);
             margin: 1rem 0;
         }
-        
+
         /* Blockquotes */
         blockquote {
             border-left: 4px solid var(--accent-color);
@@ -195,7 +195,7 @@
             font-style: italic;
             color: var(--text-secondary);
         }
-        
+
         /* Code */
         code {
             background: var(--bg-primary);
@@ -203,7 +203,7 @@
             border-radius: 3px;
             font-family: 'Courier New', monospace;
         }
-        
+
         pre {
             background: var(--bg-primary);
             padding: 1rem;
@@ -211,47 +211,47 @@
             overflow-x: auto;
             margin: 1rem 0;
         }
-        
+
         /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 1rem 0;
         }
-        
+
         th, td {
             padding: 0.8rem;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
         }
-        
+
         th {
             background: var(--accent-color);
             color: white;
             font-weight: bold;
         }
-        
+
         /* Sidebar */
         .sidebar h3 {
             font-size: 1.2rem;
             margin-bottom: 1rem;
             color: var(--link-color);
         }
-        
+
         .sidebar ul {
             list-style: none;
             margin-left: 0;
         }
-        
+
         .sidebar li {
             margin-bottom: 0.3rem;
         }
-        
+
         .sidebar a {
             font-size: 0.9rem;
             color: var(--text-secondary);
         }
-        
+
         /* Footer */
         footer {
             background: var(--bg-secondary);
@@ -260,32 +260,32 @@
             border-top: 3px solid var(--accent-color);
             color: var(--text-secondary);
         }
-        
+
         /* Responsive */
         @media (max-width: 768px) {
             .content-wrapper {
                 grid-template-columns: 1fr;
             }
-            
+
             .sidebar {
                 order: -1;
                 position: static;
             }
-            
+
             .header-content {
                 flex-direction: column;
                 gap: 1rem;
             }
-            
+
             nav ul {
                 gap: 1rem;
             }
-            
+
             .site-title {
                 font-size: 1.5rem;
             }
         }
-        
+
         /* Utility Classes */
         .text-center { text-align: center; }
         .text-muted { color: var(--text-secondary); }
@@ -316,10 +316,10 @@
                     {% if page.title %}
                     <h1>{{ page.title }}</h1>
                     {% endif %}
-                    
+
                     {{ content }}
                 </article>
-                
+
                 <aside class="sidebar">
                     <h3>Quick Navigation</h3>
                     <ul>
@@ -327,12 +327,12 @@
                         <li><a href="{{ site.baseurl }}/port-zephyr/">Port Zephyr</a></li>
                         <li><a href="{{ site.baseurl }}/harbor-district/">Harbor District</a></li>
                     </ul>
-                    
+
                     <h3>Campaign Info</h3>
                     <ul>
                         <li><a href="{{ site.baseurl }}/player-handout-whispers-of-the-wastes/">Player Handout</a></li>
                     </ul>
-                    
+
                     {% if page.tags %}
                     <h3>Tags</h3>
                     <ul>
@@ -348,7 +348,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author | default: site.title }}. Built with Jekyll for the {{ site.campaign }} campaign.</p>
+            <p>&copy; {{ site.time | date: "%Y" }} {{ site.author | default: site.title }}. Built with Jekyll for the {{ site.campaign }} campaign.</p>
         </div>
     </footer>
 </body>
