@@ -256,38 +256,144 @@ function generateIndex() {
       };
     });
 
-  // Group pages by tag/category
+  // Group pages by their original folder structure
   const pagesByCategory = {};
   pages.forEach(page => {
-    const category = page.tags[0] || 'General';
-    if (!pagesByCategory[category]) {
-      pagesByCategory[category] = [];
+    // Find the original file path to extract folder structure
+    const originalFile = files.find(f => sanitizeFilename(path.basename(f, '.md')) === path.basename(page.filename, '.md'));
+
+    if (originalFile) {
+      const pathParts = originalFile.split('/');
+      if (pathParts.length >= 2) {
+        // Use the first meaningful folder as category (skip 'Alkebulan')
+        let category = pathParts[1];
+        if (pathParts.length >= 3 && pathParts[1].startsWith('0')) {
+          // For numbered folders, include subfolder for better organization
+          category = `${pathParts[1]} - ${pathParts[2]}`;
+        }
+        category = category.replace(/^\d+\s*-?\s*/, '').trim(); // Remove leading numbers
+
+        if (!pagesByCategory[category]) {
+          pagesByCategory[category] = [];
+        }
+        pagesByCategory[category].push(page);
+      } else {
+        // Fallback for files without clear folder structure
+        const category = page.tags[0] || 'General';
+        if (!pagesByCategory[category]) {
+          pagesByCategory[category] = [];
+        }
+        pagesByCategory[category].push(page);
+      }
     }
-    pagesByCategory[category].push(page);
   });
 
-  // Generate index content
+  // Generate index content with better organization
   let indexContent = `---
 layout: default
-title: "Welcome to Alkebulan"
+title: "Alkebulan: Contaminated Archives"
 permalink: /
 ---
 
-# Welcome to Alkebulan
-*A dark fantasy D&D world recovering from magical apocalypse*
+# Alkebulan: Contaminated Archives
+*⚠️ WARNING: Magical contamination detected in all archived materials*
 
-## Explore the World
+*A dark fantasy D&D world recovering from magical apocalypse - Access restricted to authorized personnel only*
+
+---
+
+## ☢️ Archive Navigation System
+
+*Navigate contaminated data with extreme caution. All information may contain traces of Remnant Magic.*
 
 `;
 
-  // Add categorized links
+  // Sort categories for better organization
+  const categoryOrder = [
+    'Campaign Overview',
+    'World Building',
+    'Locations',
+    'Factions & Organizations',
+    'NPCs',
+    'Adventures & Sessions',
+    'Player Resources',
+    'Game Mechanics',
+    'Reference Materials',
+    'Other',
+    'Templates'
+  ];
+
+  // Add organized categories
+  categoryOrder.forEach(expectedCategory => {
+    const matchingCategories = Object.keys(pagesByCategory).filter(cat =>
+      cat.includes(expectedCategory) || expectedCategory.includes(cat.split(' - ')[0])
+    );
+
+    matchingCategories.forEach(category => {
+      const icon = getCategoryIcon(category);
+      indexContent += `### ${icon} ${category}\n`;
+      indexContent += `*Contamination Level: ${getContaminationLevel(category)}*\n\n`;
+
+      // Sort pages within category
+      pagesByCategory[category].sort((a, b) => a.title.localeCompare(b.title));
+
+      pagesByCategory[category].forEach(page => {
+        indexContent += `- [${page.title}]({{ site.baseurl }}${page.permalink})\n`;
+      });
+      indexContent += '\n';
+      delete pagesByCategory[category];
+    });
+  });
+
+  // Add any remaining categories
   Object.keys(pagesByCategory).sort().forEach(category => {
-    indexContent += `### ${category}\n\n`;
+    const icon = getCategoryIcon(category);
+    indexContent += `### ${icon} ${category}\n`;
+    indexContent += `*Contamination Level: ${getContaminationLevel(category)}*\n\n`;
     pagesByCategory[category].forEach(page => {
       indexContent += `- [${page.title}]({{ site.baseurl }}${page.permalink})\n`;
     });
     indexContent += '\n';
   });
+
+  indexContent += `---
+
+## ⚠️ Safety Protocols
+
+- **All materials** may contain traces of Remnant Magic
+- **Exercise caution** when accessing pre-Cataclysm records
+- **Report anomalies** to your nearest Remnant Keeper
+- **Decontamination required** after extended archive access
+
+*This archive is maintained by the survivors of Port Zephyr for educational purposes. The Council of Merchant Princes assumes no responsibility for magical contamination exposure.*`;
+
+  fs.writeFileSync('./index.md', indexContent);
+  console.log('✅ Index page generated with folder organization');
+}
+
+// Helper function to get category icons
+function getCategoryIcon(category) {
+  if (category.includes('World Building')) return '🌍';
+  if (category.includes('Location')) return '📍';
+  if (category.includes('NPC')) return '👥';
+  if (category.includes('Adventure')) return '⚔️';
+  if (category.includes('Player')) return '📖';
+  if (category.includes('Game Mechanic')) return '⚙️';
+  if (category.includes('Faction')) return '🏛️';
+  if (category.includes('Reference')) return '📚';
+  if (category.includes('Template')) return '📋';
+  if (category.includes('Campaign')) return '🎲';
+  return '☢️';
+}
+
+// Helper function to get contamination level
+function getContaminationLevel(category) {
+  if (category.includes('Template')) return 'MINIMAL';
+  if (category.includes('Player')) return 'LOW';
+  if (category.includes('World Building')) return 'MODERATE';
+  if (category.includes('Adventure')) return 'HIGH';
+  if (category.includes('Game Mechanic')) return 'EXTREME';
+  return 'MODERATE';
 
   fs.writeFileSync('./index.md', indexContent);
   console.log('✅ Index page generated');
