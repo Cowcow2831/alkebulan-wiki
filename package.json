@@ -1,4 +1,3 @@
-# package.json - Node.js dependencies
 {
   "name": "obsidian-to-jekyll",
   "version": "1.0.0",
