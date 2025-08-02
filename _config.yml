@@ -1,5 +1,5 @@
 # _config.yml - Jekyll configuration
-title: "Alkebulan - D&D World"
+title: "Alkebulan"
 description: "A dark fantasy continent recovering from magical apocalypse"
 baseurl: "/alkebulan-wiki" # Your repository name
 url: "https://cowcow2831.github.io" # Your GitHub Pages URL
@@ -57,5 +57,5 @@ defaults:
       layout: "default"
 
 # Custom variables
-author: "Your Name"
-campaign: "Whispers of the Wastes"
+author: "Robert McCowan"
+campaign: "Alkebulan"
