@@ -37,13 +37,13 @@ function convertWikiLinks(content, filename, allFiles) {
   // Get list of existing files (without .md extension, just final filename)
   const existingPages = allFiles.map(f => sanitizeFilename(path.basename(f, '.md')));
 
-  // Convert [[Link]] to Jekyll links, but only if the target exists
+  // Convert [[Link]] to simple relative links
   content = content.replace(/\[\[([^\]]+)\]\]/g, (match, linkText) => {
     const sanitizedLink = sanitizeFilename(linkText);
 
     // Check if target page exists
     if (existingPages.includes(sanitizedLink)) {
-      return `[${linkText}]({% link pages/${sanitizedLink}.md %})`;
+      return `[${linkText}]({{ site.baseurl }}/${sanitizedLink}/)`;
     } else {
       // Keep as plain text with a note that it's not ready yet
       console.log(`⚠️  Link to missing page: ${linkText} (will be plain text)`);
@@ -238,10 +238,14 @@ function copyImages() {
 function generateIndex() {
   console.log('📋 Generating index page...');
 
-  const pages = fs.readdirSync(PAGES_FOLDER)
-    .filter(file => file.endsWith('.md'))
+  // Look for generated .md files in root directory (exclude certain files)
+  const generatedFiles = fs.readdirSync('./')
+    .filter(file => file.endsWith('.md') &&
+                   file !== 'index.md' &&
+                   file !== 'README.md');
+  const pages = generatedFiles
     .map(file => {
-      const filePath = path.join(PAGES_FOLDER, file);
+      const filePath = path.join('./', file);
       const { data } = matter(fs.readFileSync(filePath, 'utf8'));
       return {
         title: data.title || path.basename(file, '.md').replace(/-/g, ' '),
