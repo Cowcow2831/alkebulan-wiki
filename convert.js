@@ -115,10 +115,31 @@ function processObsidianFiles() {
   }
 
   console.log(`📁 Looking for files in: ${OBSIDIAN_FOLDER}`);
-  const allFiles = fs.readdirSync(OBSIDIAN_FOLDER, { recursive: true });
+
+  // Recursively find all markdown files
+  function findMarkdownFiles(dir, fileList = []) {
+    const files = fs.readdirSync(dir);
+
+    files.forEach(file => {
+      const filePath = path.join(dir, file);
+      const stat = fs.statSync(filePath);
+
+      if (stat.isDirectory()) {
+        findMarkdownFiles(filePath, fileList);
+      } else if (file.endsWith('.md')) {
+        // Store relative path from obsidian-notes folder
+        const relativePath = path.relative(OBSIDIAN_FOLDER, filePath);
+        fileList.push(relativePath);
+      }
+    });
+
+    return fileList;
+  }
+
+  const allFiles = findMarkdownFiles(OBSIDIAN_FOLDER);
   console.log(`📋 All files found:`, allFiles);
 
-  const files = allFiles.filter(file => file.endsWith('.md'));
+  const files = allFiles;
 
   if (files.length === 0) {
     console.log('⚠️  No markdown files found. Creating a sample index page...');
@@ -168,7 +189,7 @@ Your D&D world wiki will appear here once you add markdown files to the \`obsidi
     // Generate Jekyll frontmatter
     const jekyllFrontmatter = generateFrontmatter(data, file);
 
-    // Create the Jekyll file
+    // Create the Jekyll file using just the basename
     const sanitizedFilename = sanitizeFilename(path.basename(file, '.md')) + '.md';
     const outputPath = path.join(PAGES_FOLDER, sanitizedFilename);
 
