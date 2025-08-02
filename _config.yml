@@ -1,62 +1,48 @@
-title: "Alkebulan - D&D World"
-description: "A dark fantasy continent recovering from magical apocalypse"
-baseurl: "" # Leave empty for root domain, or "/repository-name" for GitHub Pages
-url: "https://yourusername.github.io" # Replace with your GitHub Pages URL
+# .github/workflows/obsidian-to-jekyll.yml
+name: Convert Obsidian to Jekyll
 
-# Build settings
-markdown: kramdown
-highlighter: rouge
-theme: minima
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-# Collections
-collections:
-  pages:
-    output: true
-    permalink: /:name/
+jobs:
+  convert-and-deploy:
+    runs-on: ubuntu-latest
 
-# Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-# Navigation
-navigation:
-  - title: "Home"
-    url: "/"
-  - title: "Locations"
-    url: "/locations/"
-  - title: "Characters"
-    url: "/characters/"
-  - title: "History"
-    url: "/history/"
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
 
-# Exclude files from processing
-exclude:
-  - node_modules/
-  - obsidian-notes/
-  - convert.js
-  - package.json
-  - package-lock.json
-  - README.md
-  - .gitignore
+    - name: Install dependencies
+      run: |
+        npm install
 
-# Include
-include:
-  - _pages
+    - name: Convert Obsidian files to Jekyll
+      run: |
+        ls -la obsidian-notes/ || echo "obsidian-notes folder not found"
+        node convert.js
 
-# Defaults
-defaults:
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "default"
-  - scope:
-      path: "pages"
-    values:
-      layout: "page"
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1'
+        bundler-cache: true
 
-# Custom variables
-author: "Your Name"
-campaign: "Whispers of the Wastes"
+    - name: Build Jekyll site
+      run: |
+        bundle install
+        bundle exec jekyll build
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site
