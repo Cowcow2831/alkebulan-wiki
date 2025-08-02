@@ -1,0 +1,63 @@
+# _config.yml - Jekyll configuration
+title: "Alkebulan - D&D World"
+description: "A dark fantasy continent recovering from magical apocalypse"
+baseurl: "" # Leave empty for root domain, or "/repository-name" for GitHub Pages
+url: "https://yourusername.github.io" # Replace with your GitHub Pages URL
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "Locations"
+    url: "/locations/"
+  - title: "Characters"
+    url: "/characters/"
+  - title: "History"
+    url: "/history/"
+
+# Exclude files from processing
+exclude:
+  - node_modules/
+  - obsidian-notes/
+  - convert.js
+  - package.json
+  - package-lock.json
+  - README.md
+  - .gitignore
+
+# Include
+include:
+  - _pages
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "pages"
+    values:
+      layout: "page"
+
+# Custom variables
+author: "Your Name"
+campaign: "Whispers of the Wastes"

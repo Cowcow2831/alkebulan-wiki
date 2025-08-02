@@ -1,0 +1,19 @@
+# package.json - Node.js dependencies
+{
+  "name": "obsidian-to-jekyll",
+  "version": "1.0.0",
+  "description": "Convert Obsidian notes to Jekyll site",
+  "main": "convert.js",
+  "scripts": {
+    "convert": "node convert.js",
+    "build": "bundle exec jekyll build",
+    "serve": "bundle exec jekyll serve"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {},
+  "keywords": ["obsidian", "jekyll", "markdown", "dnd"],
+  "author": "Your Name",
+  "license": "MIT"
+}
