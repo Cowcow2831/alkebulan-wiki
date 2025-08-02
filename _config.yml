@@ -1,18 +1,23 @@
+# _config.yml - Jekyll configuration
 title: "Alkebulan - D&D World"
 description: "A dark fantasy continent recovering from magical apocalypse"
-baseurl: "" # Leave empty for root domain, or "/repository-name" for GitHub Pages
-url: "https://yourusername.github.io" # Replace with your GitHub Pages URL
+baseurl: "/alkebulan-wiki" # Your repository name
+url: "https://cowcow2831.github.io" # Your GitHub Pages URL
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
 theme: minima
 
-# Collections
-collections:
-  pages:
-    output: true
-    permalink: /:name/
+# Include the pages directory
+include:
+  - pages
+
+# Collections - remove this as we're using regular pages
+# collections:
+#   pages:
+#     output: true
+#     permalink: /:name/
 
 # Plugins
 plugins:
@@ -24,12 +29,12 @@ plugins:
 navigation:
   - title: "Home"
     url: "/"
-  - title: "Locations"
-    url: "/locations/"
-  - title: "Characters"
-    url: "/characters/"
-  - title: "History"
-    url: "/history/"
+  - title: "Port Zephyr"
+    url: "/port-zephyr/"
+  - title: "Harbor District"
+    url: "/harbor-district/"
+  - title: "Player Handout"
+    url: "/player-handout-whispers-of-the-wastes/"
 
 # Exclude files from processing
 exclude:
@@ -40,22 +45,16 @@ exclude:
   - package-lock.json
   - README.md
   - .gitignore
+  - Gemfile
+  - Gemfile.lock
 
-# Include
-include:
-  - _pages
-
-# Defaults
+# Defaults for pages
 defaults:
   - scope:
-      path: ""
+      path: "pages"
       type: "pages"
     values:
       layout: "default"
-  - scope:
-      path: "pages"
-    values:
-      layout: "page"
 
 # Custom variables
 author: "Your Name"

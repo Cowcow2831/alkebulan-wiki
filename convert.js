@@ -6,11 +6,11 @@ const matter = require('gray-matter');
 // Configuration
 const OBSIDIAN_FOLDER = './obsidian-notes';
 const JEKYLL_FOLDER = './_posts';
-const PAGES_FOLDER = './pages';
+const PAGES_FOLDER = './'; // Put pages in root directory
 const ASSETS_FOLDER = './assets/images';
 
 // Ensure output directories exist
-[JEKYLL_FOLDER, PAGES_FOLDER, ASSETS_FOLDER].forEach(dir => {
+[JEKYLL_FOLDER, ASSETS_FOLDER].forEach(dir => {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
