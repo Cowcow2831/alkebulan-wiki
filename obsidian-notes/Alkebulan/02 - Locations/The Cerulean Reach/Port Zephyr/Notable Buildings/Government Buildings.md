@@ -9,7 +9,7 @@ tags: [location, government, administrative, hill-ward, port-zephyr, political, 
 
 ## Overview
 **Type:** Administrative Complex/Contamination Management Center
-**Region:** [[The Cerulean Reach]] ([[Port Zephyr]] - [[Hill Ward]])
+**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]] - [[Hill Ward]])
 **Population:** 150+ government officials, plus 200+ expendable clerks and maintenance workers
 **Government:** Plutocratic administration serving the [[Council Members|Council of Merchant Princes]]
 

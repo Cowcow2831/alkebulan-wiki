@@ -4,7 +4,10 @@ habitat:
 cr: 
 status: 
 campaign: 
-tags: [creature, wildlife]
+tags:
+  - creature
+  - wildlife
+access_level:
 ---
 
 # {{title}}

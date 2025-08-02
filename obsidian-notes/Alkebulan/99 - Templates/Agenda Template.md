@@ -1,5 +1,9 @@
 ---
-tags: [agenda, todo, campaign]
+tags:
+  - agenda
+  - todo
+  - campaign
+access_level:
 ---
 
 # Agenda - [Campaign Name]

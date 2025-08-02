@@ -2,7 +2,7 @@
 
 ## Overview
 **Type:** Industrial/Maritime Hub and Contamination Zone
-**Region:** [[The Cerulean Reach]] ([[Port Zephyr]])
+**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]])
 **Population:** Approximately 3,000 residents, plus 1,500+ transient workers and refugees
 **Government:** Overseen by [[Harbor Officials]] under direct Council control, with heavily armed [[City Watch Officers]] maintaining brutal order
 **Contamination Level:** Moderate to High (varies by location and tidal conditions)

@@ -2,7 +2,7 @@
 
 ## Overview
 **Type:** Elite Fortress District/Government Quarter
-**Region:** [[The Cerulean Reach]] ([[Port Zephyr]])
+**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]])
 **Population:** Approximately 600 residents, plus 400+ servants, guards, and staff
 **Government:** Direct control by [[Council Members]] with elite [[City Watch Officers]] and private security
 **Contamination Level:** Minimal (artificially maintained through technological and magical purification)

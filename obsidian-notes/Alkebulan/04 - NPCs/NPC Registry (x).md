@@ -150,7 +150,7 @@
 
 | Name                       | Role           | Location               | Status | Attitude | Faction | Notes                                                                        | Has Note |
 | -------------------------- | -------------- | ---------------------- | ------ | -------- | ------- | ---------------------------------------------------------------------------- | -------- |
-| [[Azira Goldweave]]        | [Role Unknown] | [[The Cerulean Reach]] | Active | Unknown  | Unknown | Name suggests merchant family connection, [[Lvl 3 The Mist Walker's Gambit (x)]] | x        |
+| [[Azira Goldweave]]        | [Role Unknown] | [[The Cerulean Reach (old)]] | Active | Unknown  | Unknown | Name suggests merchant family connection, [[Lvl 3 The Mist Walker's Gambit (x)]] | x        |
 | [Additional regional NPCs] |                |                        |        |          |         |                                                                              | x        |
 
 ### Other Regions

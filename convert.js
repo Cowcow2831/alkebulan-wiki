@@ -1,4 +1,4 @@
-// convert.js - Converts Obsidian markdown to Jekyll format
+// Enhanced convert.js with view filtering capability
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
@@ -6,54 +6,111 @@ const matter = require('gray-matter');
 // Configuration
 const OBSIDIAN_FOLDER = './obsidian-notes';
 const JEKYLL_FOLDER = './_posts';
-const PAGES_FOLDER = './'; // Put pages in root directory
+const PAGES_FOLDER = './';
 const ASSETS_FOLDER = './assets/images';
 
-// Ensure output directories exist
-[JEKYLL_FOLDER, ASSETS_FOLDER].forEach(dir => {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
+// View filtering - set via environment variable or command line
+const VIEW_MODE = process.env.VIEW_MODE || process.argv[2] || 'dm'; // 'player' or 'dm'
+
+// Access levels
+const ACCESS_LEVELS = {
+  PUBLIC: 'public',      // Available to everyone
+  PLAYER: 'player',      // Player-safe content
+  DM: 'dm',             // DM-only content
+  SECRET: 'secret'       // Hidden from all views
+};
+
+console.log(`🎭 Building in ${VIEW_MODE.toUpperCase()} mode`);
+
+// Helper function to check if content should be included
+function shouldIncludeContent(frontmatter, content) {
+  const accessLevel = frontmatter.access_level || ACCESS_LEVELS.PUBLIC;
+
+  // Always exclude secret content
+  if (accessLevel === ACCESS_LEVELS.SECRET) {
+    return false;
   }
-});
 
-// Helper function to convert filename to Jekyll-friendly format
+  // For player view, only include public and player content
+  if (VIEW_MODE === 'player') {
+    return accessLevel === ACCESS_LEVELS.PUBLIC || accessLevel === ACCESS_LEVELS.PLAYER;
+  }
+
+  // For DM view, include everything except secret
+  return true;
+}
+
+// Helper function to filter content sections
+function filterContentSections(content, frontmatter) {
+  if (VIEW_MODE === 'dm') {
+    return content; // DMs see everything
+  }
+
+  // Remove DM-only sections for player view
+  let filteredContent = content;
+
+  // Remove content between DM-only markers
+  filteredContent = filteredContent.replace(
+    /<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g,
+    ''
+  );
+
+  // Remove DM-only spoiler blocks
+  filteredContent = filteredContent.replace(
+    /> \*\*DM Note:.*?\*\*[\s\S]*?(?=\n\n|\n>|\n$)/g,
+    ''
+  );
+
+  // Replace player-safe sections
+  filteredContent = filteredContent.replace(
+    /<!-- PLAYER_SAFE_START -->([\s\S]*?)<!-- PLAYER_SAFE_END -->/g,
+    '$1'
+  );
+
+  return filteredContent.trim();
+}
+
+// Enhanced sanitizeFilename function
 function sanitizeFilename(filename) {
-  // Remove file extension if present
   const nameWithoutExt = filename.replace(/\.md$/, '');
-
-  // Extract just the final filename from any path
   const justFilename = nameWithoutExt.split('/').pop();
 
   return justFilename
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '') // Remove special chars except spaces and hyphens
-    .replace(/\s+/g, '-')         // Replace spaces with hyphens
-    .replace(/-+/g, '-')          // Replace multiple hyphens with single
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
     .trim();
 }
 
-// Helper function to convert WikiLinks to Jekyll links
+// Enhanced WikiLink conversion with access checking
 function convertWikiLinks(content, filename, allFiles) {
-  // Get list of existing files (without .md extension, just final filename)
-  const existingPages = allFiles.map(f => sanitizeFilename(path.basename(f, '.md')));
+  const existingPages = allFiles
+    .filter(f => {
+      const filePath = path.join(OBSIDIAN_FOLDER, f);
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      const { data } = matter(fileContent);
+      return shouldIncludeContent(data, fileContent);
+    })
+    .map(f => sanitizeFilename(path.basename(f, '.md')));
 
-  // Convert [[Link]] to simple relative links
   content = content.replace(/\[\[([^\]]+)\]\]/g, (match, linkText) => {
     const sanitizedLink = sanitizeFilename(linkText);
 
-    // Check if target page exists
     if (existingPages.includes(sanitizedLink)) {
       return `[${linkText}]({{ site.baseurl }}/${sanitizedLink}/)`;
     } else {
-      // Keep as plain text with a note that it's not ready yet
-      console.log(`⚠️  Link to missing page: ${linkText} (will be plain text)`);
-      return `**${linkText}** *(page coming soon)*`;
+      if (VIEW_MODE === 'player') {
+        return `**${linkText}** *(classified)*`;
+      } else {
+        console.log(`⚠️  Link to restricted/missing page: ${linkText}`);
+        return `**${linkText}** *(page restricted or coming soon)*`;
+      }
     }
   });
 
-  // Convert ![Image](image.png) to proper Jekyll asset links
+  // Convert image links
   content = content.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
-    // If it's a relative path, convert to Jekyll asset path
     if (!src.startsWith('http')) {
       return `![${alt}]({{ site.baseurl }}/assets/images/${src})`;
     }
@@ -63,21 +120,20 @@ function convertWikiLinks(content, filename, allFiles) {
   return content;
 }
 
-// Helper function to generate proper Jekyll frontmatter
+// Enhanced frontmatter generation with access control
 function generateFrontmatter(data, filename) {
   const now = new Date();
   const dateStr = now.toISOString().split('T')[0];
 
-  // Clean up problematic frontmatter
   const cleanData = { ...data };
 
-  // Fix malformed date fields
+  // Fix malformed dates
   if (cleanData.date && typeof cleanData.date === 'object') {
     console.log(`⚠️  Fixing malformed date in ${filename}`);
-    delete cleanData.date; // Remove the problematic date object
+    delete cleanData.date;
   }
 
-  // Remove any fields with template syntax that aren't filled in
+  // Remove template fields
   Object.keys(cleanData).forEach(key => {
     const value = cleanData[key];
     if (typeof value === 'string' && (value.includes('{{') || value.includes('{ '))) {
@@ -89,12 +145,18 @@ function generateFrontmatter(data, filename) {
   const frontmatter = {
     layout: 'default',
     title: cleanData.title || path.basename(filename, '.md').replace(/-/g, ' '),
-    date: dateStr, // Always use a valid date
+    date: dateStr,
     permalink: `/${sanitizeFilename(path.basename(filename, '.md'))}/`,
-    ...cleanData // Preserve cleaned frontmatter
+    view_mode: VIEW_MODE,
+    access_level: cleanData.access_level || ACCESS_LEVELS.PUBLIC,
+    ...cleanData
   };
 
-  // Add categories based on tags if they exist
+  // Add view-specific styling
+  if (VIEW_MODE === 'player') {
+    frontmatter.player_safe = true;
+  }
+
   if (cleanData.tags && Array.isArray(cleanData.tags)) {
     frontmatter.categories = cleanData.tags;
   }
@@ -102,168 +164,73 @@ function generateFrontmatter(data, filename) {
   return frontmatter;
 }
 
-// Helper function to get category icons
-function getCategoryIcon(category) {
-  if (category.includes('World Building')) return '🌍';
-  if (category.includes('Location')) return '📍';
-  if (category.includes('NPC')) return '👥';
-  if (category.includes('Adventure')) return '⚔️';
-  if (category.includes('Player')) return '📖';
-  if (category.includes('Game Mechanic')) return '⚙️';
-  if (category.includes('Faction')) return '🏛️';
-  if (category.includes('Reference')) return '📚';
-  if (category.includes('Template')) return '📋';
-  if (category.includes('Campaign')) return '🎲';
-  return '☢️';
-}
-
-// Helper function to get contamination level
-function getContaminationLevel(category) {
-  if (category.includes('Template')) return 'MINIMAL';
-  if (category.includes('Player')) return 'LOW';
-  if (category.includes('World Building')) return 'MODERATE';
-  if (category.includes('Adventure')) return 'HIGH';
-  if (category.includes('Game Mechanic')) return 'EXTREME';
-  return 'MODERATE';
-}
-
-// Process all markdown files in the obsidian folder
+// Enhanced file processing with access control
 function processObsidianFiles() {
-  console.log('🔄 Converting Obsidian notes to Jekyll format...');
+  console.log(`🔄 Converting Obsidian notes to Jekyll format (${VIEW_MODE.toUpperCase()} view)...`);
 
-  // Check if obsidian folder exists
   if (!fs.existsSync(OBSIDIAN_FOLDER)) {
     console.error(`❌ Obsidian folder not found at: ${OBSIDIAN_FOLDER}`);
-    console.log('Creating empty obsidian-notes folder...');
     fs.mkdirSync(OBSIDIAN_FOLDER, { recursive: true });
     return;
   }
 
-  console.log(`📁 Looking for files in: ${OBSIDIAN_FOLDER}`);
-
-  // Recursively find all markdown files
   function findMarkdownFiles(dir, fileList = []) {
     const files = fs.readdirSync(dir);
-
     files.forEach(file => {
       const filePath = path.join(dir, file);
       const stat = fs.statSync(filePath);
-
       if (stat.isDirectory()) {
         findMarkdownFiles(filePath, fileList);
       } else if (file.endsWith('.md')) {
-        // Store relative path from obsidian-notes folder
         const relativePath = path.relative(OBSIDIAN_FOLDER, filePath);
         fileList.push(relativePath);
       }
     });
-
     return fileList;
   }
 
   const allFiles = findMarkdownFiles(OBSIDIAN_FOLDER);
-  console.log(`📋 All files found:`, allFiles);
+  let processedCount = 0;
+  let skippedCount = 0;
 
-  const files = allFiles;
-
-  if (files.length === 0) {
-    console.log('⚠️  No markdown files found. Creating a sample index page...');
-    // Create a basic index page so Jekyll has something to build
-    const sampleContent = `---
-layout: default
-title: "Welcome to Alkebulan"
-permalink: /
----
-
-# Welcome to Alkebulan
-
-Your D&D world wiki will appear here once you add markdown files to the \`obsidian-notes/\` folder.
-
-## Getting Started
-
-1. Add your Obsidian markdown files to the \`obsidian-notes/\` folder
-2. Commit and push your changes
-3. GitHub will automatically convert them to this website
-
-## Sample Pages
-
-- Add your campaign notes
-- Create location descriptions
-- Document NPCs and factions
-- Track player progress
-
----
-
-*This site is automatically generated from your Obsidian notes.*`;
-
-    fs.writeFileSync('./index.md', sampleContent);
-    console.log('✅ Created sample index page');
-    return;
-  }
-
-  files.forEach(file => {
+  allFiles.forEach(file => {
     const filePath = path.join(OBSIDIAN_FOLDER, file);
     const fileContent = fs.readFileSync(filePath, 'utf8');
-
-    // Parse frontmatter and content
     const { data, content } = matter(fileContent);
 
-    // Convert WikiLinks and image paths (pass all files for link checking)
-    const convertedContent = convertWikiLinks(content, file, files);
+    // Check if file should be included in this view
+    if (!shouldIncludeContent(data, fileContent)) {
+      console.log(`🚫 Skipping ${file} (access level: ${data.access_level || 'default'})`);
+      skippedCount++;
+      return;
+    }
 
-    // Generate Jekyll frontmatter
+    // Filter content based on view mode
+    const filteredContent = filterContentSections(content, data);
+
+    // Convert WikiLinks with access checking
+    const convertedContent = convertWikiLinks(filteredContent, file, allFiles);
+
+    // Generate frontmatter with access control
     const jekyllFrontmatter = generateFrontmatter(data, file);
 
-    // Create the Jekyll file using just the basename
     const sanitizedFilename = sanitizeFilename(path.basename(file, '.md')) + '.md';
     const outputPath = path.join(PAGES_FOLDER, sanitizedFilename);
 
-    // Construct the final Jekyll file
     const jekyllFile = matter.stringify(convertedContent, jekyllFrontmatter);
-
-    // Write the converted file
     fs.writeFileSync(outputPath, jekyllFile);
+
     console.log(`✅ Converted: ${file} → ${sanitizedFilename}`);
+    processedCount++;
   });
 
-  console.log('🎉 Conversion complete!');
+  console.log(`🎉 Conversion complete! Processed: ${processedCount}, Skipped: ${skippedCount}`);
 }
 
-// Copy images from obsidian to Jekyll assets
-function copyImages() {
-  console.log('🖼️  Copying images...');
-
-  // Look for common image directories in Obsidian folder
-  const imageDirs = ['attachments', 'images', 'assets'];
-
-  imageDirs.forEach(dir => {
-    const sourceDir = path.join(OBSIDIAN_FOLDER, dir);
-    if (fs.existsSync(sourceDir)) {
-      const images = fs.readdirSync(sourceDir, { recursive: true })
-        .filter(file => /\.(png|jpg|jpeg|gif|svg|webp)$/i.test(file));
-
-      images.forEach(image => {
-        const sourcePath = path.join(sourceDir, image);
-        const destPath = path.join(ASSETS_FOLDER, image);
-
-        // Create subdirectories if needed
-        const destDir = path.dirname(destPath);
-        if (!fs.existsSync(destDir)) {
-          fs.mkdirSync(destDir, { recursive: true });
-        }
-
-        fs.copyFileSync(sourcePath, destPath);
-        console.log(`📁 Copied image: ${image}`);
-      });
-    }
-  });
-}
-
-// Generate an index page with all pages listed
+// Enhanced index generation with view-specific content
 function generateIndex() {
-  console.log('📋 Generating index page...');
+  console.log(`📋 Generating index page for ${VIEW_MODE.toUpperCase()} view...`);
 
-  // Look for generated .md files in root directory (exclude certain files)
   const generatedFiles = fs.readdirSync('./')
     .filter(file => file.endsWith('.md') &&
                    file !== 'index.md' &&
@@ -278,139 +245,72 @@ function generateIndex() {
         title: data.title || baseName.replace(/-/g, ' '),
         filename: file,
         permalink: data.permalink || `/${baseName}/`,
-        tags: data.tags || []
+        tags: data.tags || [],
+        access_level: data.access_level || ACCESS_LEVELS.PUBLIC
       };
     });
 
-  // Group pages by their original folder structure
-  const pagesByCategory = {};
-
-  // Get the list of original files for categorization
-  let originalFiles = [];
-  if (fs.existsSync(OBSIDIAN_FOLDER)) {
-    function findMarkdownFiles(dir, fileList = []) {
-      const files = fs.readdirSync(dir);
-      files.forEach(file => {
-        const filePath = path.join(dir, file);
-        const stat = fs.statSync(filePath);
-        if (stat.isDirectory()) {
-          findMarkdownFiles(filePath, fileList);
-        } else if (file.endsWith('.md')) {
-          const relativePath = path.relative(OBSIDIAN_FOLDER, filePath);
-          fileList.push(relativePath);
-        }
-      });
-      return fileList;
-    }
-    originalFiles = findMarkdownFiles(OBSIDIAN_FOLDER);
-  }
-
-  pages.forEach(page => {
-    // Find the original file path to extract folder structure
-    const originalFile = originalFiles.find(f => sanitizeFilename(path.basename(f, '.md')) === path.basename(page.filename, '.md'));
-
-    if (originalFile) {
-      const pathParts = originalFile.split('/');
-      if (pathParts.length >= 2) {
-        // Use the first meaningful folder as category (skip 'Alkebulan')
-        let category = pathParts[1];
-        if (pathParts.length >= 3 && pathParts[1].startsWith('0')) {
-          // For numbered folders, include subfolder for better organization
-          category = `${pathParts[1]} - ${pathParts[2]}`;
-        }
-        category = category.replace(/^\d+\s*-?\s*/, '').trim(); // Remove leading numbers
-
-        if (!pagesByCategory[category]) {
-          pagesByCategory[category] = [];
-        }
-        pagesByCategory[category].push(page);
-      } else {
-        // Fallback for files without clear folder structure
-        const category = page.tags[0] || 'General';
-        if (!pagesByCategory[category]) {
-          pagesByCategory[category] = [];
-        }
-        pagesByCategory[category].push(page);
-      }
-    } else {
-      // Fallback category
-      const category = page.tags[0] || 'General';
-      if (!pagesByCategory[category]) {
-        pagesByCategory[category] = [];
-      }
-      pagesByCategory[category].push(page);
-    }
-  });
-
-  // Generate index content with better organization
   let indexContent = `---
 layout: default
-title: "Alkebulan: Contaminated Archives"
+title: "Alkebulan: ${VIEW_MODE === 'player' ? 'Public' : 'Classified'} Archives"
 permalink: /
+view_mode: ${VIEW_MODE}
 ---
 
-# Alkebulan: Contaminated Archives
-*⚠️ WARNING: Magical contamination detected in all archived materials*
+# Alkebulan: ${VIEW_MODE === 'player' ? 'Public' : 'Classified'} Archives
+${VIEW_MODE === 'player'
+  ? '*📖 Citizen-accessible information about the world of Alkebulan*'
+  : '*⚠️ WARNING: Magical contamination detected in all archived materials*'
+}
 
-*A dark fantasy D&D world recovering from magical apocalypse - Access restricted to authorized personnel only*
+${VIEW_MODE === 'player'
+  ? '*Welcome, citizen of Port Zephyr. This archive contains publicly available information about our world.*'
+  : '*A dark fantasy D&D world recovering from magical apocalypse - Access restricted to authorized personnel only*'
+}
 
 ---
 
-## ☢️ Archive Navigation System
-
-*Navigate contaminated data with extreme caution. All information may contain traces of Remnant Magic.*
+## ${VIEW_MODE === 'player' ? '📚' : '☢️'} Archive Navigation System
 
 `;
 
-  // Sort categories for better organization
-  const categoryOrder = [
-    'Campaign Overview',
-    'World Building',
-    'Locations',
-    'Factions & Organizations',
-    'NPCs',
-    'Adventures & Sessions',
-    'Player Resources',
-    'Game Mechanics',
-    'Reference Materials',
-    'Other',
-    'Templates'
-  ];
+  // Group and display pages based on view mode
+  const pagesByCategory = {};
 
-  // Add organized categories
-  categoryOrder.forEach(expectedCategory => {
-    const matchingCategories = Object.keys(pagesByCategory).filter(cat =>
-      cat.includes(expectedCategory) || expectedCategory.includes(cat.split(' - ')[0])
-    );
-
-    matchingCategories.forEach(category => {
-      const icon = getCategoryIcon(category);
-      indexContent += `### ${icon} ${category}\n`;
-      indexContent += `*Contamination Level: ${getContaminationLevel(category)}*\n\n`;
-
-      // Sort pages within category
-      pagesByCategory[category].sort((a, b) => a.title.localeCompare(b.title));
-
-      pagesByCategory[category].forEach(page => {
-        indexContent += `- [${page.title}]({{ site.baseurl }}${page.permalink})\n`;
-      });
-      indexContent += '\n';
-      delete pagesByCategory[category];
-    });
+  pages.forEach(page => {
+    const category = page.tags[0] || 'General';
+    if (!pagesByCategory[category]) {
+      pagesByCategory[category] = [];
+    }
+    pagesByCategory[category].push(page);
   });
 
-  // Add any remaining categories
   Object.keys(pagesByCategory).sort().forEach(category => {
-    const icon = getCategoryIcon(category);
+    const icon = VIEW_MODE === 'player' ? '📖' : '☢️';
     indexContent += `### ${icon} ${category}\n`;
-    indexContent += `*Contamination Level: ${getContaminationLevel(category)}*\n\n`;
+
+    if (VIEW_MODE === 'dm') {
+      indexContent += `*Contamination Level: MODERATE*\n\n`;
+    } else {
+      indexContent += `*Public Information*\n\n`;
+    }
+
     pagesByCategory[category].forEach(page => {
       indexContent += `- [${page.title}]({{ site.baseurl }}${page.permalink})\n`;
     });
     indexContent += '\n';
   });
 
-  indexContent += `---
+  if (VIEW_MODE === 'player') {
+    indexContent += `---
+
+## 📋 About This Archive
+
+This archive contains publicly available information about the world of Alkebulan. Some information may be restricted or classified for your safety.
+
+*Questions? Contact your local Remnant Keeper or Port Authority representative.*`;
+  } else {
+    indexContent += `---
 
 ## ⚠️ Safety Protocols
 
@@ -419,38 +319,36 @@ permalink: /
 - **Report anomalies** to your nearest Remnant Keeper
 - **Decontamination required** after extended archive access
 
-*This archive is maintained by the survivors of Port Zephyr for educational purposes. The Council of Merchant Princes assumes no responsibility for magical contamination exposure.*`;
+*This archive is maintained by the survivors of Port Zephyr for educational purposes.*`;
+  }
 
   fs.writeFileSync('./index.md', indexContent);
-  console.log('✅ Index page generated with folder organization');
+  console.log(`✅ Index page generated for ${VIEW_MODE.toUpperCase()} view`);
 }
 
-// Main execution
+// Main execution with view mode support
 try {
   processObsidianFiles();
-  copyImages();
+  copyImages(); // This function remains the same
   generateIndex();
 
-  // Always ensure we have an index.md file for Jekyll
   if (!fs.existsSync('./index.md')) {
-    console.log('📄 No index.md found, creating default...');
+    console.log('📄 Creating fallback index...');
     const defaultIndex = `---
 layout: default
-title: "Alkebulan D&D Wiki"
+title: "Alkebulan D&D Wiki (${VIEW_MODE.toUpperCase()})"
 ---
 
-# Welcome to Alkebulan
+# Welcome to Alkebulan (${VIEW_MODE.toUpperCase()} View)
 
 Your D&D world documentation will appear here.
 `;
     fs.writeFileSync('./index.md', defaultIndex);
   }
 
-  console.log('🚀 All files converted successfully!');
+  console.log(`🚀 ${VIEW_MODE.toUpperCase()} view generated successfully!`);
 } catch (error) {
   console.error('❌ Conversion failed:', error);
-
-  // Create minimal index so Jekyll can still build
   const errorIndex = `---
 layout: default
 title: "Setup in Progress"
@@ -461,5 +359,27 @@ title: "Setup in Progress"
 The site is being configured. Please check back soon!
 `;
   fs.writeFileSync('./index.md', errorIndex);
-  console.log('📄 Created fallback index page');
+}
+
+// Helper function for copying images (unchanged)
+function copyImages() {
+  console.log('🖼️  Copying images...');
+  const imageDirs = ['attachments', 'images', 'assets'];
+  imageDirs.forEach(dir => {
+    const sourceDir = path.join(OBSIDIAN_FOLDER, dir);
+    if (fs.existsSync(sourceDir)) {
+      const images = fs.readdirSync(sourceDir, { recursive: true })
+        .filter(file => /\.(png|jpg|jpeg|gif|svg|webp)$/i.test(file));
+      images.forEach(image => {
+        const sourcePath = path.join(sourceDir, image);
+        const destPath = path.join(ASSETS_FOLDER, image);
+        const destDir = path.dirname(destPath);
+        if (!fs.existsSync(destDir)) {
+          fs.mkdirSync(destDir, { recursive: true });
+        }
+        fs.copyFileSync(sourcePath, destPath);
+        console.log(`📁 Copied image: ${image}`);
+      });
+    }
+  });
 }

@@ -9,7 +9,7 @@ tags: [location, lighthouse, hill-ward, port-zephyr, magical, pre-cataclysm, con
 
 ## Overview
 **Type:** Pre-Cataclysm Magical Beacon/Containment Facility/Navigation Aid
-**Region:** [[The Cerulean Reach]] ([[Port Zephyr]] - [[Hill Ward]])
+**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]] - [[Hill Ward]])
 **Population:** 8-12 Keepers of the Light, plus visiting scholars and government officials
 **Government:** Managed by the Keepers of the Light under Council oversight and imperial observation
 

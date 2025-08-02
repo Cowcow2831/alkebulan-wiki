@@ -24,7 +24,7 @@ Here's an overview of Alkebulan's geography:
     - A harsh, magical desert created during the cataclysm
     - Glasified sand dunes from intense magical heat
     - Mirages that sometimes lead to pocket dimensions
-7. [[The Cerulean Reach]] (Southern Coastline):
+7. [[The Cerulean Reach (old)]] (Southern Coastline):
     - Rocky cliffs and hidden bays
     - Lush coastal forests
     - Chains of islands, some with active volcanoes

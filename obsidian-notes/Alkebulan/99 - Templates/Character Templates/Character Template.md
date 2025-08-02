@@ -5,7 +5,10 @@ level:
 race: 
 background: 
 campaign: 
-tags: [character, pc]
+tags:
+  - character
+  - pc
+access_level:
 ---
 
 # {{title}}

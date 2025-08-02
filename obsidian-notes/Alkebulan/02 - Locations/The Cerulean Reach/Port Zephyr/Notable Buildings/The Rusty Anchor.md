@@ -9,7 +9,7 @@ tags: [location, tavern, harbor-district, port-zephyr, working-class, contaminat
 
 ## Overview
 **Type:** Working-Class Tavern/Contaminated Worker Hub/Information Exchange
-**Region:** [[The Cerulean Reach]] ([[Port Zephyr]] - [[Harbor District]])
+**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]] - [[Harbor District]])
 **Population:** 50-80 patrons nightly, plus 10+ staff and residents
 **Government:** Nominally independent establishment under Harbor District oversight
 

@@ -2,7 +2,9 @@
 type: location
 region: 
 campaign: 
-tags: [location]
+tags:
+  - location
+access_level:
 ---
 
 # {{title}}

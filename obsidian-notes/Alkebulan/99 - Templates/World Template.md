@@ -3,7 +3,10 @@ type: world
 campaign: 
 dm: 
 system: D&D 5e
-tags: [world, campaign]
+tags:
+  - world
+  - campaign
+access_level:
 ---
 
 # {{title}} Campaign World

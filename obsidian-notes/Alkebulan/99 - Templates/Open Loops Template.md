@@ -1,5 +1,9 @@
 ---
-tags: [quests, questions, campaign]
+tags:
+  - quests
+  - questions
+  - campaign
+access_level:
 ---
 
 # Open Loops - [Campaign Name]

@@ -9,7 +9,7 @@ tags: [location, inn, merchant-quarter, port-zephyr, luxury, accommodation, elit
 
 ## Overview
 **Type:** Elite Inn/Information Hub/Exploitation Showcase
-**Region:** [[The Cerulean Reach]] ([[Port Zephyr]] - [[Merchant Quarter]])
+**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]] - [[Merchant Quarter]])
 **Population:** 50+ staff members, 20-30 guests at any time
 **Government:** Private establishment operating under merchant guild oversight
 

@@ -2,7 +2,7 @@
 
 ## Overview
 **Type:** Commercial District/Exploitation Hub
-**Region:** [[The Cerulean Reach]] ([[Port Zephyr]])
+**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]])
 **Population:** Approximately 4,000 residents, plus 3,000+ daily traders, workers, and desperate buyers
 **Government:** Controlled by the Merchant Guild Council under direct Council oversight, with [[City Watch Officers]] enforcing commercial law through violence
 **Contamination Level:** Low to Moderate (artificially reduced through worker exploitation and resource extraction)

@@ -677,7 +677,7 @@ All use the umbral energy theme rather than fiendish, but maintain their unique 
 4. **Add Hooks**: Create connections to Alkebulan's history and cultures
 
 ### **Regional Variations**
-- **[[The Cerulean Reach]]**: More accepting of magical races, cosmopolitan attitudes
+- **[[The Cerulean Reach (old)]]**: More accepting of magical races, cosmopolitan attitudes
 - **[[The Amunrai Imperium (x)]]**: Hierarchy-focused, solar-touched races favored
 - **Rural/Remote Areas**: Traditional attitudes, emphasis on practical survival skills
 - **Remnant Zones**: All races may show signs of magical adaptation or mutation

@@ -7,7 +7,8 @@ world:
 tags:
   - session
   - dnd5e
-Player Character:
+Player Character: 
+access_level:
 ---
 # Session {{title}} - {{date}}
 

@@ -4,7 +4,10 @@ habitat:
 growth_rate: 
 rarity: 
 campaign: 
-tags: [flora, plant]
+tags:
+  - flora
+  - plant
+access_level:
 ---
 
 # {{title}}

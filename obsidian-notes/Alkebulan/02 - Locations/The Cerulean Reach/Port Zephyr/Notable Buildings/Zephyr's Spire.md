@@ -9,7 +9,7 @@ tags: [location, government, spire, hill-ward, port-zephyr, council, contaminati
 
 ## Overview
 **Type:** Government Tower/Contamination Control Center/Symbol of Environmental Apartheid
-**Region:** [[The Cerulean Reach]] ([[Port Zephyr]] - [[Hill Ward]])
+**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]] - [[Hill Ward]])
 **Population:** 25-30 government officials, plus 40+ expendable support staff
 **Government:** Seat of the [[Council Members|Council of Merchant Princes]] and contamination policy administration
 

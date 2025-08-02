@@ -98,6 +98,25 @@
             text-shadow: var(--text-shadow), var(--glow-orange);
             transition: all 0.3s ease;
         }
+/* View mode indicator */
+.view-mode-indicator {
+    background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-shadow: var(--text-shadow);
+    animation: contamination-pulse 2s ease-in-out infinite;
+}
+
+.view-mode-player {
+    background: linear-gradient(45deg, #2196F3, #4CAF50);
+}
+
+.view-mode-dm {
+    background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+}
 
         .site-title:hover {
             color: var(--toxic-green);
@@ -505,16 +524,25 @@
 <body>
     <header>
         <div class="container">
-            <div class="header-content">
-                <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-                <nav>
-                    <ul>
-                        {% for item in site.navigation %}
-                        <li><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </nav>
-            </div>
+          <div class="header-content">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
+        {% if page.view_mode %}
+        <span class="view-mode-indicator view-mode-{{ page.view_mode }}">
+            {{ page.view_mode | upcase }} VIEW
+        </span>
+        {% endif %}
+    </div>
+    <nav>
+        <ul>
+            {% for item in site.navigation %}
+            {% unless page.view_mode == 'player' and item.access_level == 'dm' %}
+            <li><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
+            {% endunless %}
+            {% endfor %}
+        </ul>
+    </nav>
+</div>
         </div>
     </header>
 

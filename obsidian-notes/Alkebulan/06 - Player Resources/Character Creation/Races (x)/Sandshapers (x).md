@@ -54,7 +54,7 @@ Sandshaper society is as diverse as the desert itself. Some live in nomadic trib
 While not as mistrusted as [[Mistwalkers (x)]], Sandshapers are often viewed with a mix of awe and unease by other races. Their ability to seemingly melt into the desert landscape has led to them being sought after as scouts, guides, and spies, but also regarded with suspicion by those who fear deception or hidden motives.
 
 **Common Perceptions:**
-- **In [[The Cerulean Reach]]:** Respected as essential caravan guides and desert survival experts
+- **In [[The Cerulean Reach (old)]]:** Respected as essential caravan guides and desert survival experts
 - **In [[The Amunrai Imperium (x)]]:** Valued but watched - their independence conflicts with imperial control
 - **Among Nomadic Peoples:** Generally welcomed as fellow desert wanderers who understand the harsh realities of arid life
 
