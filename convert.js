@@ -531,17 +531,17 @@ function createFolderHierarchy(pages) {
           };
         }
 
-        // Check if there's a matching .md file for this folder
-        const sanitizedFolderName = folderName.toLowerCase().replace(/\s+/g, '-');
-        if (fileMap.has(sanitizedFolderName)) {
-          current.folders[folderName].folderFile = fileMap.get(sanitizedFolderName);
-        }
-
         // If this is the last part of the path, this is where the file belongs
         if (index === pathParts.length - 1) {
-          // Only add the file if it's not the folder's main file
-          if (!current.folders[folderName].folderFile ||
-              current.folders[folderName].folderFile.filename !== page.filename) {
+          // Check if this file matches the folder name
+          const sanitizedFolderName = folderName.toLowerCase().replace(/\s+/g, '-');
+          const sanitizedFileName = page.filename.replace('.md', '').toLowerCase();
+
+          if (sanitizedFolderName === sanitizedFileName) {
+            // This file represents the folder itself
+            current.folders[folderName].folderFile = page;
+          } else {
+            // Regular file in the folder
             current.folders[folderName].files.push(page);
           }
         } else {
@@ -572,6 +572,7 @@ function renderFolderStructure(structure, depth = 0) {
       .replace(/\b\w/g, letter => letter.toUpperCase());
 
     // Use appropriate header level based on depth
+    // Start at h3 for root folders, go deeper for subfolders
     const headerLevel = Math.min(3 + depth, 6);
     const headers = '#'.repeat(headerLevel);
 
@@ -600,7 +601,7 @@ function renderFolderStructure(structure, depth = 0) {
       content += '\n';
     }
 
-    // Recursively add subfolders
+    // Recursively add subfolders with increased depth
     if (Object.keys(folder.folders).length > 0) {
       content += renderFolderStructure(folder, depth + 1);
     }
