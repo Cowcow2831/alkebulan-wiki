@@ -18,7 +18,13 @@ const ASSETS_FOLDER = './assets/images';
 
 // Helper function to convert filename to Jekyll-friendly format
 function sanitizeFilename(filename) {
-  return filename
+  // Remove file extension if present
+  const nameWithoutExt = filename.replace(/\.md$/, '');
+
+  // Extract just the final filename from any path
+  const justFilename = nameWithoutExt.split('/').pop();
+
+  return justFilename
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '') // Remove special chars except spaces and hyphens
     .replace(/\s+/g, '-')         // Replace spaces with hyphens
@@ -28,7 +34,7 @@ function sanitizeFilename(filename) {
 
 // Helper function to convert WikiLinks to Jekyll links
 function convertWikiLinks(content, filename, allFiles) {
-  // Get list of existing files (without .md extension)
+  // Get list of existing files (without .md extension, just final filename)
   const existingPages = allFiles.map(f => sanitizeFilename(path.basename(f, '.md')));
 
   // Convert [[Link]] to Jekyll links, but only if the target exists
@@ -82,9 +88,9 @@ function generateFrontmatter(data, filename) {
 
   const frontmatter = {
     layout: 'default',
-    title: cleanData.title || filename.replace('.md', '').replace(/-/g, ' '),
+    title: cleanData.title || path.basename(filename, '.md').replace(/-/g, ' '),
     date: dateStr, // Always use a valid date
-    permalink: `/${sanitizeFilename(filename.replace('.md', ''))}/`,
+    permalink: `/${sanitizeFilename(path.basename(filename, '.md'))}/`,
     ...cleanData // Preserve cleaned frontmatter
   };
 
@@ -217,9 +223,9 @@ function generateIndex() {
       const filePath = path.join(PAGES_FOLDER, file);
       const { data } = matter(fs.readFileSync(filePath, 'utf8'));
       return {
-        title: data.title,
+        title: data.title || path.basename(file, '.md').replace(/-/g, ' '),
         filename: file,
-        permalink: data.permalink,
+        permalink: data.permalink || `/${path.basename(file, '.md')}/`,
         tags: data.tags || []
       };
     });
