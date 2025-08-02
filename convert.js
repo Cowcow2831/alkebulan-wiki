@@ -62,21 +62,35 @@ function generateFrontmatter(data, filename) {
   const now = new Date();
   const dateStr = now.toISOString().split('T')[0];
 
-  const frontmatter = {
-    layout: 'default',
-    title: data.title || filename.replace('.md', '').replace(/-/g, ' '),
-    permalink: `/${sanitizeFilename(filename.replace('.md', ''))}/`,
-    ...data // Preserve any existing frontmatter
-  };
+  // Clean up problematic frontmatter
+  const cleanData = { ...data };
 
-  // Only add date if it doesn't already exist and is valid
-  if (!frontmatter.date) {
-    frontmatter.date = dateStr;
+  // Fix malformed date fields
+  if (cleanData.date && typeof cleanData.date === 'object') {
+    console.log(`⚠️  Fixing malformed date in ${filename}`);
+    delete cleanData.date; // Remove the problematic date object
   }
 
+  // Remove any fields with template syntax that aren't filled in
+  Object.keys(cleanData).forEach(key => {
+    const value = cleanData[key];
+    if (typeof value === 'string' && (value.includes('{{') || value.includes('{ '))) {
+      console.log(`⚠️  Removing template field '${key}' in ${filename}`);
+      delete cleanData[key];
+    }
+  });
+
+  const frontmatter = {
+    layout: 'default',
+    title: cleanData.title || filename.replace('.md', '').replace(/-/g, ' '),
+    date: dateStr, // Always use a valid date
+    permalink: `/${sanitizeFilename(filename.replace('.md', ''))}/`,
+    ...cleanData // Preserve cleaned frontmatter
+  };
+
   // Add categories based on tags if they exist
-  if (data.tags) {
-    frontmatter.categories = Array.isArray(data.tags) ? data.tags : [data.tags];
+  if (cleanData.tags && Array.isArray(cleanData.tags)) {
+    frontmatter.categories = cleanData.tags;
   }
 
   return frontmatter;
