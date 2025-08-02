@@ -1,0 +1,27 @@
+- Appearance:
+    - Tall, slender trees with smooth, silvery-white bark.
+    - Instead of leaves, they have glowing, crystalline structures that fan out like frozen fireworks.
+    - The "leaves" change color throughout the day, mimicking the sun's journey: pale gold at dawn, bright yellow at noon, deep orange at sunset, and a soft blue bioluminescence at night.
+- Magical Properties:
+    - The trees absorb and store solar energy, releasing it slowly over time.
+    - Their crystalline structures can be harvested and used as a source of light and magical energy.
+    - Proximity to Sunburst Trees enhances light-based magic and weakens shadow magic.
+- Ecological Role:
+    - Sunburst Trees thrive in areas heavily affected by the cataclysm, helping to purify contaminated soil and air.
+    - They create safe havens for other flora and fauna, as many dangerous remnant creatures avoid their light.
+- Cultural Significance:
+    - Many settlements are built around groves of Sunburst Trees for protection and energy.
+    - The trees are revered by some cultures as symbols of hope and renewal in the post-cataclysmic world.
+    - Harvesting from Sunburst Trees is often regulated or ritualized to ensure their preservation.
+- Practical Uses:
+    - Crystalline "leaves" are used in crafting magical light sources and protective amulets.
+    - The bark can be processed into a material that's both lightweight and highly durable.
+    - Sap from the trees has healing properties, especially effective against remnant-related ailments.
+- Remnant Interaction:
+    - Sunburst Trees sometimes grow in patterns that reflect ley lines or other magical phenomena.
+    - In rare cases, entire groves might uproot and migrate, following unseen currents of remnant energy.
+- Dangers:
+    - While generally beneficial, some Sunburst Trees in highly contaminated areas might become "corrupted," emitting dangerous radiation or attracting hostile remnant entities.
+- Variants:
+    - Shadowburst Trees: A rare variant that absorbs and emits shadow energy instead of light.
+    - Crystalburst Trees: Found in mountainous areas, these have more solid, gem-like structures instead of delicate crystalline "leaves."

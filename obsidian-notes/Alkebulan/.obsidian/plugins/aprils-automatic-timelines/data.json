@@ -1,0 +1,71 @@
+{
+  "dateDisplayFormat": "{day}/{month}/{year}",
+  "dateParserGroupPriority": "year,month,day",
+  "dateParserRegex": "(?<year>-?[0-9]*)-(?<month>-?[0-9]*)-(?<day>-?[0-9]*)",
+  "eventRenderToggleKey": "aat-render-enabled",
+  "inlineEventEndOfBodyMarker": "%%aat-event-end-of-body%%",
+  "markdownBlockTagsToFindSeparator": ",",
+  "metadataKeyEventBodyOverride": "aat-event-body",
+  "metadataKeyEventEndDate": "aat-event-end-date",
+  "metadataKeyEventPictureOverride": "aat-event-picture",
+  "metadataKeyEventStartDate": "aat-event-start-date",
+  "metadataKeyEventTimelineTag": "timelines",
+  "metadataKeyEventTitleOverride": "aat-event-title",
+  "noteInlineEventKey": "aat-inline-event",
+  "ignoreLineCommentToken": "aat-ignore-line",
+  "applyAdditonalConditionFormatting": true,
+  "lookForCalendariumSpanEvents": true,
+  "lookForInlineEventsInNotes": true,
+  "lookForTagsForTimeline": false,
+  "stylizeDateInline": true,
+  "bodyFontSize": -1,
+  "dateFontSize": -1,
+  "titleFontSize": -1,
+  "dateTokenConfiguration": [
+    {
+      "minLeght": 4,
+      "name": "year",
+      "type": "NUMBER",
+      "displayWhenZero": true,
+      "formatting": [
+        {
+          "evaluations": [
+            {
+              "condition": "LESS",
+              "value": 0
+            }
+          ],
+          "conditionsAreExclusive": false,
+          "format": "{value} BC"
+        },
+        {
+          "evaluations": [
+            {
+              "condition": "GREATEROREQUAL",
+              "value": 0
+            }
+          ],
+          "conditionsAreExclusive": false,
+          "format": "{value} PC"
+        }
+      ],
+      "hideSign": true
+    },
+    {
+      "minLeght": 2,
+      "name": "month",
+      "type": "NUMBER",
+      "displayWhenZero": true,
+      "formatting": [],
+      "hideSign": false
+    },
+    {
+      "minLeght": 2,
+      "name": "day",
+      "type": "NUMBER",
+      "displayWhenZero": true,
+      "formatting": [],
+      "hideSign": false
+    }
+  ]
+}

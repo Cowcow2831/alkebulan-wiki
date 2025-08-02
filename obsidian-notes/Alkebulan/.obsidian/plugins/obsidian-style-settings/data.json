@@ -1,0 +1,16 @@
+{
+  "ITS@@select": "dnd",
+  "entry-point@@smooth-mode": false,
+  "entry-point@@minimal-mode": false,
+  "entry-point@@color-scheme-selector": "color-scheme-default",
+  "ITS@@slrvb-b": false,
+  "ITS@@slrvb-g": false,
+  "ITS@@s-d": false,
+  "ITS@@t-d": false,
+  "ITS@@its-d": false,
+  "ITS@@accent-color": false,
+  "ITS@@notion": false,
+  "ITS@@mini": false,
+  "ITS@@nord": false,
+  "ITS@@drwn": true
+}
