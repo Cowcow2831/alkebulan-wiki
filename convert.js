@@ -1,4 +1,4 @@
-// Enhanced convert.js with view filtering capability
+// Enhanced convert.js with folder-based organization
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
@@ -227,7 +227,76 @@ function processObsidianFiles() {
   console.log(`🎉 Conversion complete! Processed: ${processedCount}, Skipped: ${skippedCount}`);
 }
 
-// Enhanced index generation with view-specific content
+// NEW: Helper function to create folder hierarchy
+function createFolderHierarchy(files) {
+  const hierarchy = {
+    folders: {},
+    files: []
+  };
+
+  files.forEach(file => {
+    const folderPath = file.originalPath || '';
+    const pathParts = folderPath.split('/').filter(part => part && part.endsWith('.md') === false);
+
+    let current = hierarchy;
+
+    // Navigate/create the folder structure
+    pathParts.forEach(folderName => {
+      if (!current.folders[folderName]) {
+        current.folders[folderName] = {
+          folders: {},
+          files: []
+        };
+      }
+      current = current.folders[folderName];
+    });
+
+    // Add file to the current location
+    current.files.push(file);
+  });
+
+  return hierarchy;
+}
+
+// NEW: Recursive function to render folder structure
+function renderFolderStructure(structure, depth = 0) {
+  let html = '';
+  const indent = '  '.repeat(depth);
+
+  // Sort folders alphabetically
+  const folders = Object.keys(structure.folders).sort();
+
+  folders.forEach(folderName => {
+    const folder = structure.folders[folderName];
+    const icon = VIEW_MODE === 'player' ? '📁' : '☢️';
+    const folderTitle = folderName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+    html += `${indent}### ${icon} ${folderTitle}\n`;
+
+    if (VIEW_MODE === 'dm') {
+      html += `${indent}*Contamination Level: MODERATE*\n\n`;
+    } else {
+      html += `${indent}*Public Information*\n\n`;
+    }
+
+    // Render files in this folder
+    if (folder.files && folder.files.length > 0) {
+      folder.files.sort((a, b) => a.title.localeCompare(b.title)).forEach(file => {
+        html += `${indent}- [${file.title}]({{ site.baseurl }}${file.permalink})\n`;
+      });
+      html += '\n';
+    }
+
+    // Recursively render subfolders
+    if (Object.keys(folder.folders).length > 0) {
+      html += renderFolderStructure(folder, depth + 1);
+    }
+  });
+
+  return html;
+}
+
+// Enhanced index generation with folder-based organization
 function generateIndex() {
   console.log(`📋 Generating index page for ${VIEW_MODE.toUpperCase()} view...`);
 
@@ -236,19 +305,40 @@ function generateIndex() {
                    file !== 'index.md' &&
                    file !== 'README.md');
 
+  // Create enhanced file objects with original path information
   const pages = generatedFiles
     .map(file => {
       const filePath = path.join('./', file);
       const { data } = matter(fs.readFileSync(filePath, 'utf8'));
       const baseName = path.basename(file, '.md');
+
+      // Try to find original path from obsidian-notes structure
+      let originalPath = '';
+      try {
+        const allObsidianFiles = findMarkdownFilesWithPath(OBSIDIAN_FOLDER);
+        const originalFile = allObsidianFiles.find(f => {
+          const originalBaseName = sanitizeFilename(path.basename(f, '.md'));
+          return originalBaseName === baseName;
+        });
+        if (originalFile) {
+          originalPath = originalFile;
+        }
+      } catch (error) {
+        console.log(`⚠️  Could not find original path for ${file}`);
+      }
+
       return {
         title: data.title || baseName.replace(/-/g, ' '),
         filename: file,
         permalink: data.permalink || `/${baseName}/`,
         tags: data.tags || [],
-        access_level: data.access_level || ACCESS_LEVELS.PUBLIC
+        access_level: data.access_level || ACCESS_LEVELS.PUBLIC,
+        originalPath: originalPath
       };
     });
+
+  // Create folder hierarchy
+  const folderStructure = createFolderHierarchy(pages);
 
   let indexContent = `---
 layout: default
@@ -274,20 +364,10 @@ ${VIEW_MODE === 'player'
 
 `;
 
-  // Group and display pages based on view mode
-  const pagesByCategory = {};
-
-  pages.forEach(page => {
-    const category = page.tags[0] || 'General';
-    if (!pagesByCategory[category]) {
-      pagesByCategory[category] = [];
-    }
-    pagesByCategory[category].push(page);
-  });
-
-  Object.keys(pagesByCategory).sort().forEach(category => {
+  // Render root level files first (files with no folder structure)
+  if (folderStructure.files && folderStructure.files.length > 0) {
     const icon = VIEW_MODE === 'player' ? '📖' : '☢️';
-    indexContent += `### ${icon} ${category}\n`;
+    indexContent += `### ${icon} General\n`;
 
     if (VIEW_MODE === 'dm') {
       indexContent += `*Contamination Level: MODERATE*\n\n`;
@@ -295,11 +375,14 @@ ${VIEW_MODE === 'player'
       indexContent += `*Public Information*\n\n`;
     }
 
-    pagesByCategory[category].forEach(page => {
-      indexContent += `- [${page.title}]({{ site.baseurl }}${page.permalink})\n`;
+    folderStructure.files.sort((a, b) => a.title.localeCompare(b.title)).forEach(file => {
+      indexContent += `- [${file.title}]({{ site.baseurl }}${file.permalink})\n`;
     });
     indexContent += '\n';
-  });
+  }
+
+  // Render folder structure
+  indexContent += renderFolderStructure(folderStructure);
 
   if (VIEW_MODE === 'player') {
     indexContent += `---
@@ -324,6 +407,22 @@ This archive contains publicly available information about the world of Alkebula
 
   fs.writeFileSync('./index.md', indexContent);
   console.log(`✅ Index page generated for ${VIEW_MODE.toUpperCase()} view`);
+}
+
+// Helper function to find markdown files with their full paths
+function findMarkdownFilesWithPath(dir, fileList = []) {
+  const files = fs.readdirSync(dir);
+  files.forEach(file => {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+    if (stat.isDirectory()) {
+      findMarkdownFilesWithPath(filePath, fileList);
+    } else if (file.endsWith('.md')) {
+      const relativePath = path.relative(OBSIDIAN_FOLDER, filePath);
+      fileList.push(relativePath);
+    }
+  });
+  return fileList;
 }
 
 // Main execution with view mode support
