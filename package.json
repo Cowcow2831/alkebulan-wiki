@@ -6,28 +6,13 @@
   "scripts": {
     "convert": "node convert.js dm",
     "convert:player": "node convert.js player",
-    "convert:dm": "node convert.js dm",
-    "build": "npm run convert && bundle exec jekyll build",
-    "build:player": "npm run convert:player && bundle exec jekyll build",
-    "build:dm": "npm run convert:dm && bundle exec jekyll build",
-    "serve": "npm run convert && bundle exec jekyll serve",
-    "serve:player": "npm run convert:player && bundle exec jekyll serve",
-    "serve:dm": "npm run convert:dm && bundle exec jekyll serve",
-    "deploy:both": "npm run deploy:player && npm run deploy:dm",
-    "deploy:player": "npm run build:player && gh-pages -d _site -b gh-pages-player",
-    "deploy:dm": "npm run build:dm && gh-pages -d _site -b gh-pages"
+    "convert:dm": "node convert.js dm"
   },
   "dependencies": {
-    "gh-pages": "^6.3.0",
     "gray-matter": "^4.0.3"
   },
-  "keywords": [
-    "obsidian",
-    "jekyll",
-    "markdown",
-    "dnd",
-    "multi-view"
-  ],
+  "devDependencies": {},
+  "keywords": ["obsidian", "jekyll", "markdown", "dnd", "multi-view"],
   "author": "Robert McCowan",
   "license": "MIT"
 }

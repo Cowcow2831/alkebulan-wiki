@@ -32,25 +32,18 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Install dependencies
+    - name: Install Node dependencies
       run: npm install
-
-    - name: Build player view
-      run: |
-        npm run convert player
-        mkdir -p player-build
-        cp -r _site/* player-build/ || true
-        cp *.md player-build/ || true
-        cp -r assets player-build/ || true
 
     - name: Setup Ruby for Jekyll
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0
+        ruby-version: '3.1'  # Use stable Ruby version
         bundler-cache: true
 
-    - name: Build with Jekyll
+    - name: Build player view
       run: |
+        node convert.js player
         bundle exec jekyll build --destination ./player-build
 
     - name: Deploy to player branch
@@ -74,22 +67,18 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Install dependencies
+    - name: Install Node dependencies
       run: npm install
-
-    - name: Build DM view
-      run: |
-        npm run convert dm
-        mkdir -p dm-build
 
     - name: Setup Ruby for Jekyll
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0
+        ruby-version: '3.1'  # Use stable Ruby version
         bundler-cache: true
 
-    - name: Build with Jekyll
+    - name: Build DM view
       run: |
+        node convert.js dm
         bundle exec jekyll build --destination ./dm-build
 
     - name: Deploy to main gh-pages
