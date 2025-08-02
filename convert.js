@@ -102,6 +102,31 @@ function generateFrontmatter(data, filename) {
   return frontmatter;
 }
 
+// Helper function to get category icons
+function getCategoryIcon(category) {
+  if (category.includes('World Building')) return '🌍';
+  if (category.includes('Location')) return '📍';
+  if (category.includes('NPC')) return '👥';
+  if (category.includes('Adventure')) return '⚔️';
+  if (category.includes('Player')) return '📖';
+  if (category.includes('Game Mechanic')) return '⚙️';
+  if (category.includes('Faction')) return '🏛️';
+  if (category.includes('Reference')) return '📚';
+  if (category.includes('Template')) return '📋';
+  if (category.includes('Campaign')) return '🎲';
+  return '☢️';
+}
+
+// Helper function to get contamination level
+function getContaminationLevel(category) {
+  if (category.includes('Template')) return 'MINIMAL';
+  if (category.includes('Player')) return 'LOW';
+  if (category.includes('World Building')) return 'MODERATE';
+  if (category.includes('Adventure')) return 'HIGH';
+  if (category.includes('Game Mechanic')) return 'EXTREME';
+  return 'MODERATE';
+}
+
 // Process all markdown files in the obsidian folder
 function processObsidianFiles() {
   console.log('🔄 Converting Obsidian notes to Jekyll format...');
@@ -243,6 +268,7 @@ function generateIndex() {
     .filter(file => file.endsWith('.md') &&
                    file !== 'index.md' &&
                    file !== 'README.md');
+
   const pages = generatedFiles
     .map(file => {
       const filePath = path.join('./', file);
@@ -258,9 +284,30 @@ function generateIndex() {
 
   // Group pages by their original folder structure
   const pagesByCategory = {};
+
+  // Get the list of original files for categorization
+  let originalFiles = [];
+  if (fs.existsSync(OBSIDIAN_FOLDER)) {
+    function findMarkdownFiles(dir, fileList = []) {
+      const files = fs.readdirSync(dir);
+      files.forEach(file => {
+        const filePath = path.join(dir, file);
+        const stat = fs.statSync(filePath);
+        if (stat.isDirectory()) {
+          findMarkdownFiles(filePath, fileList);
+        } else if (file.endsWith('.md')) {
+          const relativePath = path.relative(OBSIDIAN_FOLDER, filePath);
+          fileList.push(relativePath);
+        }
+      });
+      return fileList;
+    }
+    originalFiles = findMarkdownFiles(OBSIDIAN_FOLDER);
+  }
+
   pages.forEach(page => {
     // Find the original file path to extract folder structure
-    const originalFile = files.find(f => sanitizeFilename(path.basename(f, '.md')) === path.basename(page.filename, '.md'));
+    const originalFile = originalFiles.find(f => sanitizeFilename(path.basename(f, '.md')) === path.basename(page.filename, '.md'));
 
     if (originalFile) {
       const pathParts = originalFile.split('/');
@@ -285,6 +332,13 @@ function generateIndex() {
         }
         pagesByCategory[category].push(page);
       }
+    } else {
+      // Fallback category
+      const category = page.tags[0] || 'General';
+      if (!pagesByCategory[category]) {
+        pagesByCategory[category] = [];
+      }
+      pagesByCategory[category].push(page);
     }
   });
 
@@ -369,34 +423,6 @@ permalink: /
 
   fs.writeFileSync('./index.md', indexContent);
   console.log('✅ Index page generated with folder organization');
-}
-
-// Helper function to get category icons
-function getCategoryIcon(category) {
-  if (category.includes('World Building')) return '🌍';
-  if (category.includes('Location')) return '📍';
-  if (category.includes('NPC')) return '👥';
-  if (category.includes('Adventure')) return '⚔️';
-  if (category.includes('Player')) return '📖';
-  if (category.includes('Game Mechanic')) return '⚙️';
-  if (category.includes('Faction')) return '🏛️';
-  if (category.includes('Reference')) return '📚';
-  if (category.includes('Template')) return '📋';
-  if (category.includes('Campaign')) return '🎲';
-  return '☢️';
-}
-
-// Helper function to get contamination level
-function getContaminationLevel(category) {
-  if (category.includes('Template')) return 'MINIMAL';
-  if (category.includes('Player')) return 'LOW';
-  if (category.includes('World Building')) return 'MODERATE';
-  if (category.includes('Adventure')) return 'HIGH';
-  if (category.includes('Game Mechanic')) return 'EXTREME';
-  return 'MODERATE';
-
-  fs.writeFileSync('./index.md', indexContent);
-  console.log('✅ Index page generated');
 }
 
 // Main execution
