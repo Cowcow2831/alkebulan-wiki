@@ -597,11 +597,11 @@
             <div class="header-content">
                 <div style="display: flex; align-items: center; gap: 1rem;">
                     <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-                    <span class="view-mode-indicator" id="viewIndicator">DM VIEW</span>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
                 </div>
                 <div class="header-controls">
-                    <button class="view-toggle dm-mode" id="viewToggle" onclick="toggleView()">
-                        🔄 SWITCH TO PLAYER VIEW
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
                     </button>
                     <nav>
                         <ul>
@@ -667,73 +667,110 @@
         </div>
     </footer>
 
-    <script>
+            <script>
         // View toggle functionality
-        let currentView = 'dm'; // Default to DM view
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
 
         function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
             const toggle = document.getElementById('viewToggle');
             const indicator = document.getElementById('viewIndicator');
             const body = document.body;
 
-            if (currentView === 'dm') {
-                // Switch to player view
-                currentView = 'player';
-                toggle.textContent = '🔄 SWITCH TO DM VIEW';
-                toggle.className = 'view-toggle player-mode';
-                indicator.textContent = 'PLAYER VIEW';
-                indicator.className = 'view-mode-indicator view-mode-player';
-                body.className = 'player-view';
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
 
-                // Hide DM-only content
-                filterContent('player');
-                hideNavItems('player');
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
 
-            } else {
-                // Switch to DM view
-                currentView = 'dm';
-                toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
-                toggle.className = 'view-toggle dm-mode';
-                indicator.textContent = 'DM VIEW';
-                indicator.className = 'view-mode-indicator view-mode-dm';
-                body.className = 'dm-view';
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
 
-                // Show all content
-                filterContent('dm');
-                hideNavItems('dm');
-            }
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
 
-            // Save preference to localStorage
-            localStorage.setItem('wikView', currentView);
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
         }
 
         function filterContent(viewMode) {
-            // Process content based on comment markers
             const content = document.getElementById('content');
-            const html = content.innerHTML;
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
 
             if (viewMode === 'player') {
-                // Remove DM-only sections
-                let filteredHtml = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
 
-                // Keep only player-safe sections (remove the markers)
-                filteredHtml = filteredHtml.replace(/<!-- PLAYER_SAFE_START -->/g, '');
-                filteredHtml = filteredHtml.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
 
-                content.innerHTML = filteredHtml;
+                content.innerHTML = html;
             } else {
-                // DM view - show everything but style the sections
-                let styledHtml = html;
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
 
-                // Style DM sections
-                styledHtml = styledHtml.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0;">');
-                styledHtml = styledHtml.replace(/<!-- DM_END -->/g, '</div>');
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
 
-                // Style player-safe sections
-                styledHtml = styledHtml.replace(/<!-- PLAYER_SAFE_START -->/g, '<div class="player-safe" style="border-left: 4px solid var(--toxic-green); padding-left: 1rem; background: rgba(124, 252, 0, 0.1); margin: 1rem 0;">');
-                styledHtml = styledHtml.replace(/<!-- PLAYER_SAFE_END -->/g, '</div>');
-
-                content.innerHTML = styledHtml;
+                content.innerHTML = html;
             }
         }
 
@@ -753,15 +790,25 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Check for saved preference
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
             const savedView = localStorage.getItem('wikiView');
-            if (savedView && savedView === 'player') {
-                toggleView(); // This will switch to player view
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
             } else {
-                // Initialize DM view
-                filterContent('dm');
-                hideNavItems('dm');
+                // Default to player view
+                switchToPlayerView();
             }
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
         });
     </script>
 </body>
