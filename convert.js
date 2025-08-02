@@ -247,10 +247,11 @@ function generateIndex() {
     .map(file => {
       const filePath = path.join('./', file);
       const { data } = matter(fs.readFileSync(filePath, 'utf8'));
+      const baseName = path.basename(file, '.md');
       return {
-        title: data.title || path.basename(file, '.md').replace(/-/g, ' '),
+        title: data.title || baseName.replace(/-/g, ' '),
         filename: file,
-        permalink: data.permalink || `/${path.basename(file, '.md')}/`,
+        permalink: data.permalink || `/${baseName}/`,
         tags: data.tags || []
       };
     });
@@ -283,7 +284,7 @@ permalink: /
   Object.keys(pagesByCategory).sort().forEach(category => {
     indexContent += `### ${category}\n\n`;
     pagesByCategory[category].forEach(page => {
-      indexContent += `- [${page.title}](${page.permalink})\n`;
+      indexContent += `- [${page.title}]({{ site.baseurl }}${page.permalink})\n`;
     });
     indexContent += '\n';
   });
