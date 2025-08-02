@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- _layouts/default.html -->
+<!-- _layouts/default.html with Dynamic View Toggle -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -98,25 +98,6 @@
             text-shadow: var(--text-shadow), var(--glow-orange);
             transition: all 0.3s ease;
         }
-/* View mode indicator */
-.view-mode-indicator {
-    background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
-    color: white;
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-shadow: var(--text-shadow);
-    animation: contamination-pulse 2s ease-in-out infinite;
-}
-
-.view-mode-player {
-    background: linear-gradient(45deg, #2196F3, #4CAF50);
-}
-
-.view-mode-dm {
-    background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
-}
 
         .site-title:hover {
             color: var(--toxic-green);
@@ -127,6 +108,64 @@
         .site-title::before {
             content: "☢️ ";
             color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         nav ul {
@@ -163,6 +202,32 @@
 
         nav a:hover::before {
             opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
         }
 
         /* Main Content */
@@ -469,6 +534,11 @@
                 gap: 1rem;
             }
 
+            .header-controls {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
             nav ul {
                 gap: 0.5rem;
                 flex-wrap: wrap;
@@ -524,25 +594,24 @@
 <body>
     <header>
         <div class="container">
-          <div class="header-content">
-    <div style="display: flex; align-items: center; gap: 1rem;">
-        <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-        {% if page.view_mode %}
-        <span class="view-mode-indicator view-mode-{{ page.view_mode }}">
-            {{ page.view_mode | upcase }} VIEW
-        </span>
-        {% endif %}
-    </div>
-    <nav>
-        <ul>
-            {% for item in site.navigation %}
-            {% unless page.view_mode == 'player' and item.access_level == 'dm' %}
-            <li><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
-            {% endunless %}
-            {% endfor %}
-        </ul>
-    </nav>
-</div>
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
+                    <span class="view-mode-indicator" id="viewIndicator">DM VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle dm-mode" id="viewToggle" onclick="toggleView()">
+                        🔄 SWITCH TO PLAYER VIEW
+                    </button>
+                    <nav>
+                        <ul>
+                            {% for item in site.navigation %}
+                            <li><a href="{{ site.baseurl }}{{ item.url }}" class="nav-item" data-access="{{ item.access_level | default: 'public' }}">{{ item.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -554,7 +623,9 @@
                     <h1 class="page-title">{{ page.title }}</h1>
                     {% endif %}
 
-                    {{ content }}
+                    <div id="content">
+                        {{ content }}
+                    </div>
                 </article>
 
                 <aside class="sidebar">
@@ -595,5 +666,103 @@
             <p>&copy; 2025 {{ site.author | default: site.title }}. Classified Archive System for {{ site.campaign | default: "Contaminated Research" }}.</p>
         </div>
     </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'dm'; // Default to DM view
+
+        function toggleView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            if (currentView === 'dm') {
+                // Switch to player view
+                currentView = 'player';
+                toggle.textContent = '🔄 SWITCH TO DM VIEW';
+                toggle.className = 'view-toggle player-mode';
+                indicator.textContent = 'PLAYER VIEW';
+                indicator.className = 'view-mode-indicator view-mode-player';
+                body.className = 'player-view';
+
+                // Hide DM-only content
+                filterContent('player');
+                hideNavItems('player');
+
+            } else {
+                // Switch to DM view
+                currentView = 'dm';
+                toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+                toggle.className = 'view-toggle dm-mode';
+                indicator.textContent = 'DM VIEW';
+                indicator.className = 'view-mode-indicator view-mode-dm';
+                body.className = 'dm-view';
+
+                // Show all content
+                filterContent('dm');
+                hideNavItems('dm');
+            }
+
+            // Save preference to localStorage
+            localStorage.setItem('wikView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            // Process content based on comment markers
+            const content = document.getElementById('content');
+            const html = content.innerHTML;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections
+                let filteredHtml = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Keep only player-safe sections (remove the markers)
+                filteredHtml = filteredHtml.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                filteredHtml = filteredHtml.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = filteredHtml;
+            } else {
+                // DM view - show everything but style the sections
+                let styledHtml = html;
+
+                // Style DM sections
+                styledHtml = styledHtml.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0;">');
+                styledHtml = styledHtml.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Style player-safe sections
+                styledHtml = styledHtml.replace(/<!-- PLAYER_SAFE_START -->/g, '<div class="player-safe" style="border-left: 4px solid var(--toxic-green); padding-left: 1rem; background: rgba(124, 252, 0, 0.1); margin: 1rem 0;">');
+                styledHtml = styledHtml.replace(/<!-- PLAYER_SAFE_END -->/g, '</div>');
+
+                content.innerHTML = styledHtml;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for saved preference
+            const savedView = localStorage.getItem('wikiView');
+            if (savedView && savedView === 'player') {
+                toggleView(); // This will switch to player view
+            } else {
+                // Initialize DM view
+                filterContent('dm');
+                hideNavItems('dm');
+            }
+        });
+    </script>
 </body>
 </html>
