@@ -934,6 +934,44 @@
 
         // Call this function when page loads
         document.addEventListener('DOMContentLoaded', initAccessibilityPreferences);
+
+
+        // Debug function - add this temporarily
+        function debugContrastMode() {
+            const isLowContrast = document.body.classList.contains('low-contrast');
+            console.log('Low contrast mode active:', isLowContrast);
+            console.log('Body classes:', document.body.className);
+
+            // Check if CSS variables are being applied
+            const computedStyle = getComputedStyle(document.body);
+            console.log('Current text-primary color:', computedStyle.getPropertyValue('--text-primary'));
+
+            if (isLowContrast) {
+                console.log('Low contrast mode should be active');
+                // Force update CSS custom properties
+                document.documentElement.style.setProperty('--text-primary', '#c0c0c0');
+                document.documentElement.style.setProperty('--warning-yellow', '#b8a000');
+            }
+        }
+
+        // Call this in your contrast toggle function
+        contrastToggle.onclick = function() {
+            const wasLowContrast = document.body.classList.contains('low-contrast');
+
+            if (wasLowContrast) {
+                document.body.classList.remove('low-contrast');
+                localStorage.setItem('lowContrastEnabled', 'false');
+            } else {
+                document.body.classList.add('low-contrast');
+                localStorage.setItem('lowContrastEnabled', 'true');
+            }
+
+            updateModeStatus();
+            debugContrastMode(); // Add this line
+        };
+
+
+        
     </script>
 </body>
 </html>
