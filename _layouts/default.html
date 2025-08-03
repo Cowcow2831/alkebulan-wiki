@@ -675,49 +675,77 @@
             animation: contamination-pulse 3s ease-in-out infinite;
         }
 
-        /* Desktop Header Layout - Keep everything inline */
+        /* Desktop Header Layout - Better spacing */
         @media (min-width: 769px) {
             .header-content {
-                flex-direction: row;
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem 0;
+            }
+
+            /* First line: Title and Search */
+            .title-search-line {
+                display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 1rem 0;
-                flex-wrap: nowrap; /* Prevent wrapping */
+                width: 100%;
             }
 
             .title-line {
-                flex-shrink: 0; /* Prevent title from shrinking */
+                flex-shrink: 0;
+            }
+
+            .search-line {
+                flex-shrink: 1;
+                display: flex;
+                justify-content: center;
+                flex: 1;
+                max-width: 400px;
+                margin: 0 2rem; /* Add side margins for breathing room */
+            }
+
+            /* Second line: Access controls and Navigation with better spacing */
+            .access-nav-line {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
             }
 
             .access-line {
                 display: flex;
                 align-items: center;
-                gap: 1rem;
-                flex-shrink: 0; /* Prevent controls from shrinking */
+                gap: 1.5rem; /* More space between indicator and button */
+                flex-shrink: 0;
             }
 
             .nav-line {
                 display: flex;
                 justify-content: flex-end;
-                flex-shrink: 1; /* Allow nav to shrink if needed */
+                flex-shrink: 0;
             }
 
             .nav-line nav ul {
                 display: flex;
-                gap: 1rem;
+                gap: 1.5rem; /* More space between nav items */
                 margin: 0;
                 padding: 0;
-                flex-wrap: nowrap; /* Keep nav items on one line */
             }
 
             .site-title {
-                white-space: nowrap; /* Prevent title from wrapping */
+                white-space: nowrap;
                 font-size: 2rem;
             }
 
             .view-mode-indicator,
             .view-toggle {
-                white-space: nowrap; /* Prevent button text from wrapping */
+                white-space: nowrap;
+            }
+
+            /* Better search input sizing on desktop */
+            .search-input {
+                width: 100%;
+                max-width: 350px;
             }
         }
 
@@ -963,7 +991,7 @@
         /* Mobile specific search styling */
         @media (max-width: 768px) {
             .search-container {
-                margin-bottom: 1rem; /* Only add margin on mobile */
+                margin-bottom: 0rem; /* Only add margin on mobile */
             }
 
             .search-input {
@@ -1449,48 +1477,19 @@
                             }
                         }
 
-                        // Check if header content needs wrapping
-                        function checkHeaderWidth() {
-                            if (window.innerWidth <= 768) return; // Skip on mobile
-
-                            const headerContent = document.getElementById('headerContent');
-                            const titleSearchLine = headerContent.querySelector('.title-search-line');
-                            const accessNavLine = headerContent.querySelector('.access-nav-line');
-
-                            // Temporarily remove wrap class to measure natural width
-                            headerContent.classList.remove('wrap-nav');
-
-                            // Force single line layout temporarily
-                            titleSearchLine.style.width = 'auto';
-                            accessNavLine.style.width = 'auto';
-
-                            // Measure the content width
-                            const containerWidth = headerContent.offsetWidth;
-                            const contentWidth = titleSearchLine.scrollWidth + accessNavLine.scrollWidth;
-
-                            // If content is taking up more than 85% of container width, wrap it
-                            if (contentWidth > containerWidth * 0.85) {
-                                headerContent.classList.add('wrap-nav');
+                        // Handle window resize to reset header state
+                        function handleWindowResize() {
+                            const header = document.querySelector('header');
+                            if (window.innerWidth > 768) {
+                                // On desktop, always remove minimal class
+                                header.classList.remove('header-minimal');
+                                isMinimal = false;
                             }
-
-                            // Reset styles
-                            titleSearchLine.style.width = '';
-                            accessNavLine.style.width = '';
                         }
-
-                        // Call on window resize and load
-                        window.addEventListener('resize', function() {
-                            handleWindowResize();
-                            setTimeout(checkHeaderWidth, 100); // Small delay to ensure layout is settled
-                        });
-
-                        window.addEventListener('load', function() {
-                            setTimeout(checkHeaderWidth, 100);
-                        });
 
                         // Add resize listener
                         window.addEventListener('resize', handleWindowResize);
-
+                        
         // Throttle scroll events for better performance
         let scrollTimeout;
         function throttledScrollHandler() {
