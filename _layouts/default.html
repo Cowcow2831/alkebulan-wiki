@@ -675,6 +675,68 @@
             animation: contamination-pulse 3s ease-in-out infinite;
         }
 
+        /* Desktop Header Layout - Keep everything inline */
+        @media (min-width: 769px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 0;
+                flex-wrap: nowrap; /* Prevent wrapping */
+            }
+
+            .title-line {
+                flex-shrink: 0; /* Prevent title from shrinking */
+            }
+
+            .access-line {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                flex-shrink: 0; /* Prevent controls from shrinking */
+            }
+
+            .nav-line {
+                display: flex;
+                justify-content: flex-end;
+                flex-shrink: 1; /* Allow nav to shrink if needed */
+            }
+
+            .nav-line nav ul {
+                display: flex;
+                gap: 1rem;
+                margin: 0;
+                padding: 0;
+                flex-wrap: nowrap; /* Keep nav items on one line */
+            }
+
+            .site-title {
+                white-space: nowrap; /* Prevent title from wrapping */
+                font-size: 2rem;
+            }
+
+            .view-mode-indicator,
+            .view-toggle {
+                white-space: nowrap; /* Prevent button text from wrapping */
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
         /* Mobile Responsive - Improved Header Layout */
         @media (max-width: 768px) {
             .header-content {
