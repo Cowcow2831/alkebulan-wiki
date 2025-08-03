@@ -1117,6 +1117,27 @@
         .search-result-item[data-score^="9"] {
             border-left-color: var(--warning-yellow); /* Medium relevance */
         }
+        /* Download button styling */
+        .download-btn {
+            display: block;
+            color: var(--text-primary) !important;
+            text-decoration: none;
+            padding: 0.6rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--toxic-green);
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+        }
+
+        .download-btn:hover {
+            background: var(--toxic-green) !important;
+            color: var(--bg-primary) !important;
+            transform: translateX(5px);
+            box-shadow: var(--glow-green);
+        }
     </style>
 </head>
 <body>
@@ -1199,7 +1220,15 @@
                             <!-- Will be populated by JavaScript -->
                         </div>
                     </div>
-
+                    <div class="nav-section">
+                        <h4>📄 Page Tools</h4>
+                        <div class="nav-level">
+                            <div class="nav-level-title">Export Options</div>
+                            <button onclick="downloadAsMarkdown()" class="download-btn nav-item" style="width: 100%; text-align: left; background: var(--rust-orange); border: none; cursor: pointer;">
+                                📥 Download as .md
+                            </button>
+                        </div>
+                    </div>
                     <div class="contamination-warning">
                         <strong>⚠️ WARNING</strong><br>
                         This archive contains<br>
@@ -1731,6 +1760,157 @@
                 highlighted = highlighted.replace(regex, '<mark>$1</mark>');
             });
             return highlighted;
+        }
+        // Download current page as markdown
+        function downloadAsMarkdown() {
+            try {
+                // Get page data
+                const pageTitle = document.querySelector('.page-title')?.textContent?.replace('☢️', '').trim() ||
+                                 document.querySelector('h1')?.textContent ||
+                                 'Untitled Page';
+
+                // Get the main content without the classified banner
+                const contentElement = document.getElementById('actualContent');
+                if (!contentElement) {
+                    alert('Unable to export page content.');
+                    return;
+                }
+
+                // Clone the content to avoid modifying the original
+                const contentClone = contentElement.cloneNode(true);
+
+                // Remove any DM-only sections if in player view
+                if (currentView === 'player') {
+                    const dmSections = contentClone.querySelectorAll('.dm-only');
+                    dmSections.forEach(section => section.remove());
+                }
+
+                // Convert HTML back to markdown-like format
+                let markdownContent = htmlToMarkdown(contentClone);
+
+                // Create frontmatter
+                const currentUrl = window.location.pathname;
+                const pageAccessLevel = document.querySelector('meta[name="page-access-level"]')?.getAttribute('content') || 'public';
+                const currentDate = new Date().toISOString().split('T')[0];
+
+                const frontmatter = `---
+        title: "${pageTitle}"
+        access_level: ${pageAccessLevel}
+        exported_from: ${window.location.href}
+        exported_date: ${currentDate}
+        exported_view: ${currentView}
+        ---
+
+        `;
+
+                // Combine frontmatter and content
+                const fullContent = frontmatter + markdownContent;
+
+                // Create and download file
+                const blob = new Blob([fullContent], { type: 'text/markdown' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+
+                // Clean filename
+                const filename = pageTitle.toLowerCase()
+                    .replace(/[^a-z0-9\s-]/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/-+/g, '-')
+                    .trim() + '.md';
+
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                console.log(`Downloaded: ${filename}`);
+
+            } catch (error) {
+                console.error('Download error:', error);
+                alert('Error downloading file. Please try again.');
+            }
+        }
+
+        // Helper function to convert HTML back to markdown
+        function htmlToMarkdown(element) {
+            let markdown = '';
+            const walker = document.createTreeWalker(
+                element,
+                NodeFilter.SHOW_ALL,
+                null,
+                false
+            );
+
+            let node;
+            while (node = walker.nextNode()) {
+                switch (node.nodeType) {
+                    case Node.TEXT_NODE:
+                        markdown += node.textContent;
+                        break;
+                    case Node.ELEMENT_NODE:
+                        switch (node.tagName.toLowerCase()) {
+                            case 'h1':
+                                markdown += '\n# ';
+                                break;
+                            case 'h2':
+                                markdown += '\n## ';
+                                break;
+                            case 'h3':
+                                markdown += '\n### ';
+                                break;
+                            case 'h4':
+                                markdown += '\n#### ';
+                                break;
+                            case 'h5':
+                                markdown += '\n##### ';
+                                break;
+                            case 'h6':
+                                markdown += '\n###### ';
+                                break;
+                            case 'p':
+                                markdown += '\n\n';
+                                break;
+                            case 'br':
+                                markdown += '\n';
+                                break;
+                            case 'strong':
+                            case 'b':
+                                markdown += '**';
+                                break;
+                            case 'em':
+                            case 'i':
+                                markdown += '*';
+                                break;
+                            case 'ul':
+                                markdown += '\n';
+                                break;
+                            case 'li':
+                                markdown += '\n- ';
+                                break;
+                            case 'blockquote':
+                                markdown += '\n> ';
+                                break;
+                            case 'code':
+                                markdown += '`';
+                                break;
+                            case 'a':
+                                const href = node.getAttribute('href');
+                                if (href) {
+                                    markdown += `[${node.textContent}](${href})`;
+                                    walker.nextNode(); // Skip text content since we handled it
+                                }
+                                break;
+                        }
+                        break;
+                }
+            }
+
+            // Clean up the markdown
+            return markdown
+                .replace(/\n{3,}/g, '\n\n') // Remove excessive newlines
+                .trim();
         }
 </script>
 </body>
