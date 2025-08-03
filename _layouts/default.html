@@ -712,11 +712,19 @@
                 order: 3;
             }
 
+            .nav-line nav {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
             nav ul {
                 gap: 0.5rem;
                 flex-wrap: wrap;
                 justify-content: center;
-                width: 100%;
+                width: auto; /* Changed from 100% to auto */
+                margin: 0; /* Remove any default margins */
+                padding: 0; /* Remove any default padding */
             }
 
             nav a {
@@ -770,12 +778,7 @@
         }
         /* Header Scroll Behavior */
         header {
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-        }
-
-        .header-hidden {
-            transform: translateY(-100%);
-            opacity: 0;
+            transition: all 0.3s ease-in-out;
         }
 
         .header-minimal {
@@ -1206,45 +1209,44 @@
             div.textContent = text;
             return div.innerHTML;
         }
-        // Header scroll behavior
-        let lastScrollTop = 0;
-        let scrollThreshold = 100; // Pixels to scroll before hiding
-        let fastScrollThreshold = 50; // Fast scroll detection
+        // Header scroll behavior - minimize only, don't hide
+                let lastScrollTop = 0;
+                let scrollThreshold = 80; // Pixels to scroll before minimizing
+                let isMinimal = false;
 
-        function handleHeaderScroll() {
-            const header = document.querySelector('header');
-            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollDirection = currentScrollTop > lastScrollTop ? 'down' : 'up';
-            const scrollSpeed = Math.abs(currentScrollTop - lastScrollTop);
+                function handleHeaderScroll() {
+                    const header = document.querySelector('header');
+                    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    const scrollDirection = currentScrollTop > lastScrollTop ? 'down' : 'up';
 
-            // If at the top, always show full header
-            if (currentScrollTop <= 10) {
-                header.classList.remove('header-hidden', 'header-minimal');
-                lastScrollTop = currentScrollTop;
-                return;
-            }
+                    // If at the top, always show full header
+                    if (currentScrollTop <= 10) {
+                        header.classList.remove('header-minimal');
+                        isMinimal = false;
+                        lastScrollTop = currentScrollTop;
+                        return;
+                    }
 
-            // If scrolling down past threshold, hide header
-            if (scrollDirection === 'down' && currentScrollTop > scrollThreshold) {
-                header.classList.add('header-hidden');
-                header.classList.remove('header-minimal');
-            }
-            // If scrolling up, show header
-            else if (scrollDirection === 'up') {
-                header.classList.remove('header-hidden');
+                    // If scrolling down past threshold and not already minimal, minimize
+                    if (scrollDirection === 'down' && currentScrollTop > scrollThreshold && !isMinimal) {
+                        header.classList.add('header-minimal');
+                        isMinimal = true;
+                    }
+                    // If scrolling up significantly, restore full header
+                    else if (scrollDirection === 'up' && isMinimal) {
+                        // Calculate how much we've scrolled up
+                        const scrollUpAmount = lastScrollTop - currentScrollTop;
 
-                // If fast scroll up or near top, show full header
-                if (scrollSpeed > fastScrollThreshold || currentScrollTop < scrollThreshold) {
-                    header.classList.remove('header-minimal');
-                } else {
-                    // Slow scroll up, show minimal header
-                    header.classList.add('header-minimal');
+                        // If we've scrolled up at least 50px, restore full header
+                        if (scrollUpAmount > 50) {
+                            header.classList.remove('header-minimal');
+                            isMinimal = false;
+                        }
+                    }
+
+                    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
                 }
-            }
-
-            lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
-        }
-
+                
         // Throttle scroll events for better performance
         let scrollTimeout;
         function throttledScrollHandler() {
