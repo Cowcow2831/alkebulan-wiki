@@ -35,7 +35,7 @@ access_level: dm
 
 | Name                                         | Role                          | Location                    | Status | Attitude | Faction                     | Notes                                                             | Has Note |
 | -------------------------------------------- | ----------------------------- | --------------------------- | ------ | -------- | --------------------------- | ----------------------------------------------------------------- | -------- |
-| [[Kaia Sunweaver (x)]]                           | First Speaker, Council        | [[Hill Ward]]               | Active | Neutral  | Council of Merchant Princes | Textile magnate, practical diplomat                               |          |
+| [[Kaia Sunweaver]]                           | First Speaker, Council        | [[Hill Ward]]               | Active | Neutral  | Council of Merchant Princes | Textile magnate, practical diplomat                               |          |
 | [[Marcus Tidecaller]]                        | Harbormaster                  | [[Harbor District]]         | Active | Friendly | Port Authority              | [[Lyrian Tidecaller]] Husband, Former sea captain, gruff but fair | x        |
 | [[Asha Goldstream]]                          | Treasury Keeper               | [[Hill Ward]]               | Active | Neutral  | Council of Merchant Princes | Sharp financial mind, anti-corruption                             | x        |
 | [[Captain-Commander Reef Ironhold]]          | Justice Coordinator           | [[Government Buildings]]    | Active | Neutral  | City Watch                  | Former guard, stern but just                                      | x        |
@@ -53,7 +53,7 @@ access_level: dm
 
 | Name                                | Position                   | Location                 | Status | Attitude | Faction | Notes                      | Has Note |
 | ----------------------------------- | -------------------------- | ------------------------ | ------ | -------- | ------- | -------------------------- | -------- |
-| [[Kaia Sunweaver (x)]]                  | First Speaker              | [[Hill Ward]]            | Active | Neutral  | Council | See above                  | x        |
+| [[Kaia Sunweaver]]                  | First Speaker              | [[Hill Ward]]            | Active | Neutral  | Council | See above                  | x        |
 | [[Marcus Tidecaller]]               | Harbormaster (Council Rep) | [[Harbor District]]      | Active | Friendly | Council | See above                  | x        |
 | [[Asha Goldstream]]                 | Treasury Keeper            | [[Hill Ward]]            | Active | Neutral  | Council | See above                  | x        |
 | [[Captain-Commander Reef Ironhold]] | Justice Coordinator        | [[Government Buildings]] | Active | Neutral  | Council | See above                  | X        |
@@ -161,7 +161,7 @@ access_level: dm
 
 | Name                      | Role           | Location                  | Status | Attitude | Faction           | Notes                                 | Has Note |
 | ------------------------- | -------------- | ------------------------- | ------ | -------- | ----------------- | ------------------------------------- | -------- |
-| [[Ashira the Sandshaper (x)]] | Guide & Artist | [[The Whispering Wastes]] | Active | Neutral  | [[Desert Guides]] | from [[Lvl 6 Whispers of the Wastes]] |          |
+| [[Ashira the Sandshaper]] | Guide & Artist | [[The Whispering Wastes]] | Active | Neutral  | [[Desert Guides]] | from [[Lvl 6 Whispers of the Wastes]] |          |
 
 ---
 

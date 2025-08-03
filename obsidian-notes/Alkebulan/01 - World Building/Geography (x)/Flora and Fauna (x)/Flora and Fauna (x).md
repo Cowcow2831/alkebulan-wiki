@@ -10,7 +10,7 @@ Flora:
 
 3. Mist Ferns: Plants that thrive in humid areas and release a light fog when disturbed.
 
-4. [[Crystal Cacti (x)]]: Desert plants with translucent, gem-like protrusions that store water.
+4. [[Crystal Cacti]]: Desert plants with translucent, gem-like protrusions that store water.
 
 5. Wandering Vines: Mobile plant tendrils that slowly move across the forest floor.
 
@@ -24,7 +24,7 @@ Fauna:
 
 1. Shadowcats: Large feline predators that can blend into shadows.
 
-2. [[Thunderhoof Gazelles (x)]]: Swift herbivores that create small shockwaves when they run.
+2. [[Thunderhoof Gazelles]]: Swift herbivores that create small shockwaves when they run.
 
 3. [[Skywhales (x)]]: Massive, floating creatures that drift through the air currents.
 

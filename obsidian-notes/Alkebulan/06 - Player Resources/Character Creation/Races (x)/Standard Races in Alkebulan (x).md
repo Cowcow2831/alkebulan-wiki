@@ -700,7 +700,7 @@ Consider how each race's abilities and appearance affect their interactions with
 ## **Related References**
 - [[Sandshapers (x)]] - Setting-specific race example
 - [[Mistwalkers (x)]] - Setting-specific race example  
-- [[Sunchildren (x)]] - Setting-specific race example
+- [[Sunchild (x)]] - Setting-specific race example
 - [[Crystalborn (x)]] - Setting-specific race example
 - [[Player Character Creation Guide (x)]] - Full character creation guidelines
 - [[Class Feature Modifications (x)]] - How classes adapt to the setting

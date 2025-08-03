@@ -102,4 +102,4 @@ Sandshaper names often reflect natural desert phenomena, precious materials foun
 - [[The Whispering Wastes]] - Primary homeland
 - [[Mistwalkers (x)]] - Another post-Cataclysm adapted race
 - [[Crystalborn (x)]] - Related earth-connected people
-- [[Ashira the Sandshaper (x)]] - Notable NPC example
+- [[Ashira the Sandshaper]] - Notable NPC example

@@ -60,4 +60,4 @@ Unique to Alkebulan:
 
 25. [[Crystalborn (x)]]: Humanoids with crystalline growths on their bodies, said to be living conduits of ancient magic
 
-26. [[Sunchildren (x)]]: Humans touched by solar magic, with glowing eyes and radiant skin
+26. [[Sunchild (x)]]: Humans touched by solar magic, with glowing eyes and radiant skin

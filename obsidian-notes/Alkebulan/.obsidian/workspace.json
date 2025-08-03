@@ -4,43 +4,38 @@
     "type": "split",
     "children": [
       {
-        "id": "e34308b8b03dac75",
+        "id": "5718ac1e8fbcf330",
         "type": "tabs",
         "children": [
           {
-            "id": "ebb2fa87eb867b73",
+            "id": "5c3b0d8d51464495",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "99 - Templates/Plant Template.md",
+                "file": "98 - Other/Ideas.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Plant Template"
+              "title": "Ideas"
             }
           }
         ]
       },
       {
-        "id": "5718ac1e8fbcf330",
+        "id": "c800d2b4de97e1d2",
         "type": "tabs",
         "children": [
           {
-            "id": "0f315141c2ef2071",
+            "id": "6f57c278f830865b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02 - Locations/The Cerulean Reach/Port Zephyr/Port Zephyr.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Port Zephyr"
+              "title": "New tab"
             }
           }
         ]
@@ -231,34 +226,34 @@
       "calendarium:Open Calendarium": false
     }
   },
-  "active": "0f315141c2ef2071",
+  "active": "5c3b0d8d51464495",
   "lastOpenFiles": [
-    "01 - World Building/Culture & Society/Religion (x)/The Tide Callers (x).md",
-    "01 - World Building/Culture & Society/Religion (x)/The Spirit Weavers (x).md",
-    "01 - World Building/Culture & Society/Religion (x)/The Solar Pantheon (x).md",
-    "01 - World Building/Culture & Society/Religion (x)/The Equilibrium (x).md",
-    "01 - World Building/Culture & Society/Religion (x)/Post-Cataclysm Faiths (X).md",
-    "01 - World Building/Culture & Society/Religion (x)/Religion (x).md",
-    "99 - Templates/Plant Template.md",
-    "99 - Templates/World Template.md",
-    "99 - Templates/Wildlife Template.md",
-    "99 - Templates/Spell Slot Tracker.md",
-    "99 - Templates/Session Template.md",
-    "99 - Templates/Open Loops Template.md",
-    "99 - Templates/NPC Template.md",
-    "99 - Templates/Location Template.md",
-    "99 - Templates/Initiative Template.md",
-    "99 - Templates/HP Tracker Template.md",
-    "99 - Templates/Agenda Template.md",
-    "99 - Templates/Character Templates/Illrigger Character Sheet.md",
-    "99 - Templates/Character Templates/Character Template.md",
-    "99 - Templates/Character Templates/Char Temp.md",
-    "98 - Other/The Accursed Class (x).md",
-    "98 - Other/Smokey \"Ember-Bane\" Thornwick (x).md",
-    "98 - Other/College of Broodsong (x).md",
-    "08 - Reference Materials/Quick References/Quick Rules Reference.md",
-    "08 - Reference Materials/Quick References/Names and Naming Conventions.md",
-    "08 - Reference Materials/Quick References/Common Prices and Services.md",
+    "05 - Adventures & Sessions/Current Adventures/Lvl 6 Whispers of the Wastes/Player Handout - Whispers of the Wastes.md",
+    "05 - Adventures & Sessions/Current Adventures/Lvl 6 Whispers of the Wastes/Act 3 - The Choice - Whispers of the Wastes.md",
+    "04 - NPCs/Regional NPCs/Captain Thane Goldspear.md",
+    "06 - Player Resources/Character Creation/Races (x)/Sunchild (x).md",
+    "06 - Player Resources/Character Creation/Races (x)/Sunchild (x).md",
+    "03 - Factions & Organizations/Major Factions/The Amunrai Imperium (x)/The Amunrai Imperium (x).md",
+    "04 - NPCs/Regional NPCs/captain_thane_goldspear (1).md",
+    "05 - Adventures & Sessions/Current Adventures/Lvl 6 Whispers of the Wastes/Act 2 - The Lost Caravan - Whispers of the Wastes.md",
+    "06 - Player Resources/Character Creation/Races (x)/Races (x).md",
+    "04 - NPCs/Regional NPCs/captain_thane_goldspear.md",
+    "01 - World Building/Geography (x)/Flora and Fauna (x)/Crystal Cacti.md",
+    "01 - World Building/Geography (x)/Flora and Fauna (x)/crystal_cacti_updated.md",
+    "05 - Adventures & Sessions/Current Adventures/Lvl 6 Whispers of the Wastes/Act 1 - Desert Journey - Whispers of the Wastes.md",
+    "03 - Factions & Organizations/Major Factions/The Amunrai Imperium (x)/Amunrai Desert Stat Blocks.md",
+    "03 - Factions & Organizations/Major Factions/The Amunrai Imperium (x)/amunrai_stat_blocks_updated.md",
+    "98 - Other/Ideas.md",
+    "01 - World Building/Geography (x)/Flora and Fauna (x)/Thunderhoof Gazelles.md",
+    "05 - Adventures & Sessions/Current Adventures/Lvl 6 Whispers of the Wastes/Lvl 6 Whispers of the Wastes.md",
+    "04 - NPCs/Regional NPCs/Ashira the Sandshaper.md",
+    "04 - NPCs/Regional NPCs/ashira_sandshaper_updated.md",
+    "01 - World Building/Geography (x)/Flora and Fauna (x)/Spectral Whisps.md",
+    "01 - World Building/Geography (x)/Flora and Fauna (x)/spectral_whisps_updated.md",
+    "01 - World Building/Geography (x)/Flora and Fauna (x)/thunderhoof_gazelles_updated.md",
+    "04 - NPCs/Port Zephyr NPCs/Government Officials/Kaia Sunweaver.md",
+    "04 - NPCs/Port Zephyr NPCs/Government Officials/kaia_sunweaver_updated.md",
+    "07 - Game Mechanics/Magic systems/Remnant Items/Prism of Echoes.md",
     "02 - Locations/Akebulan Map Regions.jpg",
     "02 - Locations/Alkebulan Map Blank.jpg",
     "02 - Locations/The Cerulean Reach/Port Zephyr/Port Zephyr Map.png",

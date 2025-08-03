@@ -1,8 +1,16 @@
 ---
 access_level: player
+type:
+  - handout
+  - adventure
+tags:
+  - player-handout
+  - one-shot
+  - setting-info
 ---
 
-# Player Handout
+# Player Handout - Whispers of the Wastes
+
 ## Welcome to Alkebulan
 
 **Setting:** A dark fantasy continent recovering from magical apocalypse. Think "Chernobyl meets Lord of the Rings" - a world where magic caused a nuclear-scale disaster 300 years ago, and communities are still rebuilding from the contaminated ruins.
@@ -16,20 +24,20 @@ access_level: player
 ### The Cataclysm (300 Years Ago)
 Two magical empires destroyed each other in catastrophic warfare using temporal weapons and reality-altering magic. The result: a shattered continent where remnant magical energy still poisons the land, mutates creatures, and makes magic unpredictable and dangerous.
 
-### Port Zephyr - Your Starting Location
+### [[Port Zephyr]] - Your Starting Location
 A desperate trading port clinging to survival as the last major hub in The Cerulean Reach. Ruled by the Council of Merchant Princes - an oligarchy where wealth determines who lives and dies. The city's 10,000 residents survive through:
 - Arms dealing and trade in contaminated goods
 - Exploiting labor in dangerous remnant zones
 - Political corruption and economic manipulation
 
 **Key Locations:**
-- **Harbor District:** Contaminated docks, desperate workers
-- **Merchant Quarter:** Where the wealthy isolate themselves from the poor
-- **The Gilded Zephyr Inn:** Where you'll receive your mission
+- **[[Harbor District]]:** Contaminated docks, desperate workers
+- **[[Merchant Quarter]]:** Where the wealthy isolate themselves from the poor
+- **[[The Gilded Zephyr]]:** Where you'll receive your mission
 
-### The Whispering Wastes
-A contaminated desert east of Port Zephyr where remnant energy creates:
-- **Spectral Whisps:** Ghostly entities that drift across the dunes
+### [[The Whispering Wastes]]
+A contaminated desert east of [[Port Zephyr]] where remnant energy creates:
+- **[[Spectral Whisps]]:** Ghostly entities that drift across the dunes
 - **Crystal formations:** Dangerous but beautiful growths from magical contamination
 - **Temporal anomalies:** Where time moves strangely
 - **Mutation zones:** Where life adapts in disturbing ways
@@ -59,7 +67,7 @@ A contaminated desert east of Port Zephyr where remnant energy creates:
 - Highly technological or planar-focused races
 
 ### Classes & Subclasses
-**All official classes work** in the setting. 
+**All official classes work** in the setting.
 
 ### Backgrounds
 Use standard D&D backgrounds with post-Cataclysm context:
@@ -80,29 +88,29 @@ Use standard D&D backgrounds with post-Cataclysm context:
 - **Ancient artifacts** - Pre-Cataclysm items are powerful but unstable
 
 ### Spell Considerations:
-- **Desert survival spells** (create water, endure elements)
-- **Investigation magic** (detect magic, identify)
-- **Purification effects** (purify food and drink)
+- **Desert survival spells** (*create water*, *endure elements*)
+- **Investigation magic** (*detect magic*, *identify*)
+- **Purification effects** (*purify food and drink*)
 - **Communication spells** (for dangerous terrain)
 
 ---
 
 ## Important Factions
 
-### Remnant Keepers
+### [[Remnant Keepers]]
 **Secret organization** studying the Cataclysm to prevent another one. They:
 - Preserve dangerous knowledge
 - Monitor magical threats
 - Sometimes make morally questionable choices "for the greater good"
 
-### Amunrai Imperium  
+### [[The Amunrai Imperium]]
 **Expanding solar empire** from the north threatening local independence:
 - Egyptian-themed culture with solar magic
 - Highly organized military and bureaucracy
 - Views southerners as "primitives" needing civilization
 
 ### Local Authorities
-**Port Zephyr's Council of Merchant Princes:**
+**[[Port Zephyr]]'s Council of Merchant Princes:**
 - Corrupt oligarchy prioritizing profit over people
 - Each council member controls different aspects of city life
 - May hire adventurers for jobs that benefit their interests
@@ -132,10 +140,10 @@ Your characters understand that prolonged exposure to remnant energy causes **co
 ### Common Knowledge:
 - The Cataclysm was caused by magical warfare 300 years ago
 - Remnant magic is unpredictable and dangerous to use
-- The Amunrai Imperium is expanding southward
+- [[The Amunrai Imperium]] is expanding southward
 - Ancient artifacts are valuable but potentially lethal
 - Travel between settlements requires careful planning
-- Port Zephyr is relatively safe but politically complex
+- [[Port Zephyr]] is relatively safe but politically complex
 
 ### What You Don't Know:
 - The true extent of various factions' activities
@@ -153,7 +161,7 @@ Your characters understand that prolonged exposure to remnant energy causes **co
 - **Moral choices** with no perfect solutions
 - **Political consequences** for your decisions
 - **Desert survival** mechanics and hazards
-- **Combat encounters**
-
+- **Combat encounters** with contaminated creatures and environmental hazards
+- **Faction interactions** with multiple agendas at play
 
 ---
