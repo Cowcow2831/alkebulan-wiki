@@ -898,11 +898,9 @@
                 console.log('Applying low contrast:', apply);
 
                 if (apply) {
-                    document.body.style.borderTop = '3px solid #ffff00';
                     document.documentElement.style.setProperty('--text-primary', '#c0c0c0');
                     document.documentElement.style.setProperty('--warning-yellow', '#b8a000');
                 } else {
-                    document.body.style.borderTop = '';
                     document.documentElement.style.removeProperty('--text-primary');
                     document.documentElement.style.removeProperty('--warning-yellow');
                 }
