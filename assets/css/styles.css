@@ -2,27 +2,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
 
 :root {
-    /* Post-Nuclear Color Palette */
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2a2a2a;
-    --bg-accent: #333333;
-    --text-primary: #c0c0c0;
-    --text-secondary: #888888;
-    --text-muted: #666666;
+    /* Improved Post-Nuclear Color Palette - Better Contrast */
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #2d2d2d;
+    --bg-accent: #3a3a3a;
+    --text-primary: #e0e0e0;        /* Improved contrast */
+    --text-secondary: #b0b0b0;      /* Better readability */
+    --text-muted: #808080;          /* Still muted but readable */
 
-    /* Contamination Colors */
-    --toxic-green: #7cfc00;
-    --rust-orange: #d67c2a;
-    --warning-yellow: #e6e619;
-    --radiation-orange: #ff6b35;
-    --ash-gray: #4a4a4a;
-    --danger-red: #ff3333;
+    /* Contamination Colors - Adjusted for accessibility */
+    --toxic-green: #6abd00;         /* Less harsh green */
+    --rust-orange: #e68a00;        /* Better contrast orange */
+    --warning-yellow: #f5d916;     /* More readable yellow */
+    --radiation-orange: #ff7b47;   /* Softer orange */
+    --ash-gray: #5a5a5a;          /* Lighter gray */
+    --danger-red: #e74c3c;         /* Better contrast red */
 
-    /* Effects */
-    --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
-    --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
-    --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-    --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+    /* Effects - Reduced intensity */
+    --glow-green: 0 0 6px rgba(106, 189, 0, 0.2);
+    --glow-orange: 0 0 4px rgba(255, 123, 71, 0.3);
+    --text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    --border-glow: 0 0 3px rgba(106, 189, 0, 0.15);
 }
 
 * {
@@ -33,11 +33,11 @@
 
 body {
     font-family: 'Courier Prime', 'Courier New', monospace;
-    line-height: 1.6;
+    line-height: 1.7;  /* Increased for better readability */
     color: var(--text-primary);
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #242424 100%);
     min-height: 100vh;
-    text-shadow: var(--text-shadow);
+    text-shadow: none;  /* Remove text shadow for clarity */
 }
 
 .container {
@@ -52,25 +52,23 @@ body {
 }
 
 .classified-banner {
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
-    color: var(--warning-yellow);
-    padding: 3rem 2rem;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-accent) 100%);
+    color: var(--text-primary);
+    padding: 2rem;
     text-align: center;
     margin: 2rem 0;
-    border: 3px solid var(--toxic-green);
+    border: 2px solid var(--warning-yellow);
     border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     position: relative;
-    animation: contamination-pulse 2s ease-in-out infinite;
 }
 
 .classified-banner h2 {
     border-left: none !important;
     padding-left: 0 !important;
-    margin: 1.5rem 0 1rem 0;
-    font-size: 2.5rem;
-    text-shadow: var(--text-shadow), var(--glow-green);
-    color: var(--toxic-green) !important;
+    margin: 1rem 0;
+    font-size: 2rem;  /* Reduced size */
+    color: var(--warning-yellow) !important;
     text-align: center;
     font-weight: bold;
 }
@@ -139,10 +137,20 @@ body {
     display: block !important;
 }
 
-/* Contamination Pulse Animation */
+/* Gentle Pulse Animation - Migraine Friendly */
 @keyframes contamination-pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+    50% { opacity: 0.85; }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .contaminated,
+    .view-toggle,
+    .view-mode-indicator,
+    .contamination-warning {
+        animation: none !important;
+    }
 }
 
 .contaminated {
@@ -1115,4 +1123,47 @@ header {
     border-left-color: var(--toxic-green);
     transform: translateX(5px);
     box-shadow: 0 0 5px rgba(124, 252, 0, 0.2);
+}
+/* Accessibility Improvements */
+*:focus {
+    outline: 2px solid var(--warning-yellow);
+    outline-offset: 2px;
+}
+
+button:focus,
+input:focus,
+a:focus {
+    box-shadow: 0 0 0 3px rgba(245, 217, 22, 0.3);
+}
+
+/* Skip link for screen readers */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--warning-yellow);
+    color: var(--bg-primary);
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Safe Mode - For light sensitivity */
+.safe-mode {
+    --bg-primary: #2a2a2a;
+    --bg-secondary: #3d3d3d;
+    --bg-accent: #4a4a4a;
+    --text-primary: #f0f0f0;
+    --toxic-green: #8bc34a;
+    --warning-yellow: #ffc107;
+}
+
+.safe-mode .contamination-warning,
+.safe-mode .classified-banner {
+    animation: none;
 }

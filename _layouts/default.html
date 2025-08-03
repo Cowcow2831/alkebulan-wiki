@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <div class="container">
           <div class="header-content" id="headerContent">
@@ -64,6 +65,7 @@
     </header>
 
     <main>
+      <main id="main-content">
         <div class="container">
             <div class="content-wrapper">
                 <article class="main-content">
@@ -795,6 +797,50 @@
                 .replace(/\n{3,}/g, '\n\n') // Remove excessive newlines
                 .trim();
         }
+        // Accessibility preferences
+        function initAccessibilityPreferences() {
+            // Check for reduced motion preference
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.body.classList.add('reduced-motion');
+            }
+
+            // Add safe mode toggle (optional)
+            const safeModeToggle = document.createElement('button');
+            safeModeToggle.textContent = '👁️ Safe Mode';
+            safeModeToggle.className = 'safe-mode-toggle';
+            safeModeToggle.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 1000;
+                padding: 0.5rem 1rem;
+                background: var(--bg-accent);
+                border: 1px solid var(--ash-gray);
+                color: var(--text-primary);
+                border-radius: 20px;
+                font-size: 0.8rem;
+                cursor: pointer;
+            `;
+
+            safeModeToggle.onclick = function() {
+                document.body.classList.toggle('safe-mode');
+                const isSafe = document.body.classList.contains('safe-mode');
+                localStorage.setItem('safeModeEnabled', isSafe);
+                this.textContent = isSafe ? '🌟 Normal Mode' : '👁️ Safe Mode';
+            };
+
+            // Check saved preference
+            if (localStorage.getItem('safeModeEnabled') === 'true') {
+                document.body.classList.add('safe-mode');
+                safeModeToggle.textContent = '🌟 Normal Mode';
+            }
+
+            document.body.appendChild(safeModeToggle);
+        }
+
+        // Call this function when page loads
+        document.addEventListener('DOMContentLoaded', initAccessibilityPreferences);
+        
 </script>
 </body>
 </html>
