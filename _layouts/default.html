@@ -810,6 +810,13 @@
         }
         // Enhanced Accessibility Control Panel - Fixed Scope Issues
         function initAccessibilityPreferences() {
+
+              console.log('Initializing accessibility preferences...');
+
+              // CLEANUP: Remove any existing control panels first
+              const existingPanels = document.querySelectorAll('.accessibility-controls');
+              existingPanels.forEach(panel => panel.remove());
+
             // Create control panel container
             const controlPanel = document.createElement('div');
             controlPanel.className = 'accessibility-controls';
@@ -870,78 +877,18 @@
                 }
             }
 
+            // Function to update status and button text - SIMPLE LINGERING FIX
             function updateModeStatus() {
                 const isSafeMode = document.body.classList.contains('safe-mode');
                 const isLowContrast = document.body.classList.contains('low-contrast');
 
                 console.log('Updating mode status. Safe:', isSafeMode, 'Low contrast:', isLowContrast);
 
-                // NUCLEAR OPTION: Remove and recreate status indicator
-                const oldStatus = statusIndicator;
-                const newStatus = document.createElement('div');
-
-                // Copy the reference for future updates
-                const parent = oldStatus.parentNode;
-
-                // Remove old element
-                oldStatus.remove();
-
-                // Create new clean element
-                newStatus.style.cssText = `
-                    padding: 0.5rem;
-                    text-align: center;
-                    border-radius: 4px;
-                    font-weight: bold;
-                    font-size: 0.75rem;
-                    border: 1px solid #666;
-                    margin-bottom: 8px;
-                `;
-
-                // Insert new element at the beginning of control panel
-                parent.insertBefore(newStatus, parent.firstChild);
-
-                // Update the reference
-                window.statusIndicator = newStatus;
-
                 // Update button text
                 safeModeToggle.textContent = isSafeMode ? '🎨 Normal Mode' : '🧠 Migraine Mode';
                 contrastToggle.textContent = isLowContrast ? '📊 High Contrast' : '📊 Lower Contrast';
 
-                // Set status content and style
-                let statusText = 'Normal Mode';
-                let bgColor = '#333';
-                let textColor = '#fff';
-
-                if (isSafeMode && isLowContrast) {
-                    statusText = 'Safe + Low Contrast';
-                    bgColor = '#4a4a4a';
-                    textColor = '#ddd';
-                } else if (isSafeMode) {
-                    statusText = 'Migraine-Safe Mode';
-                    bgColor = '#2d5a2d';
-                    textColor = '#fff';
-                } else if (isLowContrast) {
-                    statusText = 'Low Contrast Mode';
-                    bgColor = '#5a4a2d';
-                    textColor = '#fff';
-                }
-
-                newStatus.textContent = statusText;
-                newStatus.style.backgroundColor = bgColor;
-                newStatus.style.color = textColor;
-
-                // Update global reference
-                statusIndicator = newStatus;
-            }
-                // Update button text
-                safeModeToggle.textContent = isSafeMode ? '🎨 Normal Mode' : '🧠 Migraine Mode';
-                contrastToggle.textContent = isLowContrast ? '📊 High Contrast' : '📊 Lower Contrast';
-
-                // COMPLETELY RESET the status indicator
-                statusIndicator.removeAttribute('class');
-                statusIndicator.removeAttribute('style');
-
-                // Apply base styles fresh
+                // Simple approach: Just set the background to solid and opaque
                 statusIndicator.style.cssText = `
                     padding: 0.5rem;
                     text-align: center;
@@ -949,77 +896,42 @@
                     font-weight: bold;
                     font-size: 0.75rem;
                     border: 1px solid #666;
-                    margin-bottom: 8px;
                     position: relative;
                     z-index: 2001;
+                    opacity: 1;
                 `;
 
-                // Set new status based on current state
+                // Set content and colors
                 let statusText = 'Normal Mode';
-                let bgColor = '#333';
-                let textColor = '#fff';
-                let borderColor = '#666';
+                let bgColor = '#333333'; // Solid color, no transparency
+                let textColor = '#ffffff';
+                let borderColor = '#666666';
 
                 if (isSafeMode && isLowContrast) {
                     statusText = 'Safe + Low Contrast';
                     bgColor = '#4a4a4a';
-                    textColor = '#ddd';
-                    borderColor = '#888';
+                    textColor = '#dddddd';
+                    borderColor = '#888888';
                 } else if (isSafeMode) {
                     statusText = 'Migraine-Safe Mode';
                     bgColor = '#2d5a2d';
-                    textColor = '#fff';
+                    textColor = '#ffffff';
                     borderColor = '#4a8a4a';
                 } else if (isLowContrast) {
                     statusText = 'Low Contrast Mode';
                     bgColor = '#5a4a2d';
-                    textColor = '#fff';
+                    textColor = '#ffffff';
                     borderColor = '#8a7a4a';
                 }
 
-                // Apply the final styles
+                // Apply all styles at once
                 statusIndicator.textContent = statusText;
                 statusIndicator.style.backgroundColor = bgColor;
                 statusIndicator.style.color = textColor;
                 statusIndicator.style.borderColor = borderColor;
 
-                console.log('Status updated to:', statusText);
+                console.log('Status updated to:', statusText, 'with background:', bgColor);
             }
-
-            // Safe mode toggle function
-            safeModeToggle.onclick = function() {
-                const wasSafeMode = document.body.classList.contains('safe-mode');
-
-                if (wasSafeMode) {
-                    document.body.classList.remove('safe-mode');
-                    localStorage.setItem('safeModeEnabled', 'false');
-                } else {
-                    document.body.classList.add('safe-mode');
-                    localStorage.setItem('safeModeEnabled', 'true');
-                }
-
-                updateModeStatus();
-            };
-
-            // Contrast toggle function - now properly scoped
-            contrastToggle.onclick = function() {
-                const wasLowContrast = document.body.classList.contains('low-contrast');
-
-                if (wasLowContrast) {
-                    document.body.classList.remove('low-contrast');
-                    localStorage.setItem('lowContrastEnabled', 'false');
-                    forceContrastUpdate(false);
-                } else {
-                    document.body.classList.add('low-contrast');
-                    localStorage.setItem('lowContrastEnabled', 'true');
-                    forceContrastUpdate(true);
-                }
-
-                updateModeStatus();
-
-                // Debug logging
-                console.log('Contrast toggled. Low contrast active:', document.body.classList.contains('low-contrast'));
-            };
             // Comprehensive debug function
             function debugEverything() {
                 console.log('=== DEBUG START ===');
