@@ -22,24 +22,37 @@ const ACCESS_LEVELS = {
 
 console.log(`🎭 Building in ${VIEW_MODE.toUpperCase()} mode`);
 
-// Helper function to check if content should be included
+// NEW: Helper function to check if content should show CLASSIFIED banner
+function shouldShowClassifiedBanner(frontmatter) {
+  const accessLevel = frontmatter.access_level || ACCESS_LEVELS.PUBLIC;
+
+  // Always exclude secret content completely
+  if (accessLevel === ACCESS_LEVELS.SECRET) {
+    return false; // Don't include at all
+  }
+
+  // For player view, show banner if it's DM-only content
+  if (VIEW_MODE === 'player') {
+    return accessLevel === ACCESS_LEVELS.DM;
+  }
+
+  // DM view never shows classified banner
+  return false;
+}
+
+// MODIFIED: Change shouldIncludeContent to always include (except secret)
 function shouldIncludeContent(frontmatter, content) {
   const accessLevel = frontmatter.access_level || ACCESS_LEVELS.PUBLIC;
 
-  // Always exclude secret content
+  // Only exclude secret content completely
   if (accessLevel === ACCESS_LEVELS.SECRET) {
+    console.log(`🚫 Excluding SECRET content`);
     return false;
   }
 
-  // For player view, only include public and player content
-  if (VIEW_MODE === 'player') {
-    return accessLevel === ACCESS_LEVELS.PUBLIC || accessLevel === ACCESS_LEVELS.PLAYER;
-  }
-
-  // For DM view, include everything except secret
+  // Include everything else (we'll handle access control with banners)
   return true;
 }
-
 // Helper function to filter content sections
 function filterContentSections(content, frontmatter) {
   if (VIEW_MODE === 'dm') {
@@ -69,7 +82,23 @@ function filterContentSections(content, frontmatter) {
 
   return filteredContent.trim();
 }
+// NEW: Wrap content with CLASSIFIED banner if needed
+function wrapWithClassifiedBanner(content, frontmatter) {
+  if (shouldShowClassifiedBanner(frontmatter)) {
+    return `<div class="classified-banner" style="background: linear-gradient(45deg, #ff3333, #ff6666); color: white; padding: 2rem; text-align: center; margin: 2rem 0; border: 3px solid #ff0000; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+  <h2 style="margin: 0; font-size: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">⚠️ CLASSIFIED ⚠️</h2>
+  <p style="margin: 0.5rem 0 0 0; font-size: 1.2rem;">This content requires DM clearance level access.</p>
+  <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; opacity: 0.9;">Contact your Remnant Keeper for authorization.</p>
+</div>
 
+<!-- Original content hidden for player view -->
+<div style="display: none;">
+${content}
+</div>`;
+  }
+
+  return content;
+}
 // Enhanced sanitizeFilename function
 function sanitizeFilename(filename) {
   const nameWithoutExt = filename.replace(/\.md$/, '');
@@ -210,16 +239,24 @@ function processObsidianFiles() {
 
     // Check if file should be included in this view
     if (!shouldIncludeContent(data, fileContent)) {
-      console.log(`🚫 Skipping ${file} (access level: ${data.access_level || 'default'})`);
+      console.log(`🚫 Skipping ${file} (access level: ${data.access_level || 'default'}) - SECRET content`);
       skippedCount++;
       return;
     }
 
-    // Filter content based on view mode
+    // Log if we're showing a classified banner
+    if (shouldShowClassifiedBanner(data)) {
+      console.log(`🔒 Adding CLASSIFIED banner to ${file} (access level: ${data.access_level})`);
+    }
+
+    // Filter content based on view mode (preserve HTML comments functionality)
     const filteredContent = filterContentSections(content, data);
 
+    // Add CLASSIFIED banner if access level doesn't match view mode
+    const accessControlledContent = wrapWithClassifiedBanner(filteredContent, data);
+
     // Convert WikiLinks with access checking
-    const convertedContent = convertWikiLinks(filteredContent, file, allFiles);
+    const convertedContent = convertWikiLinks(accessControlledContent, file, allFiles);
 
     // Generate frontmatter with access control and navigation data
     const jekyllFrontmatter = generateFrontmatter(data, file, file);
