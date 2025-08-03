@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<!-- _layouts/default.html with Dynamic View Toggle -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baseurl" content="/alkebulan-wiki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Inspirations | Alkebulan</title>
+    <meta name="description" content="A dark fantasy continent recovering from magical apocalypse">
+
+    <!-- SEO -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Historical Inspirations | Alkebulan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Historical Inspirations" />
+<meta name="author" content="Robert McCowan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dark fantasy continent recovering from magical apocalypse" />
+<meta property="og:description" content="A dark fantasy continent recovering from magical apocalypse" />
+<link rel="canonical" href="https://cowcow2831.github.io/alkebulan-wiki/historical-inspirations/" />
+<meta property="og:url" content="https://cowcow2831.github.io/alkebulan-wiki/historical-inspirations/" />
+<meta property="og:site_name" content="Alkebulan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Historical Inspirations" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Robert McCowan"},"dateModified":"2025-08-03T00:00:00+00:00","datePublished":"2025-08-03T00:00:00+00:00","description":"A dark fantasy continent recovering from magical apocalypse","headline":"Historical Inspirations","mainEntityOfPage":{"@type":"WebPage","@id":"https://cowcow2831.github.io/alkebulan-wiki/historical-inspirations/"},"url":"https://cowcow2831.github.io/alkebulan-wiki/historical-inspirations/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/alkebulan-wiki/assets/favicon.ico">
+
+    <!-- Navigation Data -->
+    <!-- <script src="/alkebulan-wiki/assets/js/navigation.js"></script> -->
+
+    <!-- Styles -->
+    <style>
+        /* Post-Nuclear Contaminated Archive Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            /* Post-Nuclear Color Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #c0c0c0;
+            --text-secondary: #888888;
+            --text-muted: #666666;
+
+            /* Contamination Colors */
+            --toxic-green: #7cfc00;
+            --rust-orange: #d67c2a;
+            --warning-yellow: #e6e619;
+            --radiation-orange: #ff6b35;
+            --ash-gray: #4a4a4a;
+            --danger-red: #ff3333;
+
+            /* Effects */
+            --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
+            --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
+            --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+            min-height: 100vh;
+            text-shadow: var(--text-shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contamination Pulse Animation */
+        @keyframes contamination-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .contaminated {
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Header - Made more compact for mobile */
+        header {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            border-bottom: 3px solid var(--toxic-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warning-yellow);
+            text-decoration: none;
+            text-shadow: var(--text-shadow), var(--glow-orange);
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--text-shadow), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        .site-title::before {
+            content: "☢️ ";
+            color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--ash-gray);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(74, 74, 74, 0.2);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            transform: translateY(-2px);
+        }
+
+        nav a::before {
+            content: "☢️";
+            margin-right: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid var(--ash-gray);
+            position: relative;
+        }
+
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--ash-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 2px solid var(--rust-orange);
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar::before {
+            content: "⚠️ CONTAMINATED DATA";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 4px;
+            border: 1px solid var(--radiation-orange);
+        }
+
+        /* Sidebar Navigation Sections */
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--warning-yellow);
+            text-align: center;
+            border-bottom: 1px solid var(--ash-gray);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-level {
+            margin-bottom: 1rem;
+        }
+
+        .nav-level-title {
+            font-size: 0.85rem;
+            color: var(--rust-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-left-color: var(--toxic-green);
+            transform: translateX(5px);
+        }
+
+        .nav-item.current {
+            background: rgba(124, 252, 0, 0.1);
+            border-left-color: var(--toxic-green);
+            color: var(--text-primary);
+        }
+
+        .nav-item::before {
+            margin-right: 0.5rem;
+        }
+
+        .nav-up::before { content: "⬆️"; }
+        .nav-same::before { content: "↔️"; }
+        .nav-down::before { content: "⬇️"; }
+        .nav-home::before { content: "🏠"; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--warning-yellow);
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            color: var(--toxic-green);
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--rust-orange);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h6 {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--warning-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--glow-green);
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+        }
+
+        .main-content ul li::marker,
+        .sidebar us li::marker {
+            content: "☢️ ";
+            color: var(--toxic-green);
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin: 1.5rem 0;
+            border: 2px solid var(--ash-gray);
+            transition: all 0.3s ease;
+        }
+
+        img:hover {
+            border-color: var(--toxic-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--radiation-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "⚠️";
+            position: absolute;
+            top: 1rem;
+            left: -15px;
+            background: var(--radiation-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code */
+        code {
+            background: var(--bg-primary);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            border: 1px solid var(--ash-gray);
+        }
+
+        pre {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 2px solid var(--toxic-green);
+            box-shadow: var(--glow-green);
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        th {
+            background: var(--rust-orange);
+            color: white;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        tr:hover {
+            background: rgba(124, 252, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 3px solid var(--toxic-green);
+            color: var(--text-secondary);
+            box-shadow: var(--border-glow);
+        }
+
+        footer::before {
+            content: "☢️ CONTAMINATION WARNING: All materials subject to Remnant Magic exposure ☢️";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive - Compact Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+                order: 1;
+            }
+
+            .view-mode-indicator {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin: 0 0.5rem;
+                order: 2;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                order: 3;
+                width: 100%;
+            }
+
+            .view-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Special Effects */
+        .contamination-warning {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(124, 252, 0, 0.1));
+            border: 2px solid var(--radiation-orange);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hide the default Jekyll title since we'll handle it in CSS */
+        .main-content > h1:first-child {
+            display: none;
+        }
+
+        /* Custom page title styling */
+        .page-title {
+            font-size: 2.8rem;
+            color: var(--warning-yellow);
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .page-title::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        /* Mobile page title adjustment */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/alkebulan-wiki/" class="site-title">Alkebulan</a>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
+                    </button>
+                    <nav>
+                        <ul>
+                            
+                            <li><a href="/alkebulan-wiki/" class="nav-item" data-access="public">Home</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/port-zephyr/" class="nav-item" data-access="public">Port Zephyr</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/harbor-district/" class="nav-item" data-access="player">Harbor District</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/player-handout-whispers-of-the-wastes/" class="nav-item" data-access="player">Player Handout</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/dm-notes/" class="nav-item" data-access="dm">DM Notes</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/secrets/" class="nav-item" data-access="dm">Secrets</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    
+                    <h1 class="page-title">Historical Inspirations</h1>
+                    
+
+                    <div id="content">
+                        <h1 id="historical-inspirations-for-alkebulan">Historical Inspirations for Alkebulan</h1>
+<p><em>Real-World Events, Conflicts, and Historical Periods to Study for Your Dark Post-Nuclear Fantasy World</em></p>
+
+<hr />
+
+<h2 id="nuclear-age-history">Nuclear Age History</h2>
+
+<h3 id="major-nuclear-incidents">Major Nuclear Incidents</h3>
+<ul>
+  <li><strong>Chernobyl Disaster (1986)</strong> - Invisible contamination, evacuation zones, long-term health effects, institutional cover-ups</li>
+  <li><strong>Fukushima Disaster (2011)</strong> - Modern nuclear accident, media response, evacuation and resettlement challenges</li>
+  <li><strong>Kyshtym Disaster (1957)</strong> - Secret Soviet nuclear accident, classified contamination, rural communities affected</li>
+  <li><strong>Castle Bravo Test (1954)</strong> - Unexpected nuclear fallout affecting civilian populations, radiation sickness</li>
+  <li><strong>Windscale Fire (1957)</strong> - Early nuclear accident, government secrecy, contaminated milk supplies</li>
+</ul>
+
+<h3 id="cold-war-tensions">Cold War Tensions</h3>
+<ul>
+  <li><strong>Cuban Missile Crisis (1962)</strong> - How close major powers came to nuclear war, brinksmanship, back-channel diplomacy</li>
+  <li><strong>Able Archer 83 (1983)</strong> - NATO exercise that nearly triggered Soviet nuclear response, miscommunication dangers</li>
+  <li><strong>Korean War (1950-1953)</strong> - Proxy conflict between superpowers, devastating civilian casualties</li>
+  <li><strong>Berlin Crisis/Wall (1961-1989)</strong> - Divided cities, families separated by geopolitics, surveillance states</li>
+</ul>
+
+<h3 id="nuclear-testing-programs">Nuclear Testing Programs</h3>
+<ul>
+  <li><strong>Pacific Nuclear Testing</strong> - Bikini Atoll evacuations, generational health impacts, environmental destruction</li>
+  <li><strong>Nevada Test Site</strong> - Downwind communities, cancer clusters, government compensation programs</li>
+  <li><strong>Semipalatinsk Test Site (Kazakhstan)</strong> - Soviet nuclear testing, massive civilian exposure, birth defects</li>
+</ul>
+
+<hr />
+
+<h2 id="post-disaster-recovery--reconstruction">Post-Disaster Recovery &amp; Reconstruction</h2>
+
+<h3 id="post-war-reconstruction">Post-War Reconstruction</h3>
+<ul>
+  <li><strong>Germany After WWII</strong> - Divided nation rebuilding, denazification, economic recovery, generational guilt</li>
+  <li><strong>Japan Post-1945</strong> - Atomic bomb aftermath, cultural transformation, economic miracle, pacifist constitution</li>
+  <li><strong>Europe After WWI</strong> - Empires collapsing, new nations forming, pandemic and economic crisis</li>
+  <li><strong>Rwanda Post-Genocide (1994-present)</strong> - Reconciliation efforts, truth commissions, rebuilding social trust</li>
+</ul>
+
+<h3 id="natural-disaster-recovery">Natural Disaster Recovery</h3>
+<ul>
+  <li><strong>New Orleans Post-Katrina</strong> - Class and racial disparities in recovery, government failure, community resilience</li>
+  <li><strong>Tohoku Region Post-Tsunami (2011)</strong> - Rural community rebuilding, demographic challenges, cultural preservation</li>
+  <li><strong>Pompeii/Herculaneum</strong> - Ancient disaster, archaeological evidence of sudden catastrophe</li>
+  <li><strong>Mount Tambora Eruption (1815)</strong> - Global climate effects, famine, social upheaval, migration</li>
+</ul>
+
+<h3 id="economic-collapse-recovery">Economic Collapse Recovery</h3>
+<ul>
+  <li><strong>Weimar Republic/Great Depression</strong> - Hyperinflation, political extremism, social breakdown</li>
+  <li><strong>Argentina Economic Crisis (2001)</strong> - Middle class impoverishment, barter economies, social movements</li>
+  <li><strong>Soviet Union Collapse (1991)</strong> - State dissolution, economic chaos, regional conflicts, organized crime</li>
+  <li><strong>Venezuela Crisis (2010s-present)</strong> - Resource curse, hyperinflation, mass migration, authoritarian response</li>
+</ul>
+
+<hr />
+
+<h2 id="environmental-disasters--contamination">Environmental Disasters &amp; Contamination</h2>
+
+<h3 id="industrial-disasters">Industrial Disasters</h3>
+<ul>
+  <li><strong>Bhopal Gas Tragedy (1984)</strong> - Chemical leak, immediate deaths, long-term health effects, corporate responsibility</li>
+  <li><strong>Love Canal (1970s)</strong> - Toxic waste contamination, community activism, environmental justice</li>
+  <li><strong>Minamata Disease (1950s-1960s)</strong> - Mercury poisoning, corporate cover-up, generational health impacts</li>
+  <li><strong>Seveso Disaster (1976)</strong> - Dioxin contamination, evacuation, birth defects, environmental cleanup</li>
+</ul>
+
+<h3 id="ecological-collapse">Ecological Collapse</h3>
+<ul>
+  <li><strong>Aral Sea Shrinkage</strong> - Environmental disaster from irrigation, fishing communities destroyed, dust storms</li>
+  <li><strong>Easter Island Collapse</strong> - Deforestation, resource depletion, population crash, societal breakdown</li>
+  <li><strong>Dust Bowl (1930s)</strong> - Agricultural disaster, mass migration, economic impact, environmental policy changes</li>
+  <li><strong>Great Sparrow Campaign/Four Pests (China 1958)</strong> - Ecological intervention causing famine, unintended consequences</li>
+</ul>
+
+<h3 id="mining-disasters">Mining Disasters</h3>
+<ul>
+  <li><strong>Centralia Mine Fire (1962-present)</strong> - Underground fire, town evacuation, abandoned communities</li>
+  <li><strong>Berkeley Pit (Montana)</strong> - Toxic mining lake, environmental contamination, cleanup challenges</li>
+  <li><strong>Ok Tedi Mine (Papua New Guinea)</strong> - River contamination, indigenous communities affected, ongoing litigation</li>
+</ul>
+
+<hr />
+
+<h2 id="social--political-upheaval">Social &amp; Political Upheaval</h2>
+
+<h3 id="revolutionary-periods">Revolutionary Periods</h3>
+<ul>
+  <li><strong>French Revolution (1789-1799)</strong> - Social breakdown, radical transformation, terror, institutional collapse</li>
+  <li><strong>Russian Revolution (1917)</strong> - Empire collapse, civil war, ideological conflict, mass violence</li>
+  <li><strong>Chinese Cultural Revolution (1966-1976)</strong> - Social upheaval, knowledge destruction, generational conflict</li>
+  <li><strong>Iranian Revolution (1979)</strong> - Rapid social transformation, religious authority, international isolation</li>
+</ul>
+
+<h3 id="colonial-collapse--independence">Colonial Collapse &amp; Independence</h3>
+<ul>
+  <li><strong>Decolonization of Africa (1950s-1960s)</strong> - Imperial withdrawal, new nation building, resource conflicts</li>
+  <li><strong>Partition of India (1947)</strong> - Mass migration, communal violence, border drawing, refugee crises</li>
+  <li><strong>Belgian Congo Independence (1960)</strong> - Sudden decolonization, civil war, resource extraction, foreign intervention</li>
+  <li><strong>Portuguese Colonial War (1961-1974)</strong> - Liberation struggles, metropolitan political change, mass displacement</li>
+</ul>
+
+<h3 id="ethnic-conflict--genocide">Ethnic Conflict &amp; Genocide</h3>
+<ul>
+  <li><strong>Balkan Wars (1990s)</strong> - Ethnic cleansing, international intervention, transitional justice, reconciliation</li>
+  <li><strong>Cambodian Genocide (1975-1979)</strong> - Ideological purges, rural vs urban, knowledge class destruction</li>
+  <li><strong>Armenian Genocide (1915-1916)</strong> - Systematic elimination, historical denial, diaspora communities</li>
+  <li><strong>Holodomor (1932-1933)</strong> - Engineered famine, state violence, rural devastation, memory politics</li>
+</ul>
+
+<hr />
+
+<h2 id="resource-wars--scarcity-conflicts">Resource Wars &amp; Scarcity Conflicts</h2>
+
+<h3 id="water-conflicts">Water Conflicts</h3>
+<ul>
+  <li><strong>Darfur Conflict (2003-present)</strong> - Drought, pastoralist vs farmer conflict, government response, displacement</li>
+  <li><strong>California Water Wars (1900s)</strong> - Urban vs rural, environmental destruction, political manipulation</li>
+  <li><strong>Nile River Disputes</strong> - Upstream vs downstream nations, development vs environment, ancient tensions</li>
+</ul>
+
+<h3 id="resource-extraction-conflicts">Resource Extraction Conflicts</h3>
+<ul>
+  <li><strong>Congo Resource Wars (1990s-2000s)</strong> - Mineral wealth, proxy conflicts, civilian casualties, warlord economies</li>
+  <li><strong>Niger Delta Conflict</strong> - Oil extraction, environmental damage, local resistance, corporate-state relations</li>
+  <li><strong>Blood Diamond Wars (Sierra Leone, Angola)</strong> - Resource financing conflict, child soldiers, international sanctions</li>
+</ul>
+
+<h3 id="energy-transitions">Energy Transitions</h3>
+<ul>
+  <li><strong>Coal Mining Decline (Appalachia, Wales)</strong> - Economic transition, community identity, political backlash</li>
+  <li><strong>Oil Shock (1973, 1979)</strong> - Energy scarcity, economic disruption, geopolitical realignment</li>
+  <li><strong>Nuclear Power Debates (1970s-present)</strong> - Energy vs safety, expert vs public opinion, democratic decision-making</li>
+</ul>
+
+<hr />
+
+<h2 id="authoritarian-responses-to-crisis">Authoritarian Responses to Crisis</h2>
+
+<h3 id="emergency-powers">Emergency Powers</h3>
+<ul>
+  <li><strong>Martial Law Periods</strong> - Philippines (1972-1981), Poland (1981-1983), Turkey (post-2016 coup attempt)</li>
+  <li><strong>State of Exception</strong> - Various nations using crisis to expand executive power, suspend civil liberties</li>
+  <li><strong>Disaster Capitalism</strong> - Using crises to implement unpopular economic policies (Chile, Iraq, New Orleans)</li>
+</ul>
+
+<h3 id="surveillance-states">Surveillance States</h3>
+<ul>
+  <li><strong>East Germany (Stasi)</strong> - Total surveillance, informant networks, social control, family betrayal</li>
+  <li><strong>McCarthy Era (1940s-1950s)</strong> - Political repression, loyalty tests, blacklists, social conformity</li>
+  <li><strong>Cultural Revolution Surveillance</strong> - Peer monitoring, ideological purity, denunciation campaigns</li>
+</ul>
+
+<h3 id="propaganda--information-control">Propaganda &amp; Information Control</h3>
+<ul>
+  <li><strong>Soviet Information Control</strong> - State media monopoly, historical revision, reality construction</li>
+  <li><strong>Nazi Propaganda</strong> - Mass rallies, scapegoating, racial ideology, youth indoctrination</li>
+  <li><strong>Wartime Censorship</strong> - Information control during crisis, morale maintenance, truth as casualty</li>
+</ul>
+
+<hr />
+
+<h2 id="recovery--resistance-movements">Recovery &amp; Resistance Movements</h2>
+
+<h3 id="grassroots-organizing">Grassroots Organizing</h3>
+<ul>
+  <li><strong>Civil Rights Movement (1950s-1960s)</strong> - Community organizing, non-violent resistance, institutional change</li>
+  <li><strong>Solidarity Movement (Poland 1980s)</strong> - Worker organizing against authoritarian state, peaceful transition</li>
+  <li><strong>Mothers of the Plaza de Mayo (Argentina)</strong> - Families demanding accountability, truth-telling, memory work</li>
+  <li><strong>Anti-Apartheid Movement</strong> - International solidarity, economic pressure, truth and reconciliation</li>
+</ul>
+
+<h3 id="community-self-help">Community Self-Help</h3>
+<ul>
+  <li><strong>Transition Towns Movement</strong> - Community resilience, local economies, environmental adaptation</li>
+  <li><strong>Mutual Aid Networks</strong> - Disaster response, community support, horizontal organizing</li>
+  <li><strong>Intentional Communities</strong> - Alternative societies, sustainable practices, social experimentation</li>
+</ul>
+
+<h3 id="cultural-preservation">Cultural Preservation</h3>
+<ul>
+  <li><strong>Indigenous Rights Movements</strong> - Traditional knowledge, land rights, cultural survival, sovereignty</li>
+  <li><strong>Language Revival Efforts</strong> - Irish, Welsh, Hebrew revivals, cultural identity, educational policy</li>
+  <li><strong>Oral History Projects</strong> - Preserving survivor testimonies, community memory, intergenerational transmission</li>
+</ul>
+
+<hr />
+
+<h2 id="economic--social-systems-under-stress">Economic &amp; Social Systems Under Stress</h2>
+
+<h3 id="alternative-economies">Alternative Economies</h3>
+<ul>
+  <li><strong>Barter Systems</strong> - Argentina 2001, Greece during debt crisis, community resilience</li>
+  <li><strong>Local Currencies</strong> - Depression-era scrip, modern local exchange systems, economic sovereignty</li>
+  <li><strong>Cooperative Movements</strong> - Mondragon (Spain), kibbutzim (Israel), credit unions, collective ownership</li>
+</ul>
+
+<h3 id="demographic-crises">Demographic Crises</h3>
+<ul>
+  <li><strong>Rust Belt Decline</strong> - Industrial collapse, population loss, urban decay, community adaptation</li>
+  <li><strong>Rural Depopulation</strong> - Global phenomenon, aging populations, service collapse, cultural loss</li>
+  <li><strong>Refugee Integration</strong> - Syrian refugees in Europe, Vietnamese boat people, Palestinian diaspora</li>
+</ul>
+
+<h3 id="healthcare-system-collapse">Healthcare System Collapse</h3>
+<ul>
+  <li><strong>Soviet Health System Decline (1990s)</strong> - Life expectancy drops, infrastructure collapse, social stress</li>
+  <li><strong>AIDS Crisis Response</strong> - Community organizing, medical system adaptation, social stigma</li>
+  <li><strong>COVID-19 Pandemic</strong> - Healthcare rationing, community mutual aid, political response variations</li>
+</ul>
+
+<hr />
+
+<h2 id="application-to-alkebulan">Application to Alkebulan</h2>
+
+<h3 id="direct-parallels">Direct Parallels</h3>
+<ul>
+  <li><strong>Nuclear contamination zones</strong> → Remnant Magic zones</li>
+  <li><strong>Cold War proxy conflicts</strong> → Amunrai Imperium vs independent cities</li>
+  <li><strong>Resource extraction conflicts</strong> → Competition for clean water, magical artifacts</li>
+  <li><strong>Post-disaster community building</strong> → Villages recovering from the Cataclysm</li>
+  <li><strong>Truth and reconciliation</strong> → Dealing with pre-Cataclysm imperial legacies</li>
+</ul>
+
+<h3 id="thematic-extraction">Thematic Extraction</h3>
+<ul>
+  <li><strong>How institutions fail during crisis</strong> → Government response to magical emergencies</li>
+  <li><strong>Community resilience patterns</strong> → How settlements survive and thrive</li>
+  <li><strong>Intergenerational trauma</strong> → Children of Cataclysm survivors</li>
+  <li><strong>Resource scarcity politics</strong> → Competition for uncontaminated land</li>
+  <li><strong>Information control</strong> → Who controls knowledge about the Cataclysm</li>
+</ul>
+
+<h3 id="research-methods">Research Methods</h3>
+<ul>
+  <li><strong>Primary sources</strong>: Survivor testimonies, government documents, personal accounts</li>
+  <li><strong>Academic studies</strong>: Long-term impact assessments, policy analysis, social science research</li>
+  <li><strong>Documentary films</strong>: Visual evidence, interview footage, expert analysis</li>
+  <li><strong>Oral histories</strong>: Community perspectives, personal narratives, cultural memory</li>
+  <li><strong>Archaeological evidence</strong>: Physical remains, environmental studies, forensic investigation</li>
+</ul>
+
+<hr />
+
+<h2 id="recommended-starting-points">Recommended Starting Points</h2>
+
+<h3 id="essential-reading">Essential Reading</h3>
+<ol>
+  <li><strong>“Voices from Chernobyl” by Svetlana Alexievich</strong> - First-hand accounts of nuclear disaster</li>
+  <li><strong>“The Shock Doctrine” by Naomi Klein</strong> - How crises are used to implement unpopular policies</li>
+  <li><strong>“A Paradise Built in Hell” by Rebecca Solnit</strong> - Community response to disasters</li>
+  <li><strong>“The Dictator’s Handbook” by Bruce Bueno de Mesquita</strong> - How authoritarian systems work</li>
+  <li><strong>“Collapse” by Jared Diamond</strong> - How societies choose to fail or succeed</li>
+</ol>
+
+<h3 id="documentary-films">Documentary Films</h3>
+<ul>
+  <li><strong>“The Act of Killing” (2012)</strong> - Perpetrators confronting their crimes</li>
+  <li><strong>“Waltz with Bashir” (2008)</strong> - Memory and trauma from conflict</li>
+  <li><strong>“The Fog of War” (2003)</strong> - Decision-making during crisis</li>
+  <li><strong>“Won’t You Be My Neighbor?” (2018)</strong> - Community building and kindness</li>
+</ul>
+
+<p><em>These historical examples provide real-world grounding for your fictional disasters, showing how societies actually respond to catastrophic events and long-term crises.</em></p>
+
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <h4>🧭 Navigation</h4>
+
+                        <div class="nav-level">
+                            <div class="nav-level-title">Quick Access</div>
+                            <a href="/alkebulan-wiki/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="nav-level" id="navUp" style="display: none;">
+                            <div class="nav-level-title">Up One Level</div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="contamination-warning">
+                        <strong>⚠️ WARNING</strong><br>
+                        This archive contains<br>
+                        <em>Remnant Magic traces</em><br>
+                        Access with caution
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Robert McCowan. Classified Archive System for Alkebulan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
+
+        function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
+
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Simplified navigation system
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
+
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '/alkebulan-wiki/' : '/alkebulan-wiki/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                }
+
+                // Helper function to escape HTML
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
+            } else {
+                // Default to player view
+                switchToPlayerView();
+            }
+
+            // Setup simple navigation
+            setupSimpleNavigation();
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<!-- _layouts/default.html with Dynamic View Toggle -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baseurl" content="/alkebulan-wiki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Act 3   The Choice   Whispers of the Wastes | Alkebulan</title>
+    <meta name="description" content="A dark fantasy continent recovering from magical apocalypse">
+
+    <!-- SEO -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Act 3 The Choice Whispers of the Wastes | Alkebulan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Act 3 The Choice Whispers of the Wastes" />
+<meta name="author" content="Robert McCowan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dark fantasy continent recovering from magical apocalypse" />
+<meta property="og:description" content="A dark fantasy continent recovering from magical apocalypse" />
+<link rel="canonical" href="https://cowcow2831.github.io/alkebulan-wiki/act-3-the-choice-whispers-of-the-wastes/" />
+<meta property="og:url" content="https://cowcow2831.github.io/alkebulan-wiki/act-3-the-choice-whispers-of-the-wastes/" />
+<meta property="og:site_name" content="Alkebulan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Act 3 The Choice Whispers of the Wastes" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Robert McCowan"},"dateModified":"2025-08-03T00:00:00+00:00","datePublished":"2025-08-03T00:00:00+00:00","description":"A dark fantasy continent recovering from magical apocalypse","headline":"Act 3 The Choice Whispers of the Wastes","mainEntityOfPage":{"@type":"WebPage","@id":"https://cowcow2831.github.io/alkebulan-wiki/act-3-the-choice-whispers-of-the-wastes/"},"url":"https://cowcow2831.github.io/alkebulan-wiki/act-3-the-choice-whispers-of-the-wastes/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/alkebulan-wiki/assets/favicon.ico">
+
+    <!-- Navigation Data -->
+    <!-- <script src="/alkebulan-wiki/assets/js/navigation.js"></script> -->
+
+    <!-- Styles -->
+    <style>
+        /* Post-Nuclear Contaminated Archive Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            /* Post-Nuclear Color Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #c0c0c0;
+            --text-secondary: #888888;
+            --text-muted: #666666;
+
+            /* Contamination Colors */
+            --toxic-green: #7cfc00;
+            --rust-orange: #d67c2a;
+            --warning-yellow: #e6e619;
+            --radiation-orange: #ff6b35;
+            --ash-gray: #4a4a4a;
+            --danger-red: #ff3333;
+
+            /* Effects */
+            --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
+            --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
+            --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+            min-height: 100vh;
+            text-shadow: var(--text-shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contamination Pulse Animation */
+        @keyframes contamination-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .contaminated {
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Header - Made more compact for mobile */
+        header {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            border-bottom: 3px solid var(--toxic-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warning-yellow);
+            text-decoration: none;
+            text-shadow: var(--text-shadow), var(--glow-orange);
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--text-shadow), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        .site-title::before {
+            content: "☢️ ";
+            color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--ash-gray);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(74, 74, 74, 0.2);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            transform: translateY(-2px);
+        }
+
+        nav a::before {
+            content: "☢️";
+            margin-right: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid var(--ash-gray);
+            position: relative;
+        }
+
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--ash-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 2px solid var(--rust-orange);
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar::before {
+            content: "⚠️ CONTAMINATED DATA";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 4px;
+            border: 1px solid var(--radiation-orange);
+        }
+
+        /* Sidebar Navigation Sections */
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--warning-yellow);
+            text-align: center;
+            border-bottom: 1px solid var(--ash-gray);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-level {
+            margin-bottom: 1rem;
+        }
+
+        .nav-level-title {
+            font-size: 0.85rem;
+            color: var(--rust-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-left-color: var(--toxic-green);
+            transform: translateX(5px);
+        }
+
+        .nav-item.current {
+            background: rgba(124, 252, 0, 0.1);
+            border-left-color: var(--toxic-green);
+            color: var(--text-primary);
+        }
+
+        .nav-item::before {
+            margin-right: 0.5rem;
+        }
+
+        .nav-up::before { content: "⬆️"; }
+        .nav-same::before { content: "↔️"; }
+        .nav-down::before { content: "⬇️"; }
+        .nav-home::before { content: "🏠"; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--warning-yellow);
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            color: var(--toxic-green);
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--rust-orange);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h6 {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--warning-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--glow-green);
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+        }
+
+        .main-content ul li::marker,
+        .sidebar us li::marker {
+            content: "☢️ ";
+            color: var(--toxic-green);
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin: 1.5rem 0;
+            border: 2px solid var(--ash-gray);
+            transition: all 0.3s ease;
+        }
+
+        img:hover {
+            border-color: var(--toxic-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--radiation-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "⚠️";
+            position: absolute;
+            top: 1rem;
+            left: -15px;
+            background: var(--radiation-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code */
+        code {
+            background: var(--bg-primary);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            border: 1px solid var(--ash-gray);
+        }
+
+        pre {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 2px solid var(--toxic-green);
+            box-shadow: var(--glow-green);
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        th {
+            background: var(--rust-orange);
+            color: white;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        tr:hover {
+            background: rgba(124, 252, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 3px solid var(--toxic-green);
+            color: var(--text-secondary);
+            box-shadow: var(--border-glow);
+        }
+
+        footer::before {
+            content: "☢️ CONTAMINATION WARNING: All materials subject to Remnant Magic exposure ☢️";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive - Compact Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+                order: 1;
+            }
+
+            .view-mode-indicator {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin: 0 0.5rem;
+                order: 2;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                order: 3;
+                width: 100%;
+            }
+
+            .view-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Special Effects */
+        .contamination-warning {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(124, 252, 0, 0.1));
+            border: 2px solid var(--radiation-orange);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hide the default Jekyll title since we'll handle it in CSS */
+        .main-content > h1:first-child {
+            display: none;
+        }
+
+        /* Custom page title styling */
+        .page-title {
+            font-size: 2.8rem;
+            color: var(--warning-yellow);
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .page-title::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        /* Mobile page title adjustment */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/alkebulan-wiki/" class="site-title">Alkebulan</a>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
+                    </button>
+                    <nav>
+                        <ul>
+                            
+                            <li><a href="/alkebulan-wiki/" class="nav-item" data-access="public">Home</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/port-zephyr/" class="nav-item" data-access="public">Port Zephyr</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/harbor-district/" class="nav-item" data-access="player">Harbor District</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/player-handout-whispers-of-the-wastes/" class="nav-item" data-access="player">Player Handout</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/dm-notes/" class="nav-item" data-access="dm">DM Notes</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/secrets/" class="nav-item" data-access="dm">Secrets</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    
+                    <h1 class="page-title">Act 3   The Choice   Whispers of the Wastes</h1>
+                    
+
+                    <div id="content">
+                        <h2 id="initial-situation">Initial Situation</h2>
+<p>Based on the party’s approach to the Prism and the presence of Imperial forces, three immediate scenarios can unfold:</p>
+
+<h3 id="scenario-1-peaceful-investigation">Scenario 1: Peaceful Investigation</h3>
+<p>If the party successfully reaches the Prism without triggering major defenses:</p>
+<ul>
+  <li>Ashira awakens fully and explains the temporal debt mechanism</li>
+  <li>Imperial forces arrive during the revelation</li>
+  <li>Crystal formations remain stable but pulsing with energy</li>
+  <li>Party has time to understand the full scope of the choice</li>
+</ul>
+
+<h3 id="scenario-2-combat-approach">Scenario 2: Combat Approach</h3>
+<p>If the party fought through crystal guardians:</p>
+<ul>
+  <li>Garden is destabilized, temporal effects increasing</li>
+  <li>Ashira awakens in distress, speaking in temporal fragments</li>
+  <li>Imperial forces arrive to find active combat situation</li>
+  <li>Time pressure as crystal formations begin expanding</li>
+</ul>
+
+<h3 id="scenario-3-imperial-confrontation">Scenario 3: Imperial Confrontation</h3>
+<p>If Imperial forces arrived during Part 2:</p>
+<ul>
+  <li>Tense standoff between multiple parties claiming the artifact</li>
+  <li>Ashira awakens amid the conflict, providing crucial information</li>
+  <li>Crystal formations react to heightened emotions and magical energy</li>
+  <li>Negotiations occur under pressure of environmental instability</li>
+</ul>
+
+<h2 id="the-temporal-revelation">The Temporal Revelation</h2>
+
+<h3 id="ashiras-full-explanation">Ashira’s Full Explanation</h3>
+<p>As the temporal exile’s consciousness stabilizes, she reveals the Prism’s true nature:</p>
+
+<p><em>“The artifact you seek is not merely a tool of healing—it is a temporal parasite. Every moment of life it grants in the present, it steals from somewhere else in the timestream. Heal a child’s contamination today, and somewhere in the future, another child suffers equivalent poisoning. The universe demands balance, and the Prism ensures that debt is always paid.”</em></p>
+
+<h4 id="key-information-ashira-provides">Key Information Ashira Provides</h4>
+<ul>
+  <li><strong>Temporal Debt Mechanism:</strong> Healing creates equivalent suffering elsewhere in time</li>
+  <li><strong>Imperial Weaponization Plan:</strong> Force temporal debt onto enemy populations during war</li>
+  <li><strong>Cascade Risk:</strong> Overuse or destruction could create temporal instabilities</li>
+  <li><strong>Personal Cost:</strong> Each use makes the wielder more disconnected from linear time</li>
+  <li><strong>Historical Context:</strong> Similar artifacts contributed to the original Cataclysm</li>
+</ul>
+
+<h3 id="demonstrating-the-cost">Demonstrating the Cost</h3>
+<p>If players doubt Ashira’s claims, she can demonstrate by using the Prism briefly:</p>
+<ul>
+  <li><strong>Minor Healing:</strong> Restores 1d4 hit points to a party member</li>
+  <li><strong>Temporal Flash:</strong> All characters briefly experience visions of random future suffering</li>
+  <li><strong>Timeline Echo:</strong> The healed character experiences memories of future pain</li>
+  <li><strong>Proof of Concept:</strong> Shows that the temporal debt is real and random</li>
+</ul>
+
+<h2 id="the-imperial-perspective">The Imperial Perspective</h2>
+
+<h3 id="captain-thane-goldspears-position">Captain Thane Goldspear’s Position</h3>
+<p><strong>Imperial Officer’s Briefing:</strong>
+<em>“That artifact is Imperial property, stolen during legitimate transport to our research facility. Our scholars have spent decades learning to safely contain and study such devices. Whatever wild theories this contaminated mystic spouts, the Imperium has the resources and expertise to ensure the artifact serves the greater good.”</em></p>
+
+<h4 id="imperial-arguments">Imperial Arguments</h4>
+<ul>
+  <li><strong>Legal Authority:</strong> The artifact was being legally transported under Imperial charter</li>
+  <li><strong>Research Capability:</strong> Imperial facilities can study temporal effects safely</li>
+  <li><strong>Greater Good:</strong> Properly controlled, the artifact could benefit thousands</li>
+  <li><strong>Containment Expertise:</strong> They have technology specifically designed for temporal artifacts</li>
+</ul>
+
+<h4 id="hidden-imperial-agenda">Hidden Imperial Agenda</h4>
+<p><strong>What Imperial Forces Don’t Reveal:</strong></p>
+<ul>
+  <li>Orders to weaponize temporal debt against resistant populations</li>
+  <li>Plans to test temporal effects on “expendable” subjects</li>
+  <li>Research into creating more temporal manipulation artifacts</li>
+  <li>Long-term goal of temporal warfare capability</li>
+</ul>
+
+<h3 id="imperial-negotiation-options">Imperial Negotiation Options</h3>
+<ul>
+  <li><strong>Compensation:</strong> Offer payment to party for “finding” Imperial property</li>
+  <li><strong>Authority:</strong> Threaten legal consequences for harboring stolen goods</li>
+  <li><strong>Cooperation:</strong> Propose joint custody with Port Zephyr authorities</li>
+  <li><strong>Force:</strong> Attempt to seize artifact if negotiations fail</li>
+</ul>
+
+<h2 id="the-three-impossible-choices">The Three Impossible Choices</h2>
+
+<h3 id="choice-1-deliver-to-kaiaremnant-keepers">Choice 1: Deliver to Kaia/Remnant Keepers</h3>
+<p><strong>Kaia’s Argument (if her true identity is revealed):</strong>
+<em>“As a Remnant Keeper, I’ve sworn to prevent another Cataclysm. This artifact in Imperial hands becomes a weapon that could destabilize reality itself. Yes, using it carries temporal costs, but the alternative is temporal warfare that could unravel civilization.”</em></p>
+
+<h4 id="immediate-consequences">Immediate Consequences</h4>
+<ul>
+  <li><strong>Contaminated Children Healed:</strong> Kaia uses the Prism to cure contamination in her district</li>
+  <li><strong>Hidden Temporal Debt:</strong> Equivalent contamination manifests randomly across timeline</li>
+  <li><strong>Remnant Keeper Study:</strong> Artifact becomes subject of careful research</li>
+  <li><strong>Imperial Pursuit:</strong> Empire will seek to reclaim their “stolen property”</li>
+</ul>
+
+<h4 id="long-term-implications">Long-term Implications</h4>
+<ul>
+  <li><strong>Precedent Set:</strong> Temporal manipulation becomes acceptable for “good” causes</li>
+  <li><strong>Future Temptation:</strong> Other communities will seek similar solutions</li>
+  <li><strong>Timeline Instability:</strong> Accumulated temporal debt creates cascading effects</li>
+  <li><strong>Moral Compromise:</strong> Success built on others’ unknown suffering</li>
+</ul>
+
+<h3 id="choice-2-destroy-the-prism">Choice 2: Destroy the Prism</h3>
+<p><strong>Ashira’s Warning:</strong>
+<em>“Destruction may seem like the clean solution, but temporal energy cannot simply be unmade. All the debt this artifact has accumulated across centuries will come due at once. The cascade could affect thousands across multiple timelines.”</em></p>
+
+<h4 id="immediate-consequences-1">Immediate Consequences</h4>
+<ul>
+  <li><strong>Temporal Cascade:</strong> Massive release of stored temporal energy</li>
+  <li><strong>Random Suffering:</strong> All accumulated temporal debt manifests simultaneously</li>
+  <li><strong>Crystal Garden Collapse:</strong> Contamination spreads as containment fails</li>
+  <li><strong>Ashira’s Death:</strong> She loses her temporal anchor and dies peacefully</li>
+  <li><strong>Imperial Failure:</strong> Temporal weapons program suffers major setback</li>
+</ul>
+
+<h4 id="long-term-implications-1">Long-term Implications</h4>
+<ul>
+  <li><strong>No More Temporal Debt:</strong> This particular source of timeline manipulation ends</li>
+  <li><strong>Cascade Aftermath:</strong> Regional temporal instabilities for years</li>
+  <li><strong>Imperial Response:</strong> Empire seeks other temporal artifacts more aggressively</li>
+  <li><strong>Precedent Warning:</strong> Demonstrates the danger of temporal manipulation</li>
+</ul>
+
+<h3 id="choice-3-attempt-safe-containment">Choice 3: Attempt Safe Containment</h3>
+<p><strong>Technical Challenge:</strong>
+Create a stable temporal prison that prevents both use and destruction while allowing study.</p>
+
+<h4 id="containment-ritual-requirements">Containment Ritual Requirements</h4>
+<ul>
+  <li><strong>Three Participants:</strong> Must maintain magical contact simultaneously</li>
+  <li><strong>Skill Challenges:</strong> DC 15 Arcana checks for each participant</li>
+  <li><strong>Time Pressure:</strong> 10-minute ritual, can be interrupted by combat or environmental effects</li>
+  <li><strong>Resource Cost:</strong> Requires 3rd level spell slots from each participant</li>
+  <li><strong>Failure Consequence:</strong> Triggers temporal cascade affecting entire region</li>
+</ul>
+
+<h4 id="success-results">Success Results</h4>
+<ul>
+  <li><strong>Stable Containment:</strong> Prism locked in temporal stasis field</li>
+  <li><strong>Research Opportunity:</strong> Site becomes joint study location</li>
+  <li><strong>Neutral Ground:</strong> Neither Kaia nor Imperials gain exclusive access</li>
+  <li><strong>Ongoing Protection:</strong> Requires permanent guardians against future threats</li>
+</ul>
+
+<h4 id="failure-results">Failure Results</h4>
+<ul>
+  <li><strong>Regional Temporal Storm:</strong> Time becomes unstable across wider area</li>
+  <li><strong>Massive Contamination:</strong> Remnant energy spreads beyond desert</li>
+  <li><strong>Timeline Fragments:</strong> Multiple possible realities briefly coexist</li>
+  <li><strong>Evacuation Necessary:</strong> Entire region becomes uninhabitable</li>
+</ul>
+
+<h2 id="environmental-escalation">Environmental Escalation</h2>
+
+<h3 id="the-building-temporal-storm">The Building Temporal Storm</h3>
+<p>Regardless of which choice is made, the decision process itself destabilizes the Prism:</p>
+
+<h4 id="pre-storm-warning-signs">Pre-Storm Warning Signs</h4>
+<ul>
+  <li>Crystal formations begin resonating in harmony</li>
+  <li>Temporal echoes become more frequent and vivid</li>
+  <li>The Prism’s light shifts through spectrum of impossible colors</li>
+  <li>Ashira experiences increasingly rapid timeline shifts</li>
+</ul>
+
+<h4 id="storm-manifestation-phase">Storm Manifestation Phase</h4>
+<ul>
+  <li><strong>Reality Fragments:</strong> Multiple possible outcomes occur simultaneously</li>
+  <li><strong>Timeline Echoes:</strong> Characters briefly experience alternate versions of their choices</li>
+  <li><strong>Temporal Refugees:</strong> People from other timelines appear briefly before vanishing</li>
+  <li><strong>Causality Breaks:</strong> Effects occur before causes, challenging perception</li>
+</ul>
+
+<h4 id="environmental-effects-during-storm">Environmental Effects During Storm</h4>
+<ul>
+  <li><strong>Crystal Rain:</strong> Temporal energy crystallizes in air, falling as sharp fragments (2d6 piercing/round)</li>
+  <li><strong>Time Dilation Zones:</strong> Different areas experience time at different rates</li>
+  <li><strong>Memory Bleeding:</strong> Characters gain brief memories from alternate timelines</li>
+  <li><strong>Magic Instability:</strong> All spells trigger Wild Magic effects</li>
+</ul>
+
+<h2 id="combat-during-the-choice">Combat During the Choice</h2>
+
+<h3 id="imperial-force-response">Imperial Force Response</h3>
+<p>If negotiations fail and combat erupts:</p>
+
+<p><strong>Captain Thane Goldspear</strong></p>
+<ul>
+  <li><strong>AC 18, HP 85, Speed 30 ft</strong></li>
+  <li><strong>Multiattack:</strong> Two longsword attacks (+8, 1d8+4 slashing)</li>
+  <li><strong>Tactical Command:</strong> Allies gain advantage on next attack</li>
+  <li><strong>Imperial Authority:</strong> Can attempt to compel surrender (DC 16 Charisma save)</li>
+</ul>
+
+<p><strong>Imperial Soldiers (6)</strong></p>
+<ul>
+  <li><strong>Use Veteran statistics</strong></li>
+  <li><strong>Contamination Gear:</strong> Advantage on Constitution saves against contamination</li>
+  <li><strong>Formation Fighting:</strong> +2 AC when adjacent to ally</li>
+</ul>
+
+<p><strong>Imperial Researcher</strong></p>
+<ul>
+  <li><strong>Use Mage statistics</strong></li>
+  <li><strong>Temporal Detection:</strong> Can track Prism’s temporal effects</li>
+  <li><strong>Containment Spells:</strong> <em>Counterspell</em>, <em>dispel magic</em>, <em>temporal stasis</em> (homebrew)</li>
+</ul>
+
+<h4 id="combat-complications">Combat Complications</h4>
+<ul>
+  <li><strong>Environmental Hazards:</strong> Crystal formations, contamination exposure, temporal effects</li>
+  <li><strong>Civilian Casualties:</strong> Crystallized caravan members vulnerable to area effects</li>
+  <li><strong>Temporal Feedback:</strong> Violence near the Prism causes timeline echoes</li>
+  <li><strong>Ashira’s Vulnerability:</strong> Combat threatens her already unstable temporal anchoring</li>
+</ul>
+
+<h3 id="alternative-resolution-methods">Alternative Resolution Methods</h3>
+<ul>
+  <li><strong>Negotiated Standoff:</strong> Temporary truce while dealing with environmental crisis</li>
+  <li><strong>Joint Containment:</strong> Multiple factions working together under time pressure</li>
+  <li><strong>Sacrifice Play:</strong> One party member volunteers to become temporal anchor</li>
+  <li><strong>Temporal Gambit:</strong> Use the Prism’s power during combat (high risk/reward)</li>
+</ul>
+
+<h2 id="resolution-consequences">Resolution Consequences</h2>
+
+<h3 id="immediate-aftermath-based-on-choice">Immediate Aftermath Based on Choice</h3>
+
+<h4 id="if-delivered-to-kaia">If Delivered to Kaia</h4>
+<ul>
+  <li><strong>Kaia’s Revelation:</strong> She reveals her Remnant Keeper identity and true mission</li>
+  <li><strong>Healing Ceremony:</strong> Contaminated children in Port Zephyr are cured</li>
+  <li><strong>Imperial Retreat:</strong> Forces withdraw but promise future reclamation</li>
+  <li><strong>Temporal Debt Unknown:</strong> Hidden suffering manifests elsewhere/elsewhen</li>
+  <li><strong>Payment Delivered:</strong> Full 1,000 gold pieces, plus Remnant Keeper contact</li>
+</ul>
+
+<h4 id="if-prism-destroyed">If Prism Destroyed</h4>
+<ul>
+  <li><strong>Temporal Shockwave:</strong> Brief timeline chaos affects entire region</li>
+  <li><strong>Massive Suffering:</strong> Random temporal debt manifestation worldwide</li>
+  <li><strong>Crystal Garden Collapse:</strong> Contamination spreads but slowly dissipates</li>
+  <li><strong>Imperial Failure:</strong> Research program setback, but other artifacts exist</li>
+  <li><strong>Ashira’s Peace:</strong> She dies but thanks party for ending her temporal prison</li>
+</ul>
+
+<h4 id="if-successfully-contained">If Successfully Contained</h4>
+<ul>
+  <li><strong>Neutral Ground:</strong> Site becomes research facility under joint protection</li>
+  <li><strong>Ongoing Obligations:</strong> Party becomes permanent guardians</li>
+  <li><strong>Political Balance:</strong> Neither Empire nor Remnant Keepers gain advantage</li>
+  <li><strong>Future Adventures:</strong> Site requires constant protection from artifact seekers</li>
+  <li><strong>Partial Payment:</strong> 500 gold from Kaia, future considerations from multiple factions</li>
+</ul>
+
+<h3 id="long-term-campaign-implications">Long-term Campaign Implications</h3>
+<ul>
+  <li><strong>Temporal Awareness:</strong> Characters become sensitive to timeline distortions</li>
+  <li><strong>Faction Relationships:</strong> Reputation with Empire, Remnant Keepers, and other groups</li>
+  <li><strong>Moral Weight:</strong> Knowledge that their choice affected countless unknown lives</li>
+  <li><strong>Artifact Magnetism:</strong> Other temporal artifacts begin manifesting near the party</li>
+  <li><strong>Timeline Echoes:</strong> Occasional glimpses of alternate choices and their consequences</li>
+</ul>
+
+<h2 id="epilogue-possibilities">Epilogue Possibilities</h2>
+
+<h3 id="one-shot-conclusion">One-Shot Conclusion</h3>
+<p>For a single session, end with immediate results and implications:</p>
+
+<h4 id="the-return-to-port-zephyr">The Return to Port Zephyr</h4>
+<ul>
+  <li><strong>Changed Perspective:</strong> The city looks different after understanding temporal costs</li>
+  <li><strong>Kaia’s District:</strong> Evidence of choice consequences (healed children or continued suffering)</li>
+  <li><strong>Imperial Presence:</strong> Increased or decreased based on party’s decisions</li>
+  <li><strong>Personal Cost:</strong> Characters show signs of temporal exposure (minor cosmetic changes)</li>
+</ul>
+
+<h4 id="final-revelation-moments">Final Revelation Moments</h4>
+<ul>
+  <li><strong>Temporal Debt Manifest:</strong> Brief glimpse of suffering caused/prevented elsewhere</li>
+  <li><strong>Timeline Memories:</strong> Characters remember moments from paths not taken</li>
+  <li><strong>Ashira’s Legacy:</strong> Her final message about the weight of necessary choices</li>
+  <li><strong>Future Seeds:</strong> Hints about other temporal artifacts and threats</li>
+</ul>
+
+<h3 id="campaign-continuation-hooks">Campaign Continuation Hooks</h3>
+<p>If this becomes part of a larger campaign:</p>
+
+<h4 id="immediate-follow-up-adventures">Immediate Follow-up Adventures</h4>
+<ul>
+  <li><strong>Imperial Retaliation:</strong> Recovery teams sent to reclaim “stolen” artifacts</li>
+  <li><strong>Temporal Aftershocks:</strong> Reality distortions spreading from the Wastes</li>
+  <li><strong>Other Artifact Sites:</strong> Similar temporal weapons discovered elsewhere</li>
+  <li><strong>Remnant Keeper Contact:</strong> Invitation to join the secret organization</li>
+</ul>
+
+<h4 id="long-term-story-arcs">Long-term Story Arcs</h4>
+<ul>
+  <li><strong>Temporal War Prevention:</strong> Working to stop Imperial temporal weapons program</li>
+  <li><strong>Timeline Restoration:</strong> Healing damage caused by temporal manipulation</li>
+  <li><strong>Cataclysm Investigation:</strong> Learning the truth about the original disaster</li>
+  <li><strong>Moral Reckoning:</strong> Facing the consequences of temporal debt choices</li>
+</ul>
+
+<h2 id="optional-complications">Optional Complications</h2>
+
+<h3 id="the-temporal-storm-intensifies">The Temporal Storm Intensifies</h3>
+<p>If players take too long deciding or environmental triggers escalate:</p>
+
+<h4 id="cascade-warning-signs">Cascade Warning Signs</h4>
+<ul>
+  <li><strong>Timeline Bleeding:</strong> Past and future events visible simultaneously</li>
+  <li><strong>Reality Fragmentation:</strong> Multiple possible outcomes occurring at once</li>
+  <li><strong>Temporal Refugees:</strong> People from alternate timelines seeking shelter</li>
+  <li><strong>Causality Breakdown:</strong> Events happening before their causes</li>
+</ul>
+
+<h4 id="emergency-measures">Emergency Measures</h4>
+<ul>
+  <li><strong>Forced Choice:</strong> Environmental pressure requires immediate decision</li>
+  <li><strong>Collaborative Containment:</strong> All factions must work together to prevent catastrophe</li>
+  <li><strong>Sacrifice Required:</strong> Someone must become temporal anchor to stabilize situation</li>
+  <li><strong>Partial Solutions:</strong> Compromise choices with mixed consequences</li>
+</ul>
+
+<h3 id="the-prisms-consciousness">The Prism’s Consciousness</h3>
+<p>Reveal that the artifact itself has agenda:</p>
+
+<h4 id="temporal-entity-contact">Temporal Entity Contact</h4>
+<ul>
+  <li><strong>Ancient Awareness:</strong> The Prism contains consciousness from pre-Cataclysm era</li>
+  <li><strong>Temporal Manipulation:</strong> It has been orchestrating events to escape containment</li>
+  <li><strong>False Choices:</strong> All presented options serve its agenda in different ways</li>
+  <li><strong>True Solution:</strong> Requires understanding its actual nature and goals</li>
+</ul>
+
+<h3 id="multiple-temporal-artifacts">Multiple Temporal Artifacts</h3>
+<p>Escalate stakes by revealing larger pattern:</p>
+
+<h4 id="connected-network">Connected Network</h4>
+<ul>
+  <li><strong>Artifact Network:</strong> The Prism is one of several connected temporal weapons</li>
+  <li><strong>Coordinated Awakening:</strong> Other artifacts activate when this one is threatened</li>
+  <li><strong>System-wide Effect:</strong> All choices affect entire temporal manipulation network</li>
+  <li><strong>Global Stakes:</strong> Decision impacts continental stability, not just local region</li>
+</ul>
+
+<h2 id="themes-and-moral-framework">Themes and Moral Framework</h2>
+
+<h3 id="core-questions-explored">Core Questions Explored</h3>
+<ul>
+  <li><strong>Temporal Justice:</strong> Is it ethical to solve present problems by creating future suffering?</li>
+  <li><strong>Institutional Power:</strong> Should dangerous artifacts be controlled by governments or destroyed?</li>
+  <li><strong>Individual vs. Collective:</strong> When do community needs justify individual sacrifice?</li>
+  <li><strong>Knowledge vs. Safety:</strong> Should dangerous knowledge be preserved or eliminated?</li>
+</ul>
+
+<h3 id="no-perfect-solutions">No Perfect Solutions</h3>
+<p>The adventure intentionally provides no “correct” choice:</p>
+<ul>
+  <li><strong>Every option has genuine moral costs</strong></li>
+  <li><strong>Good intentions enable future suffering</strong></li>
+  <li><strong>Inaction is itself a choice with consequences</strong></li>
+  <li><strong>Perfect information cannot eliminate moral uncertainty</strong></li>
+</ul>
+
+<h3 id="post-nuclear-themes">Post-Nuclear Themes</h3>
+<ul>
+  <li><strong>Contamination Spreads:</strong> Magical effects parallel radioactive contamination</li>
+  <li><strong>Hidden Costs:</strong> Benefits come with delayed, invisible consequences</li>
+  <li><strong>Institutional Failure:</strong> Governments prioritize power over public safety</li>
+  <li><strong>Community Resilience:</strong> People must work together despite institutional betrayal</li>
+  <li><strong>Environmental Justice:</strong> The poor bear contamination costs while wealthy benefit</li>
+</ul>
+
+<h2 id="scaling-for-different-groups">Scaling for Different Groups</h2>
+
+<h3 id="for-investigation-focused-groups">For Investigation-Focused Groups</h3>
+<ul>
+  <li><strong>Expand revelation scenes:</strong> More detailed clues about temporal mechanics</li>
+  <li><strong>Additional NPCs:</strong> More crystallized figures with different perspectives</li>
+  <li><strong>Research Elements:</strong> Academic study of temporal artifacts and their history</li>
+  <li><strong>Political Intrigue:</strong> Deeper exploration of Remnant Keeper vs. Imperial agendas</li>
+</ul>
+
+<h3 id="for-combat-focused-groups">For Combat-Focused Groups</h3>
+<ul>
+  <li><strong>More guardians:</strong> Additional crystal creatures defending the garden</li>
+  <li><strong>Dynamic environment:</strong> Combat triggers environmental changes</li>
+  <li><strong>Imperial reinforcements:</strong> Larger military presence creating ongoing threat</li>
+  <li><strong>Action sequences:</strong> Chase scenes during temporal storm effects</li>
+</ul>
+
+<h3 id="for-roleplay-focused-groups">For Roleplay-Focused Groups</h3>
+<ul>
+  <li><strong>Extended negotiations:</strong> Detailed faction interaction and persuasion attempts</li>
+  <li><strong>Personal stakes:</strong> NPCs with family connections to contaminated communities</li>
+  <li><strong>Moral philosophy:</strong> Deep exploration of temporal ethics and responsibility</li>
+  <li><strong>Character development:</strong> Focus on how choices affect PC beliefs and relationships</li>
+</ul>
+
+<h3 id="time-management-for-one-shot">Time Management for One-Shot</h3>
+<ul>
+  <li><strong>Compress travel:</strong> Use montage if players are eager for main conflict</li>
+  <li><strong>Extend choice:</strong> Allow more debate time if players are engaged with ethics</li>
+  <li><strong>Flexible encounters:</strong> Skip or add based on group energy and time remaining</li>
+  <li><strong>Satisfying conclusion:</strong> Ensure immediate consequences are clear regardless of time pressure</li>
+</ul>
+
+<h2 id="final-dm-notes">Final DM Notes</h2>
+
+<h3 id="managing-the-temporal-concepts">Managing the Temporal Concepts</h3>
+<ul>
+  <li><strong>Keep it grounded:</strong> Focus on human costs rather than abstract timeline theory</li>
+  <li><strong>Visual aids:</strong> Use props or diagrams to show temporal debt relationship</li>
+  <li><strong>Personal examples:</strong> Make abstract consequences concrete with specific scenarios</li>
+  <li><strong>Player agency:</strong> Ensure choices feel meaningful rather than predetermined</li>
+</ul>
+
+<h3 id="maintaining-dark-tone">Maintaining Dark Tone</h3>
+<ul>
+  <li><strong>No clean victories:</strong> Every success comes with genuine cost</li>
+  <li><strong>Systemic problems:</strong> Individual heroism cannot fix institutional corruption</li>
+  <li><strong>Ongoing consequences:</strong> Choices create problems for future adventures</li>
+  <li><strong>Hope within darkness:</strong> Progress is possible but requires constant vigilance</li>
+</ul>
+
+<h3 id="thematic-consistency">Thematic Consistency</h3>
+<ul>
+  <li><strong>Environmental parallel:</strong> Temporal contamination mirrors radioactive contamination</li>
+  <li><strong>Moral complexity:</strong> Good people make terrible choices under pressure</li>
+  <li><strong>Community focus:</strong> Individual actions affect entire communities</li>
+  <li><strong>Recovery theme:</strong> Building something better from inherited problems</li>
+</ul>
+
+<p>The adventure concludes with players understanding that heroism in Alkebulan means accepting that every magical solution creates new problems, every victory enables future conflicts, and every choice carries weight that extends far beyond the immediate moment. This is the fundamental reality of life in a post-magical apocalypse world: survival requires constant moral compromise, but hope lies in the possibility that today’s difficult choices might make tomorrow’s slightly easier.</p>
+
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <h4>🧭 Navigation</h4>
+
+                        <div class="nav-level">
+                            <div class="nav-level-title">Quick Access</div>
+                            <a href="/alkebulan-wiki/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="nav-level" id="navUp" style="display: none;">
+                            <div class="nav-level-title">Up One Level</div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="contamination-warning">
+                        <strong>⚠️ WARNING</strong><br>
+                        This archive contains<br>
+                        <em>Remnant Magic traces</em><br>
+                        Access with caution
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Robert McCowan. Classified Archive System for Alkebulan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
+
+        function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
+
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Simplified navigation system
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
+
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '/alkebulan-wiki/' : '/alkebulan-wiki/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                }
+
+                // Helper function to escape HTML
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
+            } else {
+                // Default to player view
+                switchToPlayerView();
+            }
+
+            // Setup simple navigation
+            setupSimpleNavigation();
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
+        });
+    </script>
+</body>
+</html>

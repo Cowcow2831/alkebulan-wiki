@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<!-- _layouts/default.html with Dynamic View Toggle -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baseurl" content="/alkebulan-wiki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Act 1   Desert Journey   Whispers of the Wastes | Alkebulan</title>
+    <meta name="description" content="A dark fantasy continent recovering from magical apocalypse">
+
+    <!-- SEO -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Act 1 Desert Journey Whispers of the Wastes | Alkebulan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Act 1 Desert Journey Whispers of the Wastes" />
+<meta name="author" content="Robert McCowan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dark fantasy continent recovering from magical apocalypse" />
+<meta property="og:description" content="A dark fantasy continent recovering from magical apocalypse" />
+<link rel="canonical" href="https://cowcow2831.github.io/alkebulan-wiki/act-1-desert-journey-whispers-of-the-wastes/" />
+<meta property="og:url" content="https://cowcow2831.github.io/alkebulan-wiki/act-1-desert-journey-whispers-of-the-wastes/" />
+<meta property="og:site_name" content="Alkebulan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Act 1 Desert Journey Whispers of the Wastes" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Robert McCowan"},"dateModified":"2025-08-03T00:00:00+00:00","datePublished":"2025-08-03T00:00:00+00:00","description":"A dark fantasy continent recovering from magical apocalypse","headline":"Act 1 Desert Journey Whispers of the Wastes","mainEntityOfPage":{"@type":"WebPage","@id":"https://cowcow2831.github.io/alkebulan-wiki/act-1-desert-journey-whispers-of-the-wastes/"},"url":"https://cowcow2831.github.io/alkebulan-wiki/act-1-desert-journey-whispers-of-the-wastes/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/alkebulan-wiki/assets/favicon.ico">
+
+    <!-- Navigation Data -->
+    <!-- <script src="/alkebulan-wiki/assets/js/navigation.js"></script> -->
+
+    <!-- Styles -->
+    <style>
+        /* Post-Nuclear Contaminated Archive Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            /* Post-Nuclear Color Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #c0c0c0;
+            --text-secondary: #888888;
+            --text-muted: #666666;
+
+            /* Contamination Colors */
+            --toxic-green: #7cfc00;
+            --rust-orange: #d67c2a;
+            --warning-yellow: #e6e619;
+            --radiation-orange: #ff6b35;
+            --ash-gray: #4a4a4a;
+            --danger-red: #ff3333;
+
+            /* Effects */
+            --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
+            --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
+            --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+            min-height: 100vh;
+            text-shadow: var(--text-shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contamination Pulse Animation */
+        @keyframes contamination-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .contaminated {
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Header - Made more compact for mobile */
+        header {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            border-bottom: 3px solid var(--toxic-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warning-yellow);
+            text-decoration: none;
+            text-shadow: var(--text-shadow), var(--glow-orange);
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--text-shadow), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        .site-title::before {
+            content: "☢️ ";
+            color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--ash-gray);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(74, 74, 74, 0.2);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            transform: translateY(-2px);
+        }
+
+        nav a::before {
+            content: "☢️";
+            margin-right: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid var(--ash-gray);
+            position: relative;
+        }
+
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--ash-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 2px solid var(--rust-orange);
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar::before {
+            content: "⚠️ CONTAMINATED DATA";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 4px;
+            border: 1px solid var(--radiation-orange);
+        }
+
+        /* Sidebar Navigation Sections */
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--warning-yellow);
+            text-align: center;
+            border-bottom: 1px solid var(--ash-gray);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-level {
+            margin-bottom: 1rem;
+        }
+
+        .nav-level-title {
+            font-size: 0.85rem;
+            color: var(--rust-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-left-color: var(--toxic-green);
+            transform: translateX(5px);
+        }
+
+        .nav-item.current {
+            background: rgba(124, 252, 0, 0.1);
+            border-left-color: var(--toxic-green);
+            color: var(--text-primary);
+        }
+
+        .nav-item::before {
+            margin-right: 0.5rem;
+        }
+
+        .nav-up::before { content: "⬆️"; }
+        .nav-same::before { content: "↔️"; }
+        .nav-down::before { content: "⬇️"; }
+        .nav-home::before { content: "🏠"; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--warning-yellow);
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            color: var(--toxic-green);
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--rust-orange);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h6 {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--warning-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--glow-green);
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+        }
+
+        .main-content ul li::marker,
+        .sidebar us li::marker {
+            content: "☢️ ";
+            color: var(--toxic-green);
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin: 1.5rem 0;
+            border: 2px solid var(--ash-gray);
+            transition: all 0.3s ease;
+        }
+
+        img:hover {
+            border-color: var(--toxic-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--radiation-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "⚠️";
+            position: absolute;
+            top: 1rem;
+            left: -15px;
+            background: var(--radiation-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code */
+        code {
+            background: var(--bg-primary);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            border: 1px solid var(--ash-gray);
+        }
+
+        pre {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 2px solid var(--toxic-green);
+            box-shadow: var(--glow-green);
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        th {
+            background: var(--rust-orange);
+            color: white;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        tr:hover {
+            background: rgba(124, 252, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 3px solid var(--toxic-green);
+            color: var(--text-secondary);
+            box-shadow: var(--border-glow);
+        }
+
+        footer::before {
+            content: "☢️ CONTAMINATION WARNING: All materials subject to Remnant Magic exposure ☢️";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive - Compact Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+                order: 1;
+            }
+
+            .view-mode-indicator {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin: 0 0.5rem;
+                order: 2;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                order: 3;
+                width: 100%;
+            }
+
+            .view-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Special Effects */
+        .contamination-warning {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(124, 252, 0, 0.1));
+            border: 2px solid var(--radiation-orange);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hide the default Jekyll title since we'll handle it in CSS */
+        .main-content > h1:first-child {
+            display: none;
+        }
+
+        /* Custom page title styling */
+        .page-title {
+            font-size: 2.8rem;
+            color: var(--warning-yellow);
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .page-title::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        /* Mobile page title adjustment */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/alkebulan-wiki/" class="site-title">Alkebulan</a>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
+                    </button>
+                    <nav>
+                        <ul>
+                            
+                            <li><a href="/alkebulan-wiki/" class="nav-item" data-access="public">Home</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/port-zephyr/" class="nav-item" data-access="public">Port Zephyr</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/harbor-district/" class="nav-item" data-access="player">Harbor District</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/player-handout-whispers-of-the-wastes/" class="nav-item" data-access="player">Player Handout</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/dm-notes/" class="nav-item" data-access="dm">DM Notes</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/secrets/" class="nav-item" data-access="dm">Secrets</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    
+                    <h1 class="page-title">Act 1   Desert Journey   Whispers of the Wastes</h1>
+                    
+
+                    <div id="content">
+                        <h1 id="act-1---desert-journey">Act 1 - Desert Journey</h1>
+
+<h2 id="setting-the-scene">Setting the Scene</h2>
+
+<p>As the party leaves Port Zephyr’s eastern gate, the lush coastal environment gradually gives way to an alien desert landscape. The Whispering Wastes earned their name from the constant, ethereal humming that fills the air - a sound produced by remnant energy manifesting as Spectral Whisps. These translucent, flowing entities drift across the dunes like ghostly ribbons, their movements creating haunting harmonies that speak of the magical disaster that created this wasteland.</p>
+
+<h2 id="environmental-features">Environmental Features</h2>
+
+<h3 id="the-shifting-sands">The Shifting Sands</h3>
+<ul>
+  <li>The desert floor constantly moves and changes, with dunes forming and collapsing in hours rather than days</li>
+  <li>Areas of quicksand infused with remnant energy (glows faintly blue)</li>
+  <li>Glass-like patches where remnant storms have fused the sand</li>
+  <li>Dead vegetation crystallized by magical contamination</li>
+</ul>
+
+<h3 id="the-whisping-winds">The Whisping Winds</h3>
+<ul>
+  <li>Unusual wind patterns that seem to carry fragments of conversations from 300 years ago</li>
+  <li>Occasional remnant-charged dust devils that temporarily disrupt magic</li>
+  <li>Strategic use of the wind can mask sounds and tracks</li>
+  <li>Winds carry contaminated particles requiring Constitution saves in heavy exposure</li>
+</ul>
+
+<h3 id="contamination-warning-signs">Contamination Warning Signs</h3>
+<ul>
+  <li>Spectral Whisps gathering in large numbers</li>
+  <li>Static electricity building in the air</li>
+  <li>Sand taking on a purple or blue tinge</li>
+  <li>Dead or mutated wildlife showing crystal growths</li>
+</ul>
+
+<h2 id="navigation-challenges">Navigation Challenges</h2>
+
+<h3 id="finding-the-trail">Finding the Trail</h3>
+<ul>
+  <li>Initial DC 12 Survival check to pick up the caravan’s trail</li>
+  <li>Success reveals distinctive wheel tracks and crystalline residue from magical containment failure</li>
+  <li>Additional checks every 2 hours or when changing direction</li>
+</ul>
+
+<h3 id="tracking-modifiers">Tracking Modifiers</h3>
+<ul>
+  <li>Clear day: Normal check</li>
+  <li>Sandstorm: Disadvantage</li>
+  <li>Following Whisp patterns: Advantage (they tend to flow toward remnant energy concentrations)</li>
+  <li>Imperial interference: Disadvantage if scouts have disturbed the area</li>
+</ul>
+
+<h3 id="lost-procedures">Lost Procedures</h3>
+<p>If the party loses the trail:</p>
+<ol>
+  <li>Allow a DC 15 Survival check to reorient</li>
+  <li>Present a random encounter or Imperial patrol</li>
+  <li>Offer environmental clues (crystalline growths pointing toward the caravan)</li>
+</ol>
+
+<h2 id="detailed-encounters">Detailed Encounters</h2>
+
+<h3 id="1-contaminated-thunderhoof-gazelles">1. Contaminated Thunderhoof Gazelles</h3>
+<h4 id="setup">Setup</h4>
+<ul>
+  <li>3 Thunderhoof Gazelles suffering from long-term Remnant exposure</li>
+  <li>They notice the party at 120 feet unless players are stealthy</li>
+  <li>Patchy fur, visible crystal growths under skin, nervous behavior around magical energy</li>
+</ul>
+
+<h4 id="gazelle-stats">Gazelle Stats</h4>
+<p><strong>Contaminated Thunderhoof Gazelle</strong> 
+<em>Medium beast, unaligned</em></p>
+<ul>
+  <li>AC 13, HP 19, Speed 60 ft</li>
+  <li>STR 14, DEX 16, CON 13, INT 2, WIS 14, CHA 7</li>
+  <li><strong>Lightning Leap:</strong> As bonus action, teleport 30 feet (limited due to contamination sickness)</li>
+  <li><strong>Contaminated:</strong> Creatures that consume their meat must make DC 13 Constitution save or gain 1 level of contamination</li>
+</ul>
+
+<h4 id="encounter-options">Encounter Options</h4>
+<ul>
+  <li><strong>Hunt for Food:</strong> Stealth approach (DC 14) or chase sequence (Athletics/Acrobatics DC 13)</li>
+  <li><strong>Peaceful Observation:</strong> Reveals the ecosystem’s breakdown from magical disaster</li>
+  <li><strong>Magical Healing:</strong> Attempts to cure contamination (requires spell slots, uncertain success)</li>
+</ul>
+
+<h4 id="rewards-and-consequences">Rewards and Consequences</h4>
+<ul>
+  <li>Each gazelle provides 4 person-days of potentially contaminated food</li>
+  <li>Their horns contain residual lightning energy (worth 15gp each, but contaminated)</li>
+  <li>Eating contaminated meat: Constitution save DC 13 or gain 1 contamination level</li>
+</ul>
+
+<h3 id="2-imperial-scout-patrol">2. Imperial Scout Patrol</h3>
+<h4 id="setup-1">Setup</h4>
+<ul>
+  <li>4 Imperial soldiers in desert gear + 1 mage</li>
+  <li>Searching for “stolen Imperial property”</li>
+  <li>Professional but not immediately hostile</li>
+  <li>Believe they’re recovering legitimate goods</li>
+</ul>
+
+<h4 id="imperial-forces">Imperial Forces</h4>
+<p><strong>Imperial Desert Soldiers (4)</strong>
+<em>Use Veteran statistics</em></p>
+<ul>
+  <li>Equipped for desert survival and contamination protection</li>
+  <li>Orders to recover artifact and arrest thieves</li>
+</ul>
+
+<p><strong>Imperial Scout Mage (1)</strong>
+<em>Use Mage statistics but replace some spells</em></p>
+<ul>
+  <li>Known spells focus on detection and communication</li>
+  <li><em>Detect magic</em>, <em>clairvoyance</em>, <em>sending</em>, <em>scrying</em></li>
+</ul>
+
+<h4 id="encounter-options-1">Encounter Options</h4>
+<ul>
+  <li><strong>Combat:</strong> Straightforward fight if negotiations fail</li>
+  <li><strong>Stealth:</strong> Hide and overhear their mission briefing</li>
+  <li><strong>Deception:</strong> Convince them you’re also hunting thieves</li>
+  <li><strong>Negotiation:</strong> Claim you’re working for Port Zephyr authorities</li>
+</ul>
+
+<h4 id="information-gained">Information Gained</h4>
+<ul>
+  <li>Overheard orders mention “research facility in the Sundered Mountains”</li>
+  <li>They’re following multiple caravan routes</li>
+  <li>Timeline: “Recovery must be completed within the week”</li>
+  <li>Authority: “Direct orders from the Arcane Research Division”</li>
+</ul>
+
+<h3 id="3-spectral-whisp-swarm">3. Spectral Whisp Swarm</h3>
+<h4 id="initial-encounter">Initial Encounter</h4>
+<ul>
+  <li>Swarm appears as a flowing curtain of luminous energy</li>
+  <li>Whispers fragments of memories from before the Cataclysm</li>
+  <li>Shows brief visions of the region when it was fertile land</li>
+  <li>Reacts to magical energy and strong emotions</li>
+</ul>
+
+<h4 id="whisp-swarm-stats">Whisp Swarm Stats</h4>
+<p><strong>Spectral Whisp Swarm</strong>
+<em>Large swarm of tiny undead, neutral</em></p>
+<ul>
+  <li>AC 15, HP 67, Speed 0 ft, fly 50 ft (hover)</li>
+  <li>Damage Resistances: Lightning, Necrotic; Bludgeoning, Piercing, Slashing</li>
+  <li>Damage Immunities: Charmed, Exhaustion, Paralyzed, Petrified, Prone, Restrained, Stunned</li>
+  <li><strong>Whispered Memories:</strong> Creatures within 20 feet hear fragments of pre-Cataclysm conversations</li>
+  <li><strong>Lightning Swarm:</strong> 3d6 lightning damage to creatures in same space</li>
+</ul>
+
+<h4 id="combat-tactics">Combat Tactics</h4>
+<ul>
+  <li>Swarm attempts to envelop spellcasters first</li>
+  <li>Deals 3d6 lightning damage to enveloped creatures</li>
+  <li>Splits into two smaller swarms at half HP</li>
+  <li>Retreats if reduced to 1/4 HP</li>
+</ul>
+
+<h4 id="peaceful-resolution">Peaceful Resolution</h4>
+<ul>
+  <li>DC 15 Arcana check to understand their nature as Cataclysm victims</li>
+  <li>Can be appeased by offering magical energy (spell slot)</li>
+  <li>Successfully appeased Whisps provide guidance toward strongest remnant energy source</li>
+  <li>Show visions of the area’s history and the caravan’s passage</li>
+</ul>
+
+<h2 id="environmental-hazards">Environmental Hazards</h2>
+
+<h3 id="1-contamination-exposure">1. Contamination Exposure</h3>
+<ul>
+  <li><strong>Mild Exposure:</strong> 1+ hours in contaminated areas requires DC 12 Constitution save</li>
+  <li><strong>Heavy Exposure:</strong> Direct contact with remnant energy sources, DC 15 Constitution save</li>
+  <li><strong>Failed Saves:</strong> Gain 1 level of contamination (treat as exhaustion levels)</li>
+  <li><strong>Symptoms:</strong> Hair loss, nausea, crystal growths under skin at higher levels</li>
+</ul>
+
+<h3 id="2-crystallizing-sandstorms-how-does-this-trigger">2. Crystallizing Sandstorms (how does this trigger?)</h3>
+<ul>
+  <li><strong>Detection:</strong> DC 14 Perception to notice approaching storm</li>
+  <li><strong>Duration:</strong> 2d4 hours of reduced visibility and movement</li>
+  <li><strong>Effects:</strong> Constitution saves every hour (DC 13) or gain contamination</li>
+  <li><strong>Shelter:</strong> Reduces save DC to 10, but limits movement options</li>
+</ul>
+
+<h3 id="3-memory-mirages-how-does-this-trigger">3. Memory Mirages (how does this trigger?)</h3>
+<ul>
+  <li><strong>Trigger:</strong> Intense heat combined with remnant energy</li>
+  <li><strong>Effect:</strong> Illusory scenes from before the Cataclysm appear in distance</li>
+  <li><strong>Recognition:</strong> DC 12 Investigation to identify as mirages</li>
+  <li><strong>Information:</strong> May contain useful hints about the region’s history</li>
+</ul>
+
+<h2 id="tracking-time-and-resources">Tracking Time and Resources</h2>
+
+<h3 id="water-and-food">Water and Food</h3>
+<ul>
+  <li>Each character needs 2 gallons of water per day (desert environment)</li>
+  <li>Water sources in the Wastes are often contaminated</li>
+  <li><strong>Purification:</strong> <em>Purify food and drink</em> removes contamination</li>
+  <li><strong>Crystal Cacti:</strong> Can be harvested for emergency water (DC 12 Nature, potentially contaminated)</li>
+</ul>
+
+<h3 id="heat-and-exhaustion">Heat and Exhaustion</h3>
+<ul>
+  <li>Constitution saves every hour during peak heat (DC 13, +1 each hour)</li>
+  <li>DC resets after short rest in shade</li>
+  <li>Contamination levels make heat exhaustion more dangerous</li>
+</ul>
+
+<h3 id="travel-pace-and-detection">Travel Pace and Detection</h3>
+<ul>
+  <li><strong>Normal Pace:</strong> 2 miles per hour, normal Perception</li>
+  <li><strong>Slow Pace:</strong> 1 mile per hour, advantage on Perception and Survival</li>
+  <li><strong>Fast Pace:</strong> 3 miles per hour, disadvantage on Perception, more likely to trigger encounters</li>
+</ul>
+
+<h2 id="contamination-effects-reference">Contamination Effects Reference</h2>
+
+<h3 id="contamination-levels-like-exhaustion">Contamination Levels (Like Exhaustion)</h3>
+<ol>
+  <li><strong>Mild:</strong> Hair loss, occasional nausea</li>
+  <li><strong>Moderate:</strong> Visible crystal growths, disadvantage on Constitution saves</li>
+  <li><strong>Severe:</strong> Speed reduced by 10 feet, vulnerability to necrotic damage</li>
+  <li><strong>Critical:</strong> Maximum hit points reduced by half</li>
+  <li><strong>Extreme:</strong> Disadvantage on all ability checks and saves</li>
+  <li><strong>Terminal:</strong> Character becomes crystallized (incapacitated, dying)</li>
+</ol>
+
+<h3 id="treatment-options">Treatment Options</h3>
+<ul>
+  <li><strong>Lesser Restoration:</strong> Reduces contamination by 1 level</li>
+  <li><strong>Greater Restoration:</strong> Reduces contamination by 2 levels</li>
+  <li><strong>Natural Recovery:</strong> 1 level per week in clean environment</li>
+  <li><strong>Magical Items:</strong> Some artifacts can provide protection or treatment</li>
+</ul>
+
+<h2 id="optional-encounters-time-permitting">Optional Encounters (Time Permitting)</h2>
+
+<h3 id="1-remnant-researcher-camp">1. Remnant Researcher Camp</h3>
+<ul>
+  <li><strong>Setup:</strong> Abandoned research camp with crystallized equipment</li>
+  <li><strong>Investigation:</strong> Reveals Imperial research into remnant energy</li>
+  <li><strong>Hazard:</strong> Unstable experiments create magical anomalies</li>
+  <li><strong>Reward:</strong> Research notes about contamination protection</li>
+</ul>
+
+<h3 id="2-contaminated-oasis">2. Contaminated Oasis</h3>
+<ul>
+  <li><strong>Setup:</strong> Water source that appears clean but tests as contaminated</li>
+  <li><strong>Choice:</strong> Use contaminated water or continue searching</li>
+  <li><strong>Complication:</strong> Other travelers have been using this source</li>
+  <li><strong>Resolution:</strong> Can be purified with magic, but takes time and resources</li>
+</ul>
+
+<h3 id="3-crystal-garden-approach-signs">3. Crystal Garden Approach Signs</h3>
+<ul>
+  <li><strong>Setup:</strong> Increasing crystal formations as party approaches caravan site</li>
+  <li><strong>Warning:</strong> Growing magical instability in the area</li>
+  <li><strong>Navigation:</strong> Requires careful route selection to avoid worst contamination</li>
+  <li><strong>Foreshadowing:</strong> Prepares players for the main crystal garden encounter</li>
+</ul>
+
+<h2 id="transitioning-to-part-2">Transitioning to Part 2</h2>
+<p>When the party has:</p>
+<ul>
+  <li>Survived at least one major encounter</li>
+  <li>Made sufficient progress tracking the caravan (successful Survival checks)</li>
+  <li>Experienced the environmental dangers and contamination risks</li>
+  <li>Had opportunity to interact with Imperial forces or avoid them</li>
+</ul>
+
+<p>They discover the crystallized caravan site surrounded by an expanding garden of crystal formations, with the Prism of Echoes pulsing with temporal energy at its heart.</p>
+
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <h4>🧭 Navigation</h4>
+
+                        <div class="nav-level">
+                            <div class="nav-level-title">Quick Access</div>
+                            <a href="/alkebulan-wiki/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="nav-level" id="navUp" style="display: none;">
+                            <div class="nav-level-title">Up One Level</div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="contamination-warning">
+                        <strong>⚠️ WARNING</strong><br>
+                        This archive contains<br>
+                        <em>Remnant Magic traces</em><br>
+                        Access with caution
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Robert McCowan. Classified Archive System for Alkebulan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
+
+        function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
+
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Simplified navigation system
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
+
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '/alkebulan-wiki/' : '/alkebulan-wiki/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                }
+
+                // Helper function to escape HTML
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
+            } else {
+                // Default to player view
+                switchToPlayerView();
+            }
+
+            // Setup simple navigation
+            setupSimpleNavigation();
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
+        });
+    </script>
+</body>
+</html>

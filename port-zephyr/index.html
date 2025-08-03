@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<!-- _layouts/default.html with Dynamic View Toggle -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baseurl" content="/alkebulan-wiki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Zephyr | Alkebulan</title>
+    <meta name="description" content="A dark fantasy continent recovering from magical apocalypse">
+
+    <!-- SEO -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Port Zephyr | Alkebulan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Port Zephyr" />
+<meta name="author" content="Robert McCowan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dark fantasy continent recovering from magical apocalypse" />
+<meta property="og:description" content="A dark fantasy continent recovering from magical apocalypse" />
+<link rel="canonical" href="https://cowcow2831.github.io/alkebulan-wiki/port-zephyr/" />
+<meta property="og:url" content="https://cowcow2831.github.io/alkebulan-wiki/port-zephyr/" />
+<meta property="og:site_name" content="Alkebulan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Port Zephyr" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Robert McCowan"},"dateModified":"2025-08-03T00:00:00+00:00","datePublished":"2025-08-03T00:00:00+00:00","description":"A dark fantasy continent recovering from magical apocalypse","headline":"Port Zephyr","mainEntityOfPage":{"@type":"WebPage","@id":"https://cowcow2831.github.io/alkebulan-wiki/port-zephyr/"},"url":"https://cowcow2831.github.io/alkebulan-wiki/port-zephyr/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/alkebulan-wiki/assets/favicon.ico">
+
+    <!-- Navigation Data -->
+    <!-- <script src="/alkebulan-wiki/assets/js/navigation.js"></script> -->
+
+    <!-- Styles -->
+    <style>
+        /* Post-Nuclear Contaminated Archive Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            /* Post-Nuclear Color Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #c0c0c0;
+            --text-secondary: #888888;
+            --text-muted: #666666;
+
+            /* Contamination Colors */
+            --toxic-green: #7cfc00;
+            --rust-orange: #d67c2a;
+            --warning-yellow: #e6e619;
+            --radiation-orange: #ff6b35;
+            --ash-gray: #4a4a4a;
+            --danger-red: #ff3333;
+
+            /* Effects */
+            --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
+            --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
+            --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+            min-height: 100vh;
+            text-shadow: var(--text-shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contamination Pulse Animation */
+        @keyframes contamination-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .contaminated {
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Header - Made more compact for mobile */
+        header {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            border-bottom: 3px solid var(--toxic-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warning-yellow);
+            text-decoration: none;
+            text-shadow: var(--text-shadow), var(--glow-orange);
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--text-shadow), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        .site-title::before {
+            content: "☢️ ";
+            color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--ash-gray);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(74, 74, 74, 0.2);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            transform: translateY(-2px);
+        }
+
+        nav a::before {
+            content: "☢️";
+            margin-right: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid var(--ash-gray);
+            position: relative;
+        }
+
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--ash-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 2px solid var(--rust-orange);
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar::before {
+            content: "⚠️ CONTAMINATED DATA";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 4px;
+            border: 1px solid var(--radiation-orange);
+        }
+
+        /* Sidebar Navigation Sections */
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--warning-yellow);
+            text-align: center;
+            border-bottom: 1px solid var(--ash-gray);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-level {
+            margin-bottom: 1rem;
+        }
+
+        .nav-level-title {
+            font-size: 0.85rem;
+            color: var(--rust-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-left-color: var(--toxic-green);
+            transform: translateX(5px);
+        }
+
+        .nav-item.current {
+            background: rgba(124, 252, 0, 0.1);
+            border-left-color: var(--toxic-green);
+            color: var(--text-primary);
+        }
+
+        .nav-item::before {
+            margin-right: 0.5rem;
+        }
+
+        .nav-up::before { content: "⬆️"; }
+        .nav-same::before { content: "↔️"; }
+        .nav-down::before { content: "⬇️"; }
+        .nav-home::before { content: "🏠"; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--warning-yellow);
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            color: var(--toxic-green);
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--rust-orange);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h6 {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--warning-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--glow-green);
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+        }
+
+        .main-content ul li::marker,
+        .sidebar us li::marker {
+            content: "☢️ ";
+            color: var(--toxic-green);
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin: 1.5rem 0;
+            border: 2px solid var(--ash-gray);
+            transition: all 0.3s ease;
+        }
+
+        img:hover {
+            border-color: var(--toxic-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--radiation-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "⚠️";
+            position: absolute;
+            top: 1rem;
+            left: -15px;
+            background: var(--radiation-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code */
+        code {
+            background: var(--bg-primary);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            border: 1px solid var(--ash-gray);
+        }
+
+        pre {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 2px solid var(--toxic-green);
+            box-shadow: var(--glow-green);
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        th {
+            background: var(--rust-orange);
+            color: white;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        tr:hover {
+            background: rgba(124, 252, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 3px solid var(--toxic-green);
+            color: var(--text-secondary);
+            box-shadow: var(--border-glow);
+        }
+
+        footer::before {
+            content: "☢️ CONTAMINATION WARNING: All materials subject to Remnant Magic exposure ☢️";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive - Compact Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+                order: 1;
+            }
+
+            .view-mode-indicator {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin: 0 0.5rem;
+                order: 2;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                order: 3;
+                width: 100%;
+            }
+
+            .view-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Special Effects */
+        .contamination-warning {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(124, 252, 0, 0.1));
+            border: 2px solid var(--radiation-orange);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hide the default Jekyll title since we'll handle it in CSS */
+        .main-content > h1:first-child {
+            display: none;
+        }
+
+        /* Custom page title styling */
+        .page-title {
+            font-size: 2.8rem;
+            color: var(--warning-yellow);
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .page-title::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        /* Mobile page title adjustment */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/alkebulan-wiki/" class="site-title">Alkebulan</a>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
+                    </button>
+                    <nav>
+                        <ul>
+                            
+                            <li><a href="/alkebulan-wiki/" class="nav-item" data-access="public">Home</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/port-zephyr/" class="nav-item" data-access="public">Port Zephyr</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/harbor-district/" class="nav-item" data-access="player">Harbor District</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/player-handout-whispers-of-the-wastes/" class="nav-item" data-access="player">Player Handout</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/dm-notes/" class="nav-item" data-access="dm">DM Notes</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/secrets/" class="nav-item" data-access="dm">Secrets</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    
+                    <h1 class="page-title">Port Zephyr</h1>
+                    
+
+                    <div id="content">
+                        <h1 id="port-zephyr">Port Zephyr</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p><strong>Type:</strong> Major Trading City/Port<br />
+<strong>Region:</strong> <a href="/alkebulan-wiki/the-cerulean-reach/">The Cerulean Reach</a><br />
+<strong>Population:</strong> Approximately 10,000 permanent residents (estimated 2,000 more in transient workers and refugees)<br />
+<strong>Government:</strong> Council of Merchant Princes (7 elected representatives chosen by property owners), with <a href="/alkebulan-wiki/legal-system-and-authorities-in-port-zephyr/">City Watch</a> maintaining order through violence and intimidation</p>
+
+<h2 id="description">Description</h2>
+
+<p>Port Zephyr clings to life as the crown jewel of <a href="/alkebulan-wiki/the-cerulean-reach/">The Cerulean Reach</a>, a bustling trade hub built on the bones of a pre-Cataclysm city and maintained through the blood of expendable workers. The city rises in stark terraces from a harbor where contaminated waters mix with clean, creating a patchwork of prosperity and suffering that perfectly captures the brutal realities of post-The Cataclysm survival.</p>
+
+<p>The natural bay that shelters Port Zephyr from storms also traps magical contamination from centuries of shipping Remnant artifacts and pre-Cataclysm salvage. The harbor glows with an unnatural phosphorescence on moonless nights, and dock workers develop the telltale tremors and lesions of chronic Remnant exposure after just a few years of employment. Yet the city endures because it must—the alternative to controlled contamination is starvation in the wasteland beyond.</p>
+
+<p>Built into terraced hillsides that provide both natural amphitheater effects and critical elevation above the contaminated waterline, Port Zephyr’s geography creates brutal social stratification. The wealthy literally live above the poison while the poor work in it daily. This elevation-based class system isn’t just about prestige—it’s about survival. Every meter of height above the harbor represents cleaner air, safer water, and a longer lifespan.</p>
+
+<p>The city’s approximately 12,000 inhabitants represent a desperate mix of local survivors, economic refugees from failed settlements, and immigrants seeking any chance at stability. This diversity creates a cosmopolitan atmosphere built on mutual dependence—when everyone is fighting to survive, old prejudices become luxuries few can afford. However, this cooperation exists alongside vicious competition for resources, with Trade Common serving as much to negotiate survival as commercial deals.</p>
+
+<p>Port Zephyr’s strategic importance stems from its unique position as both sanctuary and trap. As the largest functional settlement in <a href="/alkebulan-wiki/the-cerulean-reach/">The Cerulean Reach</a>, it serves as a crucial buffer against The Amunrai Imperium’s expansion, but this protection comes at the cost of economic subjugation. The Empire doesn’t need to conquer Port Zephyr—they own it through debt, dependency, and the constant threat that imperial protection could be withdrawn at any moment.</p>
+
+<h3 id="city-layout-and-districts">City Layout and Districts</h3>
+
+<p>The city’s organization reflects both practical necessities and harsh social realities, with each district serving specific functions in the city’s survival economy:</p>
+
+<p><strong><a href="/alkebulan-wiki/harbor-district/">Harbor District</a></strong>: The beating heart of Port Zephyr’s economy and its most dangerous neighborhood. Massive docks accommodate vessels ranging from desperate fishing boats to imperial merchant galleons and the jury-rigged Airships that represent humanity’s desperate attempts to bypass ground-based contamination. The constant activity of sailors, dockworkers, and traders creates a vibrant atmosphere shadowed by the knowledge that everyone here is slowly poisoning themselves for survival. Warehouses line the waterfront, storing exotic goods alongside barrels of contaminated materials that would kill anyone who handled them without protective gear. The famous “Glow Docks” in the eastern harbor are off-limits except to condemned criminals and the terminally desperate—the pay is extraordinary, the life expectancy measured in months.</p>
+
+<p><strong><a href="/alkebulan-wiki/merchant-quarter/">Merchant Quarter</a></strong>: Rising from the harbor’s edge, this district houses the grand bazaars and trading houses where Port Zephyr’s wealth is generated and hoarded. The architecture reflects both international influence and desperate improvisation—elegant facades built from salvaged pre-Cataclysm materials hiding structures reinforced with whatever was available. The Grand Bazaar sprawls through several city blocks, offering everything from local crafts to illegal Remnant artifacts, with “purity certification” determining prices as much as quality. Underground markets deal in goods too dangerous for surface trading: contaminated materials, forbidden knowledge, and services that thrive in a world where survival trumps morality.</p>
+
+<p><strong><a href="/alkebulan-wiki/residential-terraces/">Residential Terraces</a></strong>: Built into the hillsides using a mixture of traditional construction and salvaged materials, these terraced neighborhoods house the majority of Port Zephyr’s population in a carefully stratified hierarchy. Lower terraces, closer to the contamination, house workers in cramped quarters built around communal decontamination facilities. Higher terraces feature more spacious housing with private purification systems that only the middle class can afford. The architecture makes efficient use of the natural slope, but also creates clear sight lines for the City Watch to monitor the population. Gardens and courtyards exist where soil testing permits, with “green zones” commanding premium rents.</p>
+
+<p><strong><a href="/alkebulan-wiki/hill-ward/">Hill Ward</a></strong>: The most exclusive and safest district, perched on the city’s highest hills where pre-Cataclysm ruins provide both building materials and magical protection. Here, wealthy merchant princes maintain estates built around salvaged pre-Cataclysm cores, foreign dignitaries conduct business in buildings with functioning air purification, and the city government operates from structures that predate the contamination. <a href="/alkebulan-wiki/the-sapphire-lighthouse/">The Sapphire Lighthouse</a> dominates the skyline, its light serving both as navigation aid and symbol of the elite’s power to literally rise above the poison that kills their workers.</p>
+
+<h3 id="architecture-and-infrastructure">Architecture and Infrastructure</h3>
+
+<p>Port Zephyr’s architecture reflects both practical survival needs and the harsh realities of building with contaminated materials:</p>
+
+<ul>
+  <li><strong>Salvage-Based Construction</strong>: Most buildings incorporate pre-Cataclysm materials of unknown contamination levels, creating structures that are both durable and potentially dangerous</li>
+  <li><strong>Terraced Adaptation</strong>: The hillside construction maximizes drainage away from living spaces while creating natural barriers between contamination zones</li>
+  <li><strong>Storm and Contamination Resistance</strong>: Buildings designed to withstand both natural storms and magical weather phenomena that can strip flesh from bone</li>
+  <li><strong>Harbor Engineering</strong>: Sophisticated but jury-rigged dock systems accommodate various vessel types while attempting to contain harbor contamination—with mixed success</li>
+  <li><strong>Vertical Infrastructure</strong>: Water, waste, and air systems designed to move contamination downhill and away from wealthy districts</li>
+</ul>
+
+<h2 id="notable-features">Notable Features</h2>
+
+<ul>
+  <li><strong><a href="/alkebulan-wiki/the-sapphire-lighthouse/">The Sapphire Lighthouse</a></strong>: A pre-Cataclysm magical beacon that guides ships safely through contaminated waters, though its light occasionally reveals things in the harbor that weren’t there moments before</li>
+  <li><strong>The Grand Bazaar</strong>: A sprawling marketplace where legitimate goods mingle with contraband, and “contamination insurance” costs more than most items for sale</li>
+  <li><strong><a href="/alkebulan-wiki/the-floating-gardens/">The Floating Gardens</a></strong>: Desperate agricultural platforms that drift in the harbor’s “safer” waters, producing crops that keep the city from starvation while slowly poisoning their tenders</li>
+  <li><strong>Zephyr’s Spire</strong>: The seat of city government, built around a pre-Cataclysm tower whose original purpose is lost but whose purification systems still function</li>
+  <li><strong>The Skyport</strong>: A dangerous facility for airship docking, where experimental aircraft built from scavenged parts attempt to bypass ground-based contamination routes</li>
+  <li><strong>The Glow Docks</strong>: Eastern harbor facilities so contaminated they phosphoresce at night, worked only by the condemned and the desperate</li>
+  <li><strong>Decontamination Gates</strong>: Checkpoints between districts where mandatory purification procedures separate the classes as much as they remove contamination</li>
+</ul>
+
+<h3 id="economic-significance">Economic Significance</h3>
+
+<p>Port Zephyr’s economy operates on the fundamental post-Cataclysm principle that survival requires accepting calculated risks that would have been unthinkable before the disaster:</p>
+
+<ul>
+  <li><strong>Contaminated Trade</strong>: The city’s wealth comes from handling goods too dangerous for other settlements to touch—Remnant artifacts, pre-Cataclysm salvage, and materials from contaminated zones</li>
+  <li><strong>Expendable Labor</strong>: A constant supply of desperate workers willing to accept contamination exposure for wages that might support their families</li>
+  <li><strong>Purification Services</strong>: A thriving industry in decontamination, protection gear, and medical treatment for exposure—often more profitable than the contaminated goods themselves</li>
+  <li><strong>Risk Insurance</strong>: Complex financial instruments that bet on worker survival rates, contamination spread, and the success of dangerous expeditions</li>
+  <li><strong>Imperial Dependency</strong>: Economic relationships with The Amunrai Imperium that provide security in exchange for resource extraction and political control</li>
+</ul>
+
+<h3 id="cultural-dynamics">Cultural Dynamics</h3>
+
+<p>Port Zephyr’s culture reflects the adaptations necessary for survival in a world where cooperation and exploitation exist side by side:</p>
+
+<ul>
+  <li><strong>Survivor Solidarity</strong>: Strong mutual aid networks among workers and refugees, balanced against vicious competition for safe jobs and clean housing</li>
+  <li><strong>Contamination Hierarchy</strong>: Social status directly correlated with contamination exposure, creating both empathy and resentment between classes</li>
+  <li><strong>Festival as Escape</strong>: Elaborate celebrations that provide temporary relief from daily survival pressures while reinforcing community bonds</li>
+  <li><strong>Language of Survival</strong>: Trade Common evolved to include extensive terminology for contamination levels, safety protocols, and risk assessment</li>
+  <li><strong>Religious Adaptation</strong>: Spiritual practices that help people cope with constant danger while providing practical community support</li>
+</ul>
+
+<h3 id="political-dynamics">Political Dynamics</h3>
+
+<ul>
+  <li><strong>Plutocratic Democracy</strong>: Seven Merchant Princes elected by property owners create a system where wealth determines political voice and poor have no representation</li>
+  <li><strong>Imperial Economic Colonialism</strong>: The Amunrai Imperium exercises control through debt, resource extraction, and the implicit threat of military intervention</li>
+  <li><strong>Worker Organization</strong>: Underground unions and mutual aid societies provide the only political voice for the majority population</li>
+  <li><strong>Regional Leadership</strong>: Port Zephyr’s wealth makes it influential among <a href="/alkebulan-wiki/the-cerulean-reach/">The Cerulean Reach</a> settlements, but this leadership is based on exploitation of shared desperation</li>
+  <li><strong>Factional Corruption</strong>: Every political organization is compromised by survival necessities that force moral compromise</li>
+</ul>
+
+<h3 id="current-challenges">Current Challenges</h3>
+
+<ul>
+  <li><strong>Escalating Contamination</strong>: Harbor pollution levels increasing despite containment efforts, threatening the city’s long-term viability</li>
+  <li><strong>Imperial Pressure</strong>: The Amunrai Imperium demanding greater control over Remnant artifact trade and political decisions</li>
+  <li><strong>Worker Unrest</strong>: Growing organization among contamination-exposed workers demanding better safety protections and political representation</li>
+  <li><strong>Infrastructure Decay</strong>: Salvaged systems failing faster than they can be repaired, threatening basic services</li>
+  <li><strong>Environmental Tipping Point</strong>: Signs that the harbor’s contamination may be reaching levels that make the city uninhabitable</li>
+  <li><strong>Resource Competition</strong>: Increasing conflict with other settlements over access to clean water, uncontaminated food, and safe building materials</li>
+</ul>
+
+<h3 id="adventure-considerations">Adventure Considerations</h3>
+
+<ul>
+  <li><strong>Moral Complexity</strong>: Every solution requires choosing who suffers and who profits, with no clean victories available</li>
+  <li><strong>Environmental Hazards</strong>: Contamination exposure, equipment failure, and magical weather create constant physical danger</li>
+  <li><strong>Social Investigation</strong>: Complex networks of exploitation, survival, and resistance provide rich roleplaying opportunities</li>
+  <li><strong>Economic Plots</strong>: Trade disputes often involve life-and-death decisions about acceptable contamination levels and worker safety</li>
+  <li><strong>Factional Politics</strong>: Multiple organizations pursuing survival through conflicting methods, with player choices determining which communities live or die</li>
+  <li><strong>Resource Scarcity</strong>: Every resource has a human cost, every comfort is built on someone else’s suffering</li>
+</ul>
+
+<h2 id="current-threats-and-opportunities">Current Threats and Opportunities</h2>
+
+<ul>
+  <li><strong>The Crimson Tide</strong>: Strange contamination spreading from the harbor’s depths, possibly indicating a breach in pre-Cataclysm containment systems</li>
+  <li><strong>Imperial Inspection</strong>: The Amunrai Imperium agents conducting “safety evaluations” that seem designed to justify increased control</li>
+  <li><strong>Worker Strike</strong>: Dock workers organizing a work stoppage over safety conditions, potentially crippling the city’s economy</li>
+  <li><strong>Artifact Discovery</strong>: Construction in the old city has uncovered powerful pre-Cataclysm technology that multiple factions want to control</li>
+  <li><strong>Contamination Prophet</strong>: A Remnant-touched individual predicting specific disasters, raising questions about whether they’re prophet or cause</li>
+  <li><strong>Underground Railroad</strong>: Secret networks helping contamination refugees escape imperial territory, operating from Port Zephyr’s undercity</li>
+  <li><strong>Foreign Investment</strong>: Offers of aid from distant powers that may represent genuine help or another form of exploitation</li>
+  <li><strong>Cultural Festival Crisis</strong>: The annual Festival of Winds threatened by contamination spike that could force evacuation during the city’s most important celebration</li>
+</ul>
+
+<h2 id="secrets--mysteries">Secrets &amp; Mysteries</h2>
+
+<ul>
+  <li><strong>The Deep Leak</strong>: Harbor contamination comes from a breach in pre-Cataclysm containment systems that city authorities are covering up</li>
+  <li><strong>Merchant Prince Conspiracy</strong>: Some Council members are The Remnant Keepers agents working to prevent another Cataclysm, even if it means sacrificing Port Zephyr</li>
+  <li><strong>Imperial Infiltration</strong>: The Amunrai Imperium has placed agents throughout the city government and merchant houses, preparing for economic annexation</li>
+  <li><strong>The Lighthouse Secret</strong>: <a href="/alkebulan-wiki/the-sapphire-lighthouse/">The Sapphire Lighthouse</a> is actually containing something rather than just providing guidance, and its light is weakening</li>
+  <li><strong>Worker Resistance Network</strong>: Organized labor movement with connections to resistance groups across <a href="/alkebulan-wiki/the-cerulean-reach/">The Cerulean Reach</a>, planning coordinated action</li>
+  <li><strong>Contamination Cure</strong>: Someone in the city may have developed a treatment for Remnant exposure, but is keeping it secret for personal profit</li>
+  <li><strong>The Deep Tunnels</strong>: Smuggling networks that predate the Cataclysm, connecting to pre-disaster facilities that may contain either salvation or greater horror</li>
+  <li><strong>Artificial Weather</strong>: The favorable climate that makes Port Zephyr viable is being maintained by someone manipulating contaminated weather patterns</li>
+  <li><strong>Cult of Acceptance</strong>: Religious movement teaching that contamination is purification, gaining followers among the most exposed workers</li>
+  <li><strong>The True Census</strong>: The actual population is much higher than official records show, with thousands of unregistered refugees living in contaminated areas</li>
+</ul>
+
+<h2 id="party-history">Party History</h2>
+<ul>
+  <li></li>
+  <li></li>
+</ul>
+
+<h2 id="notes">Notes</h2>
+<ul>
+  <li></li>
+  <li></li>
+</ul>
+
+<hr />
+
+<p><em>Port Zephyr represents the fundamental truth of post-Cataclysm survival: progress is possible, but it demands that someone pay the price in blood, health, and moral compromise. The city endures not because it has overcome the disasters of the past, but because it has learned to build prosperity on a foundation of controlled suffering.</em></p>
+
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <h4>🧭 Navigation</h4>
+
+                        <div class="nav-level">
+                            <div class="nav-level-title">Quick Access</div>
+                            <a href="/alkebulan-wiki/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="nav-level" id="navUp" style="display: none;">
+                            <div class="nav-level-title">Up One Level</div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="contamination-warning">
+                        <strong>⚠️ WARNING</strong><br>
+                        This archive contains<br>
+                        <em>Remnant Magic traces</em><br>
+                        Access with caution
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Robert McCowan. Classified Archive System for Alkebulan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
+
+        function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
+
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Simplified navigation system
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
+
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '/alkebulan-wiki/' : '/alkebulan-wiki/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                }
+
+                // Helper function to escape HTML
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
+            } else {
+                // Default to player view
+                switchToPlayerView();
+            }
+
+            // Setup simple navigation
+            setupSimpleNavigation();
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
+        });
+    </script>
+</body>
+</html>

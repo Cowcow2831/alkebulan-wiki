@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<!-- _layouts/default.html with Dynamic View Toggle -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baseurl" content="/alkebulan-wiki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Level Guide | Alkebulan</title>
+    <meta name="description" content="A dark fantasy continent recovering from magical apocalypse">
+
+    <!-- SEO -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Tech Level Guide | Alkebulan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Tech Level Guide" />
+<meta name="author" content="Robert McCowan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dark fantasy continent recovering from magical apocalypse" />
+<meta property="og:description" content="A dark fantasy continent recovering from magical apocalypse" />
+<link rel="canonical" href="https://cowcow2831.github.io/alkebulan-wiki/tech-level-guide/" />
+<meta property="og:url" content="https://cowcow2831.github.io/alkebulan-wiki/tech-level-guide/" />
+<meta property="og:site_name" content="Alkebulan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Tech Level Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Robert McCowan"},"dateModified":"2025-08-03T00:00:00+00:00","datePublished":"2025-08-03T00:00:00+00:00","description":"A dark fantasy continent recovering from magical apocalypse","headline":"Tech Level Guide","mainEntityOfPage":{"@type":"WebPage","@id":"https://cowcow2831.github.io/alkebulan-wiki/tech-level-guide/"},"url":"https://cowcow2831.github.io/alkebulan-wiki/tech-level-guide/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/alkebulan-wiki/assets/favicon.ico">
+
+    <!-- Navigation Data -->
+    <!-- <script src="/alkebulan-wiki/assets/js/navigation.js"></script> -->
+
+    <!-- Styles -->
+    <style>
+        /* Post-Nuclear Contaminated Archive Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            /* Post-Nuclear Color Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #c0c0c0;
+            --text-secondary: #888888;
+            --text-muted: #666666;
+
+            /* Contamination Colors */
+            --toxic-green: #7cfc00;
+            --rust-orange: #d67c2a;
+            --warning-yellow: #e6e619;
+            --radiation-orange: #ff6b35;
+            --ash-gray: #4a4a4a;
+            --danger-red: #ff3333;
+
+            /* Effects */
+            --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
+            --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
+            --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+            min-height: 100vh;
+            text-shadow: var(--text-shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contamination Pulse Animation */
+        @keyframes contamination-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .contaminated {
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Header - Made more compact for mobile */
+        header {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            border-bottom: 3px solid var(--toxic-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warning-yellow);
+            text-decoration: none;
+            text-shadow: var(--text-shadow), var(--glow-orange);
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--text-shadow), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        .site-title::before {
+            content: "☢️ ";
+            color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--ash-gray);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(74, 74, 74, 0.2);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            transform: translateY(-2px);
+        }
+
+        nav a::before {
+            content: "☢️";
+            margin-right: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid var(--ash-gray);
+            position: relative;
+        }
+
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--ash-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 2px solid var(--rust-orange);
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar::before {
+            content: "⚠️ CONTAMINATED DATA";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 4px;
+            border: 1px solid var(--radiation-orange);
+        }
+
+        /* Sidebar Navigation Sections */
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--warning-yellow);
+            text-align: center;
+            border-bottom: 1px solid var(--ash-gray);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-level {
+            margin-bottom: 1rem;
+        }
+
+        .nav-level-title {
+            font-size: 0.85rem;
+            color: var(--rust-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-left-color: var(--toxic-green);
+            transform: translateX(5px);
+        }
+
+        .nav-item.current {
+            background: rgba(124, 252, 0, 0.1);
+            border-left-color: var(--toxic-green);
+            color: var(--text-primary);
+        }
+
+        .nav-item::before {
+            margin-right: 0.5rem;
+        }
+
+        .nav-up::before { content: "⬆️"; }
+        .nav-same::before { content: "↔️"; }
+        .nav-down::before { content: "⬇️"; }
+        .nav-home::before { content: "🏠"; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--warning-yellow);
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            color: var(--toxic-green);
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--rust-orange);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h6 {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--warning-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--glow-green);
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+        }
+
+        .main-content ul li::marker,
+        .sidebar us li::marker {
+            content: "☢️ ";
+            color: var(--toxic-green);
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin: 1.5rem 0;
+            border: 2px solid var(--ash-gray);
+            transition: all 0.3s ease;
+        }
+
+        img:hover {
+            border-color: var(--toxic-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--radiation-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "⚠️";
+            position: absolute;
+            top: 1rem;
+            left: -15px;
+            background: var(--radiation-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code */
+        code {
+            background: var(--bg-primary);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            border: 1px solid var(--ash-gray);
+        }
+
+        pre {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 2px solid var(--toxic-green);
+            box-shadow: var(--glow-green);
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        th {
+            background: var(--rust-orange);
+            color: white;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        tr:hover {
+            background: rgba(124, 252, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 3px solid var(--toxic-green);
+            color: var(--text-secondary);
+            box-shadow: var(--border-glow);
+        }
+
+        footer::before {
+            content: "☢️ CONTAMINATION WARNING: All materials subject to Remnant Magic exposure ☢️";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive - Compact Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+                order: 1;
+            }
+
+            .view-mode-indicator {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin: 0 0.5rem;
+                order: 2;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                order: 3;
+                width: 100%;
+            }
+
+            .view-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Special Effects */
+        .contamination-warning {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(124, 252, 0, 0.1));
+            border: 2px solid var(--radiation-orange);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hide the default Jekyll title since we'll handle it in CSS */
+        .main-content > h1:first-child {
+            display: none;
+        }
+
+        /* Custom page title styling */
+        .page-title {
+            font-size: 2.8rem;
+            color: var(--warning-yellow);
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .page-title::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        /* Mobile page title adjustment */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/alkebulan-wiki/" class="site-title">Alkebulan</a>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
+                    </button>
+                    <nav>
+                        <ul>
+                            
+                            <li><a href="/alkebulan-wiki/" class="nav-item" data-access="public">Home</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/port-zephyr/" class="nav-item" data-access="public">Port Zephyr</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/harbor-district/" class="nav-item" data-access="player">Harbor District</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/player-handout-whispers-of-the-wastes/" class="nav-item" data-access="player">Player Handout</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/dm-notes/" class="nav-item" data-access="dm">DM Notes</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/secrets/" class="nav-item" data-access="dm">Secrets</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    
+                    <h1 class="page-title">Tech Level Guide</h1>
+                    
+
+                    <div id="content">
+                        <h1 id="technology-level-guide-for-alkebulan">Technology Level Guide for Alkebulan</h1>
+<p><em>Understanding the Complex Technological Landscape 300 Years After the Cataclysm</em></p>
+
+<hr />
+
+<h2 id="core-principles-uneven-technological-development">CORE PRINCIPLES: Uneven Technological Development</h2>
+
+<h3 id="progress-is-non-linear"><strong>Progress is Non-Linear</strong></h3>
+<ul>
+  <li><strong>Advanced knowledge lost</strong>: High-tech solutions forgotten while basic crafts survive</li>
+  <li><strong>Magical interference</strong>: Technology works differently in contaminated areas</li>
+  <li><strong>Resource constraints</strong>: Limited materials force improvisation and adaptation</li>
+  <li><strong>Knowledge hoarding</strong>: Elite groups control access to technical information</li>
+  <li><strong>Regional variation</strong>: Technology levels vary drastically by location and community</li>
+</ul>
+
+<h3 id="scavenging-over-innovation"><strong>Scavenging Over Innovation</strong></h3>
+<ul>
+  <li><strong>Salvage-based economy</strong>: Most “new” technology is rebuilt from Cataclysm remnants</li>
+  <li><strong>Reverse engineering</strong>: People attempt to recreate lost technologies with mixed success</li>
+  <li><strong>Dangerous experimentation</strong>: Attempts to understand pre-Cataclysm tech often go catastrophically wrong</li>
+  <li><strong>Jury-rigged solutions</strong>: Makeshift repairs and modifications are the norm</li>
+  <li><strong>Planned obsolescence abandoned</strong>: Everything must be built to last and be repairable</li>
+</ul>
+
+<hr />
+
+<h2 id="technological-categories-what-works-and-what-doesnt">TECHNOLOGICAL CATEGORIES: What Works and What Doesn’t</h2>
+
+<h3 id="pre-cataclysm-legacy-technology"><strong>Pre-Cataclysm Legacy Technology</strong></h3>
+<ul>
+  <li><strong>Remnant artifacts</strong>: Magical-technological hybrids from the lost empires</li>
+  <li><strong>Infrastructure ruins</strong>: Partially functional systems that nobody fully understands</li>
+  <li><strong>Data storage</strong>: Information locked in devices that few can access</li>
+  <li><strong>Weapons systems</strong>: Dangerous military technology scattered across the wasteland</li>
+  <li><strong>Medical equipment</strong>: Life-saving devices that require rare materials to operate</li>
+</ul>
+
+<h3 id="post-cataclysm-adaptations"><strong>Post-Cataclysm Adaptations</strong></h3>
+<ul>
+  <li><strong>Contamination detectors</strong>: Crude but essential devices to measure Remnant Magic exposure</li>
+  <li><strong>Water purification</strong>: Basic filtration systems using salvaged materials and simple magic</li>
+  <li><strong>Communication networks</strong>: Message systems using trained animals, signal fires, and salvaged radios</li>
+  <li><strong>Transportation</strong>: Rebuilt vehicles, pack animals, and dangerous but fast artifact-powered transport</li>
+  <li><strong>Construction</strong>: Building techniques adapted for contaminated materials and unstable ground</li>
+</ul>
+
+<hr />
+
+<h2 id="regional-technology-levels">REGIONAL TECHNOLOGY LEVELS</h2>
+
+<h3 id="port-zephyr-commercial-innovation-hub"><strong>Port Zephyr: Commercial Innovation Hub</strong></h3>
+<ul>
+  <li><strong>Technology Level</strong>: Renaissance to Early Industrial with magical augmentation</li>
+  <li><strong>Specializations</strong>:
+    <ul>
+      <li>Advanced metalworking using heat-resistant alloys salvaged from ruins</li>
+      <li>Clockwork precision instruments for navigation and trade</li>
+      <li>Alchemical processes for purifying contaminated goods</li>
+      <li>Printing presses producing maps, trade contracts, and propaganda</li>
+      <li>Harbor engineering with cranes, dry docks, and sophisticated rigging</li>
+    </ul>
+  </li>
+  <li><strong>Notable Innovations</strong>:
+    <ul>
+      <li><strong>Remnant scanners</strong>: Mechanical devices with minimal magical components to detect contamination</li>
+      <li><strong>Trade scales</strong>: Precision instruments that can weigh goods down to contamination particles</li>
+      <li><strong>Sending stone networks</strong>: Rare magical communication systems for wealthy merchants</li>
+      <li><strong>Purification chambers</strong>: Sealed rooms where contaminated goods can be safely processed</li>
+      <li><strong>Airship docking</strong>: Specialized harbor infrastructure for the few airships that visit</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="amunrai-imperium-militarized-technology"><strong>Amunrai Imperium: Militarized Technology</strong></h3>
+<ul>
+  <li><strong>Technology Level</strong>: Late Medieval with focused industrial capacity</li>
+  <li><strong>Specializations</strong>:
+    <ul>
+      <li>Mass production of standardized weapons and armor</li>
+      <li>Siege engines adapted for Remnant-contaminated battlefields</li>
+      <li>Military engineering for fortifications and supply lines</li>
+      <li>Propaganda printing and mass communication</li>
+      <li>Magical-technological hybrid weapons for elite units</li>
+    </ul>
+  </li>
+  <li><strong>Notable Technologies</strong>:
+    <ul>
+      <li><strong>Legion standardization</strong>: Uniform weapons and armor that can be maintained by any imperial smith</li>
+      <li><strong>Contamination barriers</strong>: Engineering solutions to protect troops from Remnant Magic</li>
+      <li><strong>Supply chain logistics</strong>: Systems for moving resources across vast conquered territories</li>
+      <li><strong>Airship warfare</strong>: Elite sky fleet for rapid deployment and aerial bombardment</li>
+      <li><strong>Intelligence networks</strong>: Combination of magical scrying and mundane spy networks</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="survivor-communities-practical-necessity"><strong>Survivor Communities: Practical Necessity</strong></h3>
+<ul>
+  <li><strong>Technology Level</strong>: Dark Ages to Medieval with crucial specializations</li>
+  <li><strong>Focus Areas</strong>:
+    <ul>
+      <li>Sustainable agriculture in contaminated soil</li>
+      <li>Water purification using local materials</li>
+      <li>Basic medicine and surgery with limited supplies</li>
+      <li>Textile production from available fibers</li>
+      <li>Tool-making from salvaged metals</li>
+    </ul>
+  </li>
+  <li><strong>Community-Specific Adaptations</strong>:
+    <ul>
+      <li><strong>Fishing villages</strong>: Boat-building adapted for contaminated waters</li>
+      <li><strong>Mining towns</strong>: Extraction techniques for safely accessing buried resources</li>
+      <li><strong>Trading posts</strong>: Rapid construction methods for temporary but secure structures</li>
+      <li><strong>Farming settlements</strong>: Crop rotation and soil treatment for contaminated land</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="technological-constraints-why-progress-is-limited">TECHNOLOGICAL CONSTRAINTS: Why Progress is Limited</h2>
+
+<h3 id="resource-scarcity"><strong>Resource Scarcity</strong></h3>
+<ul>
+  <li><strong>Rare earth elements</strong>: Essential components for advanced technology are nearly impossible to find</li>
+  <li><strong>Energy sources</strong>: Limited access to reliable power generation</li>
+  <li><strong>Specialized materials</strong>: Plastics, advanced alloys, and complex chemicals are rare</li>
+  <li><strong>Precision tools</strong>: Equipment needed to make other equipment is scarce</li>
+  <li><strong>Knowledge materials</strong>: Books, blueprints, and technical manuals were destroyed in the Cataclysm</li>
+</ul>
+
+<h3 id="magical-interference"><strong>Magical Interference</strong></h3>
+<ul>
+  <li><strong>Remnant disruption</strong>: Magical radiation interferes with complex mechanical and electrical systems</li>
+  <li><strong>Unpredictable effects</strong>: Technology works differently in different contamination zones</li>
+  <li><strong>Corruption cascade</strong>: Magical contamination can spread through metallic systems</li>
+  <li><strong>Power drain</strong>: Remnant Magic can siphon energy from technological devices</li>
+  <li><strong>Temporal instability</strong>: Some contaminated areas experience time differently, aging technology rapidly</li>
+</ul>
+
+<h3 id="social-barriers"><strong>Social Barriers</strong></h3>
+<ul>
+  <li><strong>Knowledge hoarding</strong>: Technical information is jealously guarded by guilds and elites</li>
+  <li><strong>Superstition</strong>: Many people fear technology, blaming it for the Cataclysm</li>
+  <li><strong>Economic inequality</strong>: Only the wealthy can afford to experiment with new technology</li>
+  <li><strong>Political restrictions</strong>: Governments control access to dangerous or militarily useful technology</li>
+  <li><strong>Cultural loss</strong>: Generational knowledge was interrupted by the apocalypse</li>
+</ul>
+
+<hr />
+
+<h2 id="specific-technologies-what-exists-and-how-it-works">SPECIFIC TECHNOLOGIES: What Exists and How It Works</h2>
+
+<h3 id="transportation"><strong>Transportation</strong></h3>
+<ul>
+  <li><strong>Ground Vehicles</strong>:
+    <ul>
+      <li><strong>Horse-drawn carriages</strong>: Standard passenger transport for those who can afford it</li>
+      <li><strong>Trade wagons</strong>: Heavy carts designed to protect goods from contamination during transport</li>
+      <li><strong>Military transports</strong>: Armored wagons and cavalry units for imperial forces</li>
+      <li><strong>Pack animals</strong>: Horses, mules, oxen, and other beasts of burden for cargo and travel</li>
+      <li><strong>Walking caravans</strong>: Most people travel on foot with handcarts and backpacks</li>
+    </ul>
+  </li>
+  <li><strong>Water Transport</strong>:
+    <ul>
+      <li><strong>Fishing boats</strong>: Small craft with contamination-resistant treatments on hulls</li>
+      <li><strong>Trade vessels</strong>: Larger ships with cargo holds designed for hazardous materials</li>
+      <li><strong>Imperial warships</strong>: Military vessels with ballistas, catapults, and troop transport capacity</li>
+      <li><strong>Smuggler craft</strong>: Fast, stealthy boats for avoiding customs and patrols</li>
+    </ul>
+  </li>
+  <li><strong>Air Transport</strong>: Extremely rare and dangerous
+    <ul>
+      <li><strong>Remnant airships</strong>: Floating vessels powered by contained Remnant Magic cores</li>
+      <li><strong>Imperial sky fleet</strong>: Military airships using weaponized Remnant technology</li>
+      <li><strong>Merchant airships</strong>: Cargo vessels that can bypass dangerous overland routes</li>
+      <li><strong>Experimental craft</strong>: Dangerous prototypes built by desperate or ambitious inventors</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="communication-technology"><strong>Communication Technology</strong></h3>
+<ul>
+  <li><strong>Long-Distance</strong>:
+    <ul>
+      <li><strong>Signal fires</strong>: Networks of beacon towers for basic message transmission</li>
+      <li><strong>Trained animals</strong>: Birds, dogs, and other creatures used for carrying messages</li>
+      <li><strong>Sending stones</strong>: Rare paired magical stones for instant communication over vast distances</li>
+      <li><strong>Magical sending</strong>: Expensive spell-based communication for critical messages</li>
+    </ul>
+  </li>
+  <li><strong>Local Communication</strong>:
+    <ul>
+      <li><strong>Bell systems</strong>: Coded bell signals for town-wide alerts</li>
+      <li><strong>Message boards</strong>: Community information centers in settlements</li>
+      <li><strong>Town criers</strong>: Human messengers for spreading news and announcements</li>
+      <li><strong>Horn networks</strong>: Signal horns for coordinating activities across settlements</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="weapons-and-military-technology"><strong>Weapons and Military Technology</strong></h3>
+<ul>
+  <li><strong>Melee Weapons</strong>:
+    <ul>
+      <li><strong>Swords, axes, maces</strong>: Traditional D&amp;D weapons crafted from salvaged metals</li>
+      <li><strong>Polearms and spears</strong>: Reach weapons essential for keeping dangerous creatures at bay</li>
+      <li><strong>Crossbows</strong>: Mechanical ranged weapons that don’t require magical components</li>
+      <li><strong>Shields and armor</strong>: Protection ranging from leather to plate, often pieced together</li>
+    </ul>
+  </li>
+  <li><strong>Ranged Weapons</strong>:
+    <ul>
+      <li><strong>Longbows and shortbows</strong>: Traditional archery weapons using available wood and sinew</li>
+      <li><strong>Crossbows</strong>: More complex but reliable mechanical ranged weapons</li>
+      <li><strong>Slings and javelins</strong>: Simple thrown weapons requiring minimal resources</li>
+      <li><strong>Siege engines</strong>: Catapults, ballistas, and trebuchets for military operations</li>
+    </ul>
+  </li>
+  <li><strong>Magical Weapons</strong>:
+    <ul>
+      <li><strong>Remnant-enhanced weapons</strong>: Traditional weapons infused with controlled Remnant Magic</li>
+      <li><strong>Artifact weapons</strong>: Pre-Cataclysm magical weapons of immense but unpredictable power</li>
+      <li><strong>Alchemical ammunition</strong>: Arrows and bolts with magical effects</li>
+      <li><strong>Enchanted armor</strong>: Protective gear with magical properties for the wealthy elite</li>
+    </ul>
+  </li>
+  <li><strong>Gunpowder Technology</strong>: <strong>Extremely Limited</strong>
+    <ul>
+      <li><strong>Primitive firearms</strong>: Rare and unreliable weapons that few know how to make or maintain</li>
+      <li><strong>Alchemical explosives</strong>: Magical alternatives to gunpowder for mining and warfare</li>
+      <li><strong>Signal flares</strong>: Simple pyrotechnic devices for communication and distraction</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="medical-technology"><strong>Medical Technology</strong></h3>
+<ul>
+  <li><strong>Surgical Instruments</strong>: Basic tools maintained from pre-Cataclysm medical supplies</li>
+  <li><strong>Prosthetics</strong>: Crude but functional replacement limbs using available materials</li>
+  <li><strong>Pharmaceutical labs</strong>: Alchemical workshops producing medicines from available ingredients</li>
+  <li><strong>Diagnostic equipment</strong>: Simple tools for examining patients and identifying illnesses</li>
+  <li><strong>Contamination treatment</strong>: Specialized equipment for dealing with Remnant Magic exposure</li>
+</ul>
+
+<hr />
+
+<h2 id="technology-in-daily-life-how-people-actually-live">TECHNOLOGY IN DAILY LIFE: How People Actually Live</h2>
+
+<h3 id="urban-areas-port-zephyr"><strong>Urban Areas (Port Zephyr)</strong></h3>
+<ul>
+  <li><strong>Lighting</strong>: Oil lamps, candles, and rare electrical fixtures powered by salvaged generators</li>
+  <li><strong>Water systems</strong>: Combination of wells, cisterns, and basic plumbing using salvaged pipes</li>
+  <li><strong>Waste management</strong>: Latrines, compost systems, and basic sewage disposal</li>
+  <li><strong>Food preservation</strong>: Smoking, salting, and crude refrigeration using imported ice</li>
+  <li><strong>Heating</strong>: Wood and coal fires, with rare heating systems in wealthy areas</li>
+</ul>
+
+<h3 id="rural-communities"><strong>Rural Communities</strong></h3>
+<ul>
+  <li><strong>Agriculture</strong>: Hand tools, animal-drawn plows, and basic irrigation systems</li>
+  <li><strong>Food storage</strong>: Root cellars, granaries, and simple preservation techniques</li>
+  <li><strong>Shelter</strong>: Log cabins, stone houses, and salvaged material construction</li>
+  <li><strong>Tools</strong>: Hand-forged implements maintained and repaired by local craftsmen</li>
+  <li><strong>Power</strong>: Human and animal labor with occasional water-wheel systems</li>
+</ul>
+
+<h3 id="frontier-settlements"><strong>Frontier Settlements</strong></h3>
+<ul>
+  <li><strong>Survival gear</strong>: Basic tools and equipment for living in dangerous areas</li>
+  <li><strong>Defensive technology</strong>: Simple fortifications, weapons, and early warning systems</li>
+  <li><strong>Portable equipment</strong>: Gear designed to be carried by individuals or small groups</li>
+  <li><strong>Emergency supplies</strong>: Stockpiles of essential items for crisis situations</li>
+  <li><strong>Improvised solutions</strong>: Creative adaptations using whatever materials are available</li>
+</ul>
+
+<hr />
+
+<h2 id="technological-hazards-when-innovation-goes-wrong">TECHNOLOGICAL HAZARDS: When Innovation Goes Wrong</h2>
+
+<h3 id="artifact-contamination"><strong>Artifact Contamination</strong></h3>
+<ul>
+  <li><strong>Magical poisoning</strong>: Pre-Cataclysm technology that poisons users with Remnant Magic</li>
+  <li><strong>System failures</strong>: Complex devices that break down catastrophically</li>
+  <li><strong>Addiction effects</strong>: Technology that creates psychological or physical dependency</li>
+  <li><strong>Unpredictable behavior</strong>: Devices that work differently than expected</li>
+  <li><strong>Contamination spread</strong>: Technology that spreads Remnant Magic to surrounding areas</li>
+</ul>
+
+<h3 id="industrial-accidents"><strong>Industrial Accidents</strong></h3>
+<ul>
+  <li><strong>Workshop explosions</strong>: Experiments with salvaged technology going wrong</li>
+  <li><strong>Chemical contamination</strong>: Industrial processes releasing dangerous substances</li>
+  <li><strong>Structural collapse</strong>: Buildings and equipment failing due to poor materials</li>
+  <li><strong>Worker injury</strong>: Dangerous machinery operated without proper safety equipment</li>
+  <li><strong>Resource depletion</strong>: Industries exhausting local materials and damaging communities</li>
+</ul>
+
+<h3 id="social-disruption"><strong>Social Disruption</strong></h3>
+<ul>
+  <li><strong>Economic displacement</strong>: New technology putting traditional craftsmen out of work</li>
+  <li><strong>Military escalation</strong>: Weapons technology leading to more destructive conflicts</li>
+  <li><strong>Class stratification</strong>: Advanced technology creating greater inequality</li>
+  <li><strong>Cultural loss</strong>: New methods replacing traditional knowledge and practices</li>
+  <li><strong>Political instability</strong>: Technological advantages shifting power balances</li>
+</ul>
+
+<hr />
+
+<h2 id="technological-opportunities-innovation-and-progress">TECHNOLOGICAL OPPORTUNITIES: Innovation and Progress</h2>
+
+<h3 id="sustainable-development"><strong>Sustainable Development</strong></h3>
+<ul>
+  <li><strong>Renewable energy</strong>: Wind, water, and solar power adapted for post-Cataclysm conditions</li>
+  <li><strong>Circular economy</strong>: Recycling and reuse systems that minimize waste</li>
+  <li><strong>Ecological restoration</strong>: Technology to help heal contaminated environments</li>
+  <li><strong>Community resilience</strong>: Systems that help settlements survive crises</li>
+  <li><strong>Knowledge preservation</strong>: Methods for maintaining and sharing technical information</li>
+</ul>
+
+<h3 id="collaboration-networks"><strong>Collaboration Networks</strong></h3>
+<ul>
+  <li><strong>Trade relationships</strong>: Technology sharing between communities</li>
+  <li><strong>Guild systems</strong>: Craftsman organizations that maintain and develop skills</li>
+  <li><strong>Research cooperation</strong>: Groups working together to solve common problems</li>
+  <li><strong>Educational initiatives</strong>: Programs to teach technical skills to new generations</li>
+  <li><strong>Innovation hubs</strong>: Locations where experimental technology can be safely developed</li>
+</ul>
+
+<h3 id="adaptive-solutions"><strong>Adaptive Solutions</strong></h3>
+<ul>
+  <li><strong>Contamination mitigation</strong>: Technology designed specifically for Remnant Magic hazards</li>
+  <li><strong>Modular design</strong>: Equipment that can be easily modified and repaired</li>
+  <li><strong>Multi-purpose tools</strong>: Devices that serve multiple functions to maximize utility</li>
+  <li><strong>Distributed systems</strong>: Technology that doesn’t rely on centralized infrastructure</li>
+  <li><strong>Cultural integration</strong>: Technical solutions that respect local traditions and values</li>
+</ul>
+
+<hr />
+
+<p>This framework provides a comprehensive understanding of how technology functions in your post-Cataclysm world, balancing the harsh realities of survival with opportunities for innovation and progress. The key is ensuring that technology serves the story and themes of your campaign while providing realistic constraints and opportunities for player characters.</p>
+
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <h4>🧭 Navigation</h4>
+
+                        <div class="nav-level">
+                            <div class="nav-level-title">Quick Access</div>
+                            <a href="/alkebulan-wiki/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="nav-level" id="navUp" style="display: none;">
+                            <div class="nav-level-title">Up One Level</div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="contamination-warning">
+                        <strong>⚠️ WARNING</strong><br>
+                        This archive contains<br>
+                        <em>Remnant Magic traces</em><br>
+                        Access with caution
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Robert McCowan. Classified Archive System for Alkebulan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
+
+        function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
+
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Simplified navigation system
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
+
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '/alkebulan-wiki/' : '/alkebulan-wiki/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                }
+
+                // Helper function to escape HTML
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
+            } else {
+                // Default to player view
+                switchToPlayerView();
+            }
+
+            // Setup simple navigation
+            setupSimpleNavigation();
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<!-- _layouts/default.html with Dynamic View Toggle -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baseurl" content="/alkebulan-wiki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Novel Inspirations | Alkebulan</title>
+    <meta name="description" content="A dark fantasy continent recovering from magical apocalypse">
+
+    <!-- SEO -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Graphic Novel Inspirations | Alkebulan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Graphic Novel Inspirations" />
+<meta name="author" content="Robert McCowan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dark fantasy continent recovering from magical apocalypse" />
+<meta property="og:description" content="A dark fantasy continent recovering from magical apocalypse" />
+<link rel="canonical" href="https://cowcow2831.github.io/alkebulan-wiki/graphic-novel-inspirations/" />
+<meta property="og:url" content="https://cowcow2831.github.io/alkebulan-wiki/graphic-novel-inspirations/" />
+<meta property="og:site_name" content="Alkebulan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Graphic Novel Inspirations" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Robert McCowan"},"dateModified":"2025-08-03T00:00:00+00:00","datePublished":"2025-08-03T00:00:00+00:00","description":"A dark fantasy continent recovering from magical apocalypse","headline":"Graphic Novel Inspirations","mainEntityOfPage":{"@type":"WebPage","@id":"https://cowcow2831.github.io/alkebulan-wiki/graphic-novel-inspirations/"},"url":"https://cowcow2831.github.io/alkebulan-wiki/graphic-novel-inspirations/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/alkebulan-wiki/assets/favicon.ico">
+
+    <!-- Navigation Data -->
+    <!-- <script src="/alkebulan-wiki/assets/js/navigation.js"></script> -->
+
+    <!-- Styles -->
+    <style>
+        /* Post-Nuclear Contaminated Archive Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            /* Post-Nuclear Color Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #c0c0c0;
+            --text-secondary: #888888;
+            --text-muted: #666666;
+
+            /* Contamination Colors */
+            --toxic-green: #7cfc00;
+            --rust-orange: #d67c2a;
+            --warning-yellow: #e6e619;
+            --radiation-orange: #ff6b35;
+            --ash-gray: #4a4a4a;
+            --danger-red: #ff3333;
+
+            /* Effects */
+            --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
+            --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
+            --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+            min-height: 100vh;
+            text-shadow: var(--text-shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contamination Pulse Animation */
+        @keyframes contamination-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .contaminated {
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Header - Made more compact for mobile */
+        header {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            border-bottom: 3px solid var(--toxic-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warning-yellow);
+            text-decoration: none;
+            text-shadow: var(--text-shadow), var(--glow-orange);
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--text-shadow), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        .site-title::before {
+            content: "☢️ ";
+            color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--ash-gray);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(74, 74, 74, 0.2);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            transform: translateY(-2px);
+        }
+
+        nav a::before {
+            content: "☢️";
+            margin-right: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid var(--ash-gray);
+            position: relative;
+        }
+
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--ash-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 2px solid var(--rust-orange);
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar::before {
+            content: "⚠️ CONTAMINATED DATA";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 4px;
+            border: 1px solid var(--radiation-orange);
+        }
+
+        /* Sidebar Navigation Sections */
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--warning-yellow);
+            text-align: center;
+            border-bottom: 1px solid var(--ash-gray);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-level {
+            margin-bottom: 1rem;
+        }
+
+        .nav-level-title {
+            font-size: 0.85rem;
+            color: var(--rust-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-left-color: var(--toxic-green);
+            transform: translateX(5px);
+        }
+
+        .nav-item.current {
+            background: rgba(124, 252, 0, 0.1);
+            border-left-color: var(--toxic-green);
+            color: var(--text-primary);
+        }
+
+        .nav-item::before {
+            margin-right: 0.5rem;
+        }
+
+        .nav-up::before { content: "⬆️"; }
+        .nav-same::before { content: "↔️"; }
+        .nav-down::before { content: "⬇️"; }
+        .nav-home::before { content: "🏠"; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--warning-yellow);
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            color: var(--toxic-green);
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--rust-orange);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h6 {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--warning-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--glow-green);
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+        }
+
+        .main-content ul li::marker,
+        .sidebar us li::marker {
+            content: "☢️ ";
+            color: var(--toxic-green);
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin: 1.5rem 0;
+            border: 2px solid var(--ash-gray);
+            transition: all 0.3s ease;
+        }
+
+        img:hover {
+            border-color: var(--toxic-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--radiation-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "⚠️";
+            position: absolute;
+            top: 1rem;
+            left: -15px;
+            background: var(--radiation-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code */
+        code {
+            background: var(--bg-primary);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            border: 1px solid var(--ash-gray);
+        }
+
+        pre {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 2px solid var(--toxic-green);
+            box-shadow: var(--glow-green);
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        th {
+            background: var(--rust-orange);
+            color: white;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        tr:hover {
+            background: rgba(124, 252, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 3px solid var(--toxic-green);
+            color: var(--text-secondary);
+            box-shadow: var(--border-glow);
+        }
+
+        footer::before {
+            content: "☢️ CONTAMINATION WARNING: All materials subject to Remnant Magic exposure ☢️";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive - Compact Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+                order: 1;
+            }
+
+            .view-mode-indicator {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin: 0 0.5rem;
+                order: 2;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                order: 3;
+                width: 100%;
+            }
+
+            .view-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Special Effects */
+        .contamination-warning {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(124, 252, 0, 0.1));
+            border: 2px solid var(--radiation-orange);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hide the default Jekyll title since we'll handle it in CSS */
+        .main-content > h1:first-child {
+            display: none;
+        }
+
+        /* Custom page title styling */
+        .page-title {
+            font-size: 2.8rem;
+            color: var(--warning-yellow);
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .page-title::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        /* Mobile page title adjustment */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/alkebulan-wiki/" class="site-title">Alkebulan</a>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
+                    </button>
+                    <nav>
+                        <ul>
+                            
+                            <li><a href="/alkebulan-wiki/" class="nav-item" data-access="public">Home</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/port-zephyr/" class="nav-item" data-access="public">Port Zephyr</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/harbor-district/" class="nav-item" data-access="player">Harbor District</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/player-handout-whispers-of-the-wastes/" class="nav-item" data-access="player">Player Handout</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/dm-notes/" class="nav-item" data-access="dm">DM Notes</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/secrets/" class="nav-item" data-access="dm">Secrets</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    
+                    <h1 class="page-title">Graphic Novel Inspirations</h1>
+                    
+
+                    <div id="content">
+                        <h1 id="graphic-novel-inspirations-for-alkebulan">Graphic Novel Inspirations for Alkebulan</h1>
+<p><em>Comics and graphic novels for visual, thematic, and narrative inspiration for your dark post-nuclear fantasy world</em></p>
+
+<hr />
+
+<h2 id="essential-post-apocalyptic-comics">Essential Post-Apocalyptic Comics</h2>
+
+<h3 id="nuclear-age--fallout"><strong>Nuclear Age &amp; Fallout</strong></h3>
+<ul>
+  <li><strong>Watchmen</strong> (Alan Moore, Dave Gibbons)
+    <ul>
+      <li>Nuclear anxiety, moral complexity, alternate history</li>
+      <li>Perfect for Cold War paranoia and institutional critique</li>
+      <li>Visual storytelling techniques, complex narrative structure</li>
+      <li>Heroes who do terrible things for “greater good”</li>
+    </ul>
+  </li>
+  <li><strong>Judge Dredd: “The Cursed Earth”</strong> (Various writers/artists)
+    <ul>
+      <li>Post-nuclear wasteland between mega-cities</li>
+      <li>Mutant communities, radiation zones, resource conflicts</li>
+      <li>Authoritarian law enforcement, urban vs. wasteland dynamics</li>
+      <li>Dark humor amid serious themes</li>
+    </ul>
+  </li>
+  <li><strong>Nausicaä of the Valley of the Wind</strong> (Hayao Miyazaki)
+    <ul>
+      <li>Post-industrial ecological disaster, toxic forests</li>
+      <li>Small communities surviving environmental collapse</li>
+      <li>Ancient technology causing ongoing problems</li>
+      <li>Environmental restoration themes, working with contamination</li>
+    </ul>
+  </li>
+  <li><strong>Akira</strong> (Katsuhiro Otomo)
+    <ul>
+      <li>Psychic powers as nuclear metaphor, Neo-Tokyo destruction</li>
+      <li>Government experiments, institutional cover-ups</li>
+      <li>Youth caught in adult power struggles</li>
+      <li>Stunning urban decay and reconstruction visuals</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="fantasy-post-apocalypse"><strong>Fantasy Post-Apocalypse</strong></h3>
+<ul>
+  <li><strong>Kamandi: The Last Boy on Earth</strong> (Jack Kirby)
+    <ul>
+      <li>Post-nuclear world with intelligent animals</li>
+      <li>Ruins of human civilization, tribal societies</li>
+      <li>Scavenging culture, ancient artifacts as plot devices</li>
+      <li>Adventure in dangerous transformed world</li>
+    </ul>
+  </li>
+  <li><strong>Prophet</strong> (Brandon Graham, Simon Roy, others)
+    <ul>
+      <li>Far future post-apocalypse with biological horror</li>
+      <li>Ancient empires collapsed, strange new ecosystems</li>
+      <li>Body horror and mutation themes</li>
+      <li>Dense world-building through visual storytelling</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="environmental-destruction--recovery">Environmental Destruction &amp; Recovery</h2>
+
+<h3 id="climate-change--ecological-collapse"><strong>Climate Change &amp; Ecological Collapse</strong></h3>
+<ul>
+  <li><strong>The Windup Girl</strong> (Paolo Bacigalupi, adapted)
+    <ul>
+      <li>Genetic modification, corporate control of food</li>
+      <li>Environmental collapse, flooded cities</li>
+      <li>Resource scarcity, political intrigue</li>
+      <li>Biotechnology replacing traditional industry</li>
+    </ul>
+  </li>
+  <li><strong>Transmetropolitan</strong> (Warren Ellis, Darick Robertson)
+    <ul>
+      <li>Urban decay, information control, political corruption</li>
+      <li>Journalism as resistance, speaking truth to power</li>
+      <li>Class warfare, technological inequality</li>
+      <li>Cynical but ultimately hopeful about human nature</li>
+    </ul>
+  </li>
+  <li><strong>Y: The Last Man</strong> (Brian K. Vaughan, Pia Guerra)
+    <ul>
+      <li>Global catastrophe, societal reconstruction</li>
+      <li>Communities adapting to radical change</li>
+      <li>Political systems under extreme stress</li>
+      <li>Women rebuilding civilization, gender dynamics</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="toxic-landscapes"><strong>Toxic Landscapes</strong></h3>
+<ul>
+  <li><strong>Swamp Thing</strong> (Alan Moore era)
+    <ul>
+      <li>Environmental consciousness, pollution themes</li>
+      <li>Nature fighting back against human destruction</li>
+      <li>Transformation and adaptation to toxicity</li>
+      <li>Mystical ecology, ancient vs. modern power</li>
+    </ul>
+  </li>
+  <li><strong>East of West</strong> (Jonathan Hickman, Nick Dragotta)
+    <ul>
+      <li>Alternate history America, environmental disaster</li>
+      <li>Political factions, religious extremism</li>
+      <li>Apocalyptic prophecies, technological regression</li>
+      <li>Beautiful desolate landscapes, western aesthetics</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="political-intrigue--secret-organizations">Political Intrigue &amp; Secret Organizations</h2>
+
+<h3 id="conspiracy--power"><strong>Conspiracy &amp; Power</strong></h3>
+<ul>
+  <li><strong>V for Vendetta</strong> (Alan Moore, David Lloyd)
+    <ul>
+      <li>Totalitarian government, resistance movements</li>
+      <li>Individual action inspiring mass change</li>
+      <li>Symbols and propaganda, information warfare</li>
+      <li>Hope emerging from oppressive darkness</li>
+    </ul>
+  </li>
+  <li><strong>100 Bullets</strong> (Brian Azzarello, Eduardo Risso)
+    <ul>
+      <li>Secret organizations manipulating society</li>
+      <li>Moral complexity, no clear heroes or villains</li>
+      <li>Power structures behind apparent chaos</li>
+      <li>Noir aesthetics, urban decay</li>
+    </ul>
+  </li>
+  <li><strong>The Invisibles</strong> (Grant Morrison)
+    <ul>
+      <li>Reality-altering conspiracy, hidden history</li>
+      <li>Revolutionary cells vs. oppressive systems</li>
+      <li>Magic and technology intertwined</li>
+      <li>Psychedelic visuals, reality as construct</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="imperial-politics"><strong>Imperial Politics</strong></h3>
+<ul>
+  <li><strong>Saga</strong> (Brian K. Vaughan, Fiona Staples)
+    <ul>
+      <li>Endless war between different cultures/species</li>
+      <li>Family survival in political conflict</li>
+      <li>No clear good vs. evil sides</li>
+      <li>Beautiful alien worlds, diverse societies</li>
+    </ul>
+  </li>
+  <li><strong>The Wicked + The Divine</strong> (Kieron Gillen, Jamie McKelvie)
+    <ul>
+      <li>Gods as pop stars, power corrupting</li>
+      <li>Cultural manipulation, celebrity worship</li>
+      <li>Cyclical destruction and renewal</li>
+      <li>Modern aesthetics with mythological themes</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="community--survival">Community &amp; Survival</h2>
+
+<h3 id="rebuilding-civilization"><strong>Rebuilding Civilization</strong></h3>
+<ul>
+  <li><strong>DMZ</strong> (Brian Wood, Riccardo Burchielli)
+    <ul>
+      <li>War-torn Manhattan as no-man’s land</li>
+      <li>Civilians surviving between warring factions</li>
+      <li>Journalism documenting conflict, truth-seeking</li>
+      <li>Urban warfare, community resilience</li>
+    </ul>
+  </li>
+  <li><strong>The Walking Dead</strong> (Robert Kirkman, Tony Moore, Charlie Adlard)
+    <ul>
+      <li>Community building in post-apocalyptic world</li>
+      <li>Resource scarcity, group dynamics</li>
+      <li>Moral choices under extreme pressure</li>
+      <li>Long-term survival vs. short-term needs</li>
+    </ul>
+  </li>
+  <li><strong>Low</strong> (Rick Remender, Greg Tocchini)
+    <ul>
+      <li>Underwater cities, environmental adaptation</li>
+      <li>Hope vs. despair as central theme</li>
+      <li>Family bonds in impossible circumstances</li>
+      <li>Beautiful underwater visuals, alien environments</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="trading--economics"><strong>Trading &amp; Economics</strong></h3>
+<ul>
+  <li><strong>Usagi Yojimbo</strong> (Stan Sakai)
+    <ul>
+      <li>Traveling merchant/warrior in feudal Japan</li>
+      <li>Community interactions, cultural exchange</li>
+      <li>Honor vs. survival, moral complexity</li>
+      <li>Detailed world-building through episodic stories</li>
+    </ul>
+  </li>
+  <li><strong>Monstress</strong> (Marjorie Liu, Sana Takeda)
+    <ul>
+      <li>Complex political factions, resource conflicts</li>
+      <li>Magic-users as oppressed minority</li>
+      <li>Art nouveau aesthetics, detailed world-building</li>
+      <li>War’s impact on civilian populations</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="memory--historical-trauma">Memory &amp; Historical Trauma</h2>
+
+<h3 id="lost-civilizations"><strong>Lost Civilizations</strong></h3>
+<ul>
+  <li><strong>Bone</strong> (Jeff Smith)
+    <ul>
+      <li>Ancient powers awakening, pastoral communities threatened</li>
+      <li>Oral tradition vs. written history</li>
+      <li>Simple art style with complex themes</li>
+      <li>Community cooperation against existential threats</li>
+    </ul>
+  </li>
+  <li><strong>Sandman</strong> (Neil Gaiman, various artists)
+    <ul>
+      <li>Stories and myths shaping reality</li>
+      <li>Ancient powers in modern world</li>
+      <li>Memory and dream as world-building tools</li>
+      <li>Beautiful mythological imagery</li>
+    </ul>
+  </li>
+  <li><strong>Hellboy/B.P.R.D.</strong> (Mike Mignola, various)
+    <ul>
+      <li>Ancient evils, occult history</li>
+      <li>Government agencies dealing with supernatural</li>
+      <li>Folklore and mythology as living forces</li>
+      <li>Gothic aesthetics, ancient vs. modern</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cultural-preservation"><strong>Cultural Preservation</strong></h3>
+<ul>
+  <li><strong>American Born Chinese</strong> (Gene Luen Yang)
+    <ul>
+      <li>Cultural identity, assimilation vs. preservation</li>
+      <li>Mythology in modern context</li>
+      <li>Community belonging, generational differences</li>
+      <li>Accessible art style with serious themes</li>
+    </ul>
+  </li>
+  <li><strong>March</strong> (John Lewis, Andrew Aydin, Nate Powell)
+    <ul>
+      <li>Civil rights movement, institutional change</li>
+      <li>Community organizing, non-violent resistance</li>
+      <li>Historical documentation through comics medium</li>
+      <li>Real-world activism inspiration</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="magic--technology">Magic &amp; Technology</h2>
+
+<h3 id="dangerous-magic"><strong>Dangerous Magic</strong></h3>
+<ul>
+  <li><strong>Fables</strong> (Bill Willingham, Mark Buckingham)
+    <ul>
+      <li>Fairy tale refugees in modern world</li>
+      <li>Hidden communities, secret identities</li>
+      <li>Political intrigue among fantasy creatures</li>
+      <li>Traditional stories in contemporary settings</li>
+    </ul>
+  </li>
+  <li><strong>The Authority</strong> (Warren Ellis, Bryan Hitch)
+    <ul>
+      <li>Super-powered beings as political force</li>
+      <li>Institutional corruption, regime change</li>
+      <li>Moral complexity of using power for “good”</li>
+      <li>Wide-screen action, cinematic storytelling</li>
+    </ul>
+  </li>
+  <li><strong>Planetary</strong> (Warren Ellis, John Cassaday)
+    <ul>
+      <li>Archaeological investigation of secret history</li>
+      <li>Ancient mysteries, hidden knowledge</li>
+      <li>Conspiracy theories made literal</li>
+      <li>Beautiful retro-futuristic aesthetics</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="magical-contamination"><strong>Magical Contamination</strong></h3>
+<ul>
+  <li><strong>Injection</strong> (Warren Ellis, Declan Shalvey)
+    <ul>
+      <li>Technology and magic fusion gone wrong</li>
+      <li>Reality contamination, dimensional bleed</li>
+      <li>Scientists dealing with their mistakes</li>
+      <li>Body horror, reality distortion</li>
+    </ul>
+  </li>
+  <li><strong>Trees</strong> (Warren Ellis, Jason Howard)
+    <ul>
+      <li>Alien structures changing Earth’s environment</li>
+      <li>Humanity adapting to inexplicable phenomenon</li>
+      <li>Environmental storytelling, minimal exposition</li>
+      <li>Beautiful alien landscapes</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="regional-aesthetics--culture">Regional Aesthetics &amp; Culture</h2>
+
+<h3 id="desert-settings"><strong>Desert Settings</strong></h3>
+<ul>
+  <li><strong>Queen &amp; Country</strong> (Greg Rucka, various artists)
+    <ul>
+      <li>Espionage in various global settings</li>
+      <li>Political realism, moral complexity</li>
+      <li>Strong female protagonist, institutional sexism</li>
+      <li>Detailed international politics</li>
+    </ul>
+  </li>
+  <li><strong>Scalped</strong> (Jason Aaron, R.M. Guéra)
+    <ul>
+      <li>Native American reservation, crime noir</li>
+      <li>Cultural identity, historical trauma</li>
+      <li>Community corruption, outside exploitation</li>
+      <li>Realistic portrayal of contemporary issues</li>
+    </ul>
+  </li>
+  <li><strong>East of West</strong> (Jonathan Hickman, Nick Dragotta)
+    <ul>
+      <li>Alternate American West, apocalyptic themes</li>
+      <li>Beautiful desert landscapes, Native American influences</li>
+      <li>Political factions, resource conflicts</li>
+      <li>Mythological elements in realistic settings</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="coastaltrading-cities"><strong>Coastal/Trading Cities</strong></h3>
+<ul>
+  <li><strong>Saga</strong> (Brian K. Vaughan, Fiona Staples)
+    <ul>
+      <li>Diverse alien cultures, interplanetary trade</li>
+      <li>Family relationships across cultural boundaries</li>
+      <li>Beautiful character design, varied aesthetics</li>
+      <li>Space opera with intimate human stories</li>
+    </ul>
+  </li>
+  <li><strong>Fear Agent</strong> (Rick Remender, Tony Moore, Jerome Opeña)
+    <ul>
+      <li>Space western, alien worlds</li>
+      <li>Working-class hero, blue-collar science fiction</li>
+      <li>Community destruction and reconstruction</li>
+      <li>Pulp aesthetics with modern sensibilities</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="visual-style-references">Visual Style References</h2>
+
+<h3 id="environmental-storytelling"><strong>Environmental Storytelling</strong></h3>
+<ul>
+  <li><strong>The Massive</strong> (Brian Wood, Kristian Donaldson)
+    <ul>
+      <li>Environmental collapse, ocean exploration</li>
+      <li>Post-disaster maritime setting</li>
+      <li>Detailed ship and ocean environments</li>
+      <li>Community aboard floating vessels</li>
+    </ul>
+  </li>
+  <li><strong>Prophet</strong> (Brandon Graham, Simon Roy)
+    <ul>
+      <li>Biological landscapes, alien ecosystems</li>
+      <li>Dense visual world-building, minimal dialogue</li>
+      <li>Strange beauty in post-apocalyptic settings</li>
+      <li>Moebius-influenced science fiction art</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="urban-decay--reconstruction"><strong>Urban Decay &amp; Reconstruction</strong></h3>
+<ul>
+  <li><strong>Transmetropolitan</strong> (Warren Ellis, Darick Robertson)
+    <ul>
+      <li>Cyberpunk city, vertical urban planning</li>
+      <li>Class stratification visualized architecturally</li>
+      <li>Technology integration in daily life</li>
+      <li>Detailed background world-building</li>
+    </ul>
+  </li>
+  <li><strong>Judge Dredd</strong> (Various)
+    <ul>
+      <li>Mega-City One, massive urban structures</li>
+      <li>Authoritarian architecture, social control through design</li>
+      <li>Contrast between city and wasteland</li>
+      <li>Consistent visual identity across decades</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="magic-realism"><strong>Magic Realism</strong></h3>
+<ul>
+  <li><strong>Sandman</strong> (Neil Gaiman, various artists)
+    <ul>
+      <li>Dreams bleeding into reality, symbolic imagery</li>
+      <li>Different art styles for different story types</li>
+      <li>Mythology visualized in contemporary settings</li>
+      <li>Beautiful metaphorical landscapes</li>
+    </ul>
+  </li>
+  <li><strong>Fables</strong> (Bill Willingham, Mark Buckingham)
+    <ul>
+      <li>Fantasy elements in mundane settings</li>
+      <li>Traditional imagery in modern contexts</li>
+      <li>Consistent character design across time periods</li>
+      <li>Detailed background continuity</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="campaign-applications">Campaign Applications</h2>
+
+<h3 id="visual-reference"><strong>Visual Reference</strong></h3>
+<ul>
+  <li><strong>Character Design</strong>: Use diverse comic art styles for NPC inspiration</li>
+  <li><strong>Environmental Art</strong>: Screenshots/panels for location descriptions</li>
+  <li><strong>Technology Levels</strong>: How different comics blend magic/tech</li>
+  <li><strong>Fashion &amp; Equipment</strong>: Clothing and gear appropriate to settings</li>
+</ul>
+
+<h3 id="narrative-techniques"><strong>Narrative Techniques</strong></h3>
+<ul>
+  <li><strong>Pacing</strong>: How comics reveal information over time</li>
+  <li><strong>World-building</strong>: Environmental storytelling through visuals</li>
+  <li><strong>Character Development</strong>: Long-form character arcs across story lines</li>
+  <li><strong>Moral Complexity</strong>: No clear heroes/villains approach</li>
+</ul>
+
+<h3 id="session-structure"><strong>Session Structure</strong></h3>
+<ul>
+  <li><strong>Issue Format</strong>: Self-contained sessions with ongoing plots</li>
+  <li><strong>Cliffhangers</strong>: Ending sessions with unresolved tension</li>
+  <li><strong>Reveal Techniques</strong>: Information dumps vs. gradual revelation</li>
+  <li><strong>Visual Metaphors</strong>: Using imagery to convey themes</li>
+</ul>
+
+<hr />
+
+<h2 id="essential-reading-list">Essential Reading List</h2>
+
+<h3 id="priority-tier-1-most-important"><strong>Priority Tier 1</strong> (Most Important)</h3>
+<ol>
+  <li><strong>Watchmen</strong> - Moral complexity, nuclear anxiety, institutional critique</li>
+  <li><strong>Nausicaä</strong> - Environmental themes, working with contamination</li>
+  <li><strong>Transmetropolitan</strong> - Urban decay, political corruption, truth-telling</li>
+  <li><strong>Y: The Last Man</strong> - Post-disaster community building</li>
+  <li><strong>East of West</strong> - Political factions, environmental disaster, western aesthetics</li>
+</ol>
+
+<h3 id="priority-tier-2-highly-recommended"><strong>Priority Tier 2</strong> (Highly Recommended)</h3>
+<ol>
+  <li><strong>V for Vendetta</strong> - Resistance movements, totalitarian government</li>
+  <li><strong>DMZ</strong> - War zones, civilian survival, journalism</li>
+  <li><strong>Saga</strong> - Cultural conflict, family survival, no clear villains</li>
+  <li><strong>The Walking Dead</strong> - Community dynamics, resource scarcity</li>
+  <li><strong>Akira</strong> - Technology disasters, urban decay, power corruption</li>
+</ol>
+
+<h3 id="priority-tier-3-excellent-supplementary"><strong>Priority Tier 3</strong> (Excellent Supplementary)</h3>
+<ol>
+  <li><strong>100 Bullets</strong> - Secret organizations, moral ambiguity</li>
+  <li><strong>Swamp Thing</strong> (Moore era) - Environmental consciousness, transformation</li>
+  <li><strong>Judge Dredd: Cursed Earth</strong> - Post-nuclear wasteland survival</li>
+  <li><strong>Low</strong> - Environmental adaptation, hope vs. despair</li>
+  <li><strong>Monstress</strong> - Complex politics, magical minorities</li>
+</ol>
+
+<hr />
+
+<h2 id="where-to-read">Where to Read</h2>
+
+<h3 id="digital-platforms"><strong>Digital Platforms</strong></h3>
+<ul>
+  <li><strong>ComiXology/Amazon Kindle</strong> - Huge selection, guided view technology</li>
+  <li><strong>Marvel Unlimited/DC Universe</strong> - Subscription services for major publishers</li>
+  <li><strong>Hoopla/OverDrive</strong> - Free with library card, rotating selection</li>
+</ul>
+
+<h3 id="physical-collections"><strong>Physical Collections</strong></h3>
+<ul>
+  <li><strong>Trade Paperbacks</strong> - Complete story arcs, better for reference</li>
+  <li><strong>Omnibus Editions</strong> - Comprehensive collections, expensive but thorough</li>
+  <li><strong>Library Systems</strong> - Many libraries have extensive graphic novel collections</li>
+</ul>
+
+<h3 id="budget-approach"><strong>Budget Approach</strong></h3>
+<ul>
+  <li>Start with <strong>Watchmen</strong>, <strong>V for Vendetta</strong>, <strong>Y: The Last Man</strong> - frequently available used</li>
+  <li>Check local libraries - most have graphic novel sections now</li>
+  <li>Many titles available through digital library services</li>
+  <li>Focus on complete stories rather than ongoing series</li>
+</ul>
+
+<hr />
+
+<h2 id="using-comics-for-campaign-inspiration">Using Comics for Campaign Inspiration</h2>
+
+<h3 id="visual-notebooks"><strong>Visual Notebooks</strong></h3>
+<ul>
+  <li>Screenshot/photograph panels for location inspiration</li>
+  <li>Character design references for NPCs</li>
+  <li>Technology and equipment visualization</li>
+  <li>Mood and atmosphere references</li>
+</ul>
+
+<h3 id="narrative-structure"><strong>Narrative Structure</strong></h3>
+<ul>
+  <li>Study pacing techniques - revelation timing, tension building</li>
+  <li>Character introduction methods</li>
+  <li>Balancing action with character development</li>
+  <li>Managing multiple plot threads</li>
+</ul>
+
+<h3 id="world-building-techniques"><strong>World-building Techniques</strong></h3>
+<ul>
+  <li>Environmental storytelling - showing rather than telling</li>
+  <li>Cultural details through background elements</li>
+  <li>Consistent visual identity across locations</li>
+  <li>Symbolic imagery for themes</li>
+</ul>
+
+<h3 id="player-handouts"><strong>Player Handouts</strong></h3>
+<ul>
+  <li>Use comic panel layouts for in-world documents</li>
+  <li>Character portraits in comic book style</li>
+  <li>Location establishing shots</li>
+  <li>Equipment and artifact references</li>
+</ul>
+
+<hr />
+
+<p><em>Comics excel at visual storytelling and world-building - perfect for creating the atmospheric, morally complex post-nuclear fantasy world of Alkebulan. These recommendations focus on works that balance darkness with hope, showing communities struggling to rebuild while maintaining their humanity.</em></p>
+
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <h4>🧭 Navigation</h4>
+
+                        <div class="nav-level">
+                            <div class="nav-level-title">Quick Access</div>
+                            <a href="/alkebulan-wiki/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="nav-level" id="navUp" style="display: none;">
+                            <div class="nav-level-title">Up One Level</div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="contamination-warning">
+                        <strong>⚠️ WARNING</strong><br>
+                        This archive contains<br>
+                        <em>Remnant Magic traces</em><br>
+                        Access with caution
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Robert McCowan. Classified Archive System for Alkebulan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
+
+        function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
+
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Simplified navigation system
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
+
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '/alkebulan-wiki/' : '/alkebulan-wiki/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                }
+
+                // Helper function to escape HTML
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
+            } else {
+                // Default to player view
+                switchToPlayerView();
+            }
+
+            // Setup simple navigation
+            setupSimpleNavigation();
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
+        });
+    </script>
+</body>
+</html>
