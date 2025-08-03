@@ -210,11 +210,6 @@ function processObsidianFiles() {
       return;
     }
 
-    // Log if we're showing a classified banner
-    if (shouldShowClassifiedBanner(data)) {
-      console.log(`🔒 Adding CLASSIFIED banner to ${file} (access level: ${data.access_level})`);
-    }
-
     // Filter content based on view mode (preserve HTML comments functionality)
     const filteredContent = filterContentSections(content, data);
 
