@@ -2,14 +2,16 @@
 layout: null
 ---
 [
-  {% for page in site.pages %}
-    {% unless page.access_level == 'secret' %}
-    {
-      "title": {{ page.title | default: page.name | jsonify }},
-      "url": "{{ site.baseurl }}{{ page.url }}",
-      "content": {{ page.content | strip_html | strip_newlines | truncatewords: 50 | jsonify }},
-      "access_level": "{{ page.access_level | default: 'public' }}"
-    }{% unless forloop.last %},{% endunless %}
-    {% endunless %}
-  {% endfor %}
+{% for page in site.pages %}
+  {% unless page.access_level == 'secret' %}
+  {% assign clean_title = page.title | default: page.name | replace: '"', "'" | replace: '\', '' | strip %}
+  {% assign clean_content = page.content | strip_html | replace: '"', "'" | replace: '\', '' | replace: '	', ' ' | strip | truncatewords: 20 %}
+  {
+    "title": "{{ clean_title }}",
+    "url": "{{ site.baseurl }}{{ page.url }}",
+    "content": "{{ clean_content }}",
+    "access_level": "{{ page.access_level | default: 'public' }}"
+  }{% unless forloop.last %},{% endunless %}
+  {% endunless %}
+{% endfor %}
 ]
