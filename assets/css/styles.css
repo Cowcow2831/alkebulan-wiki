@@ -1167,197 +1167,7 @@ a:focus {
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-/* Safe mode styling for skip link */
-.safe-mode .skip-link:focus {
-    background: var(--warning-yellow) !important;
-    color: var(--text-primary) !important;
-    text-shadow: none !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-}
 
-/* Safe Mode - Comprehensive Migraine-Friendly Design */
-.safe-mode {
-    /* High contrast, comfortable colors */
-    --bg-primary: #f8f9fa;
-    --bg-secondary: #e9ecef;
-    --bg-accent: #dee2e6;
-    --text-primary: #212529;
-    --text-secondary: #495057;
-    --text-muted: #6c757d;
-
-    /* Muted, non-aggressive accent colors */
-    --toxic-green: #28a745;
-    --rust-orange: #fd7e14;
-    --warning-yellow: #856404;
-    --radiation-orange: #dc3545;
-    --ash-gray: #adb5bd;
-    --danger-red: #721c24;
-
-    /* Remove all glows and effects */
-    --glow-green: none;
-    --glow-orange: none;
-    --text-shadow: none;
-    --border-glow: none;
-}
-/* Enhanced safe mode for vestibular sensitivity */
-.safe-mode {
-    /* Respect prefers-reduced-motion */
-    animation: none !important;
-    transition: none !important;
-}
-
-/* Reduce parallax and motion effects */
-.safe-mode * {
-    transform: none !important;
-    animation: none !important;
-    transition: none !important;
-}
-
-/* Remove hover transforms that could cause motion sensitivity */
-.safe-mode *:hover {
-    transform: none !important;
-}
-
-/* Ensure focus indicators are static */
-.safe-mode *:focus {
-    transform: none !important;
-    animation: none !important;
-}
-/* Override body background for safe mode */
-.safe-mode body {
-    background: var(--bg-primary) !important;
-    background-image: none !important;
-}
-
-/* Remove ALL animations and transitions in safe mode */
-.safe-mode *,
-.safe-mode *::before,
-.safe-mode *::after {
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-}
-
-/* Simplify all containers */
-.safe-mode .main-content,
-.safe-mode .sidebar,
-.safe-mode header {
-    background: var(--bg-secondary) !important;
-    border: 1px solid var(--ash-gray) !important;
-    box-shadow: none !important;
-}
-
-.safe-mode .main-content::before,
-.safe-mode .sidebar::before,
-.safe-mode header::before {
-    display: none !important;
-}
-
-/* Simplify buttons */
-.safe-mode button,
-.safe-mode .view-toggle {
-    background: var(--bg-accent) !important;
-    border: 1px solid var(--ash-gray) !important;
-    color: var(--text-primary) !important;
-}
-
-/* Remove decorative elements */
-.safe-mode .site-title::before,
-.safe-mode h1::before,
-.safe-mode nav a::before,
-.safe-mode footer::before {
-    display: none !important;
-}
-
-/* Increase font size and line spacing for comfort */
-.safe-mode {
-    font-size: 1.1em;
-    line-height: 1.8;
-}
-
-/* Simplify headers */
-.safe-mode h1,
-.safe-mode h2,
-.safe-mode h3,
-.safe-mode h4,
-.safe-mode h5,
-.safe-mode h6 {
-    color: var(--text-primary) !important;
-    border: none !important;
-    padding: 0.5rem 0 !important;
-    margin: 1rem 0 !important;
-}
-
-/* Remove contamination warnings visual effects */
-.safe-mode .contamination-warning,
-.safe-mode .classified-banner {
-    background: var(--bg-accent) !important;
-    border: 1px solid var(--ash-gray) !important;
-    color: var(--text-primary) !important;
-    /* Enhanced Low Contrast Mode with higher specificity */
-    body.low-contrast,
-    body.low-contrast * {
-        --text-primary: #c0c0c0 !important;
-        --text-secondary: #999999 !important;
-        --warning-yellow: #b8a000 !important;
-        --toxic-green: #5a9900 !important;
-        --danger-red: #b83333 !important;
-        --rust-orange: #cc7700 !important;
-    }
-
-    body.low-contrast h1,
-    body.low-contrast h2,
-    body.low-contrast h3,
-    body.low-contrast h4,
-    body.low-contrast h5,
-    body.low-contrast h6 {
-        color: #c0c0c0 !important;
-    }
-
-    body.low-contrast .site-title {
-        color: #b8a000 !important;
-    }
-
-    body.low-contrast a {
-        color: #b8a000 !important;
-    }
-
-    body.low-contrast a:hover {
-        color: #5a9900 !important;
-    }
-
-    body.low-contrast .view-mode-indicator {
-        background: linear-gradient(45deg, #666666, #888888) !important;
-    }
-
-    body.low-contrast .view-toggle {
-        background: linear-gradient(45deg, #777777, #999999) !important;
-    }
-
-    body.low-contrast nav a {
-        color: #999999 !important;
-        border-color: #666666 !important;
-    }
-
-    body.low-contrast nav a:hover {
-        background: #cc7700 !important;
-        color: #c0c0c0 !important;
-    }
-
-    /* Add a subtle border to indicate low contrast mode is active */
-    body.low-contrast::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #666666, #888888, #666666);
-        z-index: 1000;
-        pointer-events: none;
-    }
 
 /* Accessibility Control Panel */
 .accessibility-controls {
@@ -1425,11 +1235,39 @@ a:focus {
     border-color: #6c757d;
 }
 
-/* Safe mode overrides for control panel */
-.safe-mode .accessibility-controls {
-    background: none;
+
+
+/* Mobile responsiveness for control panel */
+@media (max-width: 768px) {
+    .accessibility-controls {
+        bottom: 10px;
+        right: 10px;
+        max-width: 160px;
+    }
+
+    .accessibility-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
+        min-height: 36px;
+    }
+
+    .mode-status {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+    }
 }
-/* Enhanced safe mode - dark background for migraine relief */
+
+/* Ensure control panel appears above everything */
+.accessibility-controls {
+    z-index: 9999 !important;
+}
+
+.accessibility-controls * {
+    z-index: 9999 !important;
+}
+
+
+/* Safe Mode - Comprehensive Migraine-Friendly Design */
 .safe-mode {
     /* Force dark background colors */
     background: #1a1a1a !important;
@@ -1491,57 +1329,40 @@ a:focus {
 .safe-mode .view-toggle:hover {
     background: #505050 !important;
 }
-.safe-mode .accessibility-btn {
-    background: var(--bg-accent) !important;
-    border: 1px solid var(--ash-gray) !important;
-    color: var(--text-primary) !important;
-    box-shadow: none !important;
+
+/* Remove ALL animations and transitions in safe mode */
+.safe-mode *,
+.safe-mode *::before,
+.safe-mode *::after {
+    animation: none !important;
+    transition: none !important;
     transform: none !important;
-}
-
-.safe-mode .accessibility-btn:hover {
-    background: var(--ash-gray) !important;
-    transform: none !important;
-}
-
-.safe-mode .mode-status.safe {
-    background: var(--bg-accent) !important;
-    color: var(--text-primary) !important;
-    border-color: var(--ash-gray) !important;
     box-shadow: none !important;
+    text-shadow: none !important;
 }
 
-.safe-mode .mode-status.safe-low {
-    background: var(--bg-secondary) !important;
-    color: var(--text-primary) !important;
-    border-color: var(--ash-gray) !important;
+/* Remove decorative elements */
+.safe-mode .site-title::before,
+.safe-mode h1::before,
+.safe-mode nav a::before,
+.safe-mode footer::before {
+    display: none !important;
 }
 
-/* Mobile responsiveness for control panel */
-@media (max-width: 768px) {
-    .accessibility-controls {
-        bottom: 10px;
-        right: 10px;
-        max-width: 160px;
-    }
-
-    .accessibility-btn {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.75rem;
-        min-height: 36px;
-    }
-
-    .mode-status {
-        font-size: 0.7rem;
-        padding: 0.4rem 0.8rem;
-    }
+/* Remove contamination warnings visual effects */
+.safe-mode .contamination-warning,
+.safe-mode .classified-banner {
+    background: #404040 !important;
+    border: 1px solid #606060 !important;
+    color: #e0e0e0 !important;
 }
 
-/* Ensure control panel appears above everything */
-.accessibility-controls {
-    z-index: 9999 !important;
+/* Sidebar in safe mode */
+.safe-mode .sidebar {
+    background: #2d2d2d !important;
+    border: 1px solid #404040 !important;
 }
 
-.accessibility-controls * {
-    z-index: 9999 !important;
+.safe-mode .sidebar::before {
+    display: none !important;
 }
