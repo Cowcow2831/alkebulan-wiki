@@ -1273,38 +1273,69 @@ a:focus {
     background: var(--bg-accent) !important;
     border: 1px solid var(--ash-gray) !important;
     color: var(--text-primary) !important;
-    /* Enhanced Low Contrast Mode with clear visual feedback */
-    .low-contrast {
-        --text-primary: #c0c0c0;
-        --text-secondary: #999999;
-        --warning-yellow: #b8a000;
-        --toxic-green: #5a9900;
-        --danger-red: #b83333;
-        --rust-orange: #cc7700;
+    /* Enhanced Low Contrast Mode with higher specificity */
+    body.low-contrast,
+    body.low-contrast * {
+        --text-primary: #c0c0c0 !important;
+        --text-secondary: #999999 !important;
+        --warning-yellow: #b8a000 !important;
+        --toxic-green: #5a9900 !important;
+        --danger-red: #b83333 !important;
+        --rust-orange: #cc7700 !important;
     }
 
-    .low-contrast h1,
-    .low-contrast h2,
-    .low-contrast h3,
-    .low-contrast h4,
-    .low-contrast h5,
-    .low-contrast h6 {
-        color: var(--text-primary) !important;
+    body.low-contrast h1,
+    body.low-contrast h2,
+    body.low-contrast h3,
+    body.low-contrast h4,
+    body.low-contrast h5,
+    body.low-contrast h6 {
+        color: #c0c0c0 !important;
+    }
+
+    body.low-contrast .site-title {
+        color: #b8a000 !important;
+    }
+
+    body.low-contrast a {
+        color: #b8a000 !important;
+    }
+
+    body.low-contrast a:hover {
+        color: #5a9900 !important;
+    }
+
+    body.low-contrast .view-mode-indicator {
+        background: linear-gradient(45deg, #666666, #888888) !important;
+    }
+
+    body.low-contrast .view-toggle {
+        background: linear-gradient(45deg, #777777, #999999) !important;
+    }
+
+    body.low-contrast nav a {
+        color: #999999 !important;
+        border-color: #666666 !important;
+    }
+
+    body.low-contrast nav a:hover {
+        background: #cc7700 !important;
+        color: #c0c0c0 !important;
     }
 
     /* Add a subtle border to indicate low contrast mode is active */
-    .low-contrast::before {
+    body.low-contrast::before {
         content: "";
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         height: 3px;
-        background: linear-gradient(90deg, var(--text-muted), var(--text-secondary), var(--text-muted));
+        background: linear-gradient(90deg, #666666, #888888, #666666);
         z-index: 1000;
         pointer-events: none;
     }
-    
+
 /* Accessibility Control Panel */
 .accessibility-controls {
     font-family: 'Courier Prime', monospace;

@@ -886,6 +886,9 @@
                 safeModeToggle.textContent = isSafeMode ? '🎨 Normal Mode' : '🧠 Migraine Mode';
                 contrastToggle.textContent = isLowContrast ? '📊 High Contrast' : '📊 Lower Contrast';
 
+                // Clear all previous status classes first
+                statusIndicator.className = 'mode-status';
+
                 // Update status indicator
                 let statusText = 'Normal Mode';
                 let statusClass = 'normal';
@@ -903,6 +906,10 @@
 
                 statusIndicator.textContent = statusText;
                 statusIndicator.className = `mode-status ${statusClass}`;
+
+                // Force a reflow to ensure changes take effect
+                statusIndicator.offsetHeight;
+                controlPanel.offsetHeight;
             }
 
             // Check saved preferences on load
