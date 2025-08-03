@@ -1120,23 +1120,25 @@
         /* Download button styling */
         .download-btn {
             display: block;
-            color: var(--text-primary) !important;
+            color: var(--text-secondary) !important;
             text-decoration: none;
             padding: 0.6rem 0.8rem;
             margin: 0.2rem 0;
             border-radius: 4px;
             transition: all 0.3s ease;
             font-size: 0.9rem;
-            border-left: 3px solid var(--toxic-green);
+            border-left: 3px solid var(--ash-gray);
             font-family: 'Courier Prime', monospace;
             font-weight: bold;
+            background: var(--bg-accent) !important;
         }
 
         .download-btn:hover {
-            background: var(--toxic-green) !important;
-            color: var(--bg-primary) !important;
+            background: var(--ash-gray) !important;
+            color: var(--text-primary) !important;
+            border-left-color: var(--toxic-green);
             transform: translateX(5px);
-            box-shadow: var(--glow-green);
+            box-shadow: 0 0 5px rgba(124, 252, 0, 0.2);
         }
     </style>
 </head>
@@ -1224,7 +1226,7 @@
                         <h4>📄 Page Tools</h4>
                         <div class="nav-level">
                             <div class="nav-level-title">Export Options</div>
-                            <button onclick="downloadAsMarkdown()" class="download-btn nav-item" style="width: 100%; text-align: left; background: var(--rust-orange); border: none; cursor: pointer;">
+<button onclick="downloadAsMarkdown()" class="download-btn nav-item" style="width: 100%; text-align: left; border: none; cursor: pointer;">
                                 📥 Download as .md
                             </button>
                         </div>
