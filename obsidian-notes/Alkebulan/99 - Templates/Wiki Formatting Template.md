@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Wiki Formatting Template & Reference
 
 This document explains how to format content for your Jekyll-based D&D wiki with multi-view access control. Use this as a template for new pages and as a reference for Claude when generating content.

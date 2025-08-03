@@ -76,7 +76,7 @@ Crystallized figures remain alive - hearts beat once per minute, consciousness t
 #### Inner Sanctum (0-50ft from center)
 - **Terrain:** Perfect crystalline amphitheater formations
 - **Movement:** Safe paths exist, DC 16 Perception to identify
-- **Magic:** Unpredictable effects - roll on [[Whispering Wastes Surge Table (x)]]
+- **Magic:** Unpredictable effects - roll on [[Whispering Wastes Surge Table]]
 - **Contamination:** Heavy exposure risk immediately
 - **Temporal Effects:** Past/future glimpses in crystal reflections
 

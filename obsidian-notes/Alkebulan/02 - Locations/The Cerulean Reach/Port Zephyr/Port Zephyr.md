@@ -20,7 +20,7 @@ tags:
 **Type:** Major Trading City/Port  
 **Region:** [[The Cerulean Reach]]  
 **Population:** Approximately 10,000 permanent residents (estimated 2,000 more in transient workers and refugees)  
-**Government:** Council of Merchant Princes (7 elected representatives chosen by property owners), with [[Legal System and Authorities in Port Zephyr|City Watch]] maintaining order
+**Government:** Council of Merchant Princes (7 elected representatives chosen by property owners), with [[Legal System and Authorities in Port Zephyr (x)|City Watch]] maintaining order
 
 ## Description
 

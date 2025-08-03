@@ -1,5 +1,5 @@
 ---
-access_level: dm
+access_level: secret
 ---
 
 # NPC Master Registry - Alkebulan Campaign

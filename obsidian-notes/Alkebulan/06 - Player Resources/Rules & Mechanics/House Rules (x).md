@@ -1,11 +1,12 @@
 ---
+access_level: secret
 campaign: Alkebulan
-type: rules
+type:
+  - rules
 tags:
   - house-rules
   - campaign
   - mechanics
-access_level: player
 ---
 ## Combat Rules
 

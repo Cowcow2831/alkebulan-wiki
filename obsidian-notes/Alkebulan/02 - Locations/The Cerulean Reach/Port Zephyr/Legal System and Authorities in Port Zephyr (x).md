@@ -1,6 +1,7 @@
 ---
-type: government
-access_level: player
+access_level: secret
+type:
+  - government
 ---
 
 # Legal System and Authorities in Port Zephyr
