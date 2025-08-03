@@ -879,47 +879,19 @@
         }
 
         // Simplified navigation system
-                function setupSimpleNavigation() {
-                    try {
-                        const currentPath = window.location.pathname;
-                        const pathParts = currentPath.split('/').filter(part => part);
-                        const currentPage = pathParts[pathParts.length - 1] || 'index';
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
 
-                        // Track and display recent pages
-                        trackRecentPages(currentPage);
-                        displayRecentPages();
-
-                        // Simple hierarchy for "up one level"
-                        const hierarchy = {
-                            'index': { parent: null, title: 'Archive Home' },
-                            'port-zephyr': { parent: 'index', title: 'Port Zephyr' },
-                            'harbor-district': { parent: 'port-zephyr', title: 'Harbor District' },
-                            'player-handout-whispers-of-the-wastes': { parent: 'index', title: 'Player Handout' }
-                        };
-
-                        const current = hierarchy[currentPage];
-
-                        // Show up level navigation if there's a parent
-                        if (current && current.parent) {
-                            const upLevel = document.getElementById('navUp');
-                            if (upLevel) {
-                                upLevel.style.display = 'block';
-                                const parentTitle = hierarchy[current.parent] ? hierarchy[current.parent].title : 'Archive Home';
-                                const parentUrl = current.parent === 'index' ? '{{ site.baseurl }}/' : '{{ site.baseurl }}/' + current.parent + '/';
-                                upLevel.innerHTML = '<div class="nav-level-title">Up One Level</div><a href="' + parentUrl + '" class="nav-item nav-up">' + escapeHtml(parentTitle) + '</a>';
-                            }
-                        } else {
-                            // Hide up level if we're at the top
-                            const upLevel = document.getElementById('navUp');
-                            if (upLevel) {
-                                upLevel.style.display = 'none';
-                            }
-                        }
-
-                    } catch (error) {
-                        console.error('Error in setupSimpleNavigation:', error);
-                    }
-                }
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
 
                 // Track recent pages (last 2 visited)
                 function trackRecentPages(currentPage) {

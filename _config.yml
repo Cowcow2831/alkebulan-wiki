@@ -4,10 +4,6 @@ description: "A dark fantasy continent recovering from magical apocalypse"
 baseurl: "/alkebulan-wiki" # Your repository name
 url: "https://cowcow2831.github.io" # Your GitHub Pages URL
 
-# Player view configuration (can be overridden)
-player_baseurl: "/alkebulan-wiki"
-player_url: "https://cowcow2831.github.io"
-
 # Build settings
 markdown: kramdown
 highlighter: rouge
@@ -76,12 +72,3 @@ campaign: "Alkebulan"
 
 # View-specific settings (will be set by build process)
 view_mode: "dm" # Default to DM view
-is_player_view: false
-is_dm_view: true
-
-# Access level definitions
-access_levels:
-  public: "Available to everyone"
-  player: "Player-safe content"
-  dm: "DM-only content"
-  secret: "Hidden from all builds"

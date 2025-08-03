@@ -284,77 +284,6 @@ function processObsidianFiles() {
   return processedPages;
 }
 
-// NEW: Create navigation hierarchy from processed pages
-function createNavigationHierarchy(pages) {
-  const hierarchy = {};
-
-  pages.forEach(page => {
-    const pathParts = page.originalPath.split('/').filter(part => part && !part.endsWith('.md'));
-
-    if (pathParts.length === 0) {
-      // Root level page
-      hierarchy[page.sanitizedName] = {
-        level: 0,
-        parent: null,
-        children: [],
-        title: page.title,
-        permalink: page.permalink
-      };
-    } else {
-      // Nested page - determine level based on path depth
-      const level = pathParts.length;
-      let parent = null;
-
-      // Try to find parent (folder containing this file)
-      if (pathParts.length > 0) {
-        const parentFolder = pathParts[pathParts.length - 1];
-        const parentPage = pages.find(p =>
-          sanitizeFilename(path.basename(p.originalPath, '.md')) === sanitizeFilename(parentFolder)
-        );
-
-        if (parentPage) {
-          parent = parentPage.sanitizedName;
-        }
-      }
-
-      hierarchy[page.sanitizedName] = {
-        level: level,
-        parent: parent,
-        children: [],
-        title: page.title,
-        permalink: page.permalink
-      };
-    }
-  });
-
-  // Populate children arrays
-  Object.keys(hierarchy).forEach(pageKey => {
-    const page = hierarchy[pageKey];
-    if (page.parent && hierarchy[page.parent]) {
-      hierarchy[page.parent].children.push(pageKey);
-    }
-  });
-
-  return hierarchy;
-}
-
-// NEW: Generate navigation data file for JavaScript to use
-function generateNavigationData(pages) {
-  const hierarchy = createNavigationHierarchy(pages);
-
-  const navigationData = `// Auto-generated navigation data
-window.WIKI_NAVIGATION = ${JSON.stringify(hierarchy, null, 2)};`;
-
-  // Create assets/js directory if it doesn't exist
-  const jsDir = './assets/js';
-  if (!fs.existsSync(jsDir)) {
-    fs.mkdirSync(jsDir, { recursive: true });
-  }
-
-  fs.writeFileSync(path.join(jsDir, 'navigation.js'), navigationData);
-  console.log('📊 Generated navigation data file');
-}
-
 // Helper function to create folder hierarchy
 function createFolderHierarchy(pages) {
   const hierarchy = {
@@ -566,7 +495,6 @@ try {
   const processedPages = processObsidianFiles();
   copyImages();
   generateIndex(processedPages);
-  generateNavigationData(processedPages);
 
   if (!fs.existsSync('./index.md')) {
     console.log('📄 Creating fallback index...');
