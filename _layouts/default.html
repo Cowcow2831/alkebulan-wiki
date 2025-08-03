@@ -870,39 +870,58 @@
                 }
             }
 
-            // Function to update status and button text
+            // Function to update status and button text - FIXED VERSION
             function updateModeStatus() {
                 const isSafeMode = document.body.classList.contains('safe-mode');
                 const isLowContrast = document.body.classList.contains('low-contrast');
+
+                console.log('Updating mode status. Safe:', isSafeMode, 'Low contrast:', isLowContrast);
 
                 // Update button text
                 safeModeToggle.textContent = isSafeMode ? '🎨 Normal Mode' : '🧠 Migraine Mode';
                 contrastToggle.textContent = isLowContrast ? '📊 High Contrast' : '📊 Lower Contrast';
 
-                // Clear all previous status classes first
-                statusIndicator.className = 'mode-status';
+                // Update status indicator - FORCE CLEAR FIRST
+                statusIndicator.className = ''; // Clear all classes
+                statusIndicator.style.cssText = `
+                    padding: 0.5rem;
+                    text-align: center;
+                    border-radius: 4px;
+                    font-weight: bold;
+                    font-size: 0.75rem;
+                    border: 1px solid #666;
+                    transition: none;
+                `; // Reset all styles
 
-                // Update status indicator
+                // Set new status
                 let statusText = 'Normal Mode';
-                let statusClass = 'normal';
+                let bgColor = '#333';
+                let textColor = '#fff';
 
                 if (isSafeMode && isLowContrast) {
                     statusText = 'Safe + Low Contrast';
-                    statusClass = 'safe-low';
+                    bgColor = '#4a4a4a';
+                    textColor = '#ddd';
                 } else if (isSafeMode) {
                     statusText = 'Migraine-Safe Mode';
-                    statusClass = 'safe';
+                    bgColor = '#2d5a2d';
+                    textColor = '#fff';
                 } else if (isLowContrast) {
                     statusText = 'Low Contrast Mode';
-                    statusClass = 'low-contrast';
+                    bgColor = '#5a4a2d';
+                    textColor = '#fff';
                 }
 
+                // Apply new styles
                 statusIndicator.textContent = statusText;
-                statusIndicator.className = `mode-status ${statusClass}`;
+                statusIndicator.style.backgroundColor = bgColor;
+                statusIndicator.style.color = textColor;
 
-                // Force a reflow to ensure changes take effect
+                // Force repaint by triggering reflow
                 statusIndicator.offsetHeight;
-                controlPanel.offsetHeight;
+                statusIndicator.style.display = 'none';
+                statusIndicator.offsetHeight;
+                statusIndicator.style.display = 'block';
             }
 
             // Safe mode toggle function
@@ -1006,23 +1025,6 @@
                 document.documentElement.style.setProperty('--warning-yellow', '#b8a000');
             }
         }
-
-        // Call this in your contrast toggle function
-        contrastToggle.onclick = function() {
-            const wasLowContrast = document.body.classList.contains('low-contrast');
-
-            if (wasLowContrast) {
-                document.body.classList.remove('low-contrast');
-                localStorage.setItem('lowContrastEnabled', 'false');
-            } else {
-                document.body.classList.add('low-contrast');
-                localStorage.setItem('lowContrastEnabled', 'true');
-            }
-
-            updateModeStatus();
-            debugContrastMode(); // Add this line
-        };
-
 
 
     </script>
