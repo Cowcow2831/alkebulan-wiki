@@ -759,6 +759,14 @@
                 text-align: center;
             }
 
+            /* Second line: Search bar */
+            .search-line {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                order: 2;
+            }
+
             /* Second line: Access indicator and toggle button */
             .access-line {
                 display: flex;
@@ -949,7 +957,18 @@
         /* Search Functionality */
         .search-container {
             position: relative;
-            margin-bottom: 1rem;
+            margin-bottom: 0; /* Remove bottom margin */
+        }
+
+        /* Mobile specific search styling */
+        @media (max-width: 768px) {
+            .search-container {
+                margin-bottom: 1rem; /* Only add margin on mobile */
+            }
+
+            .search-input {
+                max-width: 300px; /* Slightly smaller on mobile */
+            }
         }
 
         .search-input {
@@ -1011,33 +1030,38 @@
 <body>
     <header>
         <div class="container">
-          <div class="header-content">
-              <!-- First line: Site title and icon -->
-              <div class="title-line">
-                  <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-              </div>
-
-              <!-- Second line: Access controls -->
-              <div class="access-line">
-                  <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
-                  <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
-                      🔓 DM ACCESS
-                  </button>
-              </div>
-
-              <!-- Third line: Search and Navigation -->
-              <div class="nav-line">
-                  <div class="search-container">
-                      <input type="text" id="searchBox" placeholder="🔍 Search archives..." class="search-input">
-                      <div id="searchResults" class="search-results"></div>
+          <div class="header-content" id="headerContent">
+              <!-- Desktop: Title and Search on first line -->
+              <div class="title-search-line">
+                  <div class="title-line">
+                      <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
                   </div>
-                  <nav>
-                      <ul>
-                          {% for item in site.navigation %}
-                          <li><a href="{{ site.baseurl }}{{ item.url }}" class="nav-item" data-access="{{ item.access_level | default: 'public' }}">{{ item.title }}</a></li>
-                          {% endfor %}
-                      </ul>
-                  </nav>
+                  <div class="search-line">
+                      <div class="search-container">
+                          <input type="text" id="searchBox" placeholder="🔍 Search archives..." class="search-input">
+                          <div id="searchResults" class="search-results"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Desktop: Access controls and Nav on second line (when wrapped) -->
+              <div class="access-nav-line">
+                  <div class="access-line">
+                      <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                      <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                          🔓 DM ACCESS
+                      </button>
+                  </div>
+
+                  <div class="nav-line">
+                      <nav>
+                          <ul>
+                              {% for item in site.navigation %}
+                              <li><a href="{{ site.baseurl }}{{ item.url }}" class="nav-item" data-access="{{ item.access_level | default: 'public' }}">{{ item.title }}</a></li>
+                              {% endfor %}
+                          </ul>
+                      </nav>
+                  </div>
               </div>
           </div>
         </div>
@@ -1424,6 +1448,45 @@
                                 isMinimal = false;
                             }
                         }
+
+                        // Check if header content needs wrapping
+                        function checkHeaderWidth() {
+                            if (window.innerWidth <= 768) return; // Skip on mobile
+
+                            const headerContent = document.getElementById('headerContent');
+                            const titleSearchLine = headerContent.querySelector('.title-search-line');
+                            const accessNavLine = headerContent.querySelector('.access-nav-line');
+
+                            // Temporarily remove wrap class to measure natural width
+                            headerContent.classList.remove('wrap-nav');
+
+                            // Force single line layout temporarily
+                            titleSearchLine.style.width = 'auto';
+                            accessNavLine.style.width = 'auto';
+
+                            // Measure the content width
+                            const containerWidth = headerContent.offsetWidth;
+                            const contentWidth = titleSearchLine.scrollWidth + accessNavLine.scrollWidth;
+
+                            // If content is taking up more than 85% of container width, wrap it
+                            if (contentWidth > containerWidth * 0.85) {
+                                headerContent.classList.add('wrap-nav');
+                            }
+
+                            // Reset styles
+                            titleSearchLine.style.width = '';
+                            accessNavLine.style.width = '';
+                        }
+
+                        // Call on window resize and load
+                        window.addEventListener('resize', function() {
+                            handleWindowResize();
+                            setTimeout(checkHeaderWidth, 100); // Small delay to ensure layout is settled
+                        });
+
+                        window.addEventListener('load', function() {
+                            setTimeout(checkHeaderWidth, 100);
+                        });
 
                         // Add resize listener
                         window.addEventListener('resize', handleWindowResize);
