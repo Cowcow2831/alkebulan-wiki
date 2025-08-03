@@ -15,7 +15,7 @@
     <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/assets/favicon.ico">
 
     <!-- Navigation Data -->
-    <script src="{{ site.baseurl }}/assets/js/navigation.js"></script>
+    <!-- <script src="{{ site.baseurl }}/assets/js/navigation.js"></script> -->
 
     <!-- Styles -->
     <style>
@@ -744,13 +744,6 @@
                             <div class="nav-level-title">Deeper Levels</div>
                             <!-- Will be populated by JavaScript -->
                         </div>
-
-                        <div class="nav-level">
-                            <div class="nav-level-title">Main Sections</div>
-                            <a href="{{ site.baseurl }}/port-zephyr/" class="nav-item nav-same">🏛️ Port Zephyr</a>
-                            <a href="{{ site.baseurl }}/harbor-district/" class="nav-item nav-same">⚓ Harbor District</a>
-                            <a href="{{ site.baseurl }}/player-handout-whispers-of-the-wastes/" class="nav-item nav-same">📖 Player Handout</a>
-                        </div>
                     </div>
 
                     <div class="contamination-warning">
@@ -1016,12 +1009,8 @@
                                 upLevel.style.display = 'block';
                                 const parentInfo = hierarchy[current.parent];
                                 const parentTitle = parentInfo ? parentInfo.title : 'Archive Home';
-                                const baseUrl = document.querySelector('meta[name="baseurl"]')?.content || '';
-                                const parentUrl = current.parent === 'index' ? `${baseUrl}/` : `${baseUrl}/${current.parent}/`;
-                                upLevel.innerHTML = `
-                                    <div class="nav-level-title">Up One Level</div>
-                                    <a href="${parentUrl}" class="nav-item nav-up">${escapeHtml(parentTitle)}</a>
-                                `;
+                                const parentUrl = current.parent === 'index' ? '{{ site.baseurl }}/' : '{{ site.baseurl }}/' + current.parent + '/';
+                                upLevel.innerHTML = '<div class="nav-level-title">Up One Level</div><a href="' + parentUrl + '" class="nav-item nav-up">' + escapeHtml(parentTitle) + '</a>';
                             }
                         }
 
@@ -1037,11 +1026,10 @@
                             if (sameLevel) {
                                 sameLevel.style.display = 'block';
                                 let siblingsHtml = '<div class="nav-level-title">Same Level</div>';
-                                const baseUrl = document.querySelector('meta[name="baseurl"]')?.content || '';
                                 siblings.forEach(sibling => {
                                     const page = hierarchy[sibling];
-                                    const url = sibling === 'index' ? `${baseUrl}/` : `${baseUrl}/${sibling}/`;
-                                    siblingsHtml += `<a href="${url}" class="nav-item nav-same">${escapeHtml(page.title)}</a>`;
+                                    const url = sibling === 'index' ? '{{ site.baseurl }}/' : '{{ site.baseurl }}/' + sibling + '/';
+                                    siblingsHtml += '<a href="' + url + '" class="nav-item nav-same">' + escapeHtml(page.title) + '</a>';
                                 });
                                 sameLevel.innerHTML = siblingsHtml;
                             }
@@ -1053,12 +1041,11 @@
                             if (downLevel) {
                                 downLevel.style.display = 'block';
                                 let childrenHtml = '<div class="nav-level-title">Deeper Levels</div>';
-                                const baseUrl = document.querySelector('meta[name="baseurl"]')?.content || '';
                                 current.children.forEach(child => {
                                     const page = hierarchy[child];
                                     if (page) {
-                                        const url = child === 'index' ? `${baseUrl}/` : `${baseUrl}/${child}/`;
-                                        childrenHtml += `<a href="${url}" class="nav-item nav-down">${escapeHtml(page.title)}</a>`;
+                                        const url = child === 'index' ? '{{ site.baseurl }}/' : '{{ site.baseurl }}/' + child + '/';
+                                        childrenHtml += '<a href="' + url + '" class="nav-item nav-down">' + escapeHtml(page.title) + '</a>';
                                     }
                                 });
                                 downLevel.innerHTML = childrenHtml;
