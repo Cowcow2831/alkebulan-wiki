@@ -67,6 +67,41 @@
             padding: 0 20px;
         }
 
+        /* Classified content styling */
+        .classified-content {
+            position: relative;
+        }
+
+        .classified-banner {
+            background: linear-gradient(45deg, #ff3333, #ff6666);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            border: 3px solid #ff0000;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .classified-banner h2 {
+            margin: 0;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            color: white !important;
+        }
+
+        .classified-banner p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.2rem;
+        }
+
+        .classified-content-hidden {
+            filter: blur(5px);
+            opacity: 0.3;
+            pointer-events: none;
+            user-select: none;
+        }
+
         /* Contamination Pulse Animation */
         @keyframes contamination-pulse {
             0%, 100% { opacity: 1; }
@@ -717,8 +752,20 @@
                     <h1 class="page-title">{{ page.title }}</h1>
                     {% endif %}
 
-                    <div id="content">
-                        {{ content }}
+                    <div id="content" class="{% if page.access_level == 'dm' %}classified-content{% endif %}">
+                        {% if page.access_level == 'dm' %}
+                        <div class="classified-banner-container" id="classifiedBanner" style="display: none;">
+                            <div class="classified-banner">
+                                <h2>⚠️ CLASSIFIED ⚠️</h2>
+                                <p>This content requires DM clearance level access.</p>
+                                <p style="font-size: 0.9rem; opacity: 0.9;">Contact your Remnant Keeper for authorization.</p>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div id="actualContent" class="{% if page.access_level == 'dm' %}dm-restricted-content{% endif %}">
+                            {{ content }}
+                        </div>
                     </div>
                 </article>
 
@@ -836,35 +883,53 @@
 
         function filterContent(viewMode) {
             const content = document.getElementById('content');
+            const classifiedBanner = document.getElementById('classifiedBanner');
+            const actualContent = document.getElementById('actualContent');
 
-            if (!originalContent) {
-                originalContent = content.innerHTML; // Store original on first run
+            // Check if this page has DM-only access level
+            const pageAccessLevel = '{{ page.access_level }}';
+
+            if (pageAccessLevel === 'dm' && viewMode === 'player') {
+                // Show classified banner and hide/blur content
+                if (classifiedBanner) {
+                    classifiedBanner.style.display = 'block';
+                }
+                if (actualContent) {
+                    actualContent.className = 'dm-restricted-content classified-content-hidden';
+                }
+            } else {
+                // Hide banner and show normal content
+                if (classifiedBanner) {
+                    classifiedBanner.style.display = 'none';
+                }
+                if (actualContent) {
+                    actualContent.className = 'dm-restricted-content';
+                }
             }
 
-            let html = originalContent;
+            // Handle DM-only sections within content (preserve existing functionality)
+            if (!originalContent) {
+                originalContent = actualContent ? actualContent.innerHTML : '';
+            }
 
-            if (viewMode === 'player') {
-                // Remove DM-only sections completely
-                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+            if (actualContent) {
+                let html = originalContent;
 
-                // Remove player-safe markers but keep the content
-                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
-                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+                if (viewMode === 'player') {
+                    html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+                    html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                    html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+                } else {
+                    html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                    html = html.replace(/<!-- DM_END -->/g, '</div>');
+                    html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                    html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+                }
 
-                content.innerHTML = html;
-            } else {
-                // DM view - highlight only DM sections, leave player content normal
-                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
-                html = html.replace(/<!-- DM_END -->/g, '</div>');
-
-                // Remove player-safe markers but don't highlight
-                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
-                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
-
-                content.innerHTML = html;
+                actualContent.innerHTML = html;
             }
         }
-
+        
         function hideNavItems(viewMode) {
             const navItems = document.querySelectorAll('.nav-item');
 

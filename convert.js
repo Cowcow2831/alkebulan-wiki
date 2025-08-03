@@ -22,24 +22,6 @@ const ACCESS_LEVELS = {
 
 console.log(`🎭 Building in ${VIEW_MODE.toUpperCase()} mode`);
 
-// NEW: Helper function to check if content should show CLASSIFIED banner
-function shouldShowClassifiedBanner(frontmatter) {
-  const accessLevel = frontmatter.access_level || ACCESS_LEVELS.PUBLIC;
-
-  // Always exclude secret content completely
-  if (accessLevel === ACCESS_LEVELS.SECRET) {
-    return false; // Don't include at all
-  }
-
-  // For player view, show banner if it's DM-only content
-  if (VIEW_MODE === 'player' && accessLevel === ACCESS_LEVELS.DM) {
-    return true;
-  }
-
-  // DM view never shows classified banner
-  return false;
-}
-
 // MODIFIED: Change shouldIncludeContent to always include (except secret)
 function shouldIncludeContent(frontmatter, content) {
   const accessLevel = frontmatter.access_level || ACCESS_LEVELS.PUBLIC;
@@ -82,23 +64,7 @@ function filterContentSections(content, frontmatter) {
 
   return filteredContent.trim();
 }
-// NEW: Wrap content with CLASSIFIED banner if needed
-function wrapWithClassifiedBanner(content, frontmatter) {
-  if (shouldShowClassifiedBanner(frontmatter)) {
-    return `<div class="classified-banner" style="background: linear-gradient(45deg, #ff3333, #ff6666); color: white; padding: 2rem; text-align: center; margin: 2rem 0; border: 3px solid #ff0000; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
-  <h2 style="margin: 0; font-size: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">⚠️ CLASSIFIED ⚠️</h2>
-  <p style="margin: 0.5rem 0 0 0; font-size: 1.2rem;">This content requires DM clearance level access.</p>
-  <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; opacity: 0.9;">Contact your Remnant Keeper for authorization.</p>
-</div>
 
-<!-- Original content hidden for player view -->
-<div style="display: none;">
-${content}
-</div>`;
-  }
-
-  return content;
-}
 // Enhanced sanitizeFilename function
 function sanitizeFilename(filename) {
   const nameWithoutExt = filename.replace(/\.md$/, '');
@@ -255,8 +221,8 @@ function processObsidianFiles() {
     // Convert WikiLinks with access checking FIRST
     const convertedContent = convertWikiLinks(filteredContent, file, allFiles);
 
-    // Add CLASSIFIED banner if access level doesn't match view mode (AFTER link conversion)
-    const accessControlledContent = wrapWithClassifiedBanner(convertedContent, data);
+    // No banner processing needed - layout will handle it
+    const accessControlledContent = convertedContent;
 
     // Generate frontmatter with access control and navigation data
     const jekyllFrontmatter = generateFrontmatter(data, file, file);
