@@ -82,7 +82,68 @@
             const hierarchy = {
                 'index': { level: 0, parent: null, children: ['port-zephyr', 'harbor-district'], title: 'Archive Home' },
                 'port-zephyr': { level: 1, parent: 'index', children: ['harbor-district'], title: 'Port Zephyr' },
-                'harbor-district': { level: <!DOCTYPE html>
+                'harbor-district': { level: 2, parent: 'port-zephyr', children: [], title: 'Harbor District' },
+                'player-handout-whispers-of-the-wastes': { level: 1, parent: 'index', children: [], title: 'Player Handout' }
+            };
+
+            const current = hierarchy[currentPage] || { level: 0, parent: null, children: [] };
+
+            // Show up level navigation
+            if (current.parent) {
+                const upLevel = document.getElementById('navUp');
+                upLevel.style.display = 'block';
+                const parentInfo = hierarchy[current.parent];
+                const parentTitle = parentInfo ? parentInfo.title : 'Archive Home';
+                const parentUrl = current.parent === 'index' ? '' : current.parent + '/';
+                upLevel.innerHTML = `
+                    <div class="nav-level-title">Up One Level</div>
+                    <a href="{{ site.baseurl }}/${parentUrl}" class="nav-item nav-up">${parentTitle}</a>
+                `;
+            }
+
+            // Show same level navigation (siblings)
+            const siblings = Object.keys(hierarchy).filter(key =>
+                hierarchy[key].level === current.level &&
+                hierarchy[key].parent === current.parent &&
+                key !== currentPage
+            );
+
+            if (siblings.length > 0) {
+                const sameLevel = document.getElementById('navSame');
+                sameLevel.style.display = 'block';
+                let siblingsHtml = '<div class="nav-level-title">Same Level</div>';
+                siblings.forEach(sibling => {
+                    const page = hierarchy[sibling];
+                    const url = sibling === 'index' ? '' : sibling + '/';
+                    siblingsHtml += `<a href="{{ site.baseurl }}/${url}" class="nav-item nav-same">${page.title}</a>`;
+                });
+                sameLevel.innerHTML = siblingsHtml;
+            }
+
+            // Show down level navigation (children)
+            if (current.children && current.children.length > 0) {
+                const downLevel = document.getElementById('navDown');
+                downLevel.style.display = 'block';
+                let childrenHtml = '<div class="nav-level-title">Deeper Levels</div>';
+                current.children.forEach(child => {
+                    const page = hierarchy[child];
+                    if (page) {
+                        const url = child === 'index' ? '' : child + '/';
+                        childrenHtml += `<a href="{{ site.baseurl }}/${url}" class="nav-item nav-down">${page.title}</a>`;
+                    }
+                });
+                downLevel.innerHTML = childrenHtml;
+            }
+
+            // Highlight current page in main sections
+            const mainLinks = document.querySelectorAll('.nav-item');
+            mainLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (href.includes(currentPage) || (currentPage === 'index' && href.endsWith('/')))) {
+                    link.classList.add('current');
+                }
+            });
+        } <!DOCTYPE html>
 <!-- _layouts/default.html with Dynamic View Toggle -->
 <html lang="en">
 <head>
