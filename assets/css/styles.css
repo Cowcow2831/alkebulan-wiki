@@ -1199,7 +1199,30 @@ a:focus {
     --text-shadow: none;
     --border-glow: none;
 }
+/* Enhanced safe mode for vestibular sensitivity */
+.safe-mode {
+    /* Respect prefers-reduced-motion */
+    animation: none !important;
+    transition: none !important;
+}
 
+/* Reduce parallax and motion effects */
+.safe-mode * {
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Remove hover transforms that could cause motion sensitivity */
+.safe-mode *:hover {
+    transform: none !important;
+}
+
+/* Ensure focus indicators are static */
+.safe-mode *:focus {
+    transform: none !important;
+    animation: none !important;
+}
 /* Override body background for safe mode */
 .safe-mode body {
     background: var(--bg-primary) !important;
@@ -1406,7 +1429,68 @@ a:focus {
 .safe-mode .accessibility-controls {
     background: none;
 }
+/* Enhanced safe mode - dark background for migraine relief */
+.safe-mode {
+    /* Force dark background colors */
+    background: #1a1a1a !important;
+    background-color: #1a1a1a !important;
+    background-image: none !important;
+}
 
+.safe-mode body {
+    background: #1a1a1a !important;
+    background-color: #1a1a1a !important;
+    background-image: none !important;
+    color: #e0e0e0 !important;
+}
+
+/* Override all container backgrounds */
+.safe-mode .main-content,
+.safe-mode .content-wrapper,
+.safe-mode .container,
+.safe-mode article {
+    background: #2d2d2d !important;
+    background-color: #2d2d2d !important;
+    background-image: none !important;
+    border: 1px solid #404040 !important;
+}
+
+/* Header and navigation in safe mode */
+.safe-mode header {
+    background: #1a1a1a !important;
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid #404040 !important;
+}
+
+/* Ensure all text is readable on dark background */
+.safe-mode,
+.safe-mode * {
+    color: #e0e0e0 !important;
+}
+
+.safe-mode h1,
+.safe-mode h2,
+.safe-mode h3,
+.safe-mode h4,
+.safe-mode h5,
+.safe-mode h6 {
+    color: #f0f0f0 !important;
+    border-color: #404040 !important;
+    text-shadow: none !important;
+}
+
+/* Button styling in safe mode */
+.safe-mode button,
+.safe-mode .view-toggle {
+    background: #404040 !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #606060 !important;
+}
+
+.safe-mode button:hover,
+.safe-mode .view-toggle:hover {
+    background: #505050 !important;
+}
 .safe-mode .accessibility-btn {
     background: var(--bg-accent) !important;
     border: 1px solid var(--ash-gray) !important;
