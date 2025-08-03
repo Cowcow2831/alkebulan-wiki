@@ -1223,12 +1223,22 @@
             div.textContent = text;
             return div.innerHTML;
         }
-        // Header scroll behavior - minimize only, don't hide
+
+        // Header scroll behavior - mobile only, minimize only, don't hide
                 let lastScrollTop = 0;
                 let scrollThreshold = 80; // Pixels to scroll before minimizing
                 let isMinimal = false;
 
                 function handleHeaderScroll() {
+                    // Only apply scroll behavior on mobile (768px and below)
+                    if (window.innerWidth > 768) {
+                        // On desktop, always keep full header
+                        const header = document.querySelector('header');
+                        header.classList.remove('header-minimal');
+                        isMinimal = false;
+                        return;
+                    }
+
                     const header = document.querySelector('header');
                     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
                     const scrollDirection = currentScrollTop > lastScrollTop ? 'down' : 'up';
@@ -1261,6 +1271,19 @@
                     lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
                 }
 
+                // Handle window resize to reset header state
+                        function handleWindowResize() {
+                            const header = document.querySelector('header');
+                            if (window.innerWidth > 768) {
+                                // On desktop, always remove minimal class
+                                header.classList.remove('header-minimal');
+                                isMinimal = false;
+                            }
+                        }
+
+                        // Add resize listener
+                        window.addEventListener('resize', handleWindowResize);
+                        
         // Throttle scroll events for better performance
         let scrollTimeout;
         function throttledScrollHandler() {
