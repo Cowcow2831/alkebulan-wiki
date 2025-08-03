@@ -728,20 +728,13 @@
                         <div class="nav-level">
                             <div class="nav-level-title">Quick Access</div>
                             <a href="{{ site.baseurl }}/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
                         </div>
 
                         <div class="nav-level" id="navUp" style="display: none;">
                             <div class="nav-level-title">Up One Level</div>
-                            <!-- Will be populated by JavaScript -->
-                        </div>
-
-                        <div class="nav-level" id="navSame" style="display: none;">
-                            <div class="nav-level-title">Same Level</div>
-                            <!-- Will be populated by JavaScript -->
-                        </div>
-
-                        <div class="nav-level" id="navDown" style="display: none;">
-                            <div class="nav-level-title">Deeper Levels</div>
                             <!-- Will be populated by JavaScript -->
                         </div>
                     </div>
@@ -884,87 +877,113 @@
             });
         }
 
-        // Smart navigation system - FIXED VERSION
-                function setupSmartNavigation() {
+        // Simplified navigation system
+                function setupSimpleNavigation() {
                     try {
-                        // Use the generated navigation data if available
-                        if (typeof window.WIKI_NAVIGATION === 'undefined') {
-                            console.log('Navigation data not loaded, using fallback');
-                            setupFallbackNavigation();
-                            return;
-                        }
-
                         const currentPath = window.location.pathname;
-                        // Better path parsing to handle GitHub Pages subpaths
                         const pathParts = currentPath.split('/').filter(part => part);
                         const currentPage = pathParts[pathParts.length - 1] || 'index';
 
-                        const hierarchy = window.WIKI_NAVIGATION;
+                        // Track and display recent pages
+                        trackRecentPages(currentPage);
+                        displayRecentPages();
+
+                        // Simple hierarchy for "up one level"
+                        const hierarchy = {
+                            'index': { parent: null, title: 'Archive Home' },
+                            'port-zephyr': { parent: 'index', title: 'Port Zephyr' },
+                            'harbor-district': { parent: 'port-zephyr', title: 'Harbor District' },
+                            'player-handout-whispers-of-the-wastes': { parent: 'index', title: 'Player Handout' }
+                        };
+
                         const current = hierarchy[currentPage];
 
-                        if (!current) {
-                            console.log(`Page ${currentPage} not found in navigation data`);
-                            setupFallbackNavigation();
-                            return;
-                        }
-
-                        // Show up level navigation
-                        if (current.parent && hierarchy[current.parent]) {
+                        // Show up level navigation if there's a parent
+                        if (current && current.parent) {
                             const upLevel = document.getElementById('navUp');
                             if (upLevel) {
                                 upLevel.style.display = 'block';
-                                const parent = hierarchy[current.parent];
-                                upLevel.innerHTML = `
-                                    <div class="nav-level-title">Up One Level</div>
-                                    <a href="${parent.permalink}" class="nav-item nav-up">${escapeHtml(parent.title)}</a>
-                                `;
+                                const parentTitle = hierarchy[current.parent] ? hierarchy[current.parent].title : 'Archive Home';
+                                const parentUrl = current.parent === 'index' ? '{{ site.baseurl }}/' : '{{ site.baseurl }}/' + current.parent + '/';
+                                upLevel.innerHTML = '<div class="nav-level-title">Up One Level</div><a href="' + parentUrl + '" class="nav-item nav-up">' + escapeHtml(parentTitle) + '</a>';
+                            }
+                        } else {
+                            // Hide up level if we're at the top
+                            const upLevel = document.getElementById('navUp');
+                            if (upLevel) {
+                                upLevel.style.display = 'none';
                             }
                         }
-
-                        // Show same level navigation (siblings)
-                        const siblings = Object.keys(hierarchy).filter(key => {
-                            const page = hierarchy[key];
-                            return page.level === current.level &&
-                                   page.parent === current.parent &&
-                                   key !== currentPage;
-                        });
-
-                        if (siblings.length > 0) {
-                            const sameLevel = document.getElementById('navSame');
-                            if (sameLevel) {
-                                sameLevel.style.display = 'block';
-                                let siblingsHtml = '<div class="nav-level-title">Same Level</div>';
-                                siblings.forEach(sibling => {
-                                    const page = hierarchy[sibling];
-                                    siblingsHtml += `<a href="${page.permalink}" class="nav-item nav-same">${escapeHtml(page.title)}</a>`;
-                                });
-                                sameLevel.innerHTML = siblingsHtml;
-                            }
-                        }
-
-                        // Show down level navigation (children)
-                        if (current.children && current.children.length > 0) {
-                            const downLevel = document.getElementById('navDown');
-                            if (downLevel) {
-                                downLevel.style.display = 'block';
-                                let childrenHtml = '<div class="nav-level-title">Deeper Levels</div>';
-                                current.children.forEach(child => {
-                                    const page = hierarchy[child];
-                                    if (page) {
-                                        childrenHtml += `<a href="${page.permalink}" class="nav-item nav-down">${escapeHtml(page.title)}</a>`;
-                                    }
-                                });
-                                downLevel.innerHTML = childrenHtml;
-                            }
-                        }
-
-                        // Highlight current page in main sections
-                        highlightCurrentPage(currentPage);
 
                     } catch (error) {
-                        console.error('Error in setupSmartNavigation:', error);
-                        setupFallbackNavigation();
+                        console.error('Error in setupSimpleNavigation:', error);
                     }
+                }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '{{ site.baseurl }}/' : '{{ site.baseurl }}/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
                 }
 
                 // Helper function to escape HTML
@@ -972,97 +991,6 @@
                     const div = document.createElement('div');
                     div.textContent = text;
                     return div.innerHTML;
-                }
-
-                // Helper function to highlight current page
-                function highlightCurrentPage(currentPage) {
-                    const mainLinks = document.querySelectorAll('.nav-item');
-                    mainLinks.forEach(link => {
-                        const href = link.getAttribute('href');
-                        if (href && (href.includes(currentPage) || (currentPage === 'index' && href.endsWith('/')))) {
-                            link.classList.add('current');
-                        }
-                    });
-                }
-
-                // Fallback navigation - SIMPLIFIED VERSION
-                function setupFallbackNavigation() {
-                    try {
-                        const currentPath = window.location.pathname;
-                        const pathParts = currentPath.split('/').filter(part => part);
-                        const currentPage = pathParts[pathParts.length - 1] || 'index';
-
-                        // Simple fallback hierarchy
-                        const hierarchy = {
-                            'index': { level: 0, parent: null, children: ['port-zephyr', 'harbor-district'], title: 'Archive Home' },
-                            'port-zephyr': { level: 1, parent: 'index', children: ['harbor-district'], title: 'Port Zephyr' },
-                            'harbor-district': { level: 2, parent: 'port-zephyr', children: [], title: 'Harbor District' },
-                            'player-handout-whispers-of-the-wastes': { level: 1, parent: 'index', children: [], title: 'Player Handout' }
-                        };
-
-                        const current = hierarchy[currentPage] || { level: 0, parent: null, children: [] };
-
-                        // Show up level navigation
-                        if (current.parent) {
-                            const upLevel = document.getElementById('navUp');
-                            if (upLevel) {
-                                upLevel.style.display = 'block';
-                                const parentInfo = hierarchy[current.parent];
-                                const parentTitle = parentInfo ? parentInfo.title : 'Archive Home';
-                                const parentUrl = current.parent === 'index' ? '{{ site.baseurl }}/' : '{{ site.baseurl }}/' + current.parent + '/';
-                                upLevel.innerHTML = '<div class="nav-level-title">Up One Level</div><a href="' + parentUrl + '" class="nav-item nav-up">' + escapeHtml(parentTitle) + '</a>';
-                            }
-                        }
-
-                        // Show same level navigation (siblings)
-                        const siblings = Object.keys(hierarchy).filter(key =>
-                            hierarchy[key].level === current.level &&
-                            hierarchy[key].parent === current.parent &&
-                            key !== currentPage
-                        );
-
-                        if (siblings.length > 0) {
-                            const sameLevel = document.getElementById('navSame');
-                            if (sameLevel) {
-                                sameLevel.style.display = 'block';
-                                let siblingsHtml = '<div class="nav-level-title">Same Level</div>';
-                                siblings.forEach(sibling => {
-                                    const page = hierarchy[sibling];
-                                    const url = sibling === 'index' ? '{{ site.baseurl }}/' : '{{ site.baseurl }}/' + sibling + '/';
-                                    siblingsHtml += '<a href="' + url + '" class="nav-item nav-same">' + escapeHtml(page.title) + '</a>';
-                                });
-                                sameLevel.innerHTML = siblingsHtml;
-                            }
-                        }
-
-                        // Show down level navigation (children)
-                        if (current.children && current.children.length > 0) {
-                            const downLevel = document.getElementById('navDown');
-                            if (downLevel) {
-                                downLevel.style.display = 'block';
-                                let childrenHtml = '<div class="nav-level-title">Deeper Levels</div>';
-                                current.children.forEach(child => {
-                                    const page = hierarchy[child];
-                                    if (page) {
-                                        const url = child === 'index' ? '{{ site.baseurl }}/' : '{{ site.baseurl }}/' + child + '/';
-                                        childrenHtml += '<a href="' + url + '" class="nav-item nav-down">' + escapeHtml(page.title) + '</a>';
-                                    }
-                                });
-                                downLevel.innerHTML = childrenHtml;
-                            }
-                        }
-
-                        // Highlight current page in main sections
-                        highlightCurrentPage(currentPage);
-
-                    } catch (error) {
-                        console.error('Error in setupFallbackNavigation:', error);
-                        // If all else fails, just hide the dynamic sections
-                        ['navUp', 'navSame', 'navDown'].forEach(id => {
-                            const element = document.getElementById(id);
-                            if (element) element.style.display = 'none';
-                        });
-                    }
                 }
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
@@ -1081,8 +1009,8 @@
                 switchToPlayerView();
             }
 
-            // Setup smart navigation
-            setupSmartNavigation();
+            // Setup simple navigation
+            setupSimpleNavigation();
         });
 
         // Clear DM access when page is closed/refreshed
