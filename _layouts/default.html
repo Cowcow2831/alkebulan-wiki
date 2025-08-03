@@ -926,20 +926,24 @@
                 console.log('Status updated to:', statusIndicator.textContent);
             }
 
-            // Safe mode button click
+            // Modify your safeModeToggle.onclick function:
             safeModeToggle.onclick = function() {
-                console.log('Safe mode button clicked');
                 const wasSafe = document.body.classList.contains('safe-mode');
 
                 if (wasSafe) {
                     document.body.classList.remove('safe-mode');
-                    localStorage.setItem('safeModeEnabled', 'false');
+                    // Restore original styling
+                    document.body.style.backgroundColor = '';
+                    document.documentElement.style.backgroundColor = '';
                 } else {
                     document.body.classList.add('safe-mode');
-                    localStorage.setItem('safeModeEnabled', 'true');
+                    // Force dark background immediately
+                    document.body.style.backgroundColor = '#1a1a1a';
+                    document.documentElement.style.backgroundColor = '#1a1a1a';
                 }
 
                 updateStatus();
+                saveAccessibilityPreferences();
             };
 
             // Contrast button click
@@ -977,7 +981,29 @@
 
             console.log('Accessibility initialization complete');
         }
-
+        // Update your loadAccessibilityPreferences function:
+        function loadAccessibilityPreferences() {
+            try {
+                const saved = localStorage.getItem('accessibilityPreferences');
+                if (saved) {
+                    const preferences = JSON.parse(saved);
+                    if (Date.now() - preferences.timestamp < 30 * 24 * 60 * 60 * 1000) {
+                        if (preferences.safeModeEnabled) {
+                            document.body.classList.add('safe-mode');
+                            // Force dark background
+                            document.body.style.backgroundColor = '#1a1a1a';
+                            document.documentElement.style.backgroundColor = '#1a1a1a';
+                        }
+                        if (preferences.lowContrastEnabled) {
+                            document.body.classList.add('low-contrast');
+                            applyLowContrast(true);
+                        }
+                    }
+                }
+            } catch (error) {
+                console.log('Could not load accessibility preferences');
+            }
+        }
 
 
     </script>
