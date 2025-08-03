@@ -98,7 +98,7 @@
             text-align: center;
             font-weight: bold;
         }
-        
+
         .classified-banner::before {
             content: "";
             position: absolute;
@@ -661,31 +661,75 @@
             animation: contamination-pulse 3s ease-in-out infinite;
         }
 
-        /* Mobile Responsive - Compact Header */
+        /* Mobile Responsive - Improved Header Layout */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 0.5rem;
-                padding: 0.5rem 0;
+                gap: 0.8rem;
+                padding: 0.8rem 0;
             }
 
-            .site-title {
-                font-size: 1.3rem;
+            /* First line: Site title and icon only */
+            .title-line {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
                 order: 1;
             }
 
-            .view-mode-indicator {
-                font-size: 0.7rem;
-                padding: 0.2rem 0.6rem;
-                margin: 0 0.5rem;
+            .site-title {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            /* Second line: Access indicator and toggle button */
+            .access-line {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                width: 100%;
                 order: 2;
             }
 
+            .view-mode-indicator {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem;
+                margin: 0;
+            }
+
+            .view-toggle {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            /* Third line: Navigation centered */
+            .nav-line {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                order: 3;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            /* Header controls reorganization */
             .header-controls {
                 flex-direction: column;
-                gap: 0.5rem;
-                order: 3;
+                gap: 0.8rem;
                 width: 100%;
+                align-items: center;
             }
 
             .view-toggle {
@@ -722,6 +766,50 @@
 
             .main-content {
                 padding: 1.5rem;
+            }
+        }
+        /* Header Scroll Behavior */
+        header {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .header-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .header-minimal {
+            background: rgba(42, 42, 42, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-minimal .header-content {
+            padding: 0.5rem 0;
+        }
+
+        .header-minimal .access-line,
+        .header-minimal .nav-line {
+            display: none !important;
+        }
+
+        .header-minimal .title-line {
+            margin: 0;
+        }
+
+        .header-minimal .site-title {
+            font-size: 1.2rem;
+        }
+
+        /* Desktop minimal header adjustments */
+        @media (min-width: 769px) {
+            .header-minimal .header-content {
+                flex-direction: row;
+                justify-content: center;
+                padding: 0.5rem 0;
+            }
+
+            .header-minimal .site-title {
+                font-size: 1.5rem;
             }
         }
 
@@ -784,24 +872,31 @@
 <body>
     <header>
         <div class="container">
-            <div class="header-content">
-                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-                    <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
-                </div>
-                <div class="header-controls">
-                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
-                        🔓 DM ACCESS
-                    </button>
-                    <nav>
-                        <ul>
-                            {% for item in site.navigation %}
-                            <li><a href="{{ site.baseurl }}{{ item.url }}" class="nav-item" data-access="{{ item.access_level | default: 'public' }}">{{ item.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+          <div class="header-content">
+              <!-- First line: Site title and icon -->
+              <div class="title-line">
+                  <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
+              </div>
+
+              <!-- Second line: Access controls -->
+              <div class="access-line">
+                  <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                  <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                      🔓 DM ACCESS
+                  </button>
+              </div>
+
+              <!-- Third line: Navigation -->
+              <div class="nav-line">
+                  <nav>
+                      <ul>
+                          {% for item in site.navigation %}
+                          <li><a href="{{ site.baseurl }}{{ item.url }}" class="nav-item" data-access="{{ item.access_level | default: 'public' }}">{{ item.title }}</a></li>
+                          {% endfor %}
+                      </ul>
+                  </nav>
+              </div>
+          </div>
         </div>
     </header>
 
@@ -817,8 +912,8 @@
                         <div class="classified-banner-container" id="classifiedBanner" style="display: none;">
                             <div class="classified-banner">
                                 <h2>⚠️ CLASSIFIED ⚠️</h2>
-                                <p>This content requires DM clearance level access.</p>
-                                <p style="font-size: 0.9rem; opacity: 0.9;">Contact your Remnant Keeper for authorization.</p>
+                                <p>This content requires DM level access.</p>
+                                <p style="font-size: 0.9rem; opacity: 0.9;">Contact your local Remnant Keepers for authorization.</p>
                             </div>
                         </div>
 
@@ -1111,6 +1206,59 @@
             div.textContent = text;
             return div.innerHTML;
         }
+        // Header scroll behavior
+        let lastScrollTop = 0;
+        let scrollThreshold = 100; // Pixels to scroll before hiding
+        let fastScrollThreshold = 50; // Fast scroll detection
+
+        function handleHeaderScroll() {
+            const header = document.querySelector('header');
+            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollDirection = currentScrollTop > lastScrollTop ? 'down' : 'up';
+            const scrollSpeed = Math.abs(currentScrollTop - lastScrollTop);
+
+            // If at the top, always show full header
+            if (currentScrollTop <= 10) {
+                header.classList.remove('header-hidden', 'header-minimal');
+                lastScrollTop = currentScrollTop;
+                return;
+            }
+
+            // If scrolling down past threshold, hide header
+            if (scrollDirection === 'down' && currentScrollTop > scrollThreshold) {
+                header.classList.add('header-hidden');
+                header.classList.remove('header-minimal');
+            }
+            // If scrolling up, show header
+            else if (scrollDirection === 'up') {
+                header.classList.remove('header-hidden');
+
+                // If fast scroll up or near top, show full header
+                if (scrollSpeed > fastScrollThreshold || currentScrollTop < scrollThreshold) {
+                    header.classList.remove('header-minimal');
+                } else {
+                    // Slow scroll up, show minimal header
+                    header.classList.add('header-minimal');
+                }
+            }
+
+            lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
+        }
+
+        // Throttle scroll events for better performance
+        let scrollTimeout;
+        function throttledScrollHandler() {
+            if (scrollTimeout) {
+                return;
+            }
+            scrollTimeout = setTimeout(function() {
+                handleHeaderScroll();
+                scrollTimeout = null;
+            }, 10);
+        }
+
+        // Add scroll listener
+        window.addEventListener('scroll', throttledScrollHandler);
 </script>
 </body>
 </html>
