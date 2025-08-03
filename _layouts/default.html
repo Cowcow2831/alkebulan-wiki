@@ -808,14 +808,13 @@
                 .replace(/\n{3,}/g, '\n\n') // Remove excessive newlines
                 .trim();
         }
-        // Enhanced Accessibility Control Panel - Fixed Scope Issues
+        // Simple working version - rebuild from here
         function initAccessibilityPreferences() {
+            console.log('Initializing accessibility preferences...');
 
-              console.log('Initializing accessibility preferences...');
-
-              // CLEANUP: Remove any existing control panels first
-              const existingPanels = document.querySelectorAll('.accessibility-controls');
-              existingPanels.forEach(panel => panel.remove());
+            // Remove any existing panels first
+            const existingPanels = document.querySelectorAll('.accessibility-controls');
+            existingPanels.forEach(panel => panel.remove());
 
             // Create control panel container
             const controlPanel = document.createElement('div');
@@ -829,109 +828,155 @@
                 flex-direction: column;
                 gap: 8px;
                 max-width: 200px;
+                background: rgba(0,0,0,0.9);
+                padding: 10px;
+                border-radius: 8px;
+                border: 1px solid #666;
+            `;
+
+            // Create status indicator
+            const statusIndicator = document.createElement('div');
+            statusIndicator.textContent = 'Normal Mode';
+            statusIndicator.style.cssText = `
+                padding: 0.5rem;
+                text-align: center;
+                border-radius: 4px;
+                font-weight: bold;
+                font-size: 0.75rem;
+                background: #333;
+                color: #fff;
+                border: 1px solid #666;
             `;
 
             // Create safe mode toggle
             const safeModeToggle = document.createElement('button');
-            safeModeToggle.className = 'accessibility-btn safe-mode-btn';
             safeModeToggle.textContent = '🧠 Migraine Mode';
-            safeModeToggle.title = 'Toggle migraine-friendly viewing mode';
+            safeModeToggle.style.cssText = `
+                padding: 0.6rem 1rem;
+                background: #444;
+                border: 1px solid #666;
+                color: #fff;
+                border-radius: 4px;
+                cursor: pointer;
+                font-family: 'Courier Prime', monospace;
+                font-size: 0.8rem;
+            `;
 
             // Create contrast toggle
             const contrastToggle = document.createElement('button');
-            contrastToggle.className = 'accessibility-btn contrast-btn';
             contrastToggle.textContent = '📊 Lower Contrast';
-            contrastToggle.title = 'Reduce visual contrast';
+            contrastToggle.style.cssText = `
+                padding: 0.6rem 1rem;
+                background: #444;
+                border: 1px solid #666;
+                color: #fff;
+                border-radius: 4px;
+                cursor: pointer;
+                font-family: 'Courier Prime', monospace;
+                font-size: 0.8rem;
+            `;
 
-            // Create status indicator
-            const statusIndicator = document.createElement('div');
-            statusIndicator.className = 'mode-status';
-            statusIndicator.textContent = 'Normal Mode';
-
-            // Add buttons to panel
+            // Add elements to panel
             controlPanel.appendChild(statusIndicator);
             controlPanel.appendChild(safeModeToggle);
             controlPanel.appendChild(contrastToggle);
             document.body.appendChild(controlPanel);
 
-            // Force contrast changes via JavaScript
-            function forceContrastUpdate(isLowContrast) {
-                const root = document.documentElement;
+            console.log('Control panel created and added');
 
-                if (isLowContrast) {
-                    // Force low contrast colors
-                    root.style.setProperty('--text-primary', '#c0c0c0');
-                    root.style.setProperty('--text-secondary', '#999999');
-                    root.style.setProperty('--warning-yellow', '#b8a000');
-                    root.style.setProperty('--toxic-green', '#5a9900');
-                    root.style.setProperty('--danger-red', '#b83333');
-                    root.style.setProperty('--rust-orange', '#cc7700');
+            // Simple contrast function
+            function applyLowContrast(apply) {
+                console.log('Applying low contrast:', apply);
+
+                if (apply) {
+                    document.body.style.borderTop = '3px solid #ffff00';
+                    document.documentElement.style.setProperty('--text-primary', '#c0c0c0');
+                    document.documentElement.style.setProperty('--warning-yellow', '#b8a000');
                 } else {
-                    // Restore original colors
-                    root.style.removeProperty('--text-primary');
-                    root.style.removeProperty('--text-secondary');
-                    root.style.removeProperty('--warning-yellow');
-                    root.style.removeProperty('--toxic-green');
-                    root.style.removeProperty('--danger-red');
-                    root.style.removeProperty('--rust-orange');
+                    document.body.style.borderTop = '';
+                    document.documentElement.style.removeProperty('--text-primary');
+                    document.documentElement.style.removeProperty('--warning-yellow');
                 }
             }
 
-            // Function to update status and button text - SIMPLE LINGERING FIX
-            function updateModeStatus() {
+            // Simple status update function
+            function updateStatus() {
                 const isSafeMode = document.body.classList.contains('safe-mode');
                 const isLowContrast = document.body.classList.contains('low-contrast');
-
-                console.log('Updating mode status. Safe:', isSafeMode, 'Low contrast:', isLowContrast);
 
                 // Update button text
                 safeModeToggle.textContent = isSafeMode ? '🎨 Normal Mode' : '🧠 Migraine Mode';
                 contrastToggle.textContent = isLowContrast ? '📊 High Contrast' : '📊 Lower Contrast';
 
-                // Simple approach: Just set the background to solid and opaque
-                statusIndicator.style.cssText = `
-                    padding: 0.5rem;
-                    text-align: center;
-                    border-radius: 4px;
-                    font-weight: bold;
-                    font-size: 0.75rem;
-                    border: 1px solid #666;
-                    position: relative;
-                    z-index: 2001;
-                    opacity: 1;
-                `;
-
-                // Set content and colors
-                let statusText = 'Normal Mode';
-                let bgColor = '#333333'; // Solid color, no transparency
-                let textColor = '#ffffff';
-                let borderColor = '#666666';
-
+                // Update status with solid background to prevent lingering
                 if (isSafeMode && isLowContrast) {
-                    statusText = 'Safe + Low Contrast';
-                    bgColor = '#4a4a4a';
-                    textColor = '#dddddd';
-                    borderColor = '#888888';
+                    statusIndicator.textContent = 'Safe + Low Contrast';
+                    statusIndicator.style.backgroundColor = '#4a4a4a';
                 } else if (isSafeMode) {
-                    statusText = 'Migraine-Safe Mode';
-                    bgColor = '#2d5a2d';
-                    textColor = '#ffffff';
-                    borderColor = '#4a8a4a';
+                    statusIndicator.textContent = 'Migraine-Safe Mode';
+                    statusIndicator.style.backgroundColor = '#2d5a2d';
                 } else if (isLowContrast) {
-                    statusText = 'Low Contrast Mode';
-                    bgColor = '#5a4a2d';
-                    textColor = '#ffffff';
-                    borderColor = '#8a7a4a';
+                    statusIndicator.textContent = 'Low Contrast Mode';
+                    statusIndicator.style.backgroundColor = '#5a4a2d';
+                } else {
+                    statusIndicator.textContent = 'Normal Mode';
+                    statusIndicator.style.backgroundColor = '#333333';
                 }
 
-                // Apply all styles at once
-                statusIndicator.textContent = statusText;
-                statusIndicator.style.backgroundColor = bgColor;
-                statusIndicator.style.color = textColor;
-                statusIndicator.style.borderColor = borderColor;
-
-                console.log('Status updated to:', statusText, 'with background:', bgColor);
+                console.log('Status updated to:', statusIndicator.textContent);
             }
+
+            // Safe mode button click
+            safeModeToggle.onclick = function() {
+                console.log('Safe mode button clicked');
+                const wasSafe = document.body.classList.contains('safe-mode');
+
+                if (wasSafe) {
+                    document.body.classList.remove('safe-mode');
+                    localStorage.setItem('safeModeEnabled', 'false');
+                } else {
+                    document.body.classList.add('safe-mode');
+                    localStorage.setItem('safeModeEnabled', 'true');
+                }
+
+                updateStatus();
+            };
+
+            // Contrast button click
+            contrastToggle.onclick = function() {
+                console.log('Contrast button clicked');
+                const wasLowContrast = document.body.classList.contains('low-contrast');
+
+                if (wasLowContrast) {
+                    document.body.classList.remove('low-contrast');
+                    localStorage.setItem('lowContrastEnabled', 'false');
+                    applyLowContrast(false);
+                } else {
+                    document.body.classList.add('low-contrast');
+                    localStorage.setItem('lowContrastEnabled', 'true');
+                    applyLowContrast(true);
+                }
+
+                updateStatus();
+            };
+
+            // Load saved preferences
+            const safeModeEnabled = localStorage.getItem('safeModeEnabled') === 'true';
+            const lowContrastEnabled = localStorage.getItem('lowContrastEnabled') === 'true';
+
+            if (safeModeEnabled) {
+                document.body.classList.add('safe-mode');
+            }
+            if (lowContrastEnabled) {
+                document.body.classList.add('low-contrast');
+                applyLowContrast(true);
+            }
+
+            // Initial status update
+            updateStatus();
+
+            console.log('Accessibility initialization complete');
+        }
             // Comprehensive debug function
             function debugEverything() {
                 console.log('=== DEBUG START ===');
