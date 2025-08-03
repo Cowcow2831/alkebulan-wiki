@@ -977,73 +977,7 @@
 
             console.log('Accessibility initialization complete');
         }
-            // Comprehensive debug function
-            function debugEverything() {
-                console.log('=== DEBUG START ===');
-                console.log('Body classes:', document.body.className);
-                console.log('Control panel exists:', !!document.querySelector('.accessibility-controls'));
 
-                // Check CSS variables
-                const computedStyle = getComputedStyle(document.documentElement);
-                console.log('Current --text-primary:', computedStyle.getPropertyValue('--text-primary'));
-                console.log('Current --warning-yellow:', computedStyle.getPropertyValue('--warning-yellow'));
-
-                // Check if low contrast class is there
-                const hasLowContrast = document.body.classList.contains('low-contrast');
-                console.log('Has low-contrast class:', hasLowContrast);
-
-                // Check localStorage
-                console.log('Stored lowContrastEnabled:', localStorage.getItem('lowContrastEnabled'));
-
-                // Force set a test variable to see if CSS variables work at all
-                document.documentElement.style.setProperty('--test-color', '#ff0000');
-                console.log('Test color set to red:', computedStyle.getPropertyValue('--test-color'));
-
-                console.log('=== DEBUG END ===');
-            }
-
-            // Check saved preferences on load
-            const safeModeEnabled = localStorage.getItem('safeModeEnabled') === 'true';
-            const lowContrastEnabled = localStorage.getItem('lowContrastEnabled') === 'true';
-
-            if (safeModeEnabled) {
-                document.body.classList.add('safe-mode');
-            }
-            if (lowContrastEnabled) {
-                document.body.classList.add('low-contrast');
-                forceContrastUpdate(true);
-            }
-
-            // Check for reduced motion preference
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.body.classList.add('reduced-motion');
-            }
-
-            // Initial status update
-            updateModeStatus();
-        }
-
-        // Call this function when page loads
-        document.addEventListener('DOMContentLoaded', initAccessibilityPreferences);
-
-
-        // Debug function - add this temporarily
-        function debugContrastMode() {
-            const isLowContrast = document.body.classList.contains('low-contrast');
-            console.log('Low contrast mode active:', isLowContrast);
-            console.log('Body classes:', document.body.className);
-
-            // Check if CSS variables are being applied
-            const computedStyle = getComputedStyle(document.body);
-            console.log('Current text-primary color:', computedStyle.getPropertyValue('--text-primary'));
-
-            if (isLowContrast) {
-                console.log('Low contrast mode should be active');
-                // Force update CSS custom properties
-                document.documentElement.style.setProperty('--text-primary', '#c0c0c0');
-                document.documentElement.style.setProperty('--warning-yellow', '#b8a000');
-            }
-        }
 
 
     </script>
