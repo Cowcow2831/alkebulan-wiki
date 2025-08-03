@@ -30,7 +30,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+html {
+    background-color: var(--bg-primary);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #242424 100%);
+}
 body {
     font-family: 'Courier Prime', 'Courier New', monospace;
     line-height: 1.7;  /* Increased for better readability */
@@ -1268,31 +1271,30 @@ a:focus {
 
 
 /* Safe Mode - Comprehensive Migraine-Friendly Design */
-/* Safe Mode - Comprehensive Migraine-Friendly Design */
-html.safe-mode {
-    background: #1a1a1a !important;
-    background-color: #1a1a1a !important;
-}
-
-.safe-mode {
-    /* Force dark background colors */
-    background: #1a1a1a !important;
-    background-color: #1a1a1a !important;
-    background-image: none !important;
-}
-
+html.safe-mode,
+html.safe-mode body,
+.safe-mode,
 .safe-mode body {
     background: #1a1a1a !important;
     background-color: #1a1a1a !important;
     background-image: none !important;
-    color: #e0e0e0 !important;
 }
 
-/* Override all container backgrounds */
+/* Force dark on ALL elements in safe mode */
+html.safe-mode *,
+.safe-mode * {
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* Main containers get dark backgrounds */
 .safe-mode .main-content,
 .safe-mode .content-wrapper,
 .safe-mode .container,
-.safe-mode article {
+.safe-mode article,
+.safe-mode .sidebar,
+.safe-mode header,
+.safe-mode footer {
     background: #2d2d2d !important;
     background-color: #2d2d2d !important;
     background-image: none !important;

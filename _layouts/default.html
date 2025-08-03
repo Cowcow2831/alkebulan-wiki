@@ -287,6 +287,24 @@
             });
         }
 
+        // Apply safe mode IMMEDIATELY if saved (before page renders)
+        (function() {
+            try {
+                const saved = localStorage.getItem('accessibilityPreferences');
+                if (saved) {
+                    const preferences = JSON.parse(saved);
+                    if (Date.now() - preferences.timestamp < 30 * 24 * 60 * 60 * 1000) {
+                        if (preferences.safeModeEnabled) {
+                            document.documentElement.classList.add('safe-mode');
+                            document.documentElement.style.backgroundColor = '#1a1a1a';
+                        }
+                    }
+                }
+            } catch (error) {
+                console.log('Could not load accessibility preferences');
+            }
+        })();
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Store original content before any modifications
@@ -313,15 +331,6 @@
             // Initialize accessibility controls
             initAccessibilityPreferences();
         });
-
-        // Backup initialization in case DOM is already loaded
-        if (document.readyState === 'loading') {
-            // DOM is still loading, event listener will handle it
-        } else {
-            // DOM already loaded, run immediately
-            setTimeout(initAccessibilityPreferences, 100);
-        }
-
         // Simplified navigation system
         function setupSimpleNavigation() {
             try {
@@ -965,16 +974,26 @@
                 updateStatus();
             };
 
-            // Load saved preferences
-            const safeModeEnabled = localStorage.getItem('safeModeEnabled') === 'true';
-            const lowContrastEnabled = localStorage.getItem('lowContrastEnabled') === 'true';
-
-            if (safeModeEnabled) {
-                document.body.classList.add('safe-mode');
-            }
-            if (lowContrastEnabled) {
-                document.body.classList.add('low-contrast');
-                applyLowContrast(true);
+            // Load saved preferences (html class already applied above)
+            try {
+                const saved = localStorage.getItem('accessibilityPreferences');
+                if (saved) {
+                    const preferences = JSON.parse(saved);
+                    if (Date.now() - preferences.timestamp < 30 * 24 * 60 * 60 * 1000) {
+                        if (preferences.safeModeEnabled) {
+                            document.body.classList.add('safe-mode');
+                            document.documentElement.classList.add('safe-mode');
+                            document.body.style.backgroundColor = '#1a1a1a';
+                            document.documentElement.style.backgroundColor = '#1a1a1a';
+                        }
+                        if (preferences.lowContrastEnabled) {
+                            document.body.classList.add('low-contrast');
+                            applyLowContrast(true);
+                        }
+                    }
+                }
+            } catch (error) {
+                console.log('Could not load accessibility preferences');
             }
 
             // Initial status update
