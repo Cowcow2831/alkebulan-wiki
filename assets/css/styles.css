@@ -1136,34 +1136,158 @@ a:focus {
     box-shadow: 0 0 0 3px rgba(245, 217, 22, 0.3);
 }
 
-/* Skip link for screen readers */
+/* Skip Link - Hidden until focused (keyboard navigation) */
 .skip-link {
     position: absolute;
-    top: -40px;
-    left: 6px;
+    top: -100px; /* Hide off-screen */
+    left: 8px;
     background: var(--warning-yellow);
     color: var(--bg-primary);
-    padding: 8px;
+    padding: 8px 12px;
     text-decoration: none;
-    border-radius: 4px;
-    z-index: 1000;
+    border-radius: 0 0 8px 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 2000;
+    border: 2px solid var(--bg-primary);
+    font-family: 'Courier Prime', monospace;
+    transition: top 0.2s ease;
 }
 
 .skip-link:focus {
-    top: 6px;
+    top: 0; /* Slide down when focused */
+    outline: none;
 }
 
-/* Safe Mode - For light sensitivity */
+/* Style it to match your theme when visible */
+.skip-link:focus {
+    background: linear-gradient(45deg, var(--warning-yellow), var(--toxic-green));
+    color: var(--bg-primary);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Safe mode styling for skip link */
+.safe-mode .skip-link:focus {
+    background: var(--warning-yellow) !important;
+    color: var(--text-primary) !important;
+    text-shadow: none !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* Safe Mode - Comprehensive Migraine-Friendly Design */
 .safe-mode {
-    --bg-primary: #2a2a2a;
-    --bg-secondary: #3d3d3d;
-    --bg-accent: #4a4a4a;
-    --text-primary: #f0f0f0;
-    --toxic-green: #8bc34a;
-    --warning-yellow: #ffc107;
+    /* High contrast, comfortable colors */
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #e9ecef;
+    --bg-accent: #dee2e6;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-muted: #6c757d;
+
+    /* Muted, non-aggressive accent colors */
+    --toxic-green: #28a745;
+    --rust-orange: #fd7e14;
+    --warning-yellow: #856404;
+    --radiation-orange: #dc3545;
+    --ash-gray: #adb5bd;
+    --danger-red: #721c24;
+
+    /* Remove all glows and effects */
+    --glow-green: none;
+    --glow-orange: none;
+    --text-shadow: none;
+    --border-glow: none;
 }
 
+/* Override body background for safe mode */
+.safe-mode body {
+    background: var(--bg-primary) !important;
+    background-image: none !important;
+}
+
+/* Remove ALL animations and transitions in safe mode */
+.safe-mode *,
+.safe-mode *::before,
+.safe-mode *::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/* Simplify all containers */
+.safe-mode .main-content,
+.safe-mode .sidebar,
+.safe-mode header {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--ash-gray) !important;
+    box-shadow: none !important;
+}
+
+.safe-mode .main-content::before,
+.safe-mode .sidebar::before,
+.safe-mode header::before {
+    display: none !important;
+}
+
+/* Simplify buttons */
+.safe-mode button,
+.safe-mode .view-toggle {
+    background: var(--bg-accent) !important;
+    border: 1px solid var(--ash-gray) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Remove decorative elements */
+.safe-mode .site-title::before,
+.safe-mode h1::before,
+.safe-mode nav a::before,
+.safe-mode footer::before {
+    display: none !important;
+}
+
+/* Increase font size and line spacing for comfort */
+.safe-mode {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+/* Simplify headers */
+.safe-mode h1,
+.safe-mode h2,
+.safe-mode h3,
+.safe-mode h4,
+.safe-mode h5,
+.safe-mode h6 {
+    color: var(--text-primary) !important;
+    border: none !important;
+    padding: 0.5rem 0 !important;
+    margin: 1rem 0 !important;
+}
+
+/* Remove contamination warnings visual effects */
 .safe-mode .contamination-warning,
 .safe-mode .classified-banner {
-    animation: none;
+    background: var(--bg-accent) !important;
+    border: 1px solid var(--ash-gray) !important;
+    color: var(--text-primary) !important;
+}
+/* Low Contrast Mode - For contrast sensitivity */
+.low-contrast {
+    --text-primary: #c8c8c8;
+    --text-secondary: #a0a0a0;
+    --warning-yellow: #b8a000;
+    --toxic-green: #5a9900;
+    --danger-red: #b83333;
+}
+
+.low-contrast h1,
+.low-contrast h2,
+.low-contrast h3,
+.low-contrast h4,
+.low-contrast h5,
+.low-contrast h6 {
+    color: var(--text-primary) !important;
 }

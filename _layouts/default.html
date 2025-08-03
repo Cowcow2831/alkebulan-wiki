@@ -806,11 +806,38 @@
 
             // Add safe mode toggle (optional)
             const safeModeToggle = document.createElement('button');
-            safeModeToggle.textContent = '👁️ Safe Mode';
-            safeModeToggle.className = 'safe-mode-toggle';
-            safeModeToggle.style.cssText = `
+            // Enhanced safe mode toggle
+            safeModeToggle.textContent = '🧠 Migraine-Safe Mode';
+            safeModeToggle.title = 'Toggle migraine-friendly viewing mode';
+
+            safeModeToggle.onclick = function() {
+                document.body.classList.toggle('safe-mode');
+                const isSafe = document.body.classList.contains('safe-mode');
+                localStorage.setItem('safeModeEnabled', isSafe);
+                this.textContent = isSafe ? '🎨 Immersive Mode' : '🧠 Migraine-Safe Mode';
+                this.title = isSafe ? 'Return to full visual experience' : 'Toggle migraine-friendly viewing mode';
+            };
+
+            // Check saved preference
+            if (localStorage.getItem('safeModeEnabled') === 'true') {
+                document.body.classList.add('safe-mode');
+                safeModeToggle.textContent = '🎨 Immersive Mode';
+            }
+
+            document.body.appendChild(safeModeToggle);
+        }
+
+        // Call this function when page loads
+        document.addEventListener('DOMContentLoaded', initAccessibilityPreferences);
+        
+        // Add this to your accessibility preferences function
+        function addContrastControl() {
+            const contrastToggle = document.createElement('button');
+            contrastToggle.textContent = '📊 Lower Contrast';
+            contrastToggle.className = 'contrast-toggle';
+            contrastToggle.style.cssText = `
                 position: fixed;
-                bottom: 20px;
+                bottom: 70px;
                 right: 20px;
                 z-index: 1000;
                 padding: 0.5rem 1rem;
@@ -822,25 +849,27 @@
                 cursor: pointer;
             `;
 
-            safeModeToggle.onclick = function() {
-                document.body.classList.toggle('safe-mode');
-                const isSafe = document.body.classList.contains('safe-mode');
-                localStorage.setItem('safeModeEnabled', isSafe);
-                this.textContent = isSafe ? '🌟 Normal Mode' : '👁️ Safe Mode';
+            contrastToggle.onclick = function() {
+                document.body.classList.toggle('low-contrast');
+                const isLowContrast = document.body.classList.contains('low-contrast');
+                localStorage.setItem('lowContrastEnabled', isLowContrast);
+                this.textContent = isLowContrast ? '📊 Normal Contrast' : '📊 Lower Contrast';
             };
 
             // Check saved preference
-            if (localStorage.getItem('safeModeEnabled') === 'true') {
-                document.body.classList.add('safe-mode');
-                safeModeToggle.textContent = '🌟 Normal Mode';
+            if (localStorage.getItem('lowContrastEnabled') === 'true') {
+                document.body.classList.add('low-contrast');
+                contrastToggle.textContent = '📊 Normal Contrast';
             }
 
-            document.body.appendChild(safeModeToggle);
+            document.body.appendChild(contrastToggle);
         }
 
-        // Call this function when page loads
-        document.addEventListener('DOMContentLoaded', initAccessibilityPreferences);
-        
+        // Call this in your initAccessibilityPreferences function
+        document.addEventListener('DOMContentLoaded', function() {
+            initAccessibilityPreferences();
+            addContrastControl();
+        });
 </script>
 </body>
 </html>
