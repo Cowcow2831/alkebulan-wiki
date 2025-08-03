@@ -252,11 +252,11 @@ function processObsidianFiles() {
     // Filter content based on view mode (preserve HTML comments functionality)
     const filteredContent = filterContentSections(content, data);
 
-    // Add CLASSIFIED banner if access level doesn't match view mode
-    const accessControlledContent = wrapWithClassifiedBanner(filteredContent, data);
+    // Convert WikiLinks with access checking FIRST
+    const convertedContent = convertWikiLinks(filteredContent, file, allFiles);
 
-    // Convert WikiLinks with access checking
-    const convertedContent = convertWikiLinks(accessControlledContent, file, allFiles);
+    // Add CLASSIFIED banner if access level doesn't match view mode (AFTER link conversion)
+    const accessControlledContent = wrapWithClassifiedBanner(convertedContent, data);
 
     // Generate frontmatter with access control and navigation data
     const jekyllFrontmatter = generateFrontmatter(data, file, file);
