@@ -1374,3 +1374,15 @@ html.safe-mode *,
 .safe-mode .sidebar::before {
     display: none !important;
 }
+/* Low Contrast Mode - Same pattern as Safe Mode */
+html.low-contrast,
+html.low-contrast body,
+.low-contrast,
+.low-contrast body {
+    --text-primary: #d0d0d0 !important;
+    --text-secondary: #b0b0b0 !important;
+    --warning-yellow: #c8b000 !important;
+    --toxic-green: #6ba000 !important;
+    --danger-red: #cc4444 !important;
+    --rust-orange: #d48800 !important;
+}

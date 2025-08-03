@@ -287,7 +287,7 @@
             });
         }
 
-        // Apply safe mode IMMEDIATELY if saved (before page renders)
+        // Apply accessibility modes IMMEDIATELY if saved (before page renders)
         (function() {
             try {
                 const saved = localStorage.getItem('accessibilityPreferences');
@@ -297,6 +297,9 @@
                         if (preferences.safeModeEnabled) {
                             document.documentElement.classList.add('safe-mode');
                             document.documentElement.style.backgroundColor = '#1a1a1a';
+                        }
+                        if (preferences.lowContrastEnabled) {
+                            document.documentElement.classList.add('low-contrast');
                         }
                     }
                 }
@@ -956,44 +959,32 @@
 
             // Contrast button click
             contrastToggle.onclick = function() {
-                console.log('Contrast button clicked');
                 const wasLowContrast = document.body.classList.contains('low-contrast');
 
                 if (wasLowContrast) {
                     document.body.classList.remove('low-contrast');
-                    localStorage.setItem('lowContrastEnabled', 'false');
-                    applyLowContrast(false);
+                    document.documentElement.classList.remove('low-contrast');
                 } else {
                     document.body.classList.add('low-contrast');
-                    localStorage.setItem('lowContrastEnabled', 'true');
-                    applyLowContrast(true);
+                    document.documentElement.classList.add('low-contrast');
                 }
 
                 updateStatus();
+                saveAccessibilityPreferences();
             };
 
-            // Load saved preferences (html class already applied above)
+            // Sync body classes with what was already applied to documentElement
             try {
-                const saved = localStorage.getItem('accessibilityPreferences');
-                if (saved) {
-                    const preferences = JSON.parse(saved);
-                    if (Date.now() - preferences.timestamp < 30 * 24 * 60 * 60 * 1000) {
-                        if (preferences.safeModeEnabled) {
-                            document.body.classList.add('safe-mode');
-                            document.documentElement.classList.add('safe-mode');
-                            document.body.style.backgroundColor = '#1a1a1a';
-                            document.documentElement.style.backgroundColor = '#1a1a1a';
-                        }
-                        if (preferences.lowContrastEnabled) {
-                            document.body.classList.add('low-contrast');
-                            applyLowContrast(true);
-                        }
-                    }
+                if (document.documentElement.classList.contains('safe-mode')) {
+                    document.body.classList.add('safe-mode');
+                    document.body.style.backgroundColor = '#1a1a1a';
+                }
+                if (document.documentElement.classList.contains('low-contrast')) {
+                    document.body.classList.add('low-contrast');
                 }
             } catch (error) {
-                console.log('Could not load accessibility preferences');
+                console.log('Could not sync accessibility classes');
             }
-
             // Initial status update
             updateStatus();
 
@@ -1030,29 +1021,6 @@
                 timestamp: Date.now()
             };
             localStorage.setItem('accessibilityPreferences', JSON.stringify(preferences));
-        }
-
-        // Enhanced applyLowContrast function
-        function applyLowContrast(apply) {
-            console.log('Applying low contrast:', apply);
-
-            if (apply) {
-                document.body.style.borderTop = '3px solid #ffff00';
-                document.documentElement.style.setProperty('--text-primary', '#d0d0d0');
-                document.documentElement.style.setProperty('--text-secondary', '#b0b0b0');
-                document.documentElement.style.setProperty('--warning-yellow', '#c8b000');
-                document.documentElement.style.setProperty('--toxic-green', '#6ba000');
-                document.documentElement.style.setProperty('--danger-red', '#cc4444');
-                document.documentElement.style.setProperty('--rust-orange', '#d48800');
-            } else {
-                document.body.style.borderTop = '';
-                document.documentElement.style.removeProperty('--text-primary');
-                document.documentElement.style.removeProperty('--text-secondary');
-                document.documentElement.style.removeProperty('--warning-yellow');
-                document.documentElement.style.removeProperty('--toxic-green');
-                document.documentElement.style.removeProperty('--danger-red');
-                document.documentElement.style.removeProperty('--rust-orange');
-            }
         }
 
     </script>
