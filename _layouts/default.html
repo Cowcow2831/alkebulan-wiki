@@ -912,66 +912,6 @@
                 content.innerHTML = html;
             }
         }
-        
-        function filterContent(viewMode) {
-            const content = document.getElementById('content');
-            const classifiedBanner = document.getElementById('classifiedBanner');
-            const actualContent = document.getElementById('actualContent');
-
-            // Check if this page has DM-only access level
-            function filterContent(viewMode) {
-                const content = document.getElementById('content');
-                const classifiedBanner = document.getElementById('classifiedBanner');
-                const actualContent = document.getElementById('actualContent');
-
-                // Get page access level from page metadata (if available)
-                const pageAccessLevel = document.querySelector('meta[name="page-access-level"]') ?
-                                       document.querySelector('meta[name="page-access-level"]').content : 'public';
-
-                if (pageAccessLevel === 'dm' && viewMode === 'player') {
-                    // Show classified banner and hide/blur content
-                    if (classifiedBanner) {
-                        classifiedBanner.style.display = 'block';
-                    }
-                    if (actualContent) {
-                        actualContent.style.filter = 'blur(5px)';
-                        actualContent.style.opacity = '0.3';
-                        actualContent.style.pointerEvents = 'none';
-                    }
-                } else {
-                    // Hide banner and show normal content
-                    if (classifiedBanner) {
-                        classifiedBanner.style.display = 'none';
-                    }
-                    if (actualContent) {
-                        actualContent.style.filter = 'none';
-                        actualContent.style.opacity = '1';
-                        actualContent.style.pointerEvents = 'auto';
-                    }
-                }
-
-                // Handle DM-only sections within content (preserve existing functionality)
-                if (!originalContent && actualContent) {
-                    originalContent = actualContent.innerHTML;
-                }
-
-                if (actualContent) {
-                    let html = originalContent;
-
-                    if (viewMode === 'player') {
-                        html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
-                        html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
-                        html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
-                    } else {
-                        html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
-                        html = html.replace(/<!-- DM_END -->/g, '</div>');
-                        html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
-                        html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
-                    }
-
-                    actualContent.innerHTML = html;
-                }
-            }
 
         function hideNavItems(viewMode) {
             const navItems = document.querySelectorAll('.nav-item');
@@ -987,92 +927,6 @@
             });
         }
 
-        // Simplified navigation system
-        function setupSimpleNavigation() {
-            try {
-                const currentPath = window.location.pathname;
-                const pathParts = currentPath.split('/').filter(part => part);
-                const currentPage = pathParts[pathParts.length - 1] || 'index';
-
-                // Track and display recent pages
-                trackRecentPages(currentPage);
-                displayRecentPages();
-            } catch (error) {
-                console.error('Error in setupSimpleNavigation:', error);
-            }
-        }
-
-                // Track recent pages (last 2 visited)
-                function trackRecentPages(currentPage) {
-                    try {
-                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
-
-                        // Remove current page if it's already in the list
-                        recentPages = recentPages.filter(page => page.slug !== currentPage);
-
-                        // Add current page to the beginning
-                        const pageTitle = getPageTitle(currentPage);
-                        recentPages.unshift({
-                            slug: currentPage,
-                            title: pageTitle,
-                            timestamp: Date.now()
-                        });
-
-                        // Keep only the last 3 pages (current + 2 previous)
-                        recentPages = recentPages.slice(0, 3);
-
-                        // Save to localStorage
-                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
-                    } catch (error) {
-                        console.error('Error tracking recent pages:', error);
-                    }
-                }
-
-                // Display recent pages in the sidebar
-                function displayRecentPages() {
-                    try {
-                        const recentPagesContainer = document.getElementById('recentPages');
-                        if (!recentPagesContainer) return;
-
-                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
-
-                        // Skip the first page (current page) and show the last 2
-                        const pagesToShow = recentPages.slice(1, 3);
-
-                        if (pagesToShow.length === 0) {
-                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
-                            return;
-                        }
-
-                        let html = '';
-                        pagesToShow.forEach(page => {
-                            const url = page.slug === 'index' ? '{{ site.baseurl }}/' : '{{ site.baseurl }}/' + page.slug + '/';
-                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
-                        });
-
-                        recentPagesContainer.innerHTML = html;
-                    } catch (error) {
-                        console.error('Error displaying recent pages:', error);
-                    }
-                }
-
-                // Get page title based on slug
-                function getPageTitle(slug) {
-                    const pageTitles = {
-                        'index': 'Archive Home',
-                        'port-zephyr': 'Port Zephyr',
-                        'player-handout-whispers-of-the-wastes': 'Player Handout'
-                    };
-
-                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                }
-
-                // Helper function to escape HTML
-                function escapeHtml(text) {
-                    const div = document.createElement('div');
-                    div.textContent = text;
-                    return div.innerHTML;
-                }
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Store original content before any modifications
@@ -1085,22 +939,14 @@
             // If user had DM access in this session and saved preference is DM, restore it
             if (hasSessionAccess || savedView === 'dm') {
                 // Auto-restore DM view
-                currentView = 'dm'; // Set this BEFORE calling switchToDMView
+                currentView = 'dm';
                 switchToDMView();
             } else {
                 // Default to player view
-                currentView = 'player'; // Set this BEFORE calling switchToPlayerView
+                currentView = 'player';
                 switchToPlayerView();
             }
-
-            // Setup simple navigation
-            setupSimpleNavigation();
         });
-
-        // Clear DM access when page is closed/refreshed
-        window.addEventListener('beforeunload', function() {
-            sessionStorage.removeItem('dmAccess');
-        });
-    </script>
+</script>
 </body>
 </html>
