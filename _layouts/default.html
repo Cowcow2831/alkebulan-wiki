@@ -997,8 +997,26 @@
                 return; // User cancelled
             }
 
-            // Check password (you can change this to whatever you want)
-            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+            // Check password using hash comparison (more secure)
+            const validHashes = [
+                "8d5e957f297893487bd98fa830fa6413",
+                "89c6b6bae0ad5fabc8796decd2a8136a",
+                "5e884898da28047151d0e56f8dc6292d"
+            ];
+
+            // Simple hash function
+            function simpleHash(str) {
+                let hash = 0;
+                for (let i = 0; i < str.length; i++) {
+                    const char = str.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash; // Convert to 32bit integer
+                }
+                return Math.abs(hash).toString(16);
+            }
+
+            if (validHashes.includes(simpleHash(password)))
+            {
                 switchToDMView();
 
                 // Store DM access temporarily (until page refresh)
@@ -1283,7 +1301,7 @@
 
                         // Add resize listener
                         window.addEventListener('resize', handleWindowResize);
-                        
+
         // Throttle scroll events for better performance
         let scrollTimeout;
         function throttledScrollHandler() {
