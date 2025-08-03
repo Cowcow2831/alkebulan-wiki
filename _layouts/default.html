@@ -808,6 +808,7 @@
 
             // Save preference
             localStorage.setItem('wikiView', currentView);
+            sessionStorage.setItem('dmAccess', 'granted');
         }
 
         function switchToPlayerView() {
@@ -952,7 +953,6 @@
                     const pageTitles = {
                         'index': 'Archive Home',
                         'port-zephyr': 'Port Zephyr',
-                        'harbor-district': 'Harbor District',
                         'player-handout-whispers-of-the-wastes': 'Player Handout'
                     };
 
@@ -974,11 +974,14 @@
             const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
             const savedView = localStorage.getItem('wikiView');
 
-            if (hasSessionAccess && savedView === 'dm') {
-                // Auto-restore DM view if they had access this session
+            // If user had DM access in this session and saved preference is DM, restore it
+            if (hasSessionAccess || savedView === 'dm') {
+                // Auto-restore DM view
+                currentView = 'dm'; // Set this BEFORE calling switchToDMView
                 switchToDMView();
             } else {
                 // Default to player view
+                currentView = 'player'; // Set this BEFORE calling switchToPlayerView
                 switchToPlayerView();
             }
 

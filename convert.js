@@ -32,8 +32,8 @@ function shouldShowClassifiedBanner(frontmatter) {
   }
 
   // For player view, show banner if it's DM-only content
-  if (VIEW_MODE === 'player') {
-    return accessLevel === ACCESS_LEVELS.DM;
+  if (VIEW_MODE === 'player' && accessLevel === ACCESS_LEVELS.DM) {
+    return true;
   }
 
   // DM view never shows classified banner
