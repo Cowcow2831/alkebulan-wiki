@@ -857,71 +857,6 @@
             // Save preference
             localStorage.setItem('wikiView', currentView);
             sessionStorage.setItem('dmAccess', 'granted');
-
-            // ADD THIS: Show DM mode notification
-            showDMStatusNotification();
-        }
-        function showDMStatusNotification() {
-            // Remove any existing notification
-            const existingNotification = document.getElementById('dmStatusNotification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-
-            // Create notification
-            const notification = document.createElement('div');
-            notification.id = 'dmStatusNotification';
-            notification.style.cssText = `
-                position: fixed;
-                top: 80px;
-                right: 20px;
-                background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
-                color: white;
-                padding: 1rem 1.5rem;
-                border-radius: 8px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-                z-index: 1000;
-                font-family: 'Courier Prime', monospace;
-                font-weight: bold;
-                border: 2px solid var(--toxic-green);
-                animation: contamination-pulse 2s ease-in-out infinite;
-            `;
-
-            // Check if page has DM content
-            const hasDMContent = originalContent && (
-                originalContent.includes('<!-- DM_START -->') ||
-                originalContent.includes('dm-only') ||
-                document.querySelector('meta[name="page-access-level"][content="dm"]')
-            );
-
-            if (hasDMContent) {
-                notification.innerHTML = `
-                    <div>🔓 DM MODE ACTIVE</div>
-                    <div style="font-size: 0.8rem; opacity: 0.9;">Restricted content visible</div>
-                `;
-            } else {
-                notification.innerHTML = `
-                    <div>🔓 DM MODE ACTIVE</div>
-                    <div style="font-size: 0.8rem; opacity: 0.9;">No restricted content on this page</div>
-                `;
-            }
-
-            // Add to page
-            document.body.appendChild(notification);
-
-            // Auto-remove after 3 seconds
-            setTimeout(() => {
-                if (notification && notification.parentNode) {
-                    notification.style.opacity = '0';
-                    notification.style.transform = 'translateX(100%)';
-                    notification.style.transition = 'all 0.3s ease';
-                    setTimeout(() => {
-                        if (notification.parentNode) {
-                            notification.remove();
-                        }
-                    }, 300);
-                }
-            }, 3000);
         }
 
         function switchToPlayerView() {
@@ -945,56 +880,37 @@
 
             // Save preference
             localStorage.setItem('wikiView', currentView);
-
-            // ADD THIS: Show player mode notification
-            showPlayerStatusNotification();
         }
-        function showPlayerStatusNotification() {
-            // Remove any existing notification
-            const existingNotification = document.getElementById('dmStatusNotification');
-            if (existingNotification) {
-                existingNotification.remove();
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
             }
 
-            // Create notification
-            const notification = document.createElement('div');
-            notification.id = 'dmStatusNotification';
-            notification.style.cssText = `
-                position: fixed;
-                top: 80px;
-                right: 20px;
-                background: linear-gradient(45deg, #2196F3, #4CAF50);
-                color: white;
-                padding: 1rem 1.5rem;
-                border-radius: 8px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-                z-index: 1000;
-                font-family: 'Courier Prime', monospace;
-                font-weight: bold;
-                border: 2px solid #4CAF50;
-            `;
+            let html = originalContent;
 
-            notification.innerHTML = `
-                <div>🔒 PLAYER MODE</div>
-                <div style="font-size: 0.8rem; opacity: 0.9;">Restricted content hidden</div>
-            `;
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
 
-            // Add to page
-            document.body.appendChild(notification);
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
 
-            // Auto-remove after 2 seconds
-            setTimeout(() => {
-                if (notification && notification.parentNode) {
-                    notification.style.opacity = '0';
-                    notification.style.transform = 'translateX(100%)';
-                    notification.style.transition = 'all 0.3s ease';
-                    setTimeout(() => {
-                        if (notification.parentNode) {
-                            notification.remove();
-                        }
-                    }, 300);
-                }
-            }, 2000);
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
         }
         
         function filterContent(viewMode) {
