@@ -304,6 +304,20 @@
             opacity: 1;
         }
 
+        /* Remove icon space on mobile for better centering */
+        @media (max-width: 768px) {
+            nav a::before {
+                display: none; /* Completely remove the icon space on mobile */
+            }
+
+            nav a {
+                text-align: center; /* Ensure text is centered */
+                justify-content: center; /* Center content if using flexbox */
+                display: inline-flex; /* Use flexbox for better centering */
+                align-items: center; /* Vertically center text */
+            }
+        }
+
         /* Content filtering classes */
         .dm-only {
             transition: opacity 0.3s ease, max-height 0.3s ease;
@@ -1246,7 +1260,7 @@
 
                     lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
                 }
-                
+
         // Throttle scroll events for better performance
         let scrollTimeout;
         function throttledScrollHandler() {
