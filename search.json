@@ -1,0 +1,15 @@
+---
+layout: null
+---
+[
+  {% for page in site.pages %}
+    {% unless page.access_level == 'secret' %}
+    {
+      "title": "{{ page.title | escape }}",
+      "url": "{{ page.url | relative_url }}",
+      "content": "{{ page.content | strip_html | escape | truncatewords: 50 }}",
+      "access_level": "{{ page.access_level | default: 'public' }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endunless %}
+  {% endfor %}
+]

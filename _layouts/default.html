@@ -946,6 +946,66 @@
                 font-size: 1.8rem;
             }
         }
+        /* Search Functionality */
+        .search-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.7rem 1rem;
+            background: var(--bg-accent);
+            border: 2px solid var(--ash-gray);
+            border-radius: 25px;
+            color: var(--text-primary);
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            outline: none;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--bg-accent);
+            border: 2px solid var(--ash-gray);
+            border-radius: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--ash-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-result-item:hover {
+            background: var(--rust-orange);
+        }
+
+        .search-result-title {
+            font-weight: bold;
+            color: var(--warning-yellow);
+            margin-bottom: 0.3rem;
+        }
+
+        .search-result-content {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
@@ -965,8 +1025,12 @@
                   </button>
               </div>
 
-              <!-- Third line: Navigation -->
+              <!-- Third line: Search and Navigation -->
               <div class="nav-line">
+                  <div class="search-container">
+                      <input type="text" id="searchBox" placeholder="🔍 Search archives..." class="search-input">
+                      <div id="searchResults" class="search-results"></div>
+                  </div>
                   <nav>
                       <ul>
                           {% for item in site.navigation %}
@@ -1061,7 +1125,7 @@
 
             // Check password using hash comparison (more secure)
             const validHashes = [
-              "74103542", 
+              "74103542",
               "c89",
               "1abd1052"
             ];
@@ -1378,6 +1442,71 @@
 
         // Add scroll listener
         window.addEventListener('scroll', throttledScrollHandler);
+        // Search functionality
+        let searchData = [];
+        let searchTimeout;
+
+        // Load search data
+        fetch('{{ site.baseurl }}/search.json')
+            .then(response => response.json())
+            .then(data => {
+                searchData = data;
+            })
+            .catch(error => console.error('Search data loading failed:', error));
+
+        // Search input handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBox = document.getElementById('searchBox');
+            const searchResults = document.getElementById('searchResults');
+
+            if (searchBox) {
+                searchBox.addEventListener('input', function() {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => performSearch(this.value), 300);
+                });
+
+                // Hide results when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!searchBox.contains(e.target) && !searchResults.contains(e.target)) {
+                        searchResults.style.display = 'none';
+                    }
+                });
+            }
+        });
+
+        function performSearch(query) {
+            const searchResults = document.getElementById('searchResults');
+
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const results = searchData.filter(item => {
+                // Filter by current view mode
+                if (currentView === 'player' && item.access_level === 'dm') {
+                    return false;
+                }
+
+                return item.title.toLowerCase().includes(query.toLowerCase()) ||
+                       item.content.toLowerCase().includes(query.toLowerCase());
+            }).slice(0, 5); // Limit to 5 results
+
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+                searchResults.style.display = 'block';
+                return;
+            }
+
+            searchResults.innerHTML = results.map(item => `
+                <div class="search-result-item" onclick="window.location.href='${item.url}'">
+                    <div class="search-result-title">${item.title}</div>
+                    <div class="search-result-content">${item.content}</div>
+                </div>
+            `).join('');
+
+            searchResults.style.display = 'block';
+        }
 </script>
 </body>
 </html>
