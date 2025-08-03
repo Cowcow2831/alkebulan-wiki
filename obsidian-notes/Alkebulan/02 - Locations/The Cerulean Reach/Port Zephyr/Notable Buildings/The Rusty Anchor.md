@@ -2,14 +2,22 @@
 type: location
 region: The Cerulean Reach
 campaign: Alkebulan
-tags: [location, tavern, harbor-district, port-zephyr, working-class, contamination, resistance]
+tags:
+  - location
+  - tavern
+  - harbor-district
+  - port-zephyr
+  - working-class
+  - contamination
+  - resistance
+access_level: player
 ---
 
 # The Rusty Anchor
 
 ## Overview
 **Type:** Working-Class Tavern/Contaminated Worker Hub/Information Exchange
-**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]] - [[Harbor District]])
+**Region:** [[The Cerulean Reach]] ([[Port Zephyr]] - [[Harbor District]])
 **Population:** 50-80 patrons nightly, plus 10+ staff and residents
 **Government:** Nominally independent establishment under Harbor District oversight
 

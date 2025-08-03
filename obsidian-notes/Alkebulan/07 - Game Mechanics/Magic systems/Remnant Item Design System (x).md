@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Remnant Item Design System
 
 ## Core Philosophy

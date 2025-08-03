@@ -3,7 +3,7 @@ tags:
   - quests
   - questions
   - campaign
-access_level:
+access_level: secret
 ---
 
 # Open Loops - [Campaign Name]

@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Religion
 
 The spiritual landscape of Alkebulan reflects both ancient wisdom and post-Cataclysm adaptation, shaped by diverse cultures and the world's magical transformation 300 years ago.

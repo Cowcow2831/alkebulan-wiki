@@ -1,8 +1,17 @@
+---
+type: location
+region: Southern Alkebulan
+campaign: Alkebulan
+tags:
+  - location
+access_level: player
+---
+
 # The Floating Gardens
 
 ## Overview
 **Type:** Contaminated Agricultural Platforms/Survival Infrastructure
-**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]] Harbor)
+**Region:** [[The Cerulean Reach]] ([[Port Zephyr]] Harbor)
 **Population:** 200+ agricultural workers, gardeners, and maintenance crews
 **Government:** Controlled by the Agricultural Guild under Council oversight
 **Contamination Level:** Moderate to High (varies by platform and tidal conditions)

@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 In a world where traditional magic has become unreliable and dangerous, Remnant Channelers have learned to harness the volatile energies left behind by the great cataclysm. These practitioners walk a dangerous path, risking corruption and chaos to tap into powerful magical forces that others fear to touch.
 
 ## Class Features

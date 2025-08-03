@@ -6,7 +6,7 @@ system: D&D 5e
 tags:
   - world
   - campaign
-access_level:
+access_level: secret
 ---
 
 # {{title}} Campaign World

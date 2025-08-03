@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 A thieves' guild
 The Mist Walkers:
 

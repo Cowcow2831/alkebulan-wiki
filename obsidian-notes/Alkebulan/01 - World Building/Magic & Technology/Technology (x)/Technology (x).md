@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 1. Overall Level:
    - Generally medieval to early Renaissance equivalent
    - Significant variation between regions and cultures

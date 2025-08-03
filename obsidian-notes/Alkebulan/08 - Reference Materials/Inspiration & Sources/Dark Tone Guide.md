@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Maintaining Dark & Gritty Tone in Alkebulan
 
 ## CORE PRINCIPLES: Constant Suffering

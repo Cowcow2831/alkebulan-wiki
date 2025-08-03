@@ -7,7 +7,7 @@ campaign:
 tags:
   - creature
   - wildlife
-access_level:
+access_level: secret
 ---
 
 # {{title}}

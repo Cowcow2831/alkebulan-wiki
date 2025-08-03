@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Remnant Scholar Artificer
 
 Level 3: Remnant Attunement

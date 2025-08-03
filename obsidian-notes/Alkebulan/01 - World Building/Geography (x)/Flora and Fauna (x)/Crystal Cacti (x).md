@@ -4,7 +4,14 @@ habitat: deserts, magical wastes
 growth_rate: slow
 rarity: uncommon to rare
 campaign: Alkebulan
-tags: [flora, plant, crystal, magical, desert, remnant]
+tags:
+  - flora
+  - plant
+  - crystal
+  - magical
+  - desert
+  - remnant
+access_level: secret
 ---
 
 # Crystal Cacti

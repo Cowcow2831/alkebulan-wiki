@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Visual Inspirations for Alkebulan
 *Artwork, Artists, Photography, and Visual References for Your Dark Post-Nuclear Fantasy World*
 

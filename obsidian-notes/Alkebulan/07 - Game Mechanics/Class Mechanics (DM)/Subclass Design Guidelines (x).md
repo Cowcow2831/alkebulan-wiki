@@ -1,4 +1,8 @@
-# Subclass Design Guidelines - Alkebulan
+---
+access_level: secret
+---
+
+# Subclass Design Guidelines
 
 ## Core Design Philosophy
 

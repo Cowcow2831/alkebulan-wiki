@@ -1,3 +1,7 @@
+---
+access_level: dm
+---
+
 ## Initial Discovery
 As the party crests a large dune, they find a haunting sight: five wagons half-buried in crystallized sand, surrounded by crystalline growths that pulse with an inner light. The air thrums with unstable magical energy, and delicate crystal formations extend outward from the caravan in a spiral pattern covering roughly 300 feet in diameter. At the center, a crystalline artifact—the Prism of Echoes—floats above a natural pedestal, casting shifting shadows that seem to show multiple moments in time simultaneously.
 

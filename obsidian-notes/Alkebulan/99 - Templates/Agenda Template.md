@@ -3,7 +3,7 @@ tags:
   - agenda
   - todo
   - campaign
-access_level:
+access_level: secret
 ---
 
 # Agenda - [Campaign Name]

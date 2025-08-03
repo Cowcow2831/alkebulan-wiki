@@ -1,4 +1,8 @@
-# Class Balance in Low Magic - Alkebulan
+---
+access_level: secret
+---
+
+# Class Balance in Low Magic
 
 ## Core Philosophy
 
@@ -325,5 +329,3 @@ Rather than modifying the mechanical balance of D&D 5e classes, Alkebulan achiev
 - Clerics of sea deities common
 - Rangers specialized in coastal survival
 - Bards travel trade routes sharing news
-
-This approach maintains the mechanical integrity of D&D 5e while creating an authentic low-magic world through narrative context and social dynamics. Players can choose any class, but their choice affects how NPCs react and what opportunities are available.

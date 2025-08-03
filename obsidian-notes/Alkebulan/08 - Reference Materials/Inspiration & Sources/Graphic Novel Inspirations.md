@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Graphic Novel Inspirations for Alkebulan
 *Comics and graphic novels for visual, thematic, and narrative inspiration for your dark post-nuclear fantasy world*
 

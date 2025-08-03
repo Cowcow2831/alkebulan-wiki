@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Character Backgrounds in Alkebulan
 
 The post-Cataclysm world of Alkebulan has fundamentally altered how people live, work, and relate to each other. While the core D&D 5e backgrounds remain mechanically unchanged, their narrative context has evolved to reflect the challenges and opportunities of this transformed world. Additionally, several new backgrounds have emerged from the unique circumstances of post-Cataclysm society.

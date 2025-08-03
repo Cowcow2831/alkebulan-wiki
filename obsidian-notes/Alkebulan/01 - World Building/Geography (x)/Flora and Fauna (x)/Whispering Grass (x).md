@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 1. Appearance:
     - Tall, slender stalks ranging from 3 to 6 feet in height.
     - Silvery-green in color with a metallic sheen.

@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # The Resonance Crown
 *Wondrous item (headpiece), rare (requires attunement)*
 

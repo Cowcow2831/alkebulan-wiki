@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Music Inspirations for Alkebulan
 *Atmospheric and thematic music to inspire and accompany your dark post-nuclear fantasy world*
 

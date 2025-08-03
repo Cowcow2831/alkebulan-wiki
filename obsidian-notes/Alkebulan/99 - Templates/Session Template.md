@@ -8,7 +8,7 @@ tags:
   - session
   - dnd5e
 Player Character: 
-access_level:
+access_level: secret
 ---
 # Session {{title}} - {{date}}
 

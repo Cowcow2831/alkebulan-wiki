@@ -3,7 +3,9 @@ type: npc
 location: 
 status: alive
 campaign: 
-tags: [npc]
+tags:
+  - npc
+access_level: secret
 ---
 
 # {{title}}

@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Media Inspirations for Alkebulan
 *A Comprehensive Guide to Books, Films, Games, and Other Media for Your Dark Post-Nuclear Fantasy World*
 

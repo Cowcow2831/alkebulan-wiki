@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Welcome to Alkebulan
 
 ## A Player's Guide to the World

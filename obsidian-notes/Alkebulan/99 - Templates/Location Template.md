@@ -4,7 +4,7 @@ region:
 campaign: 
 tags:
   - location
-access_level:
+access_level: secret
 ---
 
 # {{title}}

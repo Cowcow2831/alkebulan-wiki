@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Quotes for Alkebulan
 *Powerful quotes to capture the themes, mood, and philosophy of your dark post-nuclear fantasy world*
 

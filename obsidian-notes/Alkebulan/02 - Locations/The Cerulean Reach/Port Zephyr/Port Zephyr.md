@@ -1,15 +1,25 @@
+---
+type: location
+region: Southern Alkebulan
+campaign: Alkebulan
+tags:
+  - location
+  - coastal
+access_level: player
+---
+
 # Port Zephyr
 
 ## Overview
 
 **Type:** Major Trading City/Port  
-**Region:** [[The Cerulean Reach (old)]]  
+**Region:** [[The Cerulean Reach]]  
 **Population:** Approximately 10,000 permanent residents (estimated 2,000 more in transient workers and refugees)  
 **Government:** Council of Merchant Princes (7 elected representatives chosen by property owners), with [[Legal System and Authorities in Port Zephyr|City Watch]] maintaining order through violence and intimidation
 
 ## Description
 
-Port Zephyr clings to life as the crown jewel of [[The Cerulean Reach (old)]], a bustling trade hub built on the bones of a pre-Cataclysm city and maintained through the blood of expendable workers. The city rises in stark terraces from a harbor where contaminated waters mix with clean, creating a patchwork of prosperity and suffering that perfectly captures the brutal realities of post-[[The Cataclysm]] survival.
+Port Zephyr clings to life as the crown jewel of [[The Cerulean Reach]], a bustling trade hub built on the bones of a pre-Cataclysm city and maintained through the blood of expendable workers. The city rises in stark terraces from a harbor where contaminated waters mix with clean, creating a patchwork of prosperity and suffering that perfectly captures the brutal realities of post-[[The Cataclysm]] survival.
 
 The natural bay that shelters Port Zephyr from storms also traps magical contamination from centuries of shipping Remnant artifacts and pre-Cataclysm salvage. The harbor glows with an unnatural phosphorescence on moonless nights, and dock workers develop the telltale tremors and lesions of chronic Remnant exposure after just a few years of employment. Yet the city endures because it must—the alternative to controlled contamination is starvation in the wasteland beyond.
 
@@ -17,7 +27,7 @@ Built into terraced hillsides that provide both natural amphitheater effects and
 
 The city's approximately 12,000 inhabitants represent a desperate mix of local survivors, economic refugees from failed settlements, and immigrants seeking any chance at stability. This diversity creates a cosmopolitan atmosphere built on mutual dependence—when everyone is fighting to survive, old prejudices become luxuries few can afford. However, this cooperation exists alongside vicious competition for resources, with [[Languages and Communication|Trade Common]] serving as much to negotiate survival as commercial deals.
 
-Port Zephyr's strategic importance stems from its unique position as both sanctuary and trap. As the largest functional settlement in [[The Cerulean Reach (old)]], it serves as a crucial buffer against [[The Amunrai Imperium]]'s expansion, but this protection comes at the cost of economic subjugation. The Empire doesn't need to conquer Port Zephyr—they own it through debt, dependency, and the constant threat that imperial protection could be withdrawn at any moment.
+Port Zephyr's strategic importance stems from its unique position as both sanctuary and trap. As the largest functional settlement in [[The Cerulean Reach]], it serves as a crucial buffer against [[The Amunrai Imperium]]'s expansion, but this protection comes at the cost of economic subjugation. The Empire doesn't need to conquer Port Zephyr—they own it through debt, dependency, and the constant threat that imperial protection could be withdrawn at any moment.
 
 ### City Layout and Districts
 
@@ -76,7 +86,7 @@ Port Zephyr's culture reflects the adaptations necessary for survival in a world
 - **Plutocratic Democracy**: Seven Merchant Princes elected by property owners create a system where wealth determines political voice and poor have no representation
 - **Imperial Economic Colonialism**: [[The Amunrai Imperium]] exercises control through debt, resource extraction, and the implicit threat of military intervention
 - **Worker Organization**: Underground unions and mutual aid societies provide the only political voice for the majority population
-- **Regional Leadership**: Port Zephyr's wealth makes it influential among [[The Cerulean Reach (old)]] settlements, but this leadership is based on exploitation of shared desperation
+- **Regional Leadership**: Port Zephyr's wealth makes it influential among [[The Cerulean Reach]] settlements, but this leadership is based on exploitation of shared desperation
 - **Factional Corruption**: Every political organization is compromised by survival necessities that force moral compromise
 
 ### Current Challenges
@@ -114,7 +124,7 @@ Port Zephyr's culture reflects the adaptations necessary for survival in a world
 - **Merchant Prince Conspiracy**: Some Council members are [[The Remnant Keepers]] agents working to prevent another Cataclysm, even if it means sacrificing Port Zephyr
 - **Imperial Infiltration**: [[The Amunrai Imperium]] has placed agents throughout the city government and merchant houses, preparing for economic annexation
 - **The Lighthouse Secret**: [[The Sapphire Lighthouse]] is actually containing something rather than just providing guidance, and its light is weakening
-- **Worker Resistance Network**: Organized labor movement with connections to resistance groups across [[The Cerulean Reach (old)]], planning coordinated action
+- **Worker Resistance Network**: Organized labor movement with connections to resistance groups across [[The Cerulean Reach]], planning coordinated action
 - **Contamination Cure**: Someone in the city may have developed a treatment for Remnant exposure, but is keeping it secret for personal profit
 - **The Deep Tunnels**: Smuggling networks that predate the Cataclysm, connecting to pre-disaster facilities that may contain either salvation or greater horror
 - **Artificial Weather**: The favorable climate that makes Port Zephyr viable is being maintained by someone manipulating contaminated weather patterns

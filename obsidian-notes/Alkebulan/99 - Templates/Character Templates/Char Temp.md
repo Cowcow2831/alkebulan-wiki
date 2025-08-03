@@ -1,6 +1,6 @@
 ---
 exampleProperty: true
-access_level:
+access_level: secret
 ---
 ## ⚔️ Basic Information
 

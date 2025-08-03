@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 A centralized monarchy based in the northern realm
 Expanding its influence across the continent
 Likely uses a combination of military force, economic leverage, and diplomacy to extend control

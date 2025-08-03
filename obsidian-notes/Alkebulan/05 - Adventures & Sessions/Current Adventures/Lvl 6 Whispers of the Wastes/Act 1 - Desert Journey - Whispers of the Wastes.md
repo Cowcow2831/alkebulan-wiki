@@ -1,3 +1,7 @@
+---
+access_level: dm
+---
+
 # Act 1 - Desert Journey
 
 ## Setting the Scene

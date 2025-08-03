@@ -16,6 +16,7 @@ tags:
   - pre-cataclysm
   - solarian-empire
   - golden-age
+access_level: secret
 ---
 # The Pre-Cataclysm Empires of Alkebulan
 

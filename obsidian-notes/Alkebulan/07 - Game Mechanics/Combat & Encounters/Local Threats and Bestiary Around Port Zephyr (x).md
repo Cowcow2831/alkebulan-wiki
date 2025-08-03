@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Local Threats and Bestiary Around Port Zephyr
 
 ## Humanoid Threats

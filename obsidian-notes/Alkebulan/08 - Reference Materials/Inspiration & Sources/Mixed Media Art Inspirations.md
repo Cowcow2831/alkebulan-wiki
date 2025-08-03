@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Mixed Media Art Inspirations for Alkebulan
 *Sculptures, dance, theater, architecture, and other artistic mediums for inspiration for your dark post-nuclear fantasy world*
 

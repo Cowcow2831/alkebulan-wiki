@@ -9,7 +9,7 @@ tags:
   - contamination-trade
   - environmental-apartheid
   - merchant-confederation
-access_level: player  # ← Changed from 'dm' to 'player' - players can know about this region
+access_level: player
 ---
 # The Cerulean Reach
 

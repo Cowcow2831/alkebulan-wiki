@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Technology Level Guide for Alkebulan
 *Understanding the Complex Technological Landscape 300 Years After the Cataclysm*
 

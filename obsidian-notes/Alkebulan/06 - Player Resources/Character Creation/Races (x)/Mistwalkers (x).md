@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Mistwalker Lore:
 
 Origins:

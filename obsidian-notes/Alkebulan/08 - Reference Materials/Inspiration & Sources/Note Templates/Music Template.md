@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 ## Music Template
 
 ### **Basic Information**

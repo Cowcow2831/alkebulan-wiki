@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Initiative Tracker
 
 ## Round X

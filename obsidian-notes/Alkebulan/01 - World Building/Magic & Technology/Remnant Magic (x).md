@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Remnant Magic in Alkebulan:
 	   - The primary form of magic left after the cataclysm
 	   - Manifests in unpredictable ways, often tied to locations or objects

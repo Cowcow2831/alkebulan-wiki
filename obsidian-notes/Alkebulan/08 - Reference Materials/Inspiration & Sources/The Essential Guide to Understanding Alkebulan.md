@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # The Essential Guide to Understanding Alkebulan
 *Five key references that capture the spirit and themes of this dark post-nuclear fantasy world*
 

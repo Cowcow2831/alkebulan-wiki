@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Voidrend Warpick
 *Weapon (war pick), rare (requires attunement)*
 

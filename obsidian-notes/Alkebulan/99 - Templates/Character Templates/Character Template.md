@@ -8,7 +8,7 @@ campaign:
 tags:
   - character
   - pc
-access_level:
+access_level: secret
 ---
 
 # {{title}}

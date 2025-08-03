@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 ## Books & Literature Template
 
 ### **Basic Information**

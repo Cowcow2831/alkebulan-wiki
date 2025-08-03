@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Commander Sunspear (Sunchildren)
 Medium humanoid (Sunchildren), lawful neutral
 

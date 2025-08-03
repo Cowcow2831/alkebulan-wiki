@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # 🔥 <% tp.system.prompt("Character Name") %>
 
 _Knight of the Order of Desolation_

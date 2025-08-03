@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Climate and Weather in Alkebulan
 
 ## Continental Overview

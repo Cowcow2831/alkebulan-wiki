@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Trade Routes and Commerce in Alkebulan
 
 ## Overview of Continental Trade

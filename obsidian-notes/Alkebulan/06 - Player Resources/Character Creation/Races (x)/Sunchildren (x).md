@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Sunchildren Race Traits:
 
 Ability Score Increase: Your Charisma score increases by 2, and your Wisdom score increases by 1.

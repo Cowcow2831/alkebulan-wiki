@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Player Handout
 ## Welcome to Alkebulan
 

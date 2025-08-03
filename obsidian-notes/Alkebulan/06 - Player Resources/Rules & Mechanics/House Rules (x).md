@@ -5,6 +5,7 @@ tags:
   - house-rules
   - campaign
   - mechanics
+access_level: player
 ---
 ## Combat Rules
 

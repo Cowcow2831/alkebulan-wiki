@@ -1,3 +1,8 @@
+---
+type: government
+access_level: player
+---
+
 # Legal System and Authorities in Port Zephyr
 
 ## Government Structure

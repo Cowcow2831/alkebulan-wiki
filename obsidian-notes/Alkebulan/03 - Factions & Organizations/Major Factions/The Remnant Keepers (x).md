@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 1. Origin:
    - Founded by survivors of both empires involved in the cataclysm
    - Established in the immediate aftermath to prevent future disasters

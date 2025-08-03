@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 - Appearance:
     - Tall, slender trees with smooth, silvery-white bark.
     - Instead of leaves, they have glowing, crystalline structures that fan out like frozen fireworks.

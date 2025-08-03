@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 ## Historical Events Template
 
 ### **Basic Information**

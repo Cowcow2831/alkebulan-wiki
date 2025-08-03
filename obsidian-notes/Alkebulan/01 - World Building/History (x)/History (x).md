@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 1. The Age of Empires:
    - Two great empires dominated the continent, each with advanced magic
    - Legends speak of impossible feats: cities in the sky, rivers flowing backwards, deserts turned to forests

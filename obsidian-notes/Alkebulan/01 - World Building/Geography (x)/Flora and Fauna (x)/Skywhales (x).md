@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 1. Appearance:
     - Colossal creatures, ranging from 100 to 300 feet in length.
     - Bodies resembling Earth whales but with ethereal, semi-transparent skin that shifts colors based on their mood and surrounding magical currents.

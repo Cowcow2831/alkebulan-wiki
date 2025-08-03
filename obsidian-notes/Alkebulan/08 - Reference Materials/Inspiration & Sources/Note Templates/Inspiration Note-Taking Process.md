@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Inspiration Note-Taking Process
 
 ## Usage Guidelines

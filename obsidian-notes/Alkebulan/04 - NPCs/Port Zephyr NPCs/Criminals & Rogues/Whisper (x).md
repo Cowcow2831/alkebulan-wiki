@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Whisper, Mistwalker Thief
 Medium humanoid (mistwalker), chaotic neutral
 

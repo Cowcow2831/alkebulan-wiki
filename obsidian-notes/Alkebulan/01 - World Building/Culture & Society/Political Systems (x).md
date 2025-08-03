@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 1. [[The Amunrai Imperium (x)]] (Egypt analog):
     - A centralized monarchy based in the northern realm
     - Expanding its influence across the continent

@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 1. Origins:
    - Rediscovered technology from pre-cataclysm era
    - Developed through a combination of remnant magic and innovative engineering

@@ -1,4 +1,8 @@
-## Music Template
+---
+access_level: secret
+---
+
+## Music Ben Frost - By The Throat - 8-1-25
 
 ### **Basic Information**
 - **Artist**: Ben Frost

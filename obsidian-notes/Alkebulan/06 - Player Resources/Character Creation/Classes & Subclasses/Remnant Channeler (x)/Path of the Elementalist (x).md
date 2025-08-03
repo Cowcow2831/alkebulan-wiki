@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Remnant Channelers who follow the Path of the Elementalist learn to harness the raw elemental forces within remnant magic. They understand that the cataclysm didn't just reshape the land - it fundamentally altered the elements themselves, infusing them with chaotic remnant energy that can be controlled by those with the knowledge and will to do so.
 
 ## Path of the Elementalist Features

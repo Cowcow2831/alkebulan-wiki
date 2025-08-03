@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Remnant Channelers who follow the Path of the Artificer study the remnants of ancient technology, learning to harness and replicate the powerful artifacts of the pre-cataclysm era. They combine technical expertise with an intuitive understanding of remnant magic to create and modify magical items.
 
 ## Path of the Artificer Features

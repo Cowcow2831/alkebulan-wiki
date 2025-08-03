@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Multiclassing in Alkebulan
 
 ## Core Philosophy

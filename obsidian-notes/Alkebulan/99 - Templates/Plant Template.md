@@ -7,7 +7,7 @@ campaign:
 tags:
   - flora
   - plant
-access_level:
+access_level: secret
 ---
 
 # {{title}}

@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 1. Arcane Magic:
 	- Wizards, Sorcerers, and Warlocks still exist but are rare
 	- Spell lists are more limited, focusing on lower-level spells

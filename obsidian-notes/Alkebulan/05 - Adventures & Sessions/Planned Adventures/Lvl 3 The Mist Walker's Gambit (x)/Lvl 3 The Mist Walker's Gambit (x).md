@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Adventure: "The Mist Walker's Gambit"
 
 Setting: The Merchant's Quarter of Port Zephyr, focusing on a wealthy merchant's villa and the surrounding area.

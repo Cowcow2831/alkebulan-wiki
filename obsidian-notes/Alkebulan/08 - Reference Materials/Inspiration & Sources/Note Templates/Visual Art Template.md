@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 ## Visual Art Template
 
 ### **Basic Information**

@@ -3,7 +3,13 @@ type: race
 region: The Whispering Wastes, Alkebulan
 status: active
 campaign: Alkebulan
-tags: [race, post-cataclysm, desert, earth-magic, sandshapers]
+tags:
+  - race
+  - post-cataclysm
+  - desert
+  - earth-magic
+  - sandshapers
+access_level: player
 ---
 
 # Sandshapers
@@ -54,7 +60,7 @@ Sandshaper society is as diverse as the desert itself. Some live in nomadic trib
 While not as mistrusted as [[Mistwalkers (x)]], Sandshapers are often viewed with a mix of awe and unease by other races. Their ability to seemingly melt into the desert landscape has led to them being sought after as scouts, guides, and spies, but also regarded with suspicion by those who fear deception or hidden motives.
 
 **Common Perceptions:**
-- **In [[The Cerulean Reach (old)]]:** Respected as essential caravan guides and desert survival experts
+- **In [[The Cerulean Reach]]:** Respected as essential caravan guides and desert survival experts
 - **In [[The Amunrai Imperium (x)]]:** Valued but watched - their independence conflicts with imperial control
 - **Among Nomadic Peoples:** Generally welcomed as fellow desert wanderers who understand the harsh realities of arid life
 
@@ -77,13 +83,13 @@ Sandshaper names often reflect natural desert phenomena, precious materials foun
 4. **Caravan Protector:** A guide and guardian for merchants crossing treacherous desert routes, intimate with every oasis and hidden danger
 5. **Urban Disconnect:** A Sandshaper who grew up in a large city, disconnected from their heritage and seeking to reconnect with their desert roots
 6. **Remnant Seeker:** An explorer drawn to areas where the Cataclysm's magical energies still resonate with the earth
-
+<!-- DM_START -->
 ### Integration Notes for DMs
 - Sandshapers make excellent guides for desert adventures and can serve as cultural bridges in areas where multiple societies meet
 - Their earth magic provides interesting utility options for environmental challenges
 - Consider how their shifting skin ability might create interesting social dynamics or mistaken identity scenarios
 - Their cultural emphasis on impermanence can create compelling character moments around loss, change, and acceptance
-
+<!-- DM_END -->
 ### Mechanical Considerations
 - The Constitution-based spellcasting reflects their deep physical connection to the earth
 - Desert Resilience makes them naturally suited for hot climate adventures

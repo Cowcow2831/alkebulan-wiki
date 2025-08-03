@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 ## Poetry Template
 
 ### **Basic Information**

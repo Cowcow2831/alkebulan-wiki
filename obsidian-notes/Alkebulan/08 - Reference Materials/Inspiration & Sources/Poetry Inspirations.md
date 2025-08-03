@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Poetry Inspirations for Alkebulan
 *Poems, Poets, and Poetic Movements to Inspire Your Dark Post-Nuclear Fantasy World*
 

@@ -1,3 +1,7 @@
+---
+access_level: dm
+---
+
 ## Initial Situation
 Based on the party's approach to the Prism and the presence of Imperial forces, three immediate scenarios can unfold:
 

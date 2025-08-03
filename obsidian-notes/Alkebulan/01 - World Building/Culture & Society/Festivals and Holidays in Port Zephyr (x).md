@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Festivals and Holidays in Port Zephyr
 
 ## Major Annual Festivals

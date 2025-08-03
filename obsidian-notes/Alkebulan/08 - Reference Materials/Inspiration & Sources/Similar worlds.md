@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 ## **Fantasy Post-Apocalyptic Worlds**
 
 **The Broken Empire (Mark Lawrence)**

@@ -3,7 +3,12 @@ type: npc
 location: The Whispering Wastes
 status: alive
 campaign: Alkebulan
-tags: [npc, sandshaper, guide, crystalline]
+tags:
+  - npc
+  - sandshaper
+  - guide
+  - crystalline
+access_level: player
 ---
 
 # Ashira the Sandshaper

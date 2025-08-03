@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Remnant Channelers who follow the Path of the Voidwalker study the fabric of reality itself, learning to manipulate the spaces between spaces. They understand that the cataclysm didn't just reshape the physical world - it created tears in reality that can be exploited by those who understand their nature.
 
 ## Path of the Voidwalker Features

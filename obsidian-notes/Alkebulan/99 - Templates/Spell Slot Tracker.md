@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Spell Slots - [Character Name]
 
 ## Current Spell Slots

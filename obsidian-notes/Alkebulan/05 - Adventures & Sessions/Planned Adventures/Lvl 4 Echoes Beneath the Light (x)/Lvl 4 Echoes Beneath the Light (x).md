@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Adventure Hook:
 The Arcane Harbormaster approaches the party, concerned about increasing instability in the Sapphire Lighthouse's magic. Recent tremors have revealed a hidden entrance in the lighthouse's basement, hinting at an ancient temple below. The party is tasked with exploring this temple to uncover the source of the disturbance and stabilize the lighthouse.
 

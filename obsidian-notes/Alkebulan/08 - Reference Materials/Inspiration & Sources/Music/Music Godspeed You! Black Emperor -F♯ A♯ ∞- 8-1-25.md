@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Godspeed You! Black Emperor -F♯ A♯ ∞- 8/1/25
 
 ## The Dead Flag Blues

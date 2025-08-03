@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 ## Non-Fiction Template
 
 ### **Basic Information**

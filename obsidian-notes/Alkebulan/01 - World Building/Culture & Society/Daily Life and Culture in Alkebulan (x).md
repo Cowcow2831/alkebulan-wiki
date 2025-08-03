@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Daily Life and Culture in Alkebulan
 
 ## Languages

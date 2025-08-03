@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Amunrai Archmage
 Medium humanoid (human), lawful evil
 

@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Savanna Elves have adapted to the vast, open grasslands of Alkebulan, developing unique traits that allow them to thrive in this environment. Their skin tones range from deep bronze to rich ebony, and their hair is often in shades of gold, auburn, or black.
 
 Ability Score Increase: Your Wisdom score increases by 1.

@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Languages and Communication in Alkebulan
 
 ## Linguistic Overview

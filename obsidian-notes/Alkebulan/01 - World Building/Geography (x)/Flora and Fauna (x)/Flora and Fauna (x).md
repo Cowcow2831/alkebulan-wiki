@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Flora:
 
 1. [[Sunburst Trees (x)]]: Massive baobab-like trees with bioluminescent leaves that glow at night.

@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Currency and Trade in Alkebulan
 
 ## Standard Currency

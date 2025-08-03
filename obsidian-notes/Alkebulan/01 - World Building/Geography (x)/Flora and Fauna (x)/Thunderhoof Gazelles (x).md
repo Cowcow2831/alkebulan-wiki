@@ -10,6 +10,7 @@ tags:
   - electrical
   - herbivore
   - herd
+access_level: secret
 ---
 # Thunderhoof Gazelles
 

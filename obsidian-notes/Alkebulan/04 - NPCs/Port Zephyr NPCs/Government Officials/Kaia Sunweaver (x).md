@@ -3,7 +3,13 @@ type: npc
 location: Port Zephyr
 status: alive
 campaign: Alkebulan
-tags: [npc, government, remnant-keepers, port-zephyr, council]
+tags:
+  - npc
+  - government
+  - remnant-keepers
+  - port-zephyr
+  - council
+access_level: player
 ---
 
 # Kaia Sunweaver

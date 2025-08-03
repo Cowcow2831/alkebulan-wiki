@@ -3,7 +3,13 @@ type: reference
 category: character-creation
 status: active
 campaign: Alkebulan
-tags: [races, adaptations, setting-integration, standard-dnd, 3rd-party]
+tags:
+  - races
+  - adaptations
+  - setting-integration
+  - standard-dnd
+  - 3rd-party
+access_level: player
 ---
 # Standard D&D Race Adaptations for Alkebulan
 
@@ -59,7 +65,7 @@ Each race entry includes:
 **Subrace Adaptations**:
 - **Mountain Dwarves**: Traditional stronghold dwellers, experts in remnant metal forging
 - **Hill Dwarves**: Emerged earlier to help rebuild, now integrated into many surface communities
-- **[[Desert Dwarves]]**: Adapted to arid post-Cataclysm environments (see existing note)
+- **[[Desert Dwarves]]**: Adapted to arid post-Cataclysm environments
 
 ### **Halflings** ✅
 **Integration**: Adaptable survivors who thrived through community cooperation
@@ -667,7 +673,7 @@ All use the umbral energy theme rather than fiendish, but maintain their unique 
 - **Joke races** that undermine serious campaign tone
 
 ---
-
+<!-- DM_START -->
 ## **Integration Guidelines for DMs**
 
 ### **When Adapting Races**
@@ -677,7 +683,7 @@ All use the umbral energy theme rather than fiendish, but maintain their unique 
 4. **Add Hooks**: Create connections to Alkebulan's history and cultures
 
 ### **Regional Variations**
-- **[[The Cerulean Reach (old)]]**: More accepting of magical races, cosmopolitan attitudes
+- **[[The Cerulean Reach]]**: More accepting of magical races, cosmopolitan attitudes
 - **[[The Amunrai Imperium (x)]]**: Hierarchy-focused, solar-touched races favored
 - **Rural/Remote Areas**: Traditional attitudes, emphasis on practical survival skills
 - **Remnant Zones**: All races may show signs of magical adaptation or mutation
@@ -690,7 +696,7 @@ Consider how each race's abilities and appearance affect their interactions with
 - **Faction representatives** (Remnant Keepers, Mist Walkers, etc.)
 
 ---
-
+<!--DM_END -->
 ## **Related References**
 - [[Sandshapers (x)]] - Setting-specific race example
 - [[Mistwalkers (x)]] - Setting-specific race example  

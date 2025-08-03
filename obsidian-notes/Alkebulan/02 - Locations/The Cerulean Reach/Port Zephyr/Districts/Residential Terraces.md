@@ -1,8 +1,17 @@
+---
+type: location
+region: Southern Alkebulan
+campaign: Alkebulan
+tags:
+  - location
+access_level: player
+---
+
 # Residential Terraces
 
 ## Overview
 **Type:** Stratified Residential District/Housing Zones
-**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]])
+**Region:** [[The Cerulean Reach]] ([[Port Zephyr]])
 **Population:** Approximately 5,500 residents across multiple contamination-risk levels
 **Government:** Managed by District Wardens under strict Council oversight, with [[City Watch Officers]] enforcing contamination protocols
 **Contamination Level:** Variable by elevation (Low to Moderate, strictly monitored)

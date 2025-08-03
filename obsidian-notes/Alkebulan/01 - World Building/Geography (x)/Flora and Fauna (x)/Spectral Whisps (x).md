@@ -11,6 +11,7 @@ tags:
   - desert
   - intelligent
   - swarm
+access_level: secret
 ---
 
 # Spectral Whisps

@@ -5,7 +5,7 @@ status: alive
 campaign: 
 tags:
   - npc
-access_level:
+access_level: secret
 ---
 
 # {{title}}

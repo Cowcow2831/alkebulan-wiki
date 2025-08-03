@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # The Accursed Class
 
 In a world where dark magic and malevolent forces seek to corrupt the innocent, some individuals have found themselves permanently marked by these sinister powers. The Accursed are those rare souls who have not only survived such afflictions but learned to harness their curse's power for their own purposes. These practitioners walk a dangerous path, wielding the very magic that once sought to destroy them.

@@ -7,6 +7,7 @@ tags:
   - remnant-magic
   - surge-table
   - whispering-wastes
+access_level: secret
 ---
 
 # Whispering Wastes Remnant Surge Table

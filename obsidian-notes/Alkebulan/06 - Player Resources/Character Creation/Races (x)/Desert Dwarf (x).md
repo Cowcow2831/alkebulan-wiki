@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Desert Dwarves have adapted to the harsh, arid landscapes of Alkebulan's vast deserts. They've developed unique traits that allow them to survive and thrive in these unforgiving environments. Their skin tones range from deep tan to rich copper, and their hair is often in shades of black, dark brown, or occasionally sun-bleached blonde.
 
 Ability Score Increase: Your Constitution score increases by 2, and your Wisdom score increases by 1.

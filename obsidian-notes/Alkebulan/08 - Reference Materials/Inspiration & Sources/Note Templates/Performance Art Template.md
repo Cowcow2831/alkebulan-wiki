@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 ## Performance Art Template
 
 ### **Basic Information**

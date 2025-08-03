@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Magic Items and Artifacts in Alkebulan
 
 ## Magic Item Rarity and Availability

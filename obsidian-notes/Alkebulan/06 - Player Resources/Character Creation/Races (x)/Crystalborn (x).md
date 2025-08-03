@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Crystalborn Race Traits:
 
 Ability Score Increase: Your Intelligence score increases by 2, and your Constitution score increases by 1.

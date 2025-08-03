@@ -1,3 +1,7 @@
+---
+access_level: dm
+---
+
 # Whispers of the Wastes - One-Shot Adventure (Level 6)
 
 ## Adventure Overview (4-6 Hours)

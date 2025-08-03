@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Historical Inspirations for Alkebulan
 *Real-World Events, Conflicts, and Historical Periods to Study for Your Dark Post-Nuclear Fantasy World*
 

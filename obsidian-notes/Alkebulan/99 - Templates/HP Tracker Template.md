@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Party HP Tracker
 
 | Character | Max HP | Current HP | Temp HP | Status |

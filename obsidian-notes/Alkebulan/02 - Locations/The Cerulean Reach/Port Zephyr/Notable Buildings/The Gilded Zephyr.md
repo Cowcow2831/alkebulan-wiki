@@ -2,14 +2,22 @@
 type: location
 region: The Cerulean Reach
 campaign: Alkebulan
-tags: [location, inn, merchant-quarter, port-zephyr, luxury, accommodation, elite]
+tags:
+  - location
+  - inn
+  - merchant-quarter
+  - port-zephyr
+  - luxury
+  - accommodation
+  - elite
+access_level: player
 ---
 
 # The Gilded Zephyr
 
 ## Overview
 **Type:** Elite Inn/Information Hub/Exploitation Showcase
-**Region:** [[The Cerulean Reach (old)]] ([[Port Zephyr]] - [[Merchant Quarter]])
+**Region:** [[The Cerulean Reach]] ([[Port Zephyr]] - [[Merchant Quarter]])
 **Population:** 50+ staff members, 20-30 guests at any time
 **Government:** Private establishment operating under merchant guild oversight
 

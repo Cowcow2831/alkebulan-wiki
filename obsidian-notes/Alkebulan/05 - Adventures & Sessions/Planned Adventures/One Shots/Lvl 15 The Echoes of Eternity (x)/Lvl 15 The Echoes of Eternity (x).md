@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Setting: The adventure takes place in and around the ancient ruins of Zephyr's Cradle, a legendary skyship dock from before the cataclysm, now floating among the Shattered Isles - a cluster of remnant-infused floating landmasses.
 
 Hook: The party is approached by a desperate Remnant Keeper named Azara. She explains that an Amunrai Imperium expedition has discovered the location of Zephyr's Cradle and is planning to salvage its technology to create unparalleled skyships. This could upset the balance of power in Alkebulan. The party must reach the Cradle first and secure or destroy its secrets.

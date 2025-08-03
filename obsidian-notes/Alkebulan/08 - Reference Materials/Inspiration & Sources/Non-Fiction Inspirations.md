@@ -1,3 +1,7 @@
+---
+access_level: player
+---
+
 # Non-Fiction Knowledge Sources for Alkebulan
 *Essential real-world knowledge, academic works, and non-fiction books to inform your dark post-nuclear fantasy world*
 

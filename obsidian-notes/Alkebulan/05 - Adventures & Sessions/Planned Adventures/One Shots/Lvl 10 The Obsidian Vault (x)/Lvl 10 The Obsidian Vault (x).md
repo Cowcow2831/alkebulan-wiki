@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 Premise: As Remnant Keeper agents, the players must secure a powerful artifact from a recently uncovered pre-cataclysm vault before the Amunrai Imperium claims it.
 
 1. Briefing (15 minutes):

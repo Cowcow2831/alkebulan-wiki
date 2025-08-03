@@ -1,4 +1,8 @@
-# Class Feature Modifications - Alkebulan
+---
+access_level: secret
+---
+
+# Class Feature Modifications
 
 ## Core Principles
 

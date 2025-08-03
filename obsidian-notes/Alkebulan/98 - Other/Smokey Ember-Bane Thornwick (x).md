@@ -2,6 +2,7 @@
 exampleProperty: true
 HP: 95
 MM: "3"
+access_level: secret
 ---
 ## ⚔️ Basic Information
 

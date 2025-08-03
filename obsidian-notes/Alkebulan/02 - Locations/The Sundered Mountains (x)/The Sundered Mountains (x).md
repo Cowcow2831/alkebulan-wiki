@@ -1,3 +1,12 @@
+---
+type: location
+region: Central Alkebulan
+campaign: Alkebulan
+tags:
+  - location
+access_level: secret
+---
+
 ## Physical Description
 The Sundered Mountains form one of Alkebulan's most striking geographical features - a vast mountain range literally torn apart by the magical cataclysm. Massive gaps separate sections of the range, with some peaks floating entirely free of the earth. The mountains are characterized by:
 

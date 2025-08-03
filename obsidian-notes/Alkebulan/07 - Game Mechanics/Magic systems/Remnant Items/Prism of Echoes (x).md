@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # The Prism of Echoes
 *Wondrous item, uncommon (requires attunement)*
 
