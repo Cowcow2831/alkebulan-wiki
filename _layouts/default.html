@@ -926,18 +926,19 @@
                 console.log('Status updated to:', statusIndicator.textContent);
             }
 
-            // Modify your safeModeToggle.onclick function:
             safeModeToggle.onclick = function() {
                 const wasSafe = document.body.classList.contains('safe-mode');
 
                 if (wasSafe) {
                     document.body.classList.remove('safe-mode');
+                    document.documentElement.classList.remove('safe-mode');
                     // Restore original styling
                     document.body.style.backgroundColor = '';
                     document.documentElement.style.backgroundColor = '';
                 } else {
                     document.body.classList.add('safe-mode');
-                    // Force dark background immediately
+                    document.documentElement.classList.add('safe-mode');
+                    // Force dark background immediately on both body and html
                     document.body.style.backgroundColor = '#1a1a1a';
                     document.documentElement.style.backgroundColor = '#1a1a1a';
                 }
@@ -989,7 +990,8 @@
                     if (Date.now() - preferences.timestamp < 30 * 24 * 60 * 60 * 1000) {
                         if (preferences.safeModeEnabled) {
                             document.body.classList.add('safe-mode');
-                            // Force dark background immediately
+                            document.documentElement.classList.add('safe-mode');
+                            // Force dark background immediately on both elements
                             document.body.style.backgroundColor = '#1a1a1a';
                             document.documentElement.style.backgroundColor = '#1a1a1a';
                         }
@@ -1003,7 +1005,6 @@
                 console.log('Could not load accessibility preferences');
             }
         }
-        
         // WCAG-compliant user preference persistence
         function saveAccessibilityPreferences() {
             const preferences = {

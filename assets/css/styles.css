@@ -1268,6 +1268,12 @@ a:focus {
 
 
 /* Safe Mode - Comprehensive Migraine-Friendly Design */
+/* Safe Mode - Comprehensive Migraine-Friendly Design */
+html.safe-mode {
+    background: #1a1a1a !important;
+    background-color: #1a1a1a !important;
+}
+
 .safe-mode {
     /* Force dark background colors */
     background: #1a1a1a !important;
