@@ -76,33 +76,63 @@
         }
 
         .classified-banner {
-            background: linear-gradient(45deg, #ff3333, #ff6666);
-            color: white;
-            padding: 2rem;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            color: var(--warning-yellow);
+            padding: 3rem 2rem;
             text-align: center;
             margin: 2rem 0;
-            border: 3px solid #ff0000;
+            border: 3px solid var(--toxic-green);
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            position: relative;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        .classified-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .classified-banner::after {
+            content: "☢️ ⚠️ ☢️";
+            position: absolute;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--radiation-orange);
+            text-shadow: var(--glow-orange);
         }
 
         .classified-banner h2 {
-            margin: 0;
-            font-size: 2rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            color: white !important;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 2.5rem;
+            text-shadow: var(--text-shadow), var(--glow-green);
+            color: var(--toxic-green) !important;
+            text-align: center;
+            font-weight: bold;
         }
 
         .classified-banner p {
-            margin: 0.5rem 0 0 0;
-            font-size: 1.2rem;
+            margin: 0.8rem auto;
+            font-size: 1.1rem;
+            text-align: center;
+            color: var(--text-primary);
+            max-width: 600px;
+            text-shadow: var(--text-shadow);
         }
 
-        .classified-content-hidden {
-            filter: blur(5px);
-            opacity: 0.3;
-            pointer-events: none;
-            user-select: none;
+        .classified-banner p:last-child {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 1.5rem;
         }
 
         /* Contamination Pulse Animation */
