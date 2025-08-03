@@ -88,6 +88,17 @@
             animation: contamination-pulse 2s ease-in-out infinite;
         }
 
+        .classified-banner h2 {
+            border-left: none !important;
+            padding-left: 0 !important;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 2.5rem;
+            text-shadow: var(--text-shadow), var(--glow-green);
+            color: var(--toxic-green) !important;
+            text-align: center;
+            font-weight: bold;
+        }
+        
         .classified-banner::before {
             content: "";
             position: absolute;
@@ -151,7 +162,7 @@
         .classified-banner::after {
             display: block !important;
         }
-        
+
         /* Contamination Pulse Animation */
         @keyframes contamination-pulse {
             0%, 100% { opacity: 1; }
