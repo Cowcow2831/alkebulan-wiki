@@ -1489,7 +1489,7 @@
 
                         // Add resize listener
                         window.addEventListener('resize', handleWindowResize);
-                        
+
         // Throttle scroll events for better performance
         let scrollTimeout;
         function throttledScrollHandler() {
@@ -1509,12 +1509,41 @@
         let searchTimeout;
 
         // Load search data
-        fetch('{{ site.baseurl }}/search.json')
-            .then(response => response.json())
-            .then(data => {
-                searchData = data;
-            })
-            .catch(error => console.error('Search data loading failed:', error));
+        let searchDataLoaded = false;
+
+        function loadSearchData() {
+            const searchUrl = '{{ site.baseurl }}/search.json';
+            console.log('Loading search data from:', searchUrl); // Debug log
+
+            fetch(searchUrl)
+                .then(response => {
+                    console.log('Search response status:', response.status); // Debug log
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Search data loaded:', data.length, 'items'); // Debug log
+                    searchData = data;
+                    searchDataLoaded = true;
+                })
+                .catch(error => {
+                    console.error('Search data loading failed:', error);
+                    // Fallback: create basic search data from current page
+                    searchData = [{
+                        title: document.title,
+                        url: window.location.pathname,
+                        content: document.querySelector('.main-content') ?
+                            document.querySelector('.main-content').textContent.substring(0, 200) : '',
+                        access_level: 'public'
+                    }];
+                    searchDataLoaded = true;
+                });
+        }
+
+        // Load search data when page loads
+        document.addEventListener('DOMContentLoaded', loadSearchData);
 
         // Search input handler
         document.addEventListener('DOMContentLoaded', function() {
@@ -1544,26 +1573,39 @@
                 return;
             }
 
+            // Check if search data is loaded
+            if (!searchDataLoaded || searchData.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item">Search data loading...</div>';
+                searchResults.style.display = 'block';
+                return;
+            }
+
+            const queryLower = query.toLowerCase();
             const results = searchData.filter(item => {
                 // Filter by current view mode
                 if (currentView === 'player' && item.access_level === 'dm') {
                     return false;
                 }
 
-                return item.title.toLowerCase().includes(query.toLowerCase()) ||
-                       item.content.toLowerCase().includes(query.toLowerCase());
+                // Search in title and content
+                const titleMatch = item.title && item.title.toLowerCase().includes(queryLower);
+                const contentMatch = item.content && item.content.toLowerCase().includes(queryLower);
+
+                return titleMatch || contentMatch;
             }).slice(0, 5); // Limit to 5 results
 
+            console.log('Search query:', query, 'Results:', results.length); // Debug log
+
             if (results.length === 0) {
-                searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+                searchResults.innerHTML = '<div class="search-result-item">No results found for "' + query + '"</div>';
                 searchResults.style.display = 'block';
                 return;
             }
 
             searchResults.innerHTML = results.map(item => `
                 <div class="search-result-item" onclick="window.location.href='${item.url}'">
-                    <div class="search-result-title">${item.title}</div>
-                    <div class="search-result-content">${item.content}</div>
+                    <div class="search-result-title">${item.title || 'Untitled'}</div>
+                    <div class="search-result-content">${(item.content || '').substring(0, 100)}...</div>
                 </div>
             `).join('');
 
