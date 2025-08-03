@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
-
+    {% if page.access_level %}
+    <meta name="page-access-level" content="{{ page.access_level }}">
+    {% endif %}
+    
     <!-- SEO -->
     {% seo %}
 
@@ -752,8 +755,7 @@
                     <h1 class="page-title">{{ page.title }}</h1>
                     {% endif %}
 
-                    <div id="content" class="{% if page.access_level == 'dm' %}classified-content{% endif %}">
-                        {% if page.access_level == 'dm' %}
+                    <div id="content">
                         <div class="classified-banner-container" id="classifiedBanner" style="display: none;">
                             <div class="classified-banner">
                                 <h2>⚠️ CLASSIFIED ⚠️</h2>
@@ -761,9 +763,8 @@
                                 <p style="font-size: 0.9rem; opacity: 0.9;">Contact your Remnant Keeper for authorization.</p>
                             </div>
                         </div>
-                        {% endif %}
 
-                        <div id="actualContent" class="{% if page.access_level == 'dm' %}dm-restricted-content{% endif %}">
+                        <div id="actualContent">
                             {{ content }}
                         </div>
                     </div>
@@ -887,49 +888,60 @@
             const actualContent = document.getElementById('actualContent');
 
             // Check if this page has DM-only access level
-            const pageAccessLevel = '{{ page.access_level }}';
+            function filterContent(viewMode) {
+                const content = document.getElementById('content');
+                const classifiedBanner = document.getElementById('classifiedBanner');
+                const actualContent = document.getElementById('actualContent');
 
-            if (pageAccessLevel === 'dm' && viewMode === 'player') {
-                // Show classified banner and hide/blur content
-                if (classifiedBanner) {
-                    classifiedBanner.style.display = 'block';
-                }
-                if (actualContent) {
-                    actualContent.className = 'dm-restricted-content classified-content-hidden';
-                }
-            } else {
-                // Hide banner and show normal content
-                if (classifiedBanner) {
-                    classifiedBanner.style.display = 'none';
-                }
-                if (actualContent) {
-                    actualContent.className = 'dm-restricted-content';
-                }
-            }
+                // Get page access level from page metadata (if available)
+                const pageAccessLevel = document.querySelector('meta[name="page-access-level"]') ?
+                                       document.querySelector('meta[name="page-access-level"]').content : 'public';
 
-            // Handle DM-only sections within content (preserve existing functionality)
-            if (!originalContent) {
-                originalContent = actualContent ? actualContent.innerHTML : '';
-            }
-
-            if (actualContent) {
-                let html = originalContent;
-
-                if (viewMode === 'player') {
-                    html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
-                    html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
-                    html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+                if (pageAccessLevel === 'dm' && viewMode === 'player') {
+                    // Show classified banner and hide/blur content
+                    if (classifiedBanner) {
+                        classifiedBanner.style.display = 'block';
+                    }
+                    if (actualContent) {
+                        actualContent.style.filter = 'blur(5px)';
+                        actualContent.style.opacity = '0.3';
+                        actualContent.style.pointerEvents = 'none';
+                    }
                 } else {
-                    html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
-                    html = html.replace(/<!-- DM_END -->/g, '</div>');
-                    html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
-                    html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+                    // Hide banner and show normal content
+                    if (classifiedBanner) {
+                        classifiedBanner.style.display = 'none';
+                    }
+                    if (actualContent) {
+                        actualContent.style.filter = 'none';
+                        actualContent.style.opacity = '1';
+                        actualContent.style.pointerEvents = 'auto';
+                    }
                 }
 
-                actualContent.innerHTML = html;
+                // Handle DM-only sections within content (preserve existing functionality)
+                if (!originalContent && actualContent) {
+                    originalContent = actualContent.innerHTML;
+                }
+
+                if (actualContent) {
+                    let html = originalContent;
+
+                    if (viewMode === 'player') {
+                        html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+                        html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                        html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+                    } else {
+                        html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                        html = html.replace(/<!-- DM_END -->/g, '</div>');
+                        html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                        html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+                    }
+
+                    actualContent.innerHTML = html;
+                }
             }
-        }
-        
+
         function hideNavItems(viewMode) {
             const navItems = document.querySelectorAll('.nav-item');
 
