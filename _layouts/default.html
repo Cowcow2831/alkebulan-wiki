@@ -884,9 +884,25 @@
 
         function filterContent(viewMode) {
             const content = document.getElementById('content');
+            const classifiedBanner = document.getElementById('classifiedBanner');
+            const actualContent = document.getElementById('actualContent');
 
             if (!originalContent) {
                 originalContent = content.innerHTML; // Store original on first run
+            }
+
+            // Check if this page requires DM access
+            const pageAccessLevel = document.querySelector('meta[name="page-access-level"]')?.getAttribute('content');
+
+            if (viewMode === 'player' && pageAccessLevel === 'dm') {
+                // Show classified banner and hide actual content for DM-only pages
+                classifiedBanner.style.display = 'block';
+                actualContent.style.display = 'none';
+                return;
+            } else {
+                // Hide classified banner and show content
+                classifiedBanner.style.display = 'none';
+                actualContent.style.display = 'block';
             }
 
             let html = originalContent;
@@ -950,7 +966,7 @@
                     // Setup simple navigation
                     setupSimpleNavigation();
                 });
-                
+
         // Simplified navigation system
         function setupSimpleNavigation() {
             try {
