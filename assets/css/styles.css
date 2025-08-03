@@ -1273,21 +1273,160 @@ a:focus {
     background: var(--bg-accent) !important;
     border: 1px solid var(--ash-gray) !important;
     color: var(--text-primary) !important;
-}
-/* Low Contrast Mode - For contrast sensitivity */
-.low-contrast {
-    --text-primary: #c8c8c8;
-    --text-secondary: #a0a0a0;
-    --warning-yellow: #b8a000;
-    --toxic-green: #5a9900;
-    --danger-red: #b83333;
+    /* Enhanced Low Contrast Mode with clear visual feedback */
+    .low-contrast {
+        --text-primary: #c0c0c0;
+        --text-secondary: #999999;
+        --warning-yellow: #b8a000;
+        --toxic-green: #5a9900;
+        --danger-red: #b83333;
+        --rust-orange: #cc7700;
+    }
+
+    .low-contrast h1,
+    .low-contrast h2,
+    .low-contrast h3,
+    .low-contrast h4,
+    .low-contrast h5,
+    .low-contrast h6 {
+        color: var(--text-primary) !important;
+    }
+
+    /* Add a subtle border to indicate low contrast mode is active */
+    .low-contrast::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--text-muted), var(--text-secondary), var(--text-muted));
+        z-index: 1000;
+        pointer-events: none;
+    }
+    
+/* Accessibility Control Panel */
+.accessibility-controls {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
 }
 
-.low-contrast h1,
-.low-contrast h2,
-.low-contrast h3,
-.low-contrast h4,
-.low-contrast h5,
-.low-contrast h6 {
+.accessibility-btn {
+    padding: 0.6rem 1rem;
+    background: var(--bg-accent);
+    border: 1px solid var(--ash-gray);
+    color: var(--text-primary);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.8rem;
+    min-height: 40px;
+    white-space: nowrap;
+}
+
+.accessibility-btn:hover {
+    background: var(--rust-orange);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.accessibility-btn:active {
+    transform: translateY(0);
+}
+
+/* Mode Status Indicator */
+.mode-status {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.75rem;
+    border: 2px solid;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mode-status.normal {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    border-color: var(--toxic-green);
+}
+
+.mode-status.safe {
+    background: linear-gradient(45deg, #e8f5e8, #f0f8f0);
+    color: #2d5a2d;
+    border-color: #28a745;
+}
+
+.mode-status.low-contrast {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-color: var(--text-muted);
+}
+
+.mode-status.safe-low {
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    color: #495057;
+    border-color: #6c757d;
+}
+
+/* Safe mode overrides for control panel */
+.safe-mode .accessibility-controls {
+    background: none;
+}
+
+.safe-mode .accessibility-btn {
+    background: var(--bg-accent) !important;
+    border: 1px solid var(--ash-gray) !important;
     color: var(--text-primary) !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.safe-mode .accessibility-btn:hover {
+    background: var(--ash-gray) !important;
+    transform: none !important;
+}
+
+.safe-mode .mode-status.safe {
+    background: var(--bg-accent) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--ash-gray) !important;
+    box-shadow: none !important;
+}
+
+.safe-mode .mode-status.safe-low {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--ash-gray) !important;
+}
+
+/* Mobile responsiveness for control panel */
+@media (max-width: 768px) {
+    .accessibility-controls {
+        bottom: 10px;
+        right: 10px;
+        max-width: 160px;
+    }
+
+    .accessibility-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
+        min-height: 36px;
+    }
+
+    .mode-status {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Ensure control panel appears above everything */
+.accessibility-controls {
+    z-index: 9999 !important;
+}
+
+.accessibility-controls * {
+    z-index: 9999 !important;
 }

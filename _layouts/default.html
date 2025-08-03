@@ -288,28 +288,39 @@
         }
 
         // Initialize on page load
-                document.addEventListener('DOMContentLoaded', function() {
-                    // Store original content before any modifications
-                    originalContent = document.getElementById('content').innerHTML;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
 
-                    // Check for saved DM session access
-                    const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
-                    const savedView = localStorage.getItem('wikiView');
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
 
-                    // If user had DM access in this session and saved preference is DM, restore it
-                    if (hasSessionAccess || savedView === 'dm') {
-                        // Auto-restore DM view
-                        currentView = 'dm';
-                        switchToDMView();
-                    } else {
-                        // Default to player view
-                        currentView = 'player';
-                        switchToPlayerView();
-                    }
+            // If user had DM access in this session and saved preference is DM, restore it
+            if (hasSessionAccess || savedView === 'dm') {
+                // Auto-restore DM view
+                currentView = 'dm';
+                switchToDMView();
+            } else {
+                // Default to player view
+                currentView = 'player';
+                switchToPlayerView();
+            }
 
-                    // Setup simple navigation
-                    setupSimpleNavigation();
-                });
+            // Setup simple navigation
+            setupSimpleNavigation();
+
+            // Initialize accessibility controls
+            initAccessibilityPreferences();
+        });
+
+        // Backup initialization in case DOM is already loaded
+        if (document.readyState === 'loading') {
+            // DOM is still loading, event listener will handle it
+        } else {
+            // DOM already loaded, run immediately
+            setTimeout(initAccessibilityPreferences, 100);
+        }
 
         // Simplified navigation system
         function setupSimpleNavigation() {
@@ -797,79 +808,125 @@
                 .replace(/\n{3,}/g, '\n\n') // Remove excessive newlines
                 .trim();
         }
-        // Accessibility preferences
+        // Enhanced Accessibility Control Panel
         function initAccessibilityPreferences() {
+            // Create control panel container
+            const controlPanel = document.createElement('div');
+            controlPanel.className = 'accessibility-controls';
+            controlPanel.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 2000;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                max-width: 200px;
+            `;
+
+            // Create safe mode toggle
+            const safeModeToggle = document.createElement('button');
+            safeModeToggle.className = 'accessibility-btn safe-mode-btn';
+            safeModeToggle.textContent = '🧠 Migraine Mode';
+            safeModeToggle.title = 'Toggle migraine-friendly viewing mode';
+
+            // Create contrast toggle
+            const contrastToggle = document.createElement('button');
+            contrastToggle.className = 'accessibility-btn contrast-btn';
+            contrastToggle.textContent = '📊 Lower Contrast';
+            contrastToggle.title = 'Reduce visual contrast';
+
+            // Create status indicator
+            const statusIndicator = document.createElement('div');
+            statusIndicator.className = 'mode-status';
+            statusIndicator.textContent = 'Normal Mode';
+
+            // Add buttons to panel
+            controlPanel.appendChild(statusIndicator);
+            controlPanel.appendChild(safeModeToggle);
+            controlPanel.appendChild(contrastToggle);
+            document.body.appendChild(controlPanel);
+
+            // Safe mode toggle function
+            safeModeToggle.onclick = function() {
+                const wasSafeMode = document.body.classList.contains('safe-mode');
+
+                if (wasSafeMode) {
+                    document.body.classList.remove('safe-mode');
+                    localStorage.setItem('safeModeEnabled', 'false');
+                } else {
+                    document.body.classList.add('safe-mode');
+                    localStorage.setItem('safeModeEnabled', 'true');
+                }
+
+                updateModeStatus();
+            };
+
+            // Contrast toggle function
+            contrastToggle.onclick = function() {
+                const wasLowContrast = document.body.classList.contains('low-contrast');
+
+                if (wasLowContrast) {
+                    document.body.classList.remove('low-contrast');
+                    localStorage.setItem('lowContrastEnabled', 'false');
+                } else {
+                    document.body.classList.add('low-contrast');
+                    localStorage.setItem('lowContrastEnabled', 'true');
+                }
+
+                updateModeStatus();
+            };
+
+            // Function to update status and button text
+            function updateModeStatus() {
+                const isSafeMode = document.body.classList.contains('safe-mode');
+                const isLowContrast = document.body.classList.contains('low-contrast');
+
+                // Update button text
+                safeModeToggle.textContent = isSafeMode ? '🎨 Normal Mode' : '🧠 Migraine Mode';
+                contrastToggle.textContent = isLowContrast ? '📊 High Contrast' : '📊 Lower Contrast';
+
+                // Update status indicator
+                let statusText = 'Normal Mode';
+                let statusClass = 'normal';
+
+                if (isSafeMode && isLowContrast) {
+                    statusText = 'Safe + Low Contrast';
+                    statusClass = 'safe-low';
+                } else if (isSafeMode) {
+                    statusText = 'Migraine-Safe Mode';
+                    statusClass = 'safe';
+                } else if (isLowContrast) {
+                    statusText = 'Low Contrast Mode';
+                    statusClass = 'low-contrast';
+                }
+
+                statusIndicator.textContent = statusText;
+                statusIndicator.className = `mode-status ${statusClass}`;
+            }
+
+            // Check saved preferences on load
+            const safeModeEnabled = localStorage.getItem('safeModeEnabled') === 'true';
+            const lowContrastEnabled = localStorage.getItem('lowContrastEnabled') === 'true';
+
+            if (safeModeEnabled) {
+                document.body.classList.add('safe-mode');
+            }
+            if (lowContrastEnabled) {
+                document.body.classList.add('low-contrast');
+            }
+
             // Check for reduced motion preference
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 document.body.classList.add('reduced-motion');
             }
 
-            // Add safe mode toggle (optional)
-            const safeModeToggle = document.createElement('button');
-            // Enhanced safe mode toggle
-            safeModeToggle.textContent = '🧠 Migraine-Safe Mode';
-            safeModeToggle.title = 'Toggle migraine-friendly viewing mode';
-
-            safeModeToggle.onclick = function() {
-                document.body.classList.toggle('safe-mode');
-                const isSafe = document.body.classList.contains('safe-mode');
-                localStorage.setItem('safeModeEnabled', isSafe);
-                this.textContent = isSafe ? '🎨 Immersive Mode' : '🧠 Migraine-Safe Mode';
-                this.title = isSafe ? 'Return to full visual experience' : 'Toggle migraine-friendly viewing mode';
-            };
-
-            // Check saved preference
-            if (localStorage.getItem('safeModeEnabled') === 'true') {
-                document.body.classList.add('safe-mode');
-                safeModeToggle.textContent = '🎨 Immersive Mode';
-            }
-
-            document.body.appendChild(safeModeToggle);
+            // Initial status update
+            updateModeStatus();
         }
 
         // Call this function when page loads
         document.addEventListener('DOMContentLoaded', initAccessibilityPreferences);
-        
-        // Add this to your accessibility preferences function
-        function addContrastControl() {
-            const contrastToggle = document.createElement('button');
-            contrastToggle.textContent = '📊 Lower Contrast';
-            contrastToggle.className = 'contrast-toggle';
-            contrastToggle.style.cssText = `
-                position: fixed;
-                bottom: 70px;
-                right: 20px;
-                z-index: 1000;
-                padding: 0.5rem 1rem;
-                background: var(--bg-accent);
-                border: 1px solid var(--ash-gray);
-                color: var(--text-primary);
-                border-radius: 20px;
-                font-size: 0.8rem;
-                cursor: pointer;
-            `;
-
-            contrastToggle.onclick = function() {
-                document.body.classList.toggle('low-contrast');
-                const isLowContrast = document.body.classList.contains('low-contrast');
-                localStorage.setItem('lowContrastEnabled', isLowContrast);
-                this.textContent = isLowContrast ? '📊 Normal Contrast' : '📊 Lower Contrast';
-            };
-
-            // Check saved preference
-            if (localStorage.getItem('lowContrastEnabled') === 'true') {
-                document.body.classList.add('low-contrast');
-                contrastToggle.textContent = '📊 Normal Contrast';
-            }
-
-            document.body.appendChild(contrastToggle);
-        }
-
-        // Call this in your initAccessibilityPreferences function
-        document.addEventListener('DOMContentLoaded', function() {
-            initAccessibilityPreferences();
-            addContrastControl();
-        });
-</script>
+    </script>
 </body>
 </html>
