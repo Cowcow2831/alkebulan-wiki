@@ -10,7 +10,7 @@
     {% if page.access_level %}
     <meta name="page-access-level" content="{{ page.access_level }}">
     {% endif %}
-    
+
     <!-- SEO -->
     {% seo %}
 
@@ -884,64 +884,35 @@
 
         function filterContent(viewMode) {
             const content = document.getElementById('content');
-            const classifiedBanner = document.getElementById('classifiedBanner');
-            const actualContent = document.getElementById('actualContent');
 
-            // Check if this page has DM-only access level
-            function filterContent(viewMode) {
-                const content = document.getElementById('content');
-                const classifiedBanner = document.getElementById('classifiedBanner');
-                const actualContent = document.getElementById('actualContent');
-
-                // Get page access level from page metadata (if available)
-                const pageAccessLevel = document.querySelector('meta[name="page-access-level"]') ?
-                                       document.querySelector('meta[name="page-access-level"]').content : 'public';
-
-                if (pageAccessLevel === 'dm' && viewMode === 'player') {
-                    // Show classified banner and hide/blur content
-                    if (classifiedBanner) {
-                        classifiedBanner.style.display = 'block';
-                    }
-                    if (actualContent) {
-                        actualContent.style.filter = 'blur(5px)';
-                        actualContent.style.opacity = '0.3';
-                        actualContent.style.pointerEvents = 'none';
-                    }
-                } else {
-                    // Hide banner and show normal content
-                    if (classifiedBanner) {
-                        classifiedBanner.style.display = 'none';
-                    }
-                    if (actualContent) {
-                        actualContent.style.filter = 'none';
-                        actualContent.style.opacity = '1';
-                        actualContent.style.pointerEvents = 'auto';
-                    }
-                }
-
-                // Handle DM-only sections within content (preserve existing functionality)
-                if (!originalContent && actualContent) {
-                    originalContent = actualContent.innerHTML;
-                }
-
-                if (actualContent) {
-                    let html = originalContent;
-
-                    if (viewMode === 'player') {
-                        html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
-                        html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
-                        html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
-                    } else {
-                        html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
-                        html = html.replace(/<!-- DM_END -->/g, '</div>');
-                        html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
-                        html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
-                    }
-
-                    actualContent.innerHTML = html;
-                }
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
             }
 
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+        
         function hideNavItems(viewMode) {
             const navItems = document.querySelectorAll('.nav-item');
 
