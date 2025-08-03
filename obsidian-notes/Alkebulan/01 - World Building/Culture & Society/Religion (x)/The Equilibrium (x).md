@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # The Equilibrium
 
 *Philosophy-based religion emphasizing balance in all things, especially magical forces - Popular among scholars and magic users*

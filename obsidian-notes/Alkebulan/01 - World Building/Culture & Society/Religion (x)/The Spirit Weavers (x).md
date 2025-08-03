@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # The Spirit Weavers
 
 *Animistic faith prevalent in the Savanna Heartland and Jungle Belt - Focus on nature spirits, ancestral guides, and local deities*

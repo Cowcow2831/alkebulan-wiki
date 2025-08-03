@@ -83,7 +83,7 @@ function sanitizeFilename(filename) {
     .trim();
 }
 
-// Enhanced WikiLink conversion with access checking
+// Enhanced WikiLink conversion with proper pipe handling
 function convertWikiLinks(content, filename, allFiles) {
   const existingPages = allFiles
     .filter(f => {
@@ -94,27 +94,35 @@ function convertWikiLinks(content, filename, allFiles) {
     })
     .map(f => sanitizeFilename(path.basename(f, '.md')));
 
-  content = content.replace(/\[\[([^\]]+)\]\]/g, (match, linkText) => {
-    const sanitizedLink = sanitizeFilename(linkText);
+  // Convert [[link]] and [[link|display text]] format
+  content = content.replace(/\[\[([^\]]+)\]\]/g, (match, linkContent) => {
+    // Check if there's a pipe character for display text
+    const hasPipe = linkContent.includes('|');
+    let linkTarget, displayText;
+
+    if (hasPipe) {
+      // Split on the pipe: [[page name|display text]]
+      const parts = linkContent.split('|');
+      linkTarget = parts[0].trim();
+      displayText = parts[1].trim();
+    } else {
+      // No pipe: [[page name]]
+      linkTarget = linkContent.trim();
+      displayText = linkTarget;
+    }
+
+    const sanitizedLink = sanitizeFilename(linkTarget);
 
     if (existingPages.includes(sanitizedLink)) {
-      return `[${linkText}]({{ site.baseurl }}/${sanitizedLink}/)`;
+      // Page exists - create a proper Jekyll link
+      return `[${displayText}]({{ site.baseurl }}/${sanitizedLink}/)`;
     } else {
-      if (VIEW_MODE === 'player') {
-        return `**${linkText}** *(classified)*`;
-      } else {
-        console.log(`⚠️  Link to restricted/missing page: ${linkText}`);
-        return `**${linkText}** *(page restricted or coming soon)*`;
+      // Page doesn't exist - just show the display text without a link
+      if (VIEW_MODE === 'dm') {
+        console.log(`⚠️  Link to missing page: ${linkTarget} (displaying as: ${displayText})`);
       }
+      return displayText;
     }
-  });
-
-  // Convert image links
-  content = content.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
-    if (!src.startsWith('http')) {
-      return `![${alt}]({{ site.baseurl }}/assets/images/${src})`;
-    }
-    return match;
   });
 
   return content;

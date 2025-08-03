@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # The Tide Callers
 
 *Polytheistic maritime faith centered around water deities and maritime spirits - Prevalent in coastal areas and among seafaring peoples*

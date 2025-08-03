@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # The Solar Pantheon
 
 *Dominant religious system of [[The Amunrai Imperium (x)]] - Lawful hierarchy of sun deities and celestial court*

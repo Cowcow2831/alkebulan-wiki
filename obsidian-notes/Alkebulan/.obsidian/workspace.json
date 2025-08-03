@@ -32,10 +32,15 @@
             "id": "0f315141c2ef2071",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "02 - Locations/The Cerulean Reach/Port Zephyr/Port Zephyr.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Port Zephyr"
             }
           }
         ]
@@ -228,6 +233,12 @@
   },
   "active": "0f315141c2ef2071",
   "lastOpenFiles": [
+    "01 - World Building/Culture & Society/Religion (x)/The Tide Callers (x).md",
+    "01 - World Building/Culture & Society/Religion (x)/The Spirit Weavers (x).md",
+    "01 - World Building/Culture & Society/Religion (x)/The Solar Pantheon (x).md",
+    "01 - World Building/Culture & Society/Religion (x)/The Equilibrium (x).md",
+    "01 - World Building/Culture & Society/Religion (x)/Post-Cataclysm Faiths (X).md",
+    "01 - World Building/Culture & Society/Religion (x)/Religion (x).md",
     "99 - Templates/Plant Template.md",
     "99 - Templates/World Template.md",
     "99 - Templates/Wildlife Template.md",
@@ -248,12 +259,6 @@
     "08 - Reference Materials/Quick References/Quick Rules Reference.md",
     "08 - Reference Materials/Quick References/Names and Naming Conventions.md",
     "08 - Reference Materials/Quick References/Common Prices and Services.md",
-    "08 - Reference Materials/Inspiration & Sources/Visual Inspirations.md",
-    "08 - Reference Materials/Inspiration & Sources/The Essential Guide to Understanding Alkebulan.md",
-    "08 - Reference Materials/Inspiration & Sources/The Five Essentials for Alkebulan.md",
-    "08 - Reference Materials/Inspiration & Sources/Tech Level Guide.md",
-    "08 - Reference Materials/Inspiration & Sources/Similar worlds.md",
-    "08 - Reference Materials/Inspiration & Sources/Reference ideas.md",
     "02 - Locations/Akebulan Map Regions.jpg",
     "02 - Locations/Alkebulan Map Blank.jpg",
     "02 - Locations/The Cerulean Reach/Port Zephyr/Port Zephyr Map.png",

@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Post-Cataclysm Faiths
 
 *Religious movements that emerged in response to the Great Cataclysm 300 years ago - Often viewed with suspicion by established powers*
