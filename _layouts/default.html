@@ -134,21 +134,24 @@
             font-style: italic;
             margin-top: 1.5rem;
         }
-        .classified-banner-container blockquote::before {
+        .classified-banner-container {
+            position: relative;
+        }
+
+        .classified-banner-container * {
+            position: static !important;
+        }
+
+        .classified-banner-container *::before,
+        .classified-banner-container *::after {
             display: none !important;
-          }
-
-        .classified-banner * {
-          position: relative;
         }
 
-        .classified-banner blockquote {
-          border-left: none !important;
-          background: none !important;
-          margin: 0 !important;
-          padding: 0 !important;
+        .classified-banner::before,
+        .classified-banner::after {
+            display: block !important;
         }
-
+        
         /* Contamination Pulse Animation */
         @keyframes contamination-pulse {
             0%, 100% { opacity: 1; }
