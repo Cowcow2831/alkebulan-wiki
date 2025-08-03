@@ -808,7 +808,7 @@
                 .replace(/\n{3,}/g, '\n\n') // Remove excessive newlines
                 .trim();
         }
-        // Enhanced Accessibility Control Panel
+        // Enhanced Accessibility Control Panel - Fixed Scope Issues
         function initAccessibilityPreferences() {
             // Create control panel container
             const controlPanel = document.createElement('div');
@@ -847,35 +847,28 @@
             controlPanel.appendChild(contrastToggle);
             document.body.appendChild(controlPanel);
 
-            // Safe mode toggle function
-            safeModeToggle.onclick = function() {
-                const wasSafeMode = document.body.classList.contains('safe-mode');
+            // Force contrast changes via JavaScript
+            function forceContrastUpdate(isLowContrast) {
+                const root = document.documentElement;
 
-                if (wasSafeMode) {
-                    document.body.classList.remove('safe-mode');
-                    localStorage.setItem('safeModeEnabled', 'false');
+                if (isLowContrast) {
+                    // Force low contrast colors
+                    root.style.setProperty('--text-primary', '#c0c0c0');
+                    root.style.setProperty('--text-secondary', '#999999');
+                    root.style.setProperty('--warning-yellow', '#b8a000');
+                    root.style.setProperty('--toxic-green', '#5a9900');
+                    root.style.setProperty('--danger-red', '#b83333');
+                    root.style.setProperty('--rust-orange', '#cc7700');
                 } else {
-                    document.body.classList.add('safe-mode');
-                    localStorage.setItem('safeModeEnabled', 'true');
+                    // Restore original colors
+                    root.style.removeProperty('--text-primary');
+                    root.style.removeProperty('--text-secondary');
+                    root.style.removeProperty('--warning-yellow');
+                    root.style.removeProperty('--toxic-green');
+                    root.style.removeProperty('--danger-red');
+                    root.style.removeProperty('--rust-orange');
                 }
-
-                updateModeStatus();
-            };
-
-            // Contrast toggle function
-            contrastToggle.onclick = function() {
-                const wasLowContrast = document.body.classList.contains('low-contrast');
-
-                if (wasLowContrast) {
-                    document.body.classList.remove('low-contrast');
-                    localStorage.setItem('lowContrastEnabled', 'false');
-                } else {
-                    document.body.classList.add('low-contrast');
-                    localStorage.setItem('lowContrastEnabled', 'true');
-                }
-
-                updateModeStatus();
-            };
+            }
 
             // Function to update status and button text
             function updateModeStatus() {
@@ -912,6 +905,41 @@
                 controlPanel.offsetHeight;
             }
 
+            // Safe mode toggle function
+            safeModeToggle.onclick = function() {
+                const wasSafeMode = document.body.classList.contains('safe-mode');
+
+                if (wasSafeMode) {
+                    document.body.classList.remove('safe-mode');
+                    localStorage.setItem('safeModeEnabled', 'false');
+                } else {
+                    document.body.classList.add('safe-mode');
+                    localStorage.setItem('safeModeEnabled', 'true');
+                }
+
+                updateModeStatus();
+            };
+
+            // Contrast toggle function - now properly scoped
+            contrastToggle.onclick = function() {
+                const wasLowContrast = document.body.classList.contains('low-contrast');
+
+                if (wasLowContrast) {
+                    document.body.classList.remove('low-contrast');
+                    localStorage.setItem('lowContrastEnabled', 'false');
+                    forceContrastUpdate(false);
+                } else {
+                    document.body.classList.add('low-contrast');
+                    localStorage.setItem('lowContrastEnabled', 'true');
+                    forceContrastUpdate(true);
+                }
+
+                updateModeStatus();
+
+                // Debug logging
+                console.log('Contrast toggled. Low contrast active:', document.body.classList.contains('low-contrast'));
+            };
+
             // Check saved preferences on load
             const safeModeEnabled = localStorage.getItem('safeModeEnabled') === 'true';
             const lowContrastEnabled = localStorage.getItem('lowContrastEnabled') === 'true';
@@ -921,6 +949,7 @@
             }
             if (lowContrastEnabled) {
                 document.body.classList.add('low-contrast');
+                forceContrastUpdate(true);
             }
 
             // Check for reduced motion preference
@@ -971,7 +1000,7 @@
         };
 
 
-        
+
     </script>
 </body>
 </html>
