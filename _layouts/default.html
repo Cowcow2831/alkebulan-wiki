@@ -1053,6 +1053,70 @@
             font-size: 0.8rem;
             color: var(--text-secondary);
         }
+        /* Enhanced search result styling */
+        .search-result-item {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--ash-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .search-result-item:hover {
+            background: var(--rust-orange);
+            transform: translateX(3px);
+        }
+
+        .search-result-title {
+            font-weight: bold;
+            color: var(--warning-yellow);
+            margin-bottom: 0.3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-result-rank {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            background: var(--bg-primary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 10px;
+            font-weight: normal;
+        }
+
+        .search-result-content {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Highlight matched text */
+        .search-results mark {
+            background: var(--toxic-green);
+            color: var(--bg-primary);
+            padding: 0.1rem 0.2rem;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        /* Score-based styling (optional visual indicator) */
+        .search-result-item[data-score] {
+            border-left: 3px solid var(--ash-gray);
+        }
+
+        .search-result-item[data-score="100"],
+        .search-result-item[data-score^="1"] {
+            border-left-color: var(--toxic-green); /* High relevance */
+        }
+
+        .search-result-item[data-score^="5"],
+        .search-result-item[data-score^="6"],
+        .search-result-item[data-score^="7"],
+        .search-result-item[data-score^="8"],
+        .search-result-item[data-score^="9"] {
+            border-left-color: var(--warning-yellow); /* Medium relevance */
+        }
     </style>
 </head>
 <body>
@@ -1573,43 +1637,100 @@
                 return;
             }
 
-            // Check if search data is loaded
-            if (!searchDataLoaded || searchData.length === 0) {
-                searchResults.innerHTML = '<div class="search-result-item">Search data loading...</div>';
+            if (!searchDataLoaded) {
+                searchResults.innerHTML = '<div class="search-result-item">Search initializing...</div>';
                 searchResults.style.display = 'block';
                 return;
             }
 
             const queryLower = query.toLowerCase();
-            const results = searchData.filter(item => {
-                // Filter by current view mode
-                if (currentView === 'player' && item.access_level === 'dm') {
-                    return false;
-                }
+            const queryWords = queryLower.split(' ').filter(word => word.length > 1);
 
-                // Search in title and content
-                const titleMatch = item.title && item.title.toLowerCase().includes(queryLower);
-                const contentMatch = item.content && item.content.toLowerCase().includes(queryLower);
+            // Score each item
+            const scoredResults = searchData
+                .filter(item => {
+                    // Filter by current view mode first
+                    if (currentView === 'player' && item.access_level === 'dm') {
+                        return false;
+                    }
 
-                return titleMatch || contentMatch;
-            }).slice(0, 5); // Limit to 5 results
+                    // Basic relevance check - must match at least one word
+                    const titleLower = item.title.toLowerCase();
+                    const contentLower = item.content.toLowerCase();
 
-            console.log('Search query:', query, 'Results:', results.length); // Debug log
+                    return queryWords.some(word =>
+                        titleLower.includes(word) || contentLower.includes(word)
+                    );
+                })
+                .map(item => {
+                    const titleLower = item.title.toLowerCase();
+                    const contentLower = item.content.toLowerCase();
+                    let score = 0;
 
-            if (results.length === 0) {
+                    queryWords.forEach(word => {
+                        // Exact title match gets highest score
+                        if (titleLower === word) {
+                            score += 100;
+                        }
+                        // Title starts with query word
+                        else if (titleLower.startsWith(word)) {
+                            score += 50;
+                        }
+                        // Title contains word
+                        else if (titleLower.includes(word)) {
+                            score += 25;
+                        }
+                        // Content contains word
+                        else if (contentLower.includes(word)) {
+                            score += 5;
+                        }
+
+                        // Bonus for multiple word matches
+                        const titleMatches = queryWords.filter(w => titleLower.includes(w)).length;
+                        const contentMatches = queryWords.filter(w => contentLower.includes(w)).length;
+
+                        if (titleMatches > 1) score += 20;
+                        if (contentMatches > 1) score += 10;
+                    });
+
+                    // Bonus for shorter titles (more specific results)
+                    if (item.title.length < 20) score += 5;
+
+                    return { ...item, score };
+                })
+                // Sort by score (highest first)
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 5); // Limit to top 5 results
+
+            console.log('Search query:', query, 'Results:', scoredResults.length, 'scored results:', scoredResults.map(r => ({ title: r.title, score: r.score })));
+
+            if (scoredResults.length === 0) {
                 searchResults.innerHTML = '<div class="search-result-item">No results found for "' + query + '"</div>';
                 searchResults.style.display = 'block';
                 return;
             }
 
-            searchResults.innerHTML = results.map(item => `
-                <div class="search-result-item" onclick="window.location.href='${item.url}'">
-                    <div class="search-result-title">${item.title || 'Untitled'}</div>
-                    <div class="search-result-content">${(item.content || '').substring(0, 100)}...</div>
+            searchResults.innerHTML = scoredResults.map((item, index) => `
+                <div class="search-result-item" onclick="window.location.href='${item.url}'" data-score="${item.score}">
+                    <div class="search-result-title">
+                        ${highlightMatches(item.title, queryWords)}
+                        <span class="search-result-rank">#${index + 1}</span>
+                    </div>
+                    <div class="search-result-content">${highlightMatches(item.content, queryWords)}</div>
                 </div>
             `).join('');
 
             searchResults.style.display = 'block';
+        }
+
+        // Helper function to highlight matching words
+        function highlightMatches(text, queryWords) {
+            let highlighted = text;
+            queryWords.forEach(word => {
+                const regex = new RegExp(`(${word})`, 'gi');
+                highlighted = highlighted.replace(regex, '<mark>$1</mark>');
+            });
+            return highlighted;
         }
 </script>
 </body>
