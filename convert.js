@@ -1,4 +1,4 @@
-// Enhanced convert.js with folder-based organization
+// Enhanced convert.js with folder-based organization and smart navigation
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
@@ -128,8 +128,8 @@ function convertWikiLinks(content, filename, allFiles) {
   return content;
 }
 
-// Enhanced frontmatter generation with access control
-function generateFrontmatter(data, filename) {
+// Enhanced frontmatter generation with access control and navigation data
+function generateFrontmatter(data, filename, originalPath) {
   const now = new Date();
   const dateStr = now.toISOString().split('T')[0];
 
@@ -157,6 +157,7 @@ function generateFrontmatter(data, filename) {
     permalink: `/${sanitizeFilename(path.basename(filename, '.md'))}/`,
     view_mode: VIEW_MODE,
     access_level: cleanData.access_level || ACCESS_LEVELS.PUBLIC,
+    original_path: originalPath, // Store for navigation purposes
     ...cleanData
   };
 
@@ -179,7 +180,7 @@ function processObsidianFiles() {
   if (!fs.existsSync(OBSIDIAN_FOLDER)) {
     console.error(`❌ Obsidian folder not found at: ${OBSIDIAN_FOLDER}`);
     fs.mkdirSync(OBSIDIAN_FOLDER, { recursive: true });
-    return;
+    return [];
   }
 
   function findMarkdownFiles(dir, fileList = []) {
@@ -200,6 +201,7 @@ function processObsidianFiles() {
   const allFiles = findMarkdownFiles(OBSIDIAN_FOLDER);
   let processedCount = 0;
   let skippedCount = 0;
+  const processedPages = [];
 
   allFiles.forEach(file => {
     const filePath = path.join(OBSIDIAN_FOLDER, file);
@@ -219,8 +221,8 @@ function processObsidianFiles() {
     // Convert WikiLinks with access checking
     const convertedContent = convertWikiLinks(filteredContent, file, allFiles);
 
-    // Generate frontmatter with access control
-    const jekyllFrontmatter = generateFrontmatter(data, file);
+    // Generate frontmatter with access control and navigation data
+    const jekyllFrontmatter = generateFrontmatter(data, file, file);
 
     const sanitizedFilename = sanitizeFilename(path.basename(file, '.md')) + '.md';
     const outputPath = path.join(PAGES_FOLDER, sanitizedFilename);
@@ -228,29 +230,110 @@ function processObsidianFiles() {
     const jekyllFile = matter.stringify(convertedContent, jekyllFrontmatter);
     fs.writeFileSync(outputPath, jekyllFile);
 
+    // Store page info for navigation generation
+    processedPages.push({
+      sanitizedName: sanitizeFilename(path.basename(file, '.md')),
+      originalPath: file,
+      title: jekyllFrontmatter.title,
+      permalink: jekyllFrontmatter.permalink,
+      access_level: jekyllFrontmatter.access_level
+    });
+
     console.log(`✅ Converted: ${file} → ${sanitizedFilename}`);
     processedCount++;
   });
 
   console.log(`🎉 Conversion complete! Processed: ${processedCount}, Skipped: ${skippedCount}`);
+  return processedPages;
 }
 
-// NEW: Helper function to create folder hierarchy
-function createFolderHierarchy(files) {
+// NEW: Create navigation hierarchy from processed pages
+function createNavigationHierarchy(pages) {
+  const hierarchy = {};
+
+  pages.forEach(page => {
+    const pathParts = page.originalPath.split('/').filter(part => part && !part.endsWith('.md'));
+
+    if (pathParts.length === 0) {
+      // Root level page
+      hierarchy[page.sanitizedName] = {
+        level: 0,
+        parent: null,
+        children: [],
+        title: page.title,
+        permalink: page.permalink
+      };
+    } else {
+      // Nested page - determine level based on path depth
+      const level = pathParts.length;
+      let parent = null;
+
+      // Try to find parent (folder containing this file)
+      if (pathParts.length > 0) {
+        const parentFolder = pathParts[pathParts.length - 1];
+        const parentPage = pages.find(p =>
+          sanitizeFilename(path.basename(p.originalPath, '.md')) === sanitizeFilename(parentFolder)
+        );
+
+        if (parentPage) {
+          parent = parentPage.sanitizedName;
+        }
+      }
+
+      hierarchy[page.sanitizedName] = {
+        level: level,
+        parent: parent,
+        children: [],
+        title: page.title,
+        permalink: page.permalink
+      };
+    }
+  });
+
+  // Populate children arrays
+  Object.keys(hierarchy).forEach(pageKey => {
+    const page = hierarchy[pageKey];
+    if (page.parent && hierarchy[page.parent]) {
+      hierarchy[page.parent].children.push(pageKey);
+    }
+  });
+
+  return hierarchy;
+}
+
+// NEW: Generate navigation data file for JavaScript to use
+function generateNavigationData(pages) {
+  const hierarchy = createNavigationHierarchy(pages);
+
+  const navigationData = `// Auto-generated navigation data
+window.WIKI_NAVIGATION = ${JSON.stringify(hierarchy, null, 2)};`;
+
+  // Create assets/js directory if it doesn't exist
+  const jsDir = './assets/js';
+  if (!fs.existsSync(jsDir)) {
+    fs.mkdirSync(jsDir, { recursive: true });
+  }
+
+  fs.writeFileSync(path.join(jsDir, 'navigation.js'), navigationData);
+  console.log('📊 Generated navigation data file');
+}
+
+// Helper function to create folder hierarchy
+function createFolderHierarchy(pages) {
   const hierarchy = {
     folders: {},
     files: []
   };
 
-  files.forEach(file => {
-    const folderPath = file.originalPath || '';
+  pages.forEach(page => {
+    const originalPath = page.originalPath || '';
 
     // Split the path and remove the filename
-    const pathParts = folderPath.split('/').filter(part => part && !part.endsWith('.md'));
+    const pathParts = originalPath.split('/').filter(part => part && !part.endsWith('.md'));
 
     if (pathParts.length === 0) {
       // Root level file
-      hierarchy.files.push(file);
+      hierarchy.files.push(page);
     } else {
       // Navigate/create the folder structure
       let current = hierarchy;
@@ -259,13 +342,20 @@ function createFolderHierarchy(files) {
         if (!current.folders[folderName]) {
           current.folders[folderName] = {
             folders: {},
-            files: []
+            files: [],
+            folderFile: null
           };
         }
 
         // If this is the last folder in the path, add the file here
         if (index === pathParts.length - 1) {
-          current.folders[folderName].files.push(file);
+          // Check if this file represents the folder itself
+          const sanitizedFolderName = sanitizeFilename(folderName);
+          if (sanitizedFolderName === page.sanitizedName) {
+            current.folders[folderName].folderFile = page;
+          } else {
+            current.folders[folderName].files.push(page);
+          }
         } else {
           // Navigate deeper
           current = current.folders[folderName];
@@ -277,7 +367,7 @@ function createFolderHierarchy(files) {
   return hierarchy;
 }
 
-// NEW: Recursive function to render folder structure
+// Recursive function to render folder structure
 function renderFolderStructure(structure, depth = 0) {
   let html = '';
 
@@ -293,7 +383,12 @@ function renderFolderStructure(structure, depth = 0) {
     const headerLevel = Math.min(3 + depth, 6);
     const headerPrefix = '#'.repeat(headerLevel);
 
-    html += `${headerPrefix} ${icon} ${folderTitle}\n`;
+    // Check if this folder has a main file
+    if (folder.folderFile) {
+      html += `${headerPrefix} ${icon} [${folderTitle}]({{ site.baseurl }}${folder.folderFile.permalink})\n`;
+    } else {
+      html += `${headerPrefix} ${icon} ${folderTitle}\n`;
+    }
 
     if (VIEW_MODE === 'dm') {
       html += `*Contamination Level: MODERATE*\n\n`;
@@ -319,47 +414,8 @@ function renderFolderStructure(structure, depth = 0) {
 }
 
 // Enhanced index generation with folder-based organization
-function generateIndex() {
+function generateIndex(pages) {
   console.log(`📋 Generating index page for ${VIEW_MODE.toUpperCase()} view...`);
-
-  const generatedFiles = fs.readdirSync('./')
-    .filter(file => file.endsWith('.md') &&
-                   file !== 'index.md' &&
-                   file !== 'README.md');
-
-  // Create enhanced file objects with original path information
-  const pages = generatedFiles
-    .map(file => {
-      const filePath = path.join('./', file);
-      const { data } = matter(fs.readFileSync(filePath, 'utf8'));
-      const baseName = path.basename(file, '.md');
-
-      // Try to find original path from obsidian-notes structure
-      let originalPath = '';
-      try {
-        if (fs.existsSync(OBSIDIAN_FOLDER)) {
-          const allObsidianFiles = findMarkdownFilesWithPath(OBSIDIAN_FOLDER);
-          const originalFile = allObsidianFiles.find(f => {
-            const originalBaseName = sanitizeFilename(path.basename(f, '.md'));
-            return originalBaseName === baseName;
-          });
-          if (originalFile) {
-            originalPath = originalFile;
-          }
-        }
-      } catch (error) {
-        console.log(`⚠️  Could not find original path for ${file}: ${error.message}`);
-      }
-
-      return {
-        title: data.title || baseName.replace(/-/g, ' '),
-        filename: file,
-        permalink: data.permalink || `/${baseName}/`,
-        tags: data.tags || [],
-        access_level: data.access_level || ACCESS_LEVELS.PUBLIC,
-        originalPath: originalPath
-      };
-    });
 
   // Create folder hierarchy
   const folderStructure = createFolderHierarchy(pages);
@@ -396,7 +452,7 @@ ${VIEW_MODE === 'player'
     );
 
     const rootFiles = folderStructure.files.filter(file => {
-      const sanitizedFilename = file.filename.replace('.md', '').toLowerCase();
+      const sanitizedFilename = file.sanitizedName.toLowerCase();
       return !rootFolderNames.includes(sanitizedFilename);
     });
 
@@ -445,27 +501,35 @@ This archive contains publicly available information about the world of Alkebula
   console.log(`✅ Index page generated for ${VIEW_MODE.toUpperCase()} view`);
 }
 
-// Helper function to find markdown files with their full paths
-function findMarkdownFilesWithPath(dir, fileList = []) {
-  const files = fs.readdirSync(dir);
-  files.forEach(file => {
-    const filePath = path.join(dir, file);
-    const stat = fs.statSync(filePath);
-    if (stat.isDirectory()) {
-      findMarkdownFilesWithPath(filePath, fileList);
-    } else if (file.endsWith('.md')) {
-      const relativePath = path.relative(OBSIDIAN_FOLDER, filePath);
-      fileList.push(relativePath);
+// Helper function to copy images (unchanged)
+function copyImages() {
+  console.log('🖼️  Copying images...');
+  const imageDirs = ['attachments', 'images', 'assets'];
+  imageDirs.forEach(dir => {
+    const sourceDir = path.join(OBSIDIAN_FOLDER, dir);
+    if (fs.existsSync(sourceDir)) {
+      const images = fs.readdirSync(sourceDir, { recursive: true })
+        .filter(file => /\.(png|jpg|jpeg|gif|svg|webp)$/i.test(file));
+      images.forEach(image => {
+        const sourcePath = path.join(sourceDir, image);
+        const destPath = path.join(ASSETS_FOLDER, image);
+        const destDir = path.dirname(destPath);
+        if (!fs.existsSync(destDir)) {
+          fs.mkdirSync(destDir, { recursive: true });
+        }
+        fs.copyFileSync(sourcePath, destPath);
+        console.log(`📁 Copied image: ${image}`);
+      });
     }
   });
-  return fileList;
 }
 
 // Main execution with view mode support
 try {
-  processObsidianFiles();
-  copyImages(); // This function remains the same
-  generateIndex();
+  const processedPages = processObsidianFiles();
+  copyImages();
+  generateIndex(processedPages);
+  generateNavigationData(processedPages);
 
   if (!fs.existsSync('./index.md')) {
     console.log('📄 Creating fallback index...');
@@ -494,171 +558,4 @@ title: "Setup in Progress"
 The site is being configured. Please check back soon!
 `;
   fs.writeFileSync('./index.md', errorIndex);
-}
-
-// Helper function to create folder hierarchy from Obsidian structure
-function createFolderHierarchy(pages) {
-  const hierarchy = {
-    folders: {},
-    files: []
-  };
-
-  // Create a lookup map for files by their sanitized names
-  const fileMap = new Map();
-  pages.forEach(page => {
-    const sanitizedName = page.filename.replace('.md', '').toLowerCase();
-    fileMap.set(sanitizedName, page);
-  });
-
-  pages.forEach(page => {
-    const originalPath = page.originalPath || '';
-
-    if (!originalPath) {
-      // No folder structure found, put in root
-      hierarchy.files.push(page);
-      return;
-    }
-
-    // Split path into folders (remove the filename)
-    const pathParts = originalPath.split('/').filter(part => part && !part.endsWith('.md'));
-
-    if (pathParts.length === 0) {
-      // Root level file
-      hierarchy.files.push(page);
-    } else {
-      // Navigate through folder structure
-      let current = hierarchy;
-
-      pathParts.forEach((folderName, index) => {
-        // Ensure this folder exists
-        if (!current.folders[folderName]) {
-          current.folders[folderName] = {
-            folders: {},
-            files: [],
-            folderFile: null // Will store the matching .md file if found
-          };
-        }
-
-        // If this is the last part of the path, this is where the file belongs
-        if (index === pathParts.length - 1) {
-          // Check if this file matches the folder name
-          const sanitizedFolderName = folderName.toLowerCase().replace(/\s+/g, '-');
-          const sanitizedFileName = page.filename.replace('.md', '').toLowerCase();
-
-          if (sanitizedFolderName === sanitizedFileName) {
-            // This file represents the folder itself
-            current.folders[folderName].folderFile = page;
-          } else {
-            // Regular file in the folder
-            current.folders[folderName].files.push(page);
-          }
-        } else {
-          // Move deeper into the hierarchy
-          current = current.folders[folderName];
-        }
-      });
-    }
-  });
-
-  return hierarchy;
-}
-
-// Recursive function to render folder structure
-function renderFolderStructure(structure, depth = 0) {
-  let content = '';
-
-  // Get sorted folder names
-  const folderNames = Object.keys(structure.folders).sort();
-
-  folderNames.forEach(folderName => {
-    const folder = structure.folders[folderName];
-    const icon = VIEW_MODE === 'player' ? '📁' : '☢️';
-
-    // Create clean folder title
-    const folderTitle = folderName
-      .replace(/-/g, ' ')
-      .replace(/\b\w/g, letter => letter.toUpperCase());
-
-    // Use appropriate header level based on depth
-    // Start at h3 for root folders, go deeper for subfolders
-    const headerLevel = Math.min(3 + depth, 6);
-    const headers = '#'.repeat(headerLevel);
-
-    // Check if this folder has a matching .md file
-    if (folder.folderFile) {
-      // Make the folder title a link to the .md file
-      content += `${headers} ${icon} [${folderTitle}]({{ site.baseurl }}${folder.folderFile.permalink})\n`;
-    } else {
-      // Regular folder title without link
-      content += `${headers} ${icon} ${folderTitle}\n`;
-    }
-
-    if (VIEW_MODE === 'dm') {
-      content += `*Contamination Level: MODERATE*\n\n`;
-    } else {
-      content += `*Public Information*\n\n`;
-    }
-
-    // Add files in this folder (excluding the folder's main file)
-    if (folder.files && folder.files.length > 0) {
-      folder.files
-        .sort((a, b) => a.title.localeCompare(b.title))
-        .forEach(file => {
-          content += `- [${file.title}]({{ site.baseurl }}${file.permalink})\n`;
-        });
-      content += '\n';
-    }
-
-    // Recursively add subfolders with increased depth
-    if (Object.keys(folder.folders).length > 0) {
-      content += renderFolderStructure(folder, depth + 1);
-    }
-  });
-
-  return content;
-}
-
-// Helper function to find markdown files with their full paths
-function findMarkdownFilesWithPath(dir, fileList = []) {
-  if (!fs.existsSync(dir)) {
-    return fileList;
-  }
-
-  const files = fs.readdirSync(dir);
-  files.forEach(file => {
-    const filePath = path.join(dir, file);
-    const stat = fs.statSync(filePath);
-
-    if (stat.isDirectory()) {
-      findMarkdownFilesWithPath(filePath, fileList);
-    } else if (file.endsWith('.md')) {
-      const relativePath = path.relative(OBSIDIAN_FOLDER, filePath);
-      fileList.push(relativePath);
-    }
-  });
-
-  return fileList;
-}
-
-// Helper function for copying images (unchanged)
-function copyImages() {
-  console.log('🖼️  Copying images...');
-  const imageDirs = ['attachments', 'images', 'assets'];
-  imageDirs.forEach(dir => {
-    const sourceDir = path.join(OBSIDIAN_FOLDER, dir);
-    if (fs.existsSync(sourceDir)) {
-      const images = fs.readdirSync(sourceDir, { recursive: true })
-        .filter(file => /\.(png|jpg|jpeg|gif|svg|webp)$/i.test(file));
-      images.forEach(image => {
-        const sourcePath = path.join(sourceDir, image);
-        const destPath = path.join(ASSETS_FOLDER, image);
-        const destDir = path.dirname(destPath);
-        if (!fs.existsSync(destDir)) {
-          fs.mkdirSync(destDir, { recursive: true });
-        }
-        fs.copyFileSync(sourcePath, destPath);
-        console.log(`📁 Copied image: ${image}`);
-      });
-    }
-  });
 }
