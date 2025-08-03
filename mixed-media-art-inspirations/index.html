@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<!-- _layouts/default.html with Dynamic View Toggle -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baseurl" content="/alkebulan-wiki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixed Media Art Inspirations | Alkebulan</title>
+    <meta name="description" content="A dark fantasy continent recovering from magical apocalypse">
+
+    <!-- SEO -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Mixed Media Art Inspirations | Alkebulan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Mixed Media Art Inspirations" />
+<meta name="author" content="Robert McCowan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dark fantasy continent recovering from magical apocalypse" />
+<meta property="og:description" content="A dark fantasy continent recovering from magical apocalypse" />
+<link rel="canonical" href="https://cowcow2831.github.io/alkebulan-wiki/mixed-media-art-inspirations/" />
+<meta property="og:url" content="https://cowcow2831.github.io/alkebulan-wiki/mixed-media-art-inspirations/" />
+<meta property="og:site_name" content="Alkebulan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Mixed Media Art Inspirations" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Robert McCowan"},"dateModified":"2025-08-03T00:00:00+00:00","datePublished":"2025-08-03T00:00:00+00:00","description":"A dark fantasy continent recovering from magical apocalypse","headline":"Mixed Media Art Inspirations","mainEntityOfPage":{"@type":"WebPage","@id":"https://cowcow2831.github.io/alkebulan-wiki/mixed-media-art-inspirations/"},"url":"https://cowcow2831.github.io/alkebulan-wiki/mixed-media-art-inspirations/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/alkebulan-wiki/assets/favicon.ico">
+
+    <!-- Navigation Data -->
+    <!-- <script src="/alkebulan-wiki/assets/js/navigation.js"></script> -->
+
+    <!-- Styles -->
+    <style>
+        /* Post-Nuclear Contaminated Archive Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            /* Post-Nuclear Color Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #c0c0c0;
+            --text-secondary: #888888;
+            --text-muted: #666666;
+
+            /* Contamination Colors */
+            --toxic-green: #7cfc00;
+            --rust-orange: #d67c2a;
+            --warning-yellow: #e6e619;
+            --radiation-orange: #ff6b35;
+            --ash-gray: #4a4a4a;
+            --danger-red: #ff3333;
+
+            /* Effects */
+            --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
+            --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
+            --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+            min-height: 100vh;
+            text-shadow: var(--text-shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contamination Pulse Animation */
+        @keyframes contamination-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .contaminated {
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Header - Made more compact for mobile */
+        header {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            border-bottom: 3px solid var(--toxic-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warning-yellow);
+            text-decoration: none;
+            text-shadow: var(--text-shadow), var(--glow-orange);
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--text-shadow), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        .site-title::before {
+            content: "☢️ ";
+            color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--ash-gray);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(74, 74, 74, 0.2);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            transform: translateY(-2px);
+        }
+
+        nav a::before {
+            content: "☢️";
+            margin-right: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid var(--ash-gray);
+            position: relative;
+        }
+
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--ash-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 2px solid var(--rust-orange);
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar::before {
+            content: "⚠️ CONTAMINATED DATA";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 4px;
+            border: 1px solid var(--radiation-orange);
+        }
+
+        /* Sidebar Navigation Sections */
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--warning-yellow);
+            text-align: center;
+            border-bottom: 1px solid var(--ash-gray);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-level {
+            margin-bottom: 1rem;
+        }
+
+        .nav-level-title {
+            font-size: 0.85rem;
+            color: var(--rust-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-left-color: var(--toxic-green);
+            transform: translateX(5px);
+        }
+
+        .nav-item.current {
+            background: rgba(124, 252, 0, 0.1);
+            border-left-color: var(--toxic-green);
+            color: var(--text-primary);
+        }
+
+        .nav-item::before {
+            margin-right: 0.5rem;
+        }
+
+        .nav-up::before { content: "⬆️"; }
+        .nav-same::before { content: "↔️"; }
+        .nav-down::before { content: "⬇️"; }
+        .nav-home::before { content: "🏠"; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--warning-yellow);
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            color: var(--toxic-green);
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--rust-orange);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h6 {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--warning-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--glow-green);
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+        }
+
+        .main-content ul li::marker,
+        .sidebar us li::marker {
+            content: "☢️ ";
+            color: var(--toxic-green);
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin: 1.5rem 0;
+            border: 2px solid var(--ash-gray);
+            transition: all 0.3s ease;
+        }
+
+        img:hover {
+            border-color: var(--toxic-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--radiation-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "⚠️";
+            position: absolute;
+            top: 1rem;
+            left: -15px;
+            background: var(--radiation-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code */
+        code {
+            background: var(--bg-primary);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            border: 1px solid var(--ash-gray);
+        }
+
+        pre {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 2px solid var(--toxic-green);
+            box-shadow: var(--glow-green);
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        th {
+            background: var(--rust-orange);
+            color: white;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        tr:hover {
+            background: rgba(124, 252, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 3px solid var(--toxic-green);
+            color: var(--text-secondary);
+            box-shadow: var(--border-glow);
+        }
+
+        footer::before {
+            content: "☢️ CONTAMINATION WARNING: All materials subject to Remnant Magic exposure ☢️";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive - Compact Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+                order: 1;
+            }
+
+            .view-mode-indicator {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin: 0 0.5rem;
+                order: 2;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                order: 3;
+                width: 100%;
+            }
+
+            .view-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Special Effects */
+        .contamination-warning {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(124, 252, 0, 0.1));
+            border: 2px solid var(--radiation-orange);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hide the default Jekyll title since we'll handle it in CSS */
+        .main-content > h1:first-child {
+            display: none;
+        }
+
+        /* Custom page title styling */
+        .page-title {
+            font-size: 2.8rem;
+            color: var(--warning-yellow);
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .page-title::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        /* Mobile page title adjustment */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/alkebulan-wiki/" class="site-title">Alkebulan</a>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
+                    </button>
+                    <nav>
+                        <ul>
+                            
+                            <li><a href="/alkebulan-wiki/" class="nav-item" data-access="public">Home</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/port-zephyr/" class="nav-item" data-access="public">Port Zephyr</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/harbor-district/" class="nav-item" data-access="player">Harbor District</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/player-handout-whispers-of-the-wastes/" class="nav-item" data-access="player">Player Handout</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/dm-notes/" class="nav-item" data-access="dm">DM Notes</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/secrets/" class="nav-item" data-access="dm">Secrets</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    
+                    <h1 class="page-title">Mixed Media Art Inspirations</h1>
+                    
+
+                    <div id="content">
+                        <h1 id="mixed-media-art-inspirations-for-alkebulan">Mixed Media Art Inspirations for Alkebulan</h1>
+<p><em>Sculptures, dance, theater, architecture, and other artistic mediums for inspiration for your dark post-nuclear fantasy world</em></p>
+
+<hr />
+
+<h2 id="sculpture--installation-art">Sculpture &amp; Installation Art</h2>
+
+<h3 id="post-industrial--decay"><strong>Post-Industrial &amp; Decay</strong></h3>
+<ul>
+  <li><strong>Anselm Kiefer</strong>
+    <ul>
+      <li>Lead and ash sculptures, industrial materials</li>
+      <li>“The High Priestess” - Lead books, knowledge preservation</li>
+      <li>“Osiris and Isis” - Mythology meets industrial materials</li>
+      <li>Perfect for pre-Cataclysm artifact aesthetics, memory preservation</li>
+    </ul>
+  </li>
+  <li><strong>Rachel Whiteread</strong>
+    <ul>
+      <li>Casts of negative space, absence made visible</li>
+      <li>“House” - Cast of entire Victorian house interior</li>
+      <li>“Untitled (One Hundred Spaces)” - Casts of undersides of chairs</li>
+      <li>Great for representing lost civilizations, empty spaces where life used to be</li>
+    </ul>
+  </li>
+  <li><strong>Cornelia Parker</strong>
+    <ul>
+      <li>“Cold Dark Matter: An Exploded View” - Shed blown up and reconstructed</li>
+      <li>“Thirty Pieces of Silver” - Flattened silver objects suspended</li>
+      <li>Destruction and reconstruction themes, transformation through violence</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="environmental--organic"><strong>Environmental &amp; Organic</strong></h3>
+<ul>
+  <li><strong>Andy Goldsworthy</strong>
+    <ul>
+      <li>Natural materials, temporary installations</li>
+      <li>Ice sculptures, stone balancing, leaf arrangements</li>
+      <li>Working with rather than against natural processes</li>
+      <li>Perfect for Spirit Weaver aesthetics, environmental harmony</li>
+    </ul>
+  </li>
+  <li><strong>Robert Smithson</strong>
+    <ul>
+      <li>“Spiral Jetty” - Earthwork in Great Salt Lake</li>
+      <li>Industrial entropy, landscape transformation</li>
+      <li>Time and geological scale, human impact on environment</li>
+      <li>Excellent for massive Cataclysm aftermath landscapes</li>
+    </ul>
+  </li>
+  <li><strong>Maya Lin</strong>
+    <ul>
+      <li>Vietnam Veterans Memorial - Names carved in black granite</li>
+      <li>Simple, powerful memorial design</li>
+      <li>Landscape architecture, collective memory</li>
+      <li>Perfect for Cataclysm memorials, community healing spaces</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="found-object--assemblage"><strong>Found Object &amp; Assemblage</strong></h3>
+<ul>
+  <li><strong>Louise Bourgeois</strong>
+    <ul>
+      <li>“Spider” sculptures - Trauma made monumental</li>
+      <li>Fabric and bronze combinations, domestic materials</li>
+      <li>Psychological landscapes, personal/political intersection</li>
+      <li>Great for representing individual trauma within larger catastrophe</li>
+    </ul>
+  </li>
+  <li><strong>El Anatsui</strong>
+    <ul>
+      <li>Bottle cap tapestries, recycled materials</li>
+      <li>African traditions with contemporary materials</li>
+      <li>Colonial history, transformation of waste into beauty</li>
+      <li>Perfect for scavenging culture, making beauty from destruction</li>
+    </ul>
+  </li>
+  <li><strong>Tara Donovan</strong>
+    <ul>
+      <li>Installations from everyday materials (cups, straws, paper)</li>
+      <li>Small units creating massive forms</li>
+      <li>Community effort, individual contribution to collective whole</li>
+      <li>Excellent for representing how small communities rebuild civilization</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="architecture--monumental-design">Architecture &amp; Monumental Design</h2>
+
+<h3 id="brutalist--concrete"><strong>Brutalist &amp; Concrete</strong></h3>
+<ul>
+  <li><strong>Tadao Ando</strong>
+    <ul>
+      <li>Concrete and light, spiritual minimalism</li>
+      <li>“Church of the Light” - Sacred space from industrial materials</li>
+      <li>Environmental integration, natural/artificial harmony</li>
+      <li>Perfect for Remnant Keeper hidden facilities, underground sanctuaries</li>
+    </ul>
+  </li>
+  <li><strong>Louis Kahn</strong>
+    <ul>
+      <li>“Salk Institute” - Laboratory as cathedral</li>
+      <li>Monumental concrete, scientific temple</li>
+      <li>Light and shadow, contemplative spaces</li>
+      <li>Excellent for pre-Cataclysm research facilities, knowledge preservation</li>
+    </ul>
+  </li>
+  <li><strong>Ernő Goldfinger</strong>
+    <ul>
+      <li>Trellick Tower - Brutalist housing</li>
+      <li>Social engineering through architecture</li>
+      <li>Mass housing, community within concrete</li>
+      <li>Great for Port Zephyr vertical development, population density</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="memorial--sacred-architecture"><strong>Memorial &amp; Sacred Architecture</strong></h3>
+<ul>
+  <li><strong>Peter Eisenman</strong>
+    <ul>
+      <li>“Memorial to the Murdered Jews of Europe” - Field of concrete blocks</li>
+      <li>Disorientation, individual lost in system</li>
+      <li>Abstract representation of massive loss</li>
+      <li>Perfect for Cataclysm memorial sites, community grief processing</li>
+    </ul>
+  </li>
+  <li><strong>Daniel Libeskind</strong>
+    <ul>
+      <li>Jewish Museum Berlin - Zigzag floor plan, “voids” throughout</li>
+      <li>Architecture representing trauma, historical rupture</li>
+      <li>Difficult navigation, emotional response to space</li>
+      <li>Excellent for museums documenting pre-Cataclysm history</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="earthworks--land-art"><strong>Earthworks &amp; Land Art</strong></h3>
+<ul>
+  <li><strong>Michael Heizer</strong>
+    <ul>
+      <li>“Double Negative” - Two cuts in Nevada mesa</li>
+      <li>Landscape as canvas, geological time scale</li>
+      <li>Negative space, removal rather than addition</li>
+      <li>Great for representing Cataclysm ground zero sites</li>
+    </ul>
+  </li>
+  <li><strong>Walter De Maria</strong>
+    <ul>
+      <li>“Lightning Field” - Grid of steel poles in desert</li>
+      <li>Natural forces, human intervention in landscape</li>
+      <li>Waiting, patience, natural phenomena</li>
+      <li>Perfect for magical research installations, energy collection</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="performance--dance">Performance &amp; Dance</h2>
+
+<h3 id="post-apocalyptic-movement"><strong>Post-Apocalyptic Movement</strong></h3>
+<ul>
+  <li><strong>Pina Bausch/Tanztheater Wuppertal</strong>
+    <ul>
+      <li>“Café Müller” - Bodies moving through debris</li>
+      <li>Repetitive movements, exhaustion, survival</li>
+      <li>Intimate relationships under stress</li>
+      <li>Perfect for representing community dynamics, resource scarcity</li>
+    </ul>
+  </li>
+  <li><strong>DV8 Physical Theatre</strong>
+    <ul>
+      <li>“Enter Achilles” - Masculinity, violence, social pressure</li>
+      <li>Physical risk, dangerous movement</li>
+      <li>Social commentary through extreme physicality</li>
+      <li>Great for representing faction conflicts, warrior culture</li>
+    </ul>
+  </li>
+  <li><strong>Akram Khan</strong>
+    <ul>
+      <li>“DESH” - Migration, displacement, cultural identity</li>
+      <li>Traditional kathak with contemporary themes</li>
+      <li>Storytelling through movement, oral tradition</li>
+      <li>Excellent for refugee communities, cultural preservation</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="ritual--community"><strong>Ritual &amp; Community</strong></h3>
+<ul>
+  <li><strong>Anna Halprin</strong>
+    <ul>
+      <li>Community-based dance, healing through movement</li>
+      <li>“Planetary Dance” - Environmental healing ritual</li>
+      <li>Collective creation, individual expression within group</li>
+      <li>Perfect for community festivals, healing ceremonies</li>
+    </ul>
+  </li>
+  <li><strong>Butoh (Ankoku Butō)</strong>
+    <ul>
+      <li>Japanese post-war dance form</li>
+      <li>Slow, controlled movement, death and rebirth themes</li>
+      <li>White body paint, grotesque beauty</li>
+      <li>Excellent for contamination effects, transformation rituals</li>
+    </ul>
+  </li>
+  <li><strong>Alvin Ailey</strong>
+    <ul>
+      <li>“Revelations” - African American spiritual experience</li>
+      <li>Community celebration, individual struggle</li>
+      <li>Music and movement integration, cultural expression</li>
+      <li>Great for Port Zephyr cultural mixing, celebration traditions</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="political--protest-movement"><strong>Political &amp; Protest Movement</strong></h3>
+<ul>
+  <li><strong>Martha Graham</strong>
+    <ul>
+      <li>“Lamentation” - Grief made visible through fabric</li>
+      <li>Abstract emotion, universal human experience</li>
+      <li>Simple materials creating powerful effect</li>
+      <li>Perfect for mourning rituals, collective grief</li>
+    </ul>
+  </li>
+  <li><strong>Bill T. Jones</strong>
+    <ul>
+      <li>“Still/Here” - AIDS crisis, community response to death</li>
+      <li>Survivor testimony, art as activism</li>
+      <li>Community healing, speaking truth about trauma</li>
+      <li>Excellent for post-Cataclysm survivor stories, testimony preservation</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="theater--performance-art">Theater &amp; Performance Art</h2>
+
+<h3 id="environmental-theater"><strong>Environmental Theater</strong></h3>
+<ul>
+  <li><strong>Robert Wilson</strong>
+    <ul>
+      <li>“Einstein on the Beach” - Time, science, repetition</li>
+      <li>Minimalist staging, hypnotic repetition</li>
+      <li>Technology and humanity, scientific responsibility</li>
+      <li>Perfect for pre-Cataclysm scientific installations, time distortion</li>
+    </ul>
+  </li>
+  <li><strong>The Wooster Group</strong>
+    <ul>
+      <li>Mixed media performance, technology integration</li>
+      <li>Fragmented narrative, media archaeology</li>
+      <li>Contemporary performance with historical material</li>
+      <li>Great for piecing together pre-Cataclysm history</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="community-based-theater"><strong>Community-Based Theater</strong></h3>
+<ul>
+  <li><strong>Augusto Boal’s Theater of the Oppressed</strong>
+    <ul>
+      <li>Audience participation, social change through performance</li>
+      <li>“Forum Theater” - Audience becomes actors, explores solutions</li>
+      <li>Community empowerment, collective problem-solving</li>
+      <li>Excellent for depicting community decision-making, resistance planning</li>
+    </ul>
+  </li>
+  <li><strong>Peter Brook</strong>
+    <ul>
+      <li>“The Empty Space” - Minimal staging, actor-audience intimacy</li>
+      <li>Cross-cultural theater, universal human stories</li>
+      <li>Simplicity creating powerful emotional effect</li>
+      <li>Perfect for intimate community storytelling, oral tradition</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="immersive--site-specific"><strong>Immersive &amp; Site-Specific</strong></h3>
+<ul>
+  <li><strong>Rimini Protokoll</strong>
+    <ul>
+      <li>Site-specific performance, non-professional actors</li>
+      <li>Real people telling their stories</li>
+      <li>Blurred lines between performance and reality</li>
+      <li>Great for survivor testimony, community documentation</li>
+    </ul>
+  </li>
+  <li><strong>Forced Entertainment</strong>
+    <ul>
+      <li>Endurance-based performance, repetition and exhaustion</li>
+      <li>“Speak Bitterness” - 6-hour confession marathon</li>
+      <li>Community breakdown, individual vs. collective responsibility</li>
+      <li>Excellent for truth and reconciliation processes, collective guilt</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="textile--fiber-arts">Textile &amp; Fiber Arts</h2>
+
+<h3 id="memorial--memory"><strong>Memorial &amp; Memory</strong></h3>
+<ul>
+  <li><strong>The AIDS Memorial Quilt</strong>
+    <ul>
+      <li>Community crafting, collective memory</li>
+      <li>Individual panels creating massive whole</li>
+      <li>Domestic craft addressing public tragedy</li>
+      <li>Perfect for Cataclysm memorial practices, community healing</li>
+    </ul>
+  </li>
+  <li><strong>Rosemarie Trockel</strong>
+    <ul>
+      <li>Knitted computer graphics, domestic/technological fusion</li>
+      <li>Traditional women’s work with contemporary themes</li>
+      <li>Craft as fine art, personal as political</li>
+      <li>Great for representing cultural adaptation, traditional skills in new contexts</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cultural-preservation"><strong>Cultural Preservation</strong></h3>
+<ul>
+  <li><strong>Gee’s Bend Quilts</strong>
+    <ul>
+      <li>African American quilting tradition</li>
+      <li>Improvisation, recycled materials, family knowledge</li>
+      <li>Community art practice, passing down skills</li>
+      <li>Excellent for representing cultural continuity, making beauty from scraps</li>
+    </ul>
+  </li>
+  <li><strong>Sheila Hicks</strong>
+    <ul>
+      <li>Textile installations, fiber as sculpture</li>
+      <li>“Escalade Beyond Chromatic Lands” - Massive fiber installation</li>
+      <li>Traditional weaving techniques, monumental scale</li>
+      <li>Perfect for representing community labor, collective creation</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="sound-art--audio-installation">Sound Art &amp; Audio Installation</h2>
+
+<h3 id="environmental-sound"><strong>Environmental Sound</strong></h3>
+<ul>
+  <li><strong>Janet Cardiff</strong>
+    <ul>
+      <li>“The Forty Part Motet” - Individual speakers for choir voices</li>
+      <li>Spatial audio, community within individual experience</li>
+      <li>Sacred music, acoustic architecture</li>
+      <li>Perfect for representing pre-Cataclysm cultural sophistication</li>
+    </ul>
+  </li>
+  <li><strong>Susan Philipsz</strong>
+    <ul>
+      <li>“Lowlands” - Scottish lament under Glasgow bridges</li>
+      <li>Site-specific sound, historical memory in contemporary space</li>
+      <li>Haunting beauty, public art as memorial</li>
+      <li>Excellent for ghost voices in ruins, collective memory</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="industrial--mechanical"><strong>Industrial &amp; Mechanical</strong></h3>
+<ul>
+  <li><strong>Ryoji Ikeda</strong>
+    <ul>
+      <li>“Test Pattern” - Data visualization, digital noise</li>
+      <li>High-frequency sound, technological sublime</li>
+      <li>Information overload, digital/analog intersection</li>
+      <li>Great for representing pre-Cataclysm technology, data corruption</li>
+    </ul>
+  </li>
+  <li><strong>Alvin Lucier</strong>
+    <ul>
+      <li>“I Am Sitting in a Room” - Recording decay through repetition</li>
+      <li>Technology failure, information degradation</li>
+      <li>Time and space acoustic properties</li>
+      <li>Perfect for representing knowledge loss, technological breakdown</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="digital--new-media-art">Digital &amp; New Media Art</h2>
+
+<h3 id="interactive-installation"><strong>Interactive Installation</strong></h3>
+<ul>
+  <li><strong>Rafael Lozano-Hemmer</strong>
+    <ul>
+      <li>“Pulse Room” - Light bulbs responding to heartbeats</li>
+      <li>Community biometrics, individual within collective</li>
+      <li>Technology serving human connection</li>
+      <li>Perfect for representing community health monitoring, shared resources</li>
+    </ul>
+  </li>
+  <li><strong>Camille Utterback</strong>
+    <ul>
+      <li>Motion-triggered projections, body interaction with digital</li>
+      <li>Physical presence in virtual space</li>
+      <li>Technology responding to human movement</li>
+      <li>Great for magical interfaces, ancient technology activation</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="data-visualization"><strong>Data Visualization</strong></h3>
+<ul>
+  <li><strong>Casey Reas</strong>
+    <ul>
+      <li>Processing software, generative art</li>
+      <li>Complex systems, emergent behavior</li>
+      <li>Simple rules creating complex patterns</li>
+      <li>Excellent for representing magical contamination patterns, system collapse</li>
+    </ul>
+  </li>
+  <li><strong>Ben Fry</strong>
+    <ul>
+      <li>“Genome Valence” - DNA data visualization</li>
+      <li>Biological information as art</li>
+      <li>Scientific data, aesthetic representation</li>
+      <li>Perfect for representing genetic damage, mutation tracking</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="applied-arts--crafts">Applied Arts &amp; Crafts</h2>
+
+<h3 id="ceramics--pottery"><strong>Ceramics &amp; Pottery</strong></h3>
+<ul>
+  <li><strong>Ai Weiwei</strong>
+    <ul>
+      <li>“Dropping a Han Dynasty Urn” - Destruction of cultural artifacts</li>
+      <li>“Colored Vases” - Traditional pottery, industrial paint</li>
+      <li>Cultural value, destruction and transformation</li>
+      <li>Perfect for representing relationship to pre-Cataclysm artifacts</li>
+    </ul>
+  </li>
+  <li><strong>Betty Woodman</strong>
+    <ul>
+      <li>Functional pottery as sculpture</li>
+      <li>Domestic objects, monumental scale</li>
+      <li>Traditional craft, contemporary art context</li>
+      <li>Great for representing daily life continuation, practical beauty</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="metalwork--blacksmithing"><strong>Metalwork &amp; Blacksmithing</strong></h3>
+<ul>
+  <li><strong>David Smith</strong>
+    <ul>
+      <li>Industrial materials, abstract sculpture</li>
+      <li>Welded steel, found metal objects</li>
+      <li>Labor and art, industrial aesthetic</li>
+      <li>Perfect for representing reconstruction craft, making tools from scrap</li>
+    </ul>
+  </li>
+  <li><strong>Albert Paley</strong>
+    <ul>
+      <li>Architectural metalwork, gates and railings</li>
+      <li>Functional art, public space integration</li>
+      <li>Traditional blacksmithing, contemporary design</li>
+      <li>Excellent for Port Zephyr public art, community identity through craft</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="regional-cultural-arts">Regional Cultural Arts</h2>
+
+<h3 id="african-traditional-arts"><strong>African Traditional Arts</strong></h3>
+<ul>
+  <li><strong>Nkisi Figures (Congo)</strong>
+    <ul>
+      <li>Power objects, community protection</li>
+      <li>Mixed materials, spiritual function</li>
+      <li>Individual artists serving community needs</li>
+      <li>Perfect for Remnant Keeper protective artifacts</li>
+    </ul>
+  </li>
+  <li><strong>Dogon Architecture (Mali)</strong>
+    <ul>
+      <li>Cliff dwellings, environmental integration</li>
+      <li>Community storage, collective granaries</li>
+      <li>Defense and sustainability, working with landscape</li>
+      <li>Excellent for post-Cataclysm settlement design</li>
+    </ul>
+  </li>
+  <li><strong>Ethiopian Orthodox Church Art</strong>
+    <ul>
+      <li>Illuminated manuscripts, religious preservation</li>
+      <li>Knowledge protection, artistic beauty</li>
+      <li>Community cultural centers, sacred spaces</li>
+      <li>Great for representing cultural continuity, knowledge preservation</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="diaspora--contemporary-african-art"><strong>Diaspora &amp; Contemporary African Art</strong></h3>
+<ul>
+  <li><strong>El Anatsui</strong> (Ghana/Nigeria)
+    <ul>
+      <li>Bottle cap installations, transformation of waste</li>
+      <li>Colonial materials, traditional aesthetics</li>
+      <li>Community labor, individual vision</li>
+      <li>Perfect for scavenging culture, beauty from destruction</li>
+    </ul>
+  </li>
+  <li><strong>William Kentridge</strong> (South Africa)
+    <ul>
+      <li>Charcoal animations, historical memory</li>
+      <li>Apartheid aftermath, collective trauma</li>
+      <li>Individual story, political context</li>
+      <li>Excellent for representing post-Cataclysm recovery, historical documentation</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="campaign-applications">Campaign Applications</h2>
+
+<h3 id="visual-reference"><strong>Visual Reference</strong></h3>
+<ul>
+  <li><strong>Sculpture Photos</strong> - For describing ancient artifacts, memorial sites</li>
+  <li><strong>Architecture Images</strong> - For settlement design, institutional buildings</li>
+  <li><strong>Performance Documentation</strong> - For cultural events, community rituals</li>
+  <li><strong>Craft Objects</strong> - For equipment design, cultural artifacts</li>
+</ul>
+
+<h3 id="narrative-inspiration"><strong>Narrative Inspiration</strong></h3>
+<ul>
+  <li><strong>Memorial Practices</strong> - How communities process collective trauma</li>
+  <li><strong>Craft Traditions</strong> - Skills preservation, making beauty from scarcity</li>
+  <li><strong>Performance Rituals</strong> - Community bonding, cultural expression</li>
+  <li><strong>Sacred Spaces</strong> - Architecture serving spiritual/community needs</li>
+</ul>
+
+<h3 id="session-integration"><strong>Session Integration</strong></h3>
+<ul>
+  <li><strong>Opening Rituals</strong> - Begin sessions with community ceremony descriptions</li>
+  <li><strong>Cultural Events</strong> - Festivals, performances, craft competitions</li>
+  <li><strong>Memorial Moments</strong> - Honoring the dead, processing grief</li>
+  <li><strong>Skill Demonstrations</strong> - NPCs showing traditional crafts, community knowledge</li>
+</ul>
+
+<h3 id="player-engagement"><strong>Player Engagement</strong></h3>
+<ul>
+  <li><strong>Character Backgrounds</strong> - Craft skills, performance abilities, cultural knowledge</li>
+  <li><strong>Community Projects</strong> - Building memorials, organizing festivals</li>
+  <li><strong>Cultural Exchange</strong> - Learning traditions from different communities</li>
+  <li><strong>Skill Teaching</strong> - Characters passing knowledge to others</li>
+</ul>
+
+<hr />
+
+<h2 id="essential-reference-collections">Essential Reference Collections</h2>
+
+<h3 id="priority-tier-1-most-important"><strong>Priority Tier 1</strong> (Most Important)</h3>
+<ol>
+  <li><strong>Anselm Kiefer</strong> - Industrial materials, memory preservation, post-war trauma</li>
+  <li><strong>Maya Lin</strong> - Memorial design, collective memory, healing spaces</li>
+  <li><strong>El Anatsui</strong> - Transformation of waste, community labor, cultural resilience</li>
+  <li><strong>Pina Bausch</strong> - Physical exhaustion, survival, intimate relationships under stress</li>
+  <li><strong>AIDS Memorial Quilt</strong> - Community response to tragedy, collective healing</li>
+</ol>
+
+<h3 id="priority-tier-2-highly-recommended"><strong>Priority Tier 2</strong> (Highly Recommended)</h3>
+<ol>
+  <li><strong>Andy Goldsworthy</strong> - Working with natural processes, environmental harmony</li>
+  <li><strong>Tadao Ando</strong> - Sacred spaces from industrial materials, light and concrete</li>
+  <li><strong>Butoh Dance</strong> - Transformation, death/rebirth, contamination effects</li>
+  <li><strong>Theater of the Oppressed</strong> - Community empowerment, collective problem-solving</li>
+  <li><strong>Gee’s Bend Quilts</strong> - Cultural continuity, making beauty from scraps</li>
+</ol>
+
+<h3 id="priority-tier-3-excellent-supplementary"><strong>Priority Tier 3</strong> (Excellent Supplementary)</h3>
+<ol>
+  <li><strong>Rachel Whiteread</strong> - Absence made visible, lost civilizations</li>
+  <li><strong>Janet Cardiff</strong> - Community within individual experience, acoustic architecture</li>
+  <li><strong>Ai Weiwei</strong> - Cultural destruction/preservation, transformation of traditional objects</li>
+  <li><strong>Peter Eisenman</strong> - Memorial architecture, processing massive loss</li>
+  <li><strong>Robert Wilson</strong> - Time distortion, scientific responsibility, minimalist power</li>
+</ol>
+
+<hr />
+
+<h2 id="research-methods">Research Methods</h2>
+
+<h3 id="online-resources"><strong>Online Resources</strong></h3>
+<ul>
+  <li><strong>Museum Collections</strong> - MoMA, Tate Modern, Smithsonian online archives</li>
+  <li><strong>Artist Websites</strong> - Documentation of installations, performance videos</li>
+  <li><strong>Vimeo/YouTube</strong> - Performance documentation, artist interviews</li>
+  <li><strong>Google Arts &amp; Culture</strong> - Virtual museum tours, high-resolution artwork</li>
+</ul>
+
+<h3 id="physical-experiences"><strong>Physical Experiences</strong></h3>
+<ul>
+  <li><strong>Local Museums</strong> - Contemporary art museums, cultural centers</li>
+  <li><strong>Performance Venues</strong> - Dance companies, experimental theater</li>
+  <li><strong>Public Art</strong> - Sculptures, installations in urban spaces</li>
+  <li><strong>Cultural Festivals</strong> - Community arts events, traditional performances</li>
+</ul>
+
+<h3 id="documentation-tools"><strong>Documentation Tools</strong></h3>
+<ul>
+  <li><strong>Photography</strong> - Reference images for location/object description</li>
+  <li><strong>Video Clips</strong> - Movement and performance inspiration</li>
+  <li><strong>Sketching</strong> - Quick reference drawings during museum visits</li>
+  <li><strong>Audio Recording</strong> - Sound art, performance documentation</li>
+</ul>
+
+<hr />
+
+<h2 id="creating-campaign-materials">Creating Campaign Materials</h2>
+
+<h3 id="visual-handouts"><strong>Visual Handouts</strong></h3>
+<ul>
+  <li>Use sculptural photos for ancient artifact descriptions</li>
+  <li>Architectural images for settlement and building layouts</li>
+  <li>Performance stills for cultural event illustrations</li>
+  <li>Craft photos for equipment and cultural object references</li>
+</ul>
+
+<h3 id="session-atmosphere"><strong>Session Atmosphere</strong></h3>
+<ul>
+  <li><strong>Opening Ceremonies</strong> - Describe community rituals based on performance art</li>
+  <li><strong>Environmental Description</strong> - Use installation art language for location atmosphere</li>
+  <li><strong>Cultural Events</strong> - Base festivals and celebrations on documented traditions</li>
+  <li><strong>Memorial Moments</strong> - Draw from memorial art practices for grief processing</li>
+</ul>
+
+<h3 id="world-building"><strong>World Building</strong></h3>
+<ul>
+  <li><strong>Settlement Design</strong> - Architecture principles for different communities</li>
+  <li><strong>Cultural Practices</strong> - Performance and craft traditions for different regions</li>
+  <li><strong>Sacred Spaces</strong> - Memorial and spiritual architecture</li>
+  <li><strong>Community Art</strong> - How different groups express identity through creative work</li>
+</ul>
+
+<hr />
+
+<p><em>These diverse art forms provide rich inspiration for the cultural, spiritual, and community aspects of post-Cataclysm life in Alkebulan. They show how humans create meaning, beauty, and connection even in the midst of trauma and scarcity - essential themes for your world’s recovery narrative.</em></p>
+
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <h4>🧭 Navigation</h4>
+
+                        <div class="nav-level">
+                            <div class="nav-level-title">Quick Access</div>
+                            <a href="/alkebulan-wiki/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="nav-level" id="navUp" style="display: none;">
+                            <div class="nav-level-title">Up One Level</div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="contamination-warning">
+                        <strong>⚠️ WARNING</strong><br>
+                        This archive contains<br>
+                        <em>Remnant Magic traces</em><br>
+                        Access with caution
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Robert McCowan. Classified Archive System for Alkebulan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
+
+        function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
+
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Simplified navigation system
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
+
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '/alkebulan-wiki/' : '/alkebulan-wiki/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                }
+
+                // Helper function to escape HTML
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
+            } else {
+                // Default to player view
+                switchToPlayerView();
+            }
+
+            // Setup simple navigation
+            setupSimpleNavigation();
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
+        });
+    </script>
+</body>
+</html>

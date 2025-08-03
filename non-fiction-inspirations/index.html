@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<!-- _layouts/default.html with Dynamic View Toggle -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baseurl" content="/alkebulan-wiki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non Fiction Inspirations | Alkebulan</title>
+    <meta name="description" content="A dark fantasy continent recovering from magical apocalypse">
+
+    <!-- SEO -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Non Fiction Inspirations | Alkebulan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Non Fiction Inspirations" />
+<meta name="author" content="Robert McCowan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dark fantasy continent recovering from magical apocalypse" />
+<meta property="og:description" content="A dark fantasy continent recovering from magical apocalypse" />
+<link rel="canonical" href="https://cowcow2831.github.io/alkebulan-wiki/non-fiction-inspirations/" />
+<meta property="og:url" content="https://cowcow2831.github.io/alkebulan-wiki/non-fiction-inspirations/" />
+<meta property="og:site_name" content="Alkebulan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Non Fiction Inspirations" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Robert McCowan"},"dateModified":"2025-08-03T00:00:00+00:00","datePublished":"2025-08-03T00:00:00+00:00","description":"A dark fantasy continent recovering from magical apocalypse","headline":"Non Fiction Inspirations","mainEntityOfPage":{"@type":"WebPage","@id":"https://cowcow2831.github.io/alkebulan-wiki/non-fiction-inspirations/"},"url":"https://cowcow2831.github.io/alkebulan-wiki/non-fiction-inspirations/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/alkebulan-wiki/assets/favicon.ico">
+
+    <!-- Navigation Data -->
+    <!-- <script src="/alkebulan-wiki/assets/js/navigation.js"></script> -->
+
+    <!-- Styles -->
+    <style>
+        /* Post-Nuclear Contaminated Archive Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            /* Post-Nuclear Color Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #c0c0c0;
+            --text-secondary: #888888;
+            --text-muted: #666666;
+
+            /* Contamination Colors */
+            --toxic-green: #7cfc00;
+            --rust-orange: #d67c2a;
+            --warning-yellow: #e6e619;
+            --radiation-orange: #ff6b35;
+            --ash-gray: #4a4a4a;
+            --danger-red: #ff3333;
+
+            /* Effects */
+            --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
+            --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
+            --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+            min-height: 100vh;
+            text-shadow: var(--text-shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contamination Pulse Animation */
+        @keyframes contamination-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .contaminated {
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Header - Made more compact for mobile */
+        header {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            border-bottom: 3px solid var(--toxic-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warning-yellow);
+            text-decoration: none;
+            text-shadow: var(--text-shadow), var(--glow-orange);
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--text-shadow), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        .site-title::before {
+            content: "☢️ ";
+            color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--ash-gray);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(74, 74, 74, 0.2);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            transform: translateY(-2px);
+        }
+
+        nav a::before {
+            content: "☢️";
+            margin-right: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid var(--ash-gray);
+            position: relative;
+        }
+
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--ash-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 2px solid var(--rust-orange);
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar::before {
+            content: "⚠️ CONTAMINATED DATA";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 4px;
+            border: 1px solid var(--radiation-orange);
+        }
+
+        /* Sidebar Navigation Sections */
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--warning-yellow);
+            text-align: center;
+            border-bottom: 1px solid var(--ash-gray);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-level {
+            margin-bottom: 1rem;
+        }
+
+        .nav-level-title {
+            font-size: 0.85rem;
+            color: var(--rust-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-left-color: var(--toxic-green);
+            transform: translateX(5px);
+        }
+
+        .nav-item.current {
+            background: rgba(124, 252, 0, 0.1);
+            border-left-color: var(--toxic-green);
+            color: var(--text-primary);
+        }
+
+        .nav-item::before {
+            margin-right: 0.5rem;
+        }
+
+        .nav-up::before { content: "⬆️"; }
+        .nav-same::before { content: "↔️"; }
+        .nav-down::before { content: "⬇️"; }
+        .nav-home::before { content: "🏠"; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--warning-yellow);
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            color: var(--toxic-green);
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--rust-orange);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h6 {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--warning-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--glow-green);
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+        }
+
+        .main-content ul li::marker,
+        .sidebar us li::marker {
+            content: "☢️ ";
+            color: var(--toxic-green);
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin: 1.5rem 0;
+            border: 2px solid var(--ash-gray);
+            transition: all 0.3s ease;
+        }
+
+        img:hover {
+            border-color: var(--toxic-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--radiation-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "⚠️";
+            position: absolute;
+            top: 1rem;
+            left: -15px;
+            background: var(--radiation-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code */
+        code {
+            background: var(--bg-primary);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            border: 1px solid var(--ash-gray);
+        }
+
+        pre {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 2px solid var(--toxic-green);
+            box-shadow: var(--glow-green);
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        th {
+            background: var(--rust-orange);
+            color: white;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        tr:hover {
+            background: rgba(124, 252, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 3px solid var(--toxic-green);
+            color: var(--text-secondary);
+            box-shadow: var(--border-glow);
+        }
+
+        footer::before {
+            content: "☢️ CONTAMINATION WARNING: All materials subject to Remnant Magic exposure ☢️";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive - Compact Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+                order: 1;
+            }
+
+            .view-mode-indicator {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin: 0 0.5rem;
+                order: 2;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                order: 3;
+                width: 100%;
+            }
+
+            .view-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Special Effects */
+        .contamination-warning {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(124, 252, 0, 0.1));
+            border: 2px solid var(--radiation-orange);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hide the default Jekyll title since we'll handle it in CSS */
+        .main-content > h1:first-child {
+            display: none;
+        }
+
+        /* Custom page title styling */
+        .page-title {
+            font-size: 2.8rem;
+            color: var(--warning-yellow);
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .page-title::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        /* Mobile page title adjustment */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/alkebulan-wiki/" class="site-title">Alkebulan</a>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
+                    </button>
+                    <nav>
+                        <ul>
+                            
+                            <li><a href="/alkebulan-wiki/" class="nav-item" data-access="public">Home</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/port-zephyr/" class="nav-item" data-access="public">Port Zephyr</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/harbor-district/" class="nav-item" data-access="player">Harbor District</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/player-handout-whispers-of-the-wastes/" class="nav-item" data-access="player">Player Handout</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/dm-notes/" class="nav-item" data-access="dm">DM Notes</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/secrets/" class="nav-item" data-access="dm">Secrets</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    
+                    <h1 class="page-title">Non Fiction Inspirations</h1>
+                    
+
+                    <div id="content">
+                        <h1 id="non-fiction-knowledge-sources-for-alkebulan">Non-Fiction Knowledge Sources for Alkebulan</h1>
+<p><em>Essential real-world knowledge, academic works, and non-fiction books to inform your dark post-nuclear fantasy world</em></p>
+
+<hr />
+
+<h2 id="nuclear-age--atomic-history">Nuclear Age &amp; Atomic History</h2>
+
+<h3 id="essential-nuclear-histories"><strong>Essential Nuclear Histories</strong></h3>
+<ul>
+  <li><strong>“The Making of the Atomic Bomb” by Richard Rhodes</strong>
+    <ul>
+      <li>Manhattan Project, scientific hubris, political decisions</li>
+      <li>How great powers develop world-ending weapons</li>
+      <li>Moral complexity of scientists, “necessary” destruction</li>
+      <li>Perfect for understanding pre-Cataclysm empire mindset</li>
+    </ul>
+  </li>
+  <li><strong>“Voices from Chernobyl” by Svetlana Alexievich</strong>
+    <ul>
+      <li>First-hand accounts of nuclear disaster</li>
+      <li>How invisible contamination affects communities</li>
+      <li>Government cover-ups, institutional response to crisis</li>
+      <li>Essential for understanding Remnant Magic effects on daily life</li>
+    </ul>
+  </li>
+  <li><strong>“Command and Control” by Eric Schlosser</strong>
+    <ul>
+      <li>Nuclear weapons accidents, near-misses with catastrophe</li>
+      <li>How complex systems fail, human error in dangerous technology</li>
+      <li>Military culture, secrecy around dangerous programs</li>
+      <li>Great for understanding how the Cataclysm could have happened</li>
+    </ul>
+  </li>
+  <li><strong>“Nuclear Folly” by Serhii Plokhy</strong>
+    <ul>
+      <li>Cuban Missile Crisis, how close world came to nuclear war</li>
+      <li>Brinksmanship, miscommunication, diplomatic failures</li>
+      <li>Individual decisions affecting global outcomes</li>
+      <li>Perfect for Cold War-style tensions between your empires</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="radiation--contamination-science"><strong>Radiation &amp; Contamination Science</strong></h3>
+<ul>
+  <li><strong>“Atoms Under the Floorboards” by Chris Woodford</strong>
+    <ul>
+      <li>Accessible nuclear science, radiation effects</li>
+      <li>How radioactive materials behave in environment</li>
+      <li>Long-term contamination, half-life concepts</li>
+      <li>Excellent for understanding how Remnant Magic might work scientifically</li>
+    </ul>
+  </li>
+  <li><strong>“Wormwood Forest” by Mary Mycio</strong>
+    <ul>
+      <li>Chernobyl exclusion zone ecology, wildlife adaptation</li>
+      <li>How nature reclaims contaminated areas</li>
+      <li>Unexpected beauty in radioactive landscapes</li>
+      <li>Perfect for understanding contaminated zone recovery</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="post-disaster-recovery--resilience">Post-Disaster Recovery &amp; Resilience</h2>
+
+<h3 id="community-response-to-catastrophe"><strong>Community Response to Catastrophe</strong></h3>
+<ul>
+  <li><strong>“A Paradise Built in Hell” by Rebecca Solnit</strong>
+    <ul>
+      <li>How communities come together during disasters</li>
+      <li>Mutual aid, spontaneous cooperation, social solidarity</li>
+      <li>Debunking myths about panic and selfishness</li>
+      <li>Essential for understanding how survivors actually behave</li>
+    </ul>
+  </li>
+  <li><strong>“The Unthinkable” by Amanda Ripley</strong>
+    <ul>
+      <li>Psychology of disaster survival, who lives and who dies</li>
+      <li>How people actually respond to extreme situations</li>
+      <li>Training and preparation vs. panic and paralysis</li>
+      <li>Great for realistic survivor community dynamics</li>
+    </ul>
+  </li>
+  <li><strong>“Deep Survival” by Laurence Gonzales</strong>
+    <ul>
+      <li>Individual psychology of extreme survival situations</li>
+      <li>Mental factors in life-or-death scenarios</li>
+      <li>Why some people give up and others keep fighting</li>
+      <li>Perfect for understanding individual character motivations</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="societal-collapse--recovery"><strong>Societal Collapse &amp; Recovery</strong></h3>
+<ul>
+  <li><strong>“Collapse” by Jared Diamond</strong>
+    <ul>
+      <li>How societies choose to fail or succeed</li>
+      <li>Environmental factors, political decisions, cultural values</li>
+      <li>Case studies of civilizations that recovered vs. those that didn’t</li>
+      <li>Excellent framework for your 300-year recovery timeline</li>
+    </ul>
+  </li>
+  <li><strong>“The Better Angels of Our Nature” by Steven Pinker</strong>
+    <ul>
+      <li>Long-term decline in violence, civilizational progress</li>
+      <li>How institutions reduce conflict over time</li>
+      <li>Evidence for optimism about human cooperation</li>
+      <li>Good counter-balance to grimdark assumptions</li>
+    </ul>
+  </li>
+  <li><strong>“Antifragile” by Nassim Nicholas Taleb</strong>
+    <ul>
+      <li>How systems become stronger through stress</li>
+      <li>Adaptation and resilience in complex systems</li>
+      <li>Why some organizations thrive in chaos</li>
+      <li>Perfect for understanding which communities survive and thrive</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="environmental-catastrophe--climate-science">Environmental Catastrophe &amp; Climate Science</h2>
+
+<h3 id="climate-change--environmental-collapse"><strong>Climate Change &amp; Environmental Collapse</strong></h3>
+<ul>
+  <li><strong>“The Sixth Extinction” by Elizabeth Kolbert</strong>
+    <ul>
+      <li>Mass extinction events, ecosystem collapse</li>
+      <li>Human impact on global environment</li>
+      <li>Irreversible changes, tipping points</li>
+      <li>Excellent for understanding scale of environmental destruction</li>
+    </ul>
+  </li>
+  <li><strong>“The Uninhabitable Earth” by David Wallace-Wells</strong>
+    <ul>
+      <li>Worst-case climate scenarios, feedback loops</li>
+      <li>Social and political consequences of environmental collapse</li>
+      <li>How climate change affects every aspect of human life</li>
+      <li>Perfect for understanding comprehensive civilizational threat</li>
+    </ul>
+  </li>
+  <li><strong>“This Changes Everything” by Naomi Klein</strong>
+    <ul>
+      <li>Political and economic responses to climate crisis</li>
+      <li>How existing power structures prevent solutions</li>
+      <li>Grassroots movements, community responses</li>
+      <li>Great for understanding political dynamics around existential threats</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="ecological-restoration"><strong>Ecological Restoration</strong></h3>
+<ul>
+  <li><strong>“Braiding Sweetgrass” by Robin Wall Kimmerer</strong>
+    <ul>
+      <li>Indigenous ecological knowledge, working with nature</li>
+      <li>Traditional wisdom about environmental stewardship</li>
+      <li>Spiritual relationship with natural world</li>
+      <li>Perfect for Spirit Weaver philosophy and practices</li>
+    </ul>
+  </li>
+  <li><strong>“The Once and Future World” by J.B. MacKinnon</strong>
+    <ul>
+      <li>Ecological restoration, returning ecosystems to health</li>
+      <li>What “natural” means in human-altered world</li>
+      <li>Practical approaches to environmental healing</li>
+      <li>Excellent for understanding long-term recovery from Cataclysm</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="political-science--governance">Political Science &amp; Governance</h2>
+
+<h3 id="authoritarian-systems"><strong>Authoritarian Systems</strong></h3>
+<ul>
+  <li><strong>“The Origins of Totalitarianism” by Hannah Arendt</strong>
+    <ul>
+      <li>How authoritarian movements gain power</li>
+      <li>Propaganda, mass society, institutional capture</li>
+      <li>Individual responsibility under oppressive systems</li>
+      <li>Essential for understanding Amunrai Imperium expansion</li>
+    </ul>
+  </li>
+  <li><strong>“On Tyranny” by Timothy Snyder</strong>
+    <ul>
+      <li>Twenty lessons from twentieth century about resisting authoritarianism</li>
+      <li>How democracies die, warning signs of fascism</li>
+      <li>Individual and community resistance strategies</li>
+      <li>Perfect for understanding resistance to imperial expansion</li>
+    </ul>
+  </li>
+  <li><strong>“The Dictator’s Handbook” by Bruce Bueno de Mesquita</strong>
+    <ul>
+      <li>How political power actually works</li>
+      <li>Why leaders make decisions that seem irrational</li>
+      <li>Coalition building, resource distribution, staying in power</li>
+      <li>Excellent for understanding imperial politics and faction dynamics</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="democracy--civil-society"><strong>Democracy &amp; Civil Society</strong></h3>
+<ul>
+  <li><strong>“Bowling Alone” by Robert Putnam</strong>
+    <ul>
+      <li>Decline of social capital, community institutions</li>
+      <li>How civil society holds democracy together</li>
+      <li>Social networks, trust, collective action</li>
+      <li>Great for understanding what makes Port Zephyr’s democracy work</li>
+    </ul>
+  </li>
+  <li><strong>“The Righteous Mind” by Jonathan Haidt</strong>
+    <ul>
+      <li>Moral psychology, why people disagree about politics</li>
+      <li>Different moral foundations, group loyalty vs. individual rights</li>
+      <li>How to bridge political divides</li>
+      <li>Perfect for understanding faction conflicts and reconciliation</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="anthropology--cultural-studies">Anthropology &amp; Cultural Studies</h2>
+
+<h3 id="community-organization"><strong>Community Organization</strong></h3>
+<ul>
+  <li><strong>“Mutual Aid” by Dean Spade</strong>
+    <ul>
+      <li>How communities organize to meet each other’s needs</li>
+      <li>Horizontal vs. hierarchical organization</li>
+      <li>Building power from below, grassroots movements</li>
+      <li>Excellent for understanding post-Cataclysm community building</li>
+    </ul>
+  </li>
+  <li><strong>“The Art of Not Being Governed” by James C. Scott</strong>
+    <ul>
+      <li>How people avoid state control, alternative social organization</li>
+      <li>Stateless societies, resistance to centralization</li>
+      <li>Mountain peoples, nomads, autonomous communities</li>
+      <li>Perfect for understanding communities that resist imperial control</li>
+    </ul>
+  </li>
+  <li><strong>“Seeing Like a State” by James C. Scott</strong>
+    <ul>
+      <li>How governments try to make society “legible” and controllable</li>
+      <li>Top-down planning vs. local knowledge</li>
+      <li>Why grand schemes often fail</li>
+      <li>Great for understanding imperial bureaucracy vs. local autonomy</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cultural-resilience"><strong>Cultural Resilience</strong></h3>
+<ul>
+  <li><strong>“The Spirit Catches You and You Fall Down” by Anne Fadiman</strong>
+    <ul>
+      <li>Cultural collision, medical anthropology</li>
+      <li>How different worldviews create conflict and misunderstanding</li>
+      <li>Refugee experiences, maintaining identity in new context</li>
+      <li>Excellent for understanding cultural mixing in Port Zephyr</li>
+    </ul>
+  </li>
+  <li><strong>“There There” by Tommy Orange</strong> (Note: This is fiction, but includes extensive cultural analysis)
+    <ul>
+      <li>Urban indigenous experience, cultural preservation</li>
+      <li>How communities maintain identity after displacement</li>
+      <li>Intergenerational trauma, cultural healing</li>
+      <li>Perfect for understanding how pre-Cataclysm cultures survive</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="economics--resource-management">Economics &amp; Resource Management</h2>
+
+<h3 id="scarcity--resource-conflicts"><strong>Scarcity &amp; Resource Conflicts</strong></h3>
+<ul>
+  <li><strong>“The Resource Curse” by Michael Ross</strong>
+    <ul>
+      <li>How natural resource wealth often leads to conflict and corruption</li>
+      <li>Political economy of oil, minerals, water</li>
+      <li>Why some resource-rich countries remain poor</li>
+      <li>Perfect for understanding competition over clean land and magical artifacts</li>
+    </ul>
+  </li>
+  <li><strong>“The Bottom Billion” by Paul Collier</strong>
+    <ul>
+      <li>Economic development, why some countries remain trapped in poverty</li>
+      <li>Civil war, resource extraction, governance problems</li>
+      <li>International aid, trade policy, intervention</li>
+      <li>Great for understanding regional development disparities</li>
+    </ul>
+  </li>
+  <li><strong>“Doughnut Economics” by Kate Raworth</strong>
+    <ul>
+      <li>Alternative economic models, sustainability within planetary boundaries</li>
+      <li>Moving beyond growth-focused economics</li>
+      <li>Community wellbeing vs. individual accumulation</li>
+      <li>Excellent for understanding post-scarcity community economics</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="alternative-economic-systems"><strong>Alternative Economic Systems</strong></h3>
+<ul>
+  <li><strong>“The Wealth of Networks” by Yochai Benkler</strong>
+    <ul>
+      <li>Peer production, commons-based economics</li>
+      <li>How communities create value without traditional markets</li>
+      <li>Information sharing, collective action</li>
+      <li>Perfect for understanding knowledge-sharing among Remnant Keepers</li>
+    </ul>
+  </li>
+  <li><strong>“Debt: The First 5,000 Years” by David Graeber</strong>
+    <ul>
+      <li>History of economic systems, alternatives to market capitalism</li>
+      <li>Gift economies, mutual aid, community obligations</li>
+      <li>How debt relationships shape social power</li>
+      <li>Great for understanding pre-monetary community relationships</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="psychology--trauma-studies">Psychology &amp; Trauma Studies</h2>
+
+<h3 id="individual--collective-trauma"><strong>Individual &amp; Collective Trauma</strong></h3>
+<ul>
+  <li><strong>“The Body Keeps the Score” by Bessel van der Kolk</strong>
+    <ul>
+      <li>How trauma affects individuals and communities</li>
+      <li>PTSD, intergenerational trauma, healing approaches</li>
+      <li>Body-based trauma responses, somatic therapies</li>
+      <li>Essential for understanding post-Cataclysm psychological effects</li>
+    </ul>
+  </li>
+  <li><strong>“My Name is Not Refugee” by Kate Milner</strong>
+    <ul>
+      <li>Refugee experiences, displacement trauma</li>
+      <li>How people maintain dignity in desperate circumstances</li>
+      <li>Community support, resilience factors</li>
+      <li>Perfect for understanding survivor community psychology</li>
+    </ul>
+  </li>
+  <li><strong>“The Spirit Level” by Richard Wilkinson and Kate Pickett</strong>
+    <ul>
+      <li>How inequality affects mental health and social cohesion</li>
+      <li>Stress, status anxiety, community breakdown</li>
+      <li>Why more equal societies have better outcomes</li>
+      <li>Excellent for understanding social dynamics in different communities</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="post-traumatic-growth"><strong>Post-Traumatic Growth</strong></h3>
+<ul>
+  <li><strong>“Option B” by Sheryl Sandberg and Adam Grant</strong>
+    <ul>
+      <li>Building resilience after adversity</li>
+      <li>How communities support individual recovery</li>
+      <li>Finding meaning in suffering, post-traumatic growth</li>
+      <li>Great for understanding how survivors find hope</li>
+    </ul>
+  </li>
+  <li><strong>“The Resilience Factor” by Karen Reivich and Andrew Shatté</strong>
+    <ul>
+      <li>Psychology of resilience, what makes people bounce back</li>
+      <li>Cognitive styles, social support, meaning-making</li>
+      <li>How to build resilience in individuals and communities</li>
+      <li>Perfect for understanding character development and growth</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="technology--infrastructure">Technology &amp; Infrastructure</h2>
+
+<h3 id="complex-systems--failure"><strong>Complex Systems &amp; Failure</strong></h3>
+<ul>
+  <li><strong>“Normal Accidents” by Charles Perrow</strong>
+    <ul>
+      <li>How complex systems inevitably fail</li>
+      <li>Nuclear power, chemical plants, aviation disasters</li>
+      <li>Tight coupling, interactive complexity, cascading failures</li>
+      <li>Essential for understanding how the Cataclysm could happen</li>
+    </ul>
+  </li>
+  <li><strong>“The Black Swan” by Nassim Nicholas Taleb</strong>
+    <ul>
+      <li>Rare events with massive impact</li>
+      <li>Why we underestimate extreme risks</li>
+      <li>Fragility vs. antifragility in systems</li>
+      <li>Perfect for understanding unpredictable magical catastrophes</li>
+    </ul>
+  </li>
+  <li><strong>“The Collapse of Complex Societies” by Joseph Tainter</strong>
+    <ul>
+      <li>Why civilizations fall, diminishing returns on complexity</li>
+      <li>Energy costs, administrative overhead, social stress</li>
+      <li>When complexity becomes a liability</li>
+      <li>Excellent for understanding pre-Cataclysm empire collapse</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="appropriate-technology"><strong>Appropriate Technology</strong></h3>
+<ul>
+  <li><strong>“Small Is Beautiful” by E.F. Schumacher</strong>
+    <ul>
+      <li>Human-scale technology, decentralized production</li>
+      <li>Intermediate technology, community self-reliance</li>
+      <li>Alternatives to industrial mass production</li>
+      <li>Perfect for understanding post-Cataclysm technology choices</li>
+    </ul>
+  </li>
+  <li><strong>“The Knowledge” by Lewis Dartnell</strong>
+    <ul>
+      <li>How to restart civilization from scratch</li>
+      <li>Essential technologies, scientific knowledge</li>
+      <li>What knowledge is most important to preserve</li>
+      <li>Excellent reference for Remnant Keeper knowledge preservation</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="african-history--culture">African History &amp; Culture</h2>
+
+<h3 id="pre-colonial-african-civilizations"><strong>Pre-Colonial African Civilizations</strong></h3>
+<ul>
+  <li><strong>“African Civilizations” by Graham Connah</strong>
+    <ul>
+      <li>Archaeological evidence of complex African societies</li>
+      <li>Great Zimbabwe, Kingdom of Kush, Axum, Ghana Empire</li>
+      <li>Trade networks, urban planning, technological innovation</li>
+      <li>Perfect inspiration for pre-Cataclysm empire achievements</li>
+    </ul>
+  </li>
+  <li><strong>“The Civilizations of Africa” by Christopher Ehret</strong>
+    <ul>
+      <li>Language, culture, and technology spread across Africa</li>
+      <li>Agricultural development, iron-working, social organization</li>
+      <li>Regional diversity, cultural exchange</li>
+      <li>Excellent for understanding diverse cultural traditions</li>
+    </ul>
+  </li>
+  <li><strong>“The African Genius” by Basil Davidson</strong>
+    <ul>
+      <li>African contributions to world civilization</li>
+      <li>Political systems, artistic achievements, technological innovations</li>
+      <li>Countering colonial stereotypes about African societies</li>
+      <li>Great for building respectful cultural references</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="colonial--post-colonial-experience"><strong>Colonial &amp; Post-Colonial Experience</strong></h3>
+<ul>
+  <li><strong>“The Wretched of the Earth” by Frantz Fanon</strong>
+    <ul>
+      <li>Psychology of colonialism, decolonization struggles</li>
+      <li>Violence, identity, cultural resistance</li>
+      <li>Nation-building after independence</li>
+      <li>Perfect for understanding imperial expansion and resistance</li>
+    </ul>
+  </li>
+  <li><strong>“How Europe Underdeveloped Africa” by Walter Rodney</strong>
+    <ul>
+      <li>Economic impact of colonialism</li>
+      <li>Resource extraction, underdevelopment, dependency</li>
+      <li>How imperial relationships destroy local economies</li>
+      <li>Excellent for understanding imperial economic exploitation</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="urban-planning--community-design">Urban Planning &amp; Community Design</h2>
+
+<h3 id="city-planning--social-organization"><strong>City Planning &amp; Social Organization</strong></h3>
+<ul>
+  <li><strong>“The Death and Life of Great American Cities” by Jane Jacobs</strong>
+    <ul>
+      <li>How neighborhoods actually work, community self-organization</li>
+      <li>Mixed-use development, street life, social capital</li>
+      <li>Bottom-up vs. top-down planning</li>
+      <li>Perfect for understanding how Port Zephyr could develop organically</li>
+    </ul>
+  </li>
+  <li><strong>“A Pattern Language” by Christopher Alexander</strong>
+    <ul>
+      <li>Design principles for human-scale communities</li>
+      <li>How built environment affects social relationships</li>
+      <li>Traditional building wisdom, vernacular architecture</li>
+      <li>Excellent for designing post-Cataclysm settlements</li>
+    </ul>
+  </li>
+  <li><strong>“The Well-Tempered City” by Jonathan F.P. Rose</strong>
+    <ul>
+      <li>Sustainable urban development, resilient cities</li>
+      <li>How cities can adapt to environmental challenges</li>
+      <li>Social equity, economic development, environmental protection</li>
+      <li>Great for understanding long-term urban recovery</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="community-development"><strong>Community Development</strong></h3>
+<ul>
+  <li><strong>“Bowling Alone” by Robert Putnam</strong>
+    <ul>
+      <li>Social capital, community institutions</li>
+      <li>What makes communities work together</li>
+      <li>Civic engagement, trust, collective action</li>
+      <li>Essential for understanding successful post-Cataclysm communities</li>
+    </ul>
+  </li>
+  <li><strong>“The Power of Community” by Thich Nhat Hanh</strong>
+    <ul>
+      <li>Buddhist approaches to community building</li>
+      <li>Mindfulness, compassion, mutual support</li>
+      <li>Conflict resolution, shared decision-making</li>
+      <li>Perfect for understanding contemplative approaches to community</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="essential-priority-reading">Essential Priority Reading</h2>
+
+<h3 id="tier-1-absolutely-essential-start-here"><strong>Tier 1: Absolutely Essential</strong> (Start Here)</h3>
+<ol>
+  <li><strong>“Voices from Chernobyl”</strong> - Understanding contamination effects on daily life</li>
+  <li><strong>“A Paradise Built in Hell”</strong> - How communities actually respond to disaster</li>
+  <li><strong>“The Making of the Atomic Bomb”</strong> - Scientific hubris and political decisions</li>
+  <li><strong>“Collapse”</strong> - Why some societies recover and others don’t</li>
+  <li><strong>“The Body Keeps the Score”</strong> - Individual and collective trauma effects</li>
+</ol>
+
+<h3 id="tier-2-highly-important"><strong>Tier 2: Highly Important</strong></h3>
+<ol>
+  <li><strong>“On Tyranny”</strong> - Resisting authoritarian expansion</li>
+  <li><strong>“The Unthinkable”</strong> - Psychology of disaster survival</li>
+  <li><strong>“Seeing Like a State”</strong> - How governments control vs. local autonomy</li>
+  <li><strong>“Braiding Sweetgrass”</strong> - Indigenous ecological wisdom</li>
+  <li><strong>“The Death and Life of Great American Cities”</strong> - Community organization</li>
+</ol>
+
+<h3 id="tier-3-valuable-supplementary"><strong>Tier 3: Valuable Supplementary</strong></h3>
+<ol>
+  <li><strong>“Command and Control”</strong> - How complex systems fail catastrophically</li>
+  <li><strong>“The Righteous Mind”</strong> - Why factions conflict and how they reconcile</li>
+  <li><strong>“Mutual Aid”</strong> - How communities organize horizontally</li>
+  <li><strong>“African Civilizations”</strong> - Cultural inspiration and historical grounding</li>
+  <li><strong>“The Knowledge”</strong> - What knowledge to preserve after collapse</li>
+</ol>
+
+<hr />
+
+<h2 id="research-approach--application">Research Approach &amp; Application</h2>
+
+<h3 id="reading-strategy"><strong>Reading Strategy</strong></h3>
+<ul>
+  <li><strong>Start with Tier 1</strong> - Essential foundation for understanding your world’s core themes</li>
+  <li><strong>Focus on case studies</strong> - Real examples are more useful than abstract theory</li>
+  <li><strong>Take notes on specific details</strong> - Concrete examples for session descriptions</li>
+  <li><strong>Look for patterns</strong> - How do similar situations play out across different contexts</li>
+</ul>
+
+<h3 id="campaign-integration"><strong>Campaign Integration</strong></h3>
+<ul>
+  <li><strong>Daily Life Details</strong> - How do people actually live with contamination/scarcity?</li>
+  <li><strong>Political Dynamics</strong> - What motivates different factions, how do they maintain power?</li>
+  <li><strong>Community Responses</strong> - How do groups organize, make decisions, resolve conflicts?</li>
+  <li><strong>Individual Psychology</strong> - How do characters react to trauma, stress, moral complexity?</li>
+</ul>
+
+<h3 id="world-building-applications"><strong>World-Building Applications</strong></h3>
+<ul>
+  <li><strong>Settlement Design</strong> - What makes communities work in harsh conditions?</li>
+  <li><strong>Economic Systems</strong> - How do people trade, allocate resources, build wealth?</li>
+  <li><strong>Cultural Practices</strong> - How do communities maintain identity and meaning?</li>
+  <li><strong>Technological Choices</strong> - What technologies do post-disaster societies prioritize?</li>
+</ul>
+
+<h3 id="character-development"><strong>Character Development</strong></h3>
+<ul>
+  <li><strong>Background Authenticity</strong> - Real skills and knowledge appropriate to the setting</li>
+  <li><strong>Psychological Realism</strong> - Believable responses to trauma and stress</li>
+  <li><strong>Cultural Details</strong> - Authentic practices and beliefs for different communities</li>
+  <li><strong>Moral Complexity</strong> - Understanding why good people make bad choices</li>
+</ul>
+
+<hr />
+
+<h2 id="academic-resources--further-reading">Academic Resources &amp; Further Reading</h2>
+
+<h3 id="online-databases"><strong>Online Databases</strong></h3>
+<ul>
+  <li><strong>JSTOR</strong> - Academic articles on relevant topics</li>
+  <li><strong>Google Scholar</strong> - Free access to many academic papers</li>
+  <li><strong>Archive.org</strong> - Historical documents, government reports</li>
+  <li><strong>Library of Congress</strong> - Primary sources, historical documents</li>
+</ul>
+
+<h3 id="specialized-sources"><strong>Specialized Sources</strong></h3>
+<ul>
+  <li><strong>Bulletin of the Atomic Scientists</strong> - Nuclear policy and science</li>
+  <li><strong>Disaster Medicine and Public Health Preparedness</strong> - Emergency response research</li>
+  <li><strong>Journal of Peace Research</strong> - Conflict resolution, post-conflict recovery</li>
+  <li><strong>African Studies Review</strong> - Academic work on African history and culture</li>
+</ul>
+
+<h3 id="documentary-sources"><strong>Documentary Sources</strong></h3>
+<ul>
+  <li><strong>Government Reports</strong> - FEMA, CDC, IAEA disaster response documents</li>
+  <li><strong>NGO Publications</strong> - Red Cross, Doctors Without Borders field reports</li>
+  <li><strong>UN Documents</strong> - Refugee, development, and disaster response reports</li>
+  <li><strong>Think Tank Research</strong> - Brookings, RAND, Carnegie Endowment studies</li>
+</ul>
+
+<hr />
+
+<p><em>This collection provides the real-world knowledge foundation for creating an authentic, believable post-nuclear fantasy world. Focus on understanding how people actually behave in extreme situations - your players will appreciate the psychological and social realism that comes from grounding fantasy in real human experience.</em></p>
+
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <h4>🧭 Navigation</h4>
+
+                        <div class="nav-level">
+                            <div class="nav-level-title">Quick Access</div>
+                            <a href="/alkebulan-wiki/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="nav-level" id="navUp" style="display: none;">
+                            <div class="nav-level-title">Up One Level</div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="contamination-warning">
+                        <strong>⚠️ WARNING</strong><br>
+                        This archive contains<br>
+                        <em>Remnant Magic traces</em><br>
+                        Access with caution
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Robert McCowan. Classified Archive System for Alkebulan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
+
+        function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
+
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Simplified navigation system
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
+
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '/alkebulan-wiki/' : '/alkebulan-wiki/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                }
+
+                // Helper function to escape HTML
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
+            } else {
+                // Default to player view
+                switchToPlayerView();
+            }
+
+            // Setup simple navigation
+            setupSimpleNavigation();
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
+        });
+    </script>
+</body>
+</html>

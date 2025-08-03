@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<!-- _layouts/default.html with Dynamic View Toggle -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baseurl" content="/alkebulan-wiki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Races in Alkebulan (x) | Alkebulan</title>
+    <meta name="description" content="A dark fantasy continent recovering from magical apocalypse">
+
+    <!-- SEO -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Standard Races in Alkebulan (x) | Alkebulan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Standard Races in Alkebulan (x)" />
+<meta name="author" content="Robert McCowan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dark fantasy continent recovering from magical apocalypse" />
+<meta property="og:description" content="A dark fantasy continent recovering from magical apocalypse" />
+<link rel="canonical" href="https://cowcow2831.github.io/alkebulan-wiki/standard-races-in-alkebulan-x/" />
+<meta property="og:url" content="https://cowcow2831.github.io/alkebulan-wiki/standard-races-in-alkebulan-x/" />
+<meta property="og:site_name" content="Alkebulan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Standard Races in Alkebulan (x)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Robert McCowan"},"dateModified":"2025-08-03T00:00:00+00:00","datePublished":"2025-08-03T00:00:00+00:00","description":"A dark fantasy continent recovering from magical apocalypse","headline":"Standard Races in Alkebulan (x)","mainEntityOfPage":{"@type":"WebPage","@id":"https://cowcow2831.github.io/alkebulan-wiki/standard-races-in-alkebulan-x/"},"url":"https://cowcow2831.github.io/alkebulan-wiki/standard-races-in-alkebulan-x/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/alkebulan-wiki/assets/favicon.ico">
+
+    <!-- Navigation Data -->
+    <!-- <script src="/alkebulan-wiki/assets/js/navigation.js"></script> -->
+
+    <!-- Styles -->
+    <style>
+        /* Post-Nuclear Contaminated Archive Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            /* Post-Nuclear Color Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #c0c0c0;
+            --text-secondary: #888888;
+            --text-muted: #666666;
+
+            /* Contamination Colors */
+            --toxic-green: #7cfc00;
+            --rust-orange: #d67c2a;
+            --warning-yellow: #e6e619;
+            --radiation-orange: #ff6b35;
+            --ash-gray: #4a4a4a;
+            --danger-red: #ff3333;
+
+            /* Effects */
+            --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
+            --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
+            --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+            min-height: 100vh;
+            text-shadow: var(--text-shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contamination Pulse Animation */
+        @keyframes contamination-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .contaminated {
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Header - Made more compact for mobile */
+        header {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            border-bottom: 3px solid var(--toxic-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warning-yellow);
+            text-decoration: none;
+            text-shadow: var(--text-shadow), var(--glow-orange);
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--text-shadow), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        .site-title::before {
+            content: "☢️ ";
+            color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--ash-gray);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(74, 74, 74, 0.2);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            transform: translateY(-2px);
+        }
+
+        nav a::before {
+            content: "☢️";
+            margin-right: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid var(--ash-gray);
+            position: relative;
+        }
+
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--ash-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 2px solid var(--rust-orange);
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar::before {
+            content: "⚠️ CONTAMINATED DATA";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 4px;
+            border: 1px solid var(--radiation-orange);
+        }
+
+        /* Sidebar Navigation Sections */
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--warning-yellow);
+            text-align: center;
+            border-bottom: 1px solid var(--ash-gray);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-level {
+            margin-bottom: 1rem;
+        }
+
+        .nav-level-title {
+            font-size: 0.85rem;
+            color: var(--rust-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-left-color: var(--toxic-green);
+            transform: translateX(5px);
+        }
+
+        .nav-item.current {
+            background: rgba(124, 252, 0, 0.1);
+            border-left-color: var(--toxic-green);
+            color: var(--text-primary);
+        }
+
+        .nav-item::before {
+            margin-right: 0.5rem;
+        }
+
+        .nav-up::before { content: "⬆️"; }
+        .nav-same::before { content: "↔️"; }
+        .nav-down::before { content: "⬇️"; }
+        .nav-home::before { content: "🏠"; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--warning-yellow);
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            color: var(--toxic-green);
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--rust-orange);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h6 {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--warning-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--glow-green);
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+        }
+
+        .main-content ul li::marker,
+        .sidebar us li::marker {
+            content: "☢️ ";
+            color: var(--toxic-green);
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin: 1.5rem 0;
+            border: 2px solid var(--ash-gray);
+            transition: all 0.3s ease;
+        }
+
+        img:hover {
+            border-color: var(--toxic-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--radiation-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "⚠️";
+            position: absolute;
+            top: 1rem;
+            left: -15px;
+            background: var(--radiation-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code */
+        code {
+            background: var(--bg-primary);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            border: 1px solid var(--ash-gray);
+        }
+
+        pre {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 2px solid var(--toxic-green);
+            box-shadow: var(--glow-green);
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        th {
+            background: var(--rust-orange);
+            color: white;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        tr:hover {
+            background: rgba(124, 252, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 3px solid var(--toxic-green);
+            color: var(--text-secondary);
+            box-shadow: var(--border-glow);
+        }
+
+        footer::before {
+            content: "☢️ CONTAMINATION WARNING: All materials subject to Remnant Magic exposure ☢️";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive - Compact Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+                order: 1;
+            }
+
+            .view-mode-indicator {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin: 0 0.5rem;
+                order: 2;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                order: 3;
+                width: 100%;
+            }
+
+            .view-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Special Effects */
+        .contamination-warning {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(124, 252, 0, 0.1));
+            border: 2px solid var(--radiation-orange);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hide the default Jekyll title since we'll handle it in CSS */
+        .main-content > h1:first-child {
+            display: none;
+        }
+
+        /* Custom page title styling */
+        .page-title {
+            font-size: 2.8rem;
+            color: var(--warning-yellow);
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .page-title::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        /* Mobile page title adjustment */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/alkebulan-wiki/" class="site-title">Alkebulan</a>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
+                    </button>
+                    <nav>
+                        <ul>
+                            
+                            <li><a href="/alkebulan-wiki/" class="nav-item" data-access="public">Home</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/port-zephyr/" class="nav-item" data-access="public">Port Zephyr</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/harbor-district/" class="nav-item" data-access="player">Harbor District</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/player-handout-whispers-of-the-wastes/" class="nav-item" data-access="player">Player Handout</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/dm-notes/" class="nav-item" data-access="dm">DM Notes</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/secrets/" class="nav-item" data-access="dm">Secrets</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    
+                    <h1 class="page-title">Standard Races in Alkebulan (x)</h1>
+                    
+
+                    <div id="content">
+                        <h1 id="standard-dd-race-adaptations-for-alkebulan">Standard D&amp;D Race Adaptations for Alkebulan</h1>
+
+<p><em>A comprehensive guide to integrating official and 3rd party races into the post-Cataclysm world</em></p>
+
+<hr />
+
+<h2 id="how-to-use-this-guide"><strong>How to Use This Guide</strong></h2>
+
+<p>Each race entry includes:</p>
+<ul>
+  <li><strong>Mechanical Changes</strong>: Any alterations to stats or abilities</li>
+  <li><strong>Lore Integration</strong>: How they fit into Alkebulan’s history and cultures</li>
+  <li><strong>Social Standing</strong>: Their place in post-Cataclysm society</li>
+  <li><strong>Regional Variations</strong>: How they manifest differently across the continent</li>
+</ul>
+
+<p><strong>Legend:</strong></p>
+<ul>
+  <li>✅ <strong>No Changes</strong> - Works perfectly as-is</li>
+  <li>🔄 <strong>Minor Adaptations</strong> - Small lore/flavor changes, mechanics unchanged</li>
+  <li>⚙️ <strong>Mechanical Adjustments</strong> - Some abilities require modification</li>
+  <li>❌ <strong>Major Rework Required</strong> - Significant changes needed for setting fit</li>
+</ul>
+
+<hr />
+
+<h2 id="core-phb-races"><strong>Core PHB Races</strong></h2>
+
+<h3 id="humans-"><strong>Humans</strong> ✅</h3>
+<p><strong>Integration</strong>: Perfect fit - the dominant survivors of the Cataclysm</p>
+
+<p><strong>Lore</strong>: Humans were the primary population of both pre-Cataclysm empires and have adapted to become the most widespread race in modern Alkebulan. Different human cultures developed distinct traditions based on their regional experiences during and after the Cataclysm.</p>
+
+<p><strong>Regional Variants</strong>:</p>
+<ul>
+  <li><strong>Northern Humans</strong>: Descendants of Solarian citizens, often with slight solar-touched features</li>
+  <li><strong>Southern Humans</strong>: Former Umbral territories, comfortable with shadows and twilight</li>
+  <li><strong>Coastal Humans</strong>: Maritime cultures that survived on islands and trade</li>
+  <li><strong>Desert Humans</strong>: Hardy survivors who adapted to the harsh post-Cataclysm wastelands</li>
+</ul>
+
+<h3 id="elves-"><strong>Elves</strong> 🔄</h3>
+<p><strong>Integration</strong>: Long-lived witnesses to the Cataclysm with deep cultural memory</p>
+
+<p><strong>Lore Adaptation</strong>: Elves were present during the Cataclysm and many still remember the old world. This has made them valuable historians but also left many with deep trauma. Elven communities often serve as keepers of pre-Cataclysm knowledge.</p>
+
+<p><strong>Subrace Adaptations</strong>:</p>
+<ul>
+  <li><strong>High Elves</strong>: Former Solarian court advisors, retain knowledge of solar magic and crystal technology</li>
+  <li><strong>Wood Elves</strong>: Guardians of the few surviving ancient forests, skilled at detecting remnant corruption in nature</li>
+  <li><strong>Dark Elves</strong>: Descendants of Umbral nobility, comfortable with shadow magic and void-touched artifacts</li>
+  <li><strong>Savanna Elves</strong>: New subrace adapted to grassland survival (see existing note)</li>
+</ul>
+
+<h3 id="dwarves-"><strong>Dwarves</strong> 🔄</h3>
+<p><strong>Integration</strong>: Master crafters who survived in underground strongholds</p>
+
+<p><strong>Lore Adaptation</strong>: Dwarven clans weathered the Cataclysm in deep mountain halls and underground cities. They emerged as skilled artisans capable of working with remnant-touched materials and are highly valued for their ability to create stable magical items.</p>
+
+<p><strong>Subrace Adaptations</strong>:</p>
+<ul>
+  <li><strong>Mountain Dwarves</strong>: Traditional stronghold dwellers, experts in remnant metal forging</li>
+  <li><strong>Hill Dwarves</strong>: Emerged earlier to help rebuild, now integrated into many surface communities</li>
+  <li><strong>Desert Dwarves</strong>: Adapted to arid post-Cataclysm environments</li>
+</ul>
+
+<h3 id="halflings-"><strong>Halflings</strong> ✅</h3>
+<p><strong>Integration</strong>: Adaptable survivors who thrived through community cooperation</p>
+
+<p><strong>Lore</strong>: Halfling communities survived the Cataclysm through cooperation, resource sharing, and staying beneath the notice of warring empires. They’ve become essential to trade networks and are welcomed in most settlements for their practical skills and optimistic outlook.</p>
+
+<p><strong>Cultural Role</strong>: Often serve as merchants, innkeepers, diplomats, and community organizers who help diverse groups work together.</p>
+
+<h3 id="dragonborn-"><strong>Dragonborn</strong> 🔄</h3>
+<p><strong>Integration</strong>: Rare and revered descendants of ancient draconic pacts</p>
+
+<p><strong>Lore Adaptation</strong>: Dragonborn trace their lineage to ancient dragons who made pacts with the pre-Cataclysm empires. The Cataclysm severed many of these connections, making dragonborn both rare and highly respected for their draconic heritage.</p>
+
+<p><strong>Breath Weapon Adaptation</strong>: <em>Optional Rule</em> - Dragonborn breath weapons may occasionally trigger minor remnant surges in areas of high magical residue (DM discretion).</p>
+
+<p><strong>Social Standing</strong>: Often found in leadership positions, as their draconic heritage is seen as a sign of strength and wisdom.</p>
+
+<h3 id="gnomes-"><strong>Gnomes</strong> 🔄</h3>
+<p><strong>Integration</strong>: Ingenious tinkerers specializing in remnant technology</p>
+
+<p><strong>Lore Adaptation</strong>: Gnome communities have become specialists in understanding and safely working with remnant magic technology. Their natural curiosity and technical aptitude make them invaluable for maintaining pre-Cataclysm devices.</p>
+
+<p><strong>Subrace Adaptations</strong>:</p>
+<ul>
+  <li><strong>Forest Gnomes</strong>: Focus on natural magic that resists remnant corruption</li>
+  <li><strong>Rock Gnomes</strong>: Masters of remnant-tech integration, highly sought after as artificers</li>
+</ul>
+
+<h3 id="half-elves-"><strong>Half-Elves</strong> ✅</h3>
+<p><strong>Integration</strong>: Bridge-builders between cultures in the fragmented world</p>
+
+<p><strong>Lore</strong>: Half-elves often serve as cultural intermediaries, helping different communities understand and work with each other in the post-Cataclysm world. Their dual heritage makes them natural diplomats.</p>
+
+<h3 id="half-orcs-"><strong>Half-Orcs</strong> ✅</h3>
+<p><strong>Integration</strong>: Powerful survivors valued for strength and resilience</p>
+
+<p><strong>Lore</strong>: In a world where physical prowess is often necessary for survival, half-orcs are valued members of most communities. Many serve as guards, laborers, or soldiers.</p>
+
+<h3 id="tieflings-️"><strong>Tieflings</strong> ⚙️</h3>
+<p><strong>Mechanical Change</strong>: Replace fiendish heritage with <strong>Umbral Connection</strong></p>
+
+<p><strong>Lore Adaptation</strong>: Tieflings in Alkebulan are descendants of humans exposed to concentrated umbral/void magic during the Cataclysm. Rather than fiendish ancestry, they carry the legacy of shadow and void energies from the Umbral Sovereignty.</p>
+
+<p><strong>Mechanical Adjustment</strong>:</p>
+<ul>
+  <li><strong>Fiendish Resistance</strong> becomes <strong>Umbral Resistance</strong> (cold damage instead of fire)</li>
+  <li><strong>Hellish Rebuke</strong> becomes <strong>Shadow Rebuke</strong> (same mechanics, cold/necrotic damage and shadow effects)</li>
+  <li><strong>Darkness</strong> spell remains appropriate (shadow magic)</li>
+</ul>
+
+<p><strong>Social Standing</strong>: Viewed with suspicion but not necessarily evil - more “touched by dangerous magic” than “cursed by fiends.”</p>
+
+<hr />
+
+<h2 id="expanded-phbofficial-races"><strong>Expanded PHB/Official Races</strong></h2>
+
+<h3 id="aasimar-️"><strong>Aasimar</strong> ⚙️</h3>
+<p><strong>Mechanical Change</strong>: Replace celestial heritage with <strong>Solar Spark</strong></p>
+
+<p><strong>Lore Adaptation</strong>: Aasimar carry sparks of solar energy from the Solarian Dominion rather than celestial power. They’re often seen as blessed by the sun and destined for leadership.</p>
+
+<p><strong>Mechanical Adjustments</strong>:</p>
+<ul>
+  <li><strong>Healing Hands</strong> becomes <strong>Solar Touch</strong> (same mechanics, radiant energy)</li>
+  <li><strong>Light</strong> cantrip reflects their solar nature</li>
+  <li><strong>Subrace abilities</strong> reskinned as different manifestations of solar energy
+    <ul>
+      <li><strong>Protector</strong>: Solar Guardian (radiant wings)</li>
+      <li><strong>Scourge</strong>: Solar Flare (burning radiant energy)</li>
+      <li><strong>Fallen</strong>: Eclipse-touched (solar energy turned cold and distant)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="genasi-"><strong>Genasi</strong> 🔄</h3>
+<p><strong>Integration</strong>: Elemental survivors of magical warfare</p>
+
+<p><strong>Lore Adaptation</strong>: Genasi are descendants of humans caught in the elemental magical warfare of the Cataclysm. Each subrace represents exposure to different types of magical devastation.</p>
+
+<p><strong>Subrace Context</strong>:</p>
+<ul>
+  <li><strong>Fire Genasi</strong>: Survivors of solar weapon bombardments</li>
+  <li><strong>Water Genasi</strong>: Adapted to flooded ruins and magical tsunamis</li>
+  <li><strong>Air Genasi</strong>: Born in floating cities or magical storm zones</li>
+  <li><strong>Earth Genasi</strong>: Connected to the crystal magic and stone-shaping of both empires</li>
+</ul>
+
+<h3 id="goliaths-"><strong>Goliaths</strong> ✅</h3>
+<p><strong>Integration</strong>: Mountain-dwelling survivors with strong tribal traditions</p>
+
+<p><strong>Lore</strong>: Goliath tribes survived in high mountain refuges during the Cataclysm. They’ve become valued as guides, guards, and laborers, with their tribal wisdom helping them navigate the dangerous post-Cataclysm world.</p>
+
+<h3 id="firbolgs-"><strong>Firbolgs</strong> 🔄</h3>
+<p><strong>Integration</strong>: Nature guardians protecting against magical corruption</p>
+
+<p><strong>Lore Adaptation</strong>: Firbolgs serve as guardians of the natural places that survived the Cataclysm uncorrupted. They’re deeply concerned with preventing remnant magic from further damaging the natural world.</p>
+
+<p><strong>Cultural Role</strong>: Often work with druids and rangers to maintain balance and cleanse corrupted areas.</p>
+
+<h3 id="kenku-"><strong>Kenku</strong> 🔄</h3>
+<p><strong>Integration</strong>: Messengers and information gatherers in the fragmented world</p>
+
+<p><strong>Lore Adaptation</strong>: Some Kenku believe their curse is connected to the Cataclysm - that they once served as messengers for the ancient empires but were silenced when the old world ended.</p>
+
+<p><strong>Cultural Role</strong>: Valued for their perfect memory and mimicry abilities, essential for preserving information in a world where written records are scarce.</p>
+
+<h3 id="lizardfolk-"><strong>Lizardfolk</strong> ✅</h3>
+<p><strong>Integration</strong>: Pragmatic survivors adapted to harsh environments</p>
+
+<p><strong>Lore</strong>: Lizardfolk communities survived in marshes and swamplands, often areas too difficult for the ancient empires to fully control. Their practical nature and survival skills make them valuable allies.</p>
+
+<h3 id="tabaxi-"><strong>Tabaxi</strong> ✅</h3>
+<p><strong>Integration</strong>: Curious explorers and traders</p>
+
+<p><strong>Lore</strong>: Tabaxi were often explorers and merchants who traveled between the ancient empires. In the post-Cataclysm world, their curiosity and wanderlust make them natural adventurers and discoverers of lost sites.</p>
+
+<h3 id="aarakocra-"><strong>Aarakocra</strong> 🔄</h3>
+<p><strong>Integration</strong>: Sky-dwelling survivors of the floating cities</p>
+
+<p><strong>Lore Adaptation</strong>: Some Aarakocra communities lived in the floating cities of the Solarian Dominion. When these cities crashed during the Cataclysm, the survivors retained their flying abilities and aerial perspective on the world.</p>
+
+<p><strong>Cultural Role</strong>: Often serve as scouts, messengers, and aerial reconnaissance for ground-based communities.</p>
+
+<hr />
+
+<h2 id="later-official-releases"><strong>Later Official Releases</strong></h2>
+
+<h3 id="tritons---"><strong>Tritons</strong> ❌ → 🔄</h3>
+<p><strong>Rework</strong>: <strong>Depth Wardens</strong> - Guardians of flooded ruins</p>
+
+<p><strong>Lore Adaptation</strong>: Rather than planar water elementals, “Tritons” in Alkebulan are humans adapted to life in the flooded ruins of coastal Umbral cities. They’ve developed water-breathing and aquatic abilities through magical adaptation.</p>
+
+<p><strong>Cultural Role</strong>: Explore sunken ruins, salvage ancient technology, and guard against threats from the deep waters.</p>
+
+<h3 id="tortle-"><strong>Tortle</strong> ✅</h3>
+<p><strong>Integration</strong>: Wise wanderers and peaceful settlers</p>
+
+<p><strong>Lore</strong>: Tortle communities were largely unaffected by the imperial conflicts, living in remote areas and focusing on their own spiritual development. They’re valued as wise counselors and peaceful mediators.</p>
+
+<h3 id="minotaurs-"><strong>Minotaurs</strong> ✅</h3>
+<p><strong>Integration</strong>: Strong laborers and guards in rebuilt settlements</p>
+
+<p><strong>Lore</strong>: Minotaur communities have integrated into larger settlements, valued for their strength and straightforward nature. Many serve as guards, laborers, or gladiators in larger cities.</p>
+
+<h3 id="centaurs-"><strong>Centaurs</strong> 🔄</h3>
+<p><strong>Integration</strong>: Plains runners and tribal scouts</p>
+
+<p><strong>Lore Adaptation</strong>: Centaur tribes roam the grasslands and savannas, often serving as scouts and messengers between distant settlements. Their oral traditions preserve many stories from the pre-Cataclysm era.</p>
+
+<h3 id="leonin-"><strong>Leonin</strong> 🔄</h3>
+<p><strong>Integration</strong>: Proud savanna dwellers and natural leaders</p>
+
+<p><strong>Lore</strong>: Leonin prides survived in the savannas and grasslands, becoming natural leaders in the post-Cataclysm world. Their sense of honor and community makes them valuable allies and leaders.</p>
+
+<h3 id="loxodon-"><strong>Loxodon</strong> ✅</h3>
+<p><strong>Integration</strong>: Wise elders and community builders</p>
+
+<p><strong>Lore</strong>: Loxodon communities focus on rebuilding civilization through patience, wisdom, and strong social bonds. They’re highly respected as advisors and community leaders.</p>
+
+<h3 id="harengon-"><strong>Harengon</strong> 🔄</h3>
+<p><strong>Integration</strong>: Quick survivors and agile scouts</p>
+
+<p><strong>Lore Adaptation</strong>: Harengon communities survived through speed, agility, and staying out of the way during the Cataclysm. They’re valued as scouts, messengers, and for their luck in dangerous situations.</p>
+
+<h3 id="remnant-sprites-adapted-from-fairy-️"><strong>Remnant Sprites</strong> (adapted from Fairy) ⚙️</h3>
+<p><strong>Mechanical Changes</strong>: Keep all Fairy stats and abilities, but change thematic descriptions</p>
+
+<p><strong>Lore Adaptation</strong>: Remnant Sprites are tiny humanoids spontaneously created by chaotic remnant energies in areas of high magical concentration. They appear to be living crystallizations of wild magic, with translucent skin that shifts in color and small wings made of pure energy.</p>
+
+<p><strong>Abilities Reskinned</strong>:</p>
+<ul>
+  <li><strong>Fairy Magic</strong> → <strong>Remnant Magic</strong>: Same spells (<em>druidcraft</em>, <em>faerie fire</em>, <em>enlarge/reduce</em>) but powered by unstable magical energy</li>
+  <li><strong>Flight</strong> → <strong>Energy Suspension</strong>: Wings are manifestations of magical force rather than biological</li>
+  <li><strong>Fey Passage</strong> → <strong>Phase Step</strong>: Can briefly become incorporeal by destabilizing their magical form</li>
+</ul>
+
+<p><strong>Social Standing</strong>: Viewed with curiosity and caution - clearly magical beings but not necessarily threatening. Often serve as guides in remnant-heavy areas or as familiars to spellcasters.</p>
+
+<p><strong>Cultural Role</strong>: Natural inhabitants of areas with heavy remnant magic concentration, they often know safe paths through dangerous magical terrain.</p>
+
+<h3 id="owlin-"><strong>Owlin</strong> 🔄</h3>
+<p><strong>Integration</strong>: Night scouts and knowledge keepers</p>
+
+<p><strong>Lore Adaptation</strong>: Owlin communities often serve as night watchers and guardians. Their keen senses and flight abilities make them valuable for detecting threats and scouting dangerous areas.</p>
+
+<hr />
+
+<h2 id="additional-official-races-volos-mordenkainens-tashas-etc"><strong>Additional Official Races (Volo’s, Mordenkainen’s, Tasha’s, etc.)</strong></h2>
+
+<h3 id="bugbears-"><strong>Bugbears</strong> 🔄</h3>
+<p><strong>Integration</strong>: Survivors who adapted through size and strength</p>
+
+<p><strong>Lore Adaptation</strong>: Bugbear clans survived the Cataclysm in remote areas, often serving as mercenaries or guards. Their imposing size and reach make them valuable in the dangerous post-Cataclysm world.</p>
+
+<p><strong>Cultural Role</strong>: Many work as bodyguards, enforcers, or wilderness guides. Despite their fearsome appearance, most are simply trying to make a living in a harsh world.</p>
+
+<h3 id="hobgoblins-"><strong>Hobgoblins</strong> 🔄</h3>
+<p><strong>Integration</strong>: Militaristic survivors with strong organizational skills</p>
+
+<p><strong>Lore Adaptation</strong>: Hobgoblin military units survived the Cataclysm through discipline and tactical superiority. Many now serve as professional soldiers, city guards, or mercenary companies.</p>
+
+<p><strong>Cultural Role</strong>: Highly valued for their strategic thinking and military expertise. Often found in leadership roles in military or security organizations.</p>
+
+<h3 id="goblins-"><strong>Goblins</strong> ✅</h3>
+<p><strong>Integration</strong>: Scrappy survivors who thrive in chaos</p>
+
+<p><strong>Lore</strong>: Goblin communities actually benefited from the Cataclysm’s chaos, adapting quickly to scavenging and surviving in the ruins. Their natural cunning serves them well in the post-apocalyptic world.</p>
+
+<h3 id="orcs-"><strong>Orcs</strong> 🔄</h3>
+<p><strong>Integration</strong>: Tribal warriors with strong survival instincts</p>
+
+<p><strong>Lore Adaptation</strong>: Orc tribes were largely unaffected by the imperial conflicts, continuing their traditional ways. In the post-Cataclysm world, their strength and tribal knowledge make them valuable allies.</p>
+
+<p><strong>Cultural Role</strong>: Often serve as guards, laborers, or tribal liaisons. Many orc communities have become important trade partners.</p>
+
+<h3 id="yuan-ti-pureblood---"><strong>Yuan-ti Pureblood</strong> ❌ → 🔄</h3>
+<p><strong>Rework</strong>: <strong>Serpent Touched</strong> - Humans affected by transformation magic</p>
+
+<p><strong>Lore Alternative</strong>: Rather than true yuan-ti, these are humans whose bloodlines were affected by transmutation experiments during the Cataclysm. They retain serpentine features and abilities but lack the evil serpent empire background.</p>
+
+<p><strong>Social Standing</strong>: Viewed with suspicion due to their reptilian features, but not necessarily evil.</p>
+
+<h3 id="kobolds-"><strong>Kobolds</strong> ✅</h3>
+<p><strong>Integration</strong>: Clever survivors who excel at trap-making and engineering</p>
+
+<p><strong>Lore</strong>: Kobold warrens survived the Cataclysm by going deep underground. They’ve emerged as skilled engineers and trap-makers, highly valued for their technical abilities.</p>
+
+<p><strong>Cultural Role</strong>: Often work as engineers, miners, or security specialists. Their trap-making skills are especially valued for protecting settlements.</p>
+
+<h3 id="vedalken-"><strong>Vedalken</strong> 🔄</h3>
+<p><strong>Integration</strong>: Logical researchers and magical theorists</p>
+
+<p><strong>Lore Adaptation</strong>: Vedalken communities focused on logical study of magical principles, making them natural scholars of remnant magic. Their dispassionate approach to magic makes them valuable researchers.</p>
+
+<p><strong>Cultural Role</strong>: Often serve as advisors, researchers, or artificers. Their logical nature helps them safely study dangerous magical phenomena.</p>
+
+<h3 id="locathah---"><strong>Locathah</strong> ❌ → 🔄</h3>
+<p><strong>Rework</strong>: <strong>Reef Dwellers</strong> - Adapted to flooded coastal ruins</p>
+
+<p><strong>Lore Alternative</strong>: Rather than pure aquatic beings, these are humanoids adapted to life in the flooded ruins of coastal cities. They can breathe both air and water, making them valuable for underwater salvage.</p>
+
+<h3 id="grung-"><strong>Grung</strong> ❌</h3>
+<p><strong>Setting Conflict</strong>: Poison frog society doesn’t fit the setting themes
+<strong>Alternative</strong>: Could be reflavored as <strong>Toxic Sprites</strong> affected by alchemical remnant magic, but this is a stretch.</p>
+
+<h3 id="sea-elves---depth-elves"><strong>Sea Elves</strong> 🔄 → <strong>Depth Elves</strong></h3>
+<p><strong>Lore Adaptation</strong>: Elven communities that adapted to life in flooded ruins and underwater settlements. They serve as underwater scouts and salvagers.</p>
+
+<h3 id="shadar-kai-️"><strong>Shadar-kai</strong> ⚙️</h3>
+<p><strong>Mechanical Adjustment</strong>: Replace Shadowfell connection with <strong>Umbral Touched</strong></p>
+
+<p><strong>Lore Adaptation</strong>: These elves were deeply connected to the Umbral Sovereignty’s shadow magic. The Cataclysm left them with a permanent connection to umbral energies, but also a profound melancholy.</p>
+
+<p><strong>Abilities Reskinned</strong>:</p>
+<ul>
+  <li><strong>Necrotic Resistance</strong> reflects their umbral nature</li>
+  <li><strong>Blessing of the Raven Queen</strong> becomes <strong>Umbral Step</strong> - same teleportation ability powered by shadow magic</li>
+  <li><strong>Keen Senses</strong> enhanced by their ability to see in darkness and shadow</li>
+</ul>
+
+<h3 id="eladrin---"><strong>Eladrin</strong> ❌ → 🔄</h3>
+<p><strong>Rework</strong>: <strong>Season Touched</strong> - Elves affected by temporal magic</p>
+
+<p><strong>Lore Alternative</strong>: Rather than fey connections, these elves were caught in temporal magic that causes them to shift between different “temporal seasons” representing different time periods they’ve experienced.</p>
+
+<p><strong>Abilities Reskinned</strong>:</p>
+<ul>
+  <li><strong>Fey Step</strong> becomes <strong>Temporal Step</strong> - teleportation powered by time magic</li>
+  <li><strong>Seasonal Personalities</strong> represent their experience of different historical periods</li>
+</ul>
+
+<h3 id="githyankigithzerai-"><strong>Githyanki/Githzerai</strong> ❌</h3>
+<p><strong>Continue Ban</strong>: Planar focus doesn’t fit setting</p>
+
+<h3 id="deep-gnomes-"><strong>Deep Gnomes</strong> 🔄</h3>
+<p><strong>Integration</strong>: Underground survivors who avoided the Cataclysm</p>
+
+<p><strong>Lore Adaptation</strong>: Deep gnome communities survived in deep underground warrens, emerging occasionally to trade rare minerals and gems. They’re skilled at detecting magical properties in stones and crystals.</p>
+
+<h3 id="duergar-"><strong>Duergar</strong> 🔄</h3>
+<p><strong>Integration</strong>: Gray dwarves adapted to underground survival</p>
+
+<p><strong>Lore Adaptation</strong>: Duergar clans lived in the deepest underground cities, surviving through their resilience and psionic abilities. They’ve emerged as skilled miners and underground guides.</p>
+
+<p><strong>Cultural Role</strong>: Often work in dangerous mining operations or as guides through underground ruins.</p>
+
+<h3 id="air-genasi--already-covered-in-genasi-section"><strong>Air Genasi</strong> ✅ (already covered in Genasi section)</h3>
+<h3 id="earth-genasi--already-covered-in-genasi-section"><strong>Earth Genasi</strong> ✅ (already covered in Genasi section)</h3>
+<h3 id="fire-genasi--already-covered-in-genasi-section"><strong>Fire Genasi</strong> ✅ (already covered in Genasi section)</h3>
+<h3 id="water-genasi--already-covered-in-genasi-section"><strong>Water Genasi</strong> ✅ (already covered in Genasi section)</h3>
+
+<h3 id="aasimar-variants-️-already-covered-in-main-aasimar-section"><strong>Aasimar Variants</strong> ⚙️ (already covered in main Aasimar section)</h3>
+<h3 id="tiefling-variants-️"><strong>Tiefling Variants</strong> ⚙️</h3>
+<p><strong>All tiefling subraces work with the Umbral adaptation</strong>:</p>
+<ul>
+  <li><strong>Asmodeus</strong> → <strong>Umbral Lord</strong> bloodline</li>
+  <li><strong>Baalzebul</strong> → <strong>Void Whisper</strong> bloodline</li>
+  <li><strong>Dispater</strong> → <strong>Shadow Court</strong> bloodline</li>
+  <li><strong>Fierna</strong> → <strong>Twilight Charm</strong> bloodline</li>
+  <li><strong>Glasya</strong> → <strong>Deception Mist</strong> bloodline</li>
+  <li><strong>Levistus</strong> → <strong>Frozen Shadow</strong> bloodline</li>
+  <li><strong>Mammon</strong> → <strong>Greed Shadow</strong> bloodline</li>
+  <li><strong>Mephistopheles</strong> → <strong>Arcane Void</strong> bloodline</li>
+  <li><strong>Zariel</strong> → <strong>War Shadow</strong> bloodline</li>
+</ul>
+
+<p>All use the umbral energy theme rather than fiendish, but maintain their unique spell lists and abilities.</p>
+
+<hr />
+
+<h2 id="newer-releases--specialized-content"><strong>Newer Releases &amp; Specialized Content</strong></h2>
+
+<h3 id="autognomes---️"><strong>Autognomes</strong> ❌ → ⚙️</h3>
+<p><strong>Rework</strong>: <strong>Gear Sprites</strong> - Tiny construct-like beings from remnant magic</p>
+
+<p><strong>Lore Alternative</strong>: Similar to Remnant Constructs but much smaller, these tiny beings emerged from the interaction of remnant magic with mechanical devices. Very rare.</p>
+
+<h3 id="hadozee-"><strong>Hadozee</strong> 🔄</h3>
+<p><strong>Integration</strong>: Gliding traders and scouts</p>
+
+<p><strong>Lore Adaptation</strong>: Hadozee communities survived in forested areas and have become excellent scouts and messengers. Their gliding ability makes them valuable for reconnaissance and communication.</p>
+
+<h3 id="plasmoids-"><strong>Plasmoids</strong> ❌</h3>
+<p><strong>Setting Conflict</strong>: Ooze-based sapience doesn’t fit the setting themes</p>
+
+<h3 id="thri-kreen-"><strong>Thri-kreen</strong> 🔄</h3>
+<p><strong>Integration</strong>: Insectoid survivors adapted to harsh conditions</p>
+
+<p><strong>Lore Adaptation</strong>: Thri-kreen communities survived in desert and wasteland areas, their natural resilience serving them well. They’re valued as scouts and desert guides.</p>
+
+<p><strong>Cultural Role</strong>: Often work as wilderness guides, particularly in harsh environments. Their natural armor and survival skills make them excellent for dangerous expeditions.</p>
+
+<h3 id="gem-dragonborn-️"><strong>Gem Dragonborn</strong> ⚙️</h3>
+<p><strong>Mechanical Adaptation</strong>: Replace psionic abilities with <strong>Crystal Resonance</strong></p>
+
+<p><strong>Lore Adaptation</strong>: These dragonborn have a connection to the crystal magic used by the pre-Cataclysm empires. Rather than psionic abilities, they can resonate with crystalline structures.</p>
+
+<p><strong>Abilities Reskinned</strong>:</p>
+<ul>
+  <li><strong>Telepathic abilities</strong> become <strong>Crystal Communication</strong> - can send messages through crystal networks</li>
+  <li><strong>Breath weapons</strong> create crystalline effects rather than pure energy</li>
+</ul>
+
+<h3 id="metallicchromatic-dragonborn--already-covered"><strong>Metallic/Chromatic Dragonborn</strong> ✅ (already covered)</h3>
+
+<h3 id="custom-lineage-"><strong>Custom Lineage</strong> ✅</h3>
+<p><strong>Integration</strong>: Perfect for creating survivors with unique backstories</p>
+
+<p><strong>Lore</strong>: Represents the many unique individuals whose heritage was affected by the Cataclysm in ways that don’t fit standard racial categories. Excellent for creating one-off backgrounds.</p>
+
+<h3 id="remnant-constructs-adapted-from-warforged-️"><strong>Remnant Constructs</strong> (adapted from Warforged) ⚙️</h3>
+<p><strong>Mechanical Changes</strong>: Keep all Warforged stats, but modify thematic descriptions and add minor features</p>
+
+<p><strong>Lore Adaptation</strong>: These beings emerged spontaneously during the Cataclysm when massive magical energies interacted with consciousness-affecting spells and inorganic materials. Unlike intentionally crafted Warforged, Remnant Constructs are unique accidents of magical catastrophe - consciousness accidentally bound to crystalline and metallic matrices.</p>
+
+<p><strong>Physical Description</strong>: Bodies appear to be amalgamations of crystal, metal, and energy. Rather than constructed plating, they have crystalline growths and flowing patterns of energy beneath translucent material. No two look exactly alike.</p>
+
+<p><strong>Abilities Reskinned</strong>:</p>
+<ul>
+  <li><strong>Constructed Resilience</strong> → <strong>Magical Stability</strong>: Immunity to disease/poison represents their non-biological nature</li>
+  <li><strong>Sentry’s Rest</strong> → <strong>Energy Meditation</strong>: They don’t sleep but enter a trance-like state where their magical energies stabilize</li>
+  <li><strong>Integrated Protection</strong> → <strong>Adaptive Shell</strong>: Their “armor” is part of their crystalline structure and can shift slightly</li>
+</ul>
+
+<p><strong>Additional Feature</strong>: <strong>Remnant Resonance</strong> - Can sense areas of high magical activity within 60 feet as a tingling sensation (no mechanical benefit, purely flavor).</p>
+
+<p><strong>Social Standing</strong>: Extremely rare and viewed with mixture of awe and unease. Most people have never seen one. Often assumed to be either cursed individuals or blessed artifacts come to life.</p>
+
+<p><strong>Cultural Role</strong>: Often become scholars, artificers, or guardians of magical sites. They have an intuitive understanding of remnant magic but struggle with biological concepts and emotions.</p>
+
+<h3 id="dream-touched-adapted-from-kalashtar-️"><strong>Dream Touched</strong> (adapted from Kalashtar) ⚙️</h3>
+<p><strong>Mechanical Changes</strong>: Keep all Kalashtar abilities but replace psionic/spirit descriptions</p>
+
+<p><strong>Lore Adaptation</strong>: Dream Touched are descendants of humans who were caught in temporal magic experiments during the final days of the pre-Cataclysm empires. Instead of connecting to quori spirits, they experience vivid dreams and visions that may be glimpses of alternate timelines, possible futures, or echoes from the past.</p>
+
+<p><strong>Abilities Reskinned</strong>:</p>
+<ul>
+  <li><strong>Dual Mind</strong> → <strong>Temporal Awareness</strong>: Advantage on Wisdom saves represents their ability to sense multiple potential outcomes</li>
+  <li><strong>Mental Discipline</strong> → <strong>Reality Anchor</strong>: Resistance to psychic damage comes from their experience navigating multiple timeline perceptions</li>
+  <li><strong>Mind Link</strong> → <strong>Echo Sharing</strong>: Can share their temporal visions/dreams with others telepathically</li>
+  <li><strong>Psychic Glamour</strong> / <strong>Severed from Dreams</strong> → <strong>Timeline Slip</strong>: Can briefly perceive and interact with alternate reality echoes</li>
+</ul>
+
+<p><strong>Dream Mechanics</strong>: Instead of never dreaming due to quori presence, Dream Touched experience extremely vivid, prophetic dreams that sometimes provide cryptic guidance about future events (DM discretion for actual prophetic value).</p>
+
+<p><strong>Social Standing</strong>: Often sought out as oracles or advisors, but also feared for their “unnatural” perceptions. Many people find their temporal awareness unsettling.</p>
+
+<p><strong>Cultural Role</strong>: Frequently become scholars studying pre-Cataclysm events, diviners, or advisors to leaders. Their unique perspective on causality makes them valuable for understanding complex situations.</p>
+
+<h3 id="changelings---️"><strong>Changelings</strong> ❌ → ⚙️</h3>
+<p><strong>Mechanical Issue</strong>: Shapeshifting might conflict with remnant magic instability</p>
+
+<p><strong>Rework Option</strong>: <strong>Aspect Shifters</strong> - Can change appearance but risk remnant surges when doing so. Shapeshifting requires Constitution saves in high-magic areas.</p>
+
+<h3 id="githyankigithzerai--1"><strong>Githyanki/Githzerai</strong> ❌</h3>
+<p><strong>Setting Conflict</strong>: Planar background and astral realm focus don’t fit the continental scope</p>
+
+<p><strong>Alternative</strong>: If players want psionic abilities, consider reflavoring as <strong>Mind Touched</strong> - humans affected by experimental psychic magic during the Cataclysm.</p>
+
+<h3 id="astral-elves-"><strong>Astral Elves</strong> ❌</h3>
+<p><strong>Setting Conflict</strong>: Astral Plane focus contradicts the grounded, post-apocalyptic setting</p>
+
+<hr />
+
+<h2 id="kobold-press-races"><strong>Kobold Press Races</strong></h2>
+<p><em>Popular 3rd party content from Tome of Heroes, Midgard Campaign Setting, and other Kobold Press sources</em></p>
+
+<h3 id="bearfolk-"><strong>Bearfolk</strong> 🔄</h3>
+<p><strong>Integration</strong>: Mountain and forest survivors with strong clan traditions</p>
+
+<p><strong>Lore Adaptation</strong>: Bearfolk clans survived in remote mountain and forest regions during the Cataclysm, their natural resilience and community bonds keeping them safe. They’ve emerged as respected guides, craftspeople, and protectors.</p>
+
+<p><strong>Cultural Role</strong>: Often work as wilderness guides, artisans, or community protectors. Their strength and crafting skills make them valuable in rebuilding efforts.</p>
+
+<p><strong>Social Standing</strong>: Generally well-respected for their honesty and reliability, though their size can intimidate some people.</p>
+
+<h3 id="ratfolk--already-established-as-ratters"><strong>Ratfolk</strong> ✅ (already established as “Ratters”)</h3>
+<p><strong>Integration</strong>: Urban survivors and scavengers</p>
+
+<p><strong>Lore</strong>: As established in your world - clever scavengers and traders who excel in urban environments. Their adaptability served them well during the chaos of the Cataclysm.</p>
+
+<h3 id="mousefolk-squeaklings-"><strong>Mousefolk (Squeaklings)</strong> 🔄</h3>
+<p><strong>Integration</strong>: Small survivors who thrive through cooperation</p>
+
+<p><strong>Lore Adaptation</strong>: Mousefolk communities survived by hiding in places too small for larger threats and working together through community cooperation. They’ve become skilled at finding hidden things and avoiding danger.</p>
+
+<p><strong>Cultural Role</strong>: Often work as scouts, spies, or in professions requiring small size and nimble fingers. Valued for their ability to access tight spaces and their keen senses.</p>
+
+<p><strong>Social Standing</strong>: Generally seen as harmless and helpful, though sometimes underestimated due to their size.</p>
+
+<h3 id="ravenfolk-"><strong>Ravenfolk</strong> 🔄</h3>
+<p><strong>Integration</strong>: Intelligent scavengers with connections to death and memory</p>
+
+<p><strong>Lore Adaptation</strong>: Ravenfolk were drawn to battlefields during the Cataclysm, collecting memories and knowledge from the dying. They’ve become keepers of death rites and historians of the catastrophe.</p>
+
+<p><strong>Cultural Role</strong>: Often serve as undertakers, historians, or information brokers. Their perfect memory and connection to death makes them valuable for preserving pre-Cataclysm knowledge.</p>
+
+<p><strong>Social Standing</strong>: Viewed with respect but also unease due to their association with death and their unsettling intelligence.</p>
+
+<h3 id="trollkin-"><strong>Trollkin</strong> 🔄</h3>
+<p><strong>Integration</strong>: Regenerating survivors adapted to harsh conditions</p>
+
+<p><strong>Lore Adaptation</strong>: Trollkin communities survived through their natural regenerative abilities and adaptability. They’ve become valued for their resilience and ability to work in dangerous conditions.</p>
+
+<p><strong>Cultural Role</strong>: Often work in dangerous professions like mining, construction in hazardous areas, or as guards. Their regeneration makes them ideal for high-risk jobs.</p>
+
+<p><strong>Social Standing</strong>: Initially feared due to their troll heritage, but increasingly accepted as valuable community members.</p>
+
+<h3 id="kobolds--already-covered-in-official-races"><strong>Kobolds</strong> ✅ (already covered in official races)</h3>
+
+<h3 id="centaurs--already-covered-in-official-races"><strong>Centaurs</strong> ✅ (already covered in official races)</h3>
+
+<h3 id="minotaurs--already-covered-in-official-races"><strong>Minotaurs</strong> ✅ (already covered in official races)</h3>
+
+<h3 id="satyr-"><strong>Satyr</strong> 🔄</h3>
+<p><strong>Integration</strong>: Nature-connected survivors with fey-like abilities</p>
+
+<p><strong>Lore Adaptation</strong>: Satyr communities survived in hidden groves and natural sanctuaries. Rather than true fey connections, their magical abilities come from deep harmony with natural forces that resisted the Cataclysm’s corruption.</p>
+
+<p><strong>Cultural Role</strong>: Often serve as entertainers, nature guides, or herbalists. Their musical abilities and nature connection make them valuable for maintaining morale and environmental knowledge.</p>
+
+<p><strong>Social Standing</strong>: Generally welcomed for their entertainment value and positive attitude, though some find their carefree nature inappropriate for serious situations.</p>
+
+<h3 id="dhampir-️"><strong>Dhampir</strong> ⚙️</h3>
+<p><strong>Mechanical Adjustment</strong>: Replace vampiric heritage with <strong>Umbral Cursed</strong></p>
+
+<p><strong>Lore Adaptation</strong>: Rather than vampire spawn, these individuals are descended from people exposed to concentrated umbral/void magic during the Cataclysm. The exposure left them with vampiric-like traits but no actual undead nature.</p>
+
+<p><strong>Abilities Reskinned</strong>:</p>
+<ul>
+  <li><strong>Vampiric Bite</strong> → <strong>Umbral Drain</strong>: Draws life energy through shadow magic connection</li>
+  <li><strong>Spider Climb</strong> → <strong>Shadow Walk</strong>: Can move along surfaces by partially phasing into shadows</li>
+  <li><strong>Undead nature resistance</strong> → <strong>Umbral corruption resistance</strong></li>
+</ul>
+
+<p><strong>Social Standing</strong>: Viewed with suspicion and fear due to their life-draining abilities, often mistaken for actual undead.</p>
+
+<h3 id="reborn-️"><strong>Reborn</strong> ⚙️</h3>
+<p><strong>Mechanical Adjustment</strong>: Replace undead nature with <strong>Remnant Reanimated</strong></p>
+
+<p><strong>Lore Adaptation</strong>: These individuals died during the Cataclysm but were brought back by accidental exposure to life-affecting remnant magic. They’re not true undead but rather living beings restored by chaotic magical forces.</p>
+
+<p><strong>Abilities Reskinned</strong>:</p>
+<ul>
+  <li><strong>Deathless Nature</strong> → <strong>Remnant Sustenance</strong>: Sustained by magical energy rather than biological needs</li>
+  <li><strong>Knowledge from a Past Life</strong> → <strong>Cataclysm Memories</strong>: Retain fragmented memories from their death and the magical catastrophe</li>
+</ul>
+
+<p><strong>Social Standing</strong>: Viewed with mixture of awe and horror - clearly miraculous but also deeply unsettling.</p>
+
+<h3 id="hexblood-️"><strong>Hexblood</strong> ⚙️</h3>
+<p><strong>Mechanical Adjustment</strong>: Replace hag magic with <strong>Corruption Touched</strong></p>
+
+<p><strong>Lore Adaptation</strong>: Rather than hag curses, these individuals were transformed by exposure to chaotic remnant magic that altered their fundamental nature. They gained magical abilities but at the cost of their original appearance.</p>
+
+<p><strong>Abilities Reskinned</strong>:</p>
+<ul>
+  <li><strong>Hex Magic</strong> → <strong>Remnant Witchcraft</strong>: Powers derived from understanding chaotic magical forces</li>
+  <li><strong>Token creation</strong> → <strong>Remnant Anchors</strong>: Create magical connections through crystallized remnant energy</li>
+</ul>
+
+<p><strong>Social Standing</strong>: Often shunned due to their disturbing appearance and association with dangerous magic.</p>
+
+<h3 id="dragonborn-variants-kobold-press-"><strong>Dragonborn Variants (Kobold Press)</strong> 🔄</h3>
+<p><strong>Integration</strong>: Multiple dragonborn lineages reflecting different pre-Cataclysm dragon alliances</p>
+
+<p><strong>Gem Dragonborn</strong>: ✅ (already covered in official section with crystal magic adaptation)
+<strong>Metallic/Chromatic variants</strong>: ✅ (work as-is with existing dragonborn lore)</p>
+
+<h3 id="gearforged---️"><strong>Gearforged</strong> ❌ → ⚙️</h3>
+<p><strong>Rework</strong>: <strong>Remnant Clockwork</strong> - Consciousness transferred to magical constructs</p>
+
+<p><strong>Lore Alternative</strong>: Similar to Remnant Constructs but specifically involving consciousness transfer experiments. Extremely rare individuals whose minds were magically bound to clockwork bodies during desperate pre-Cataclysm experiments.</p>
+
+<p><strong>Mechanical Notes</strong>: Use Gearforged stats but with crystal/remnant magic power source instead of pure clockwork.</p>
+
+<h3 id="darakhul-"><strong>Darakhul</strong> ❌</h3>
+<p><strong>Setting Conflict</strong>: Intelligent undead empire doesn’t fit the post-Cataclysm themes</p>
+
+<p><strong>Why Banned</strong>: The concept of an organized undead civilization conflicts with the “survivors rebuilding” theme of Alkebulan.</p>
+
+<h3 id="shadow-fey---️"><strong>Shadow Fey</strong> ❌ → ⚙️</h3>
+<p><strong>Rework</strong>: <strong>Umbral Touched Elves</strong> (similar to Shadar-kai adaptation)</p>
+
+<p><strong>Lore Alternative</strong>: Elves who were deeply connected to the Umbral Sovereignty’s shadow magic, now permanently changed by their exposure to void energies.</p>
+
+<h3 id="elfmarked-"><strong>Elfmarked</strong> 🔄</h3>
+<p><strong>Integration</strong>: Humans touched by elven magic or heritage</p>
+
+<p><strong>Lore Adaptation</strong>: Humans who have mixed elven ancestry or were magically altered by elven communities. Their abilities reflect their connection to ancient elven traditions.</p>
+
+<p><strong>Cultural Role</strong>: Often serve as intermediaries between human and elven communities, or as keepers of mixed cultural traditions.</p>
+
+<h3 id="lamia-"><strong>Lamia</strong> ❌</h3>
+<p><strong>Setting Conflict</strong>: Monster race with inherent evil nature doesn’t fit survivor themes</p>
+
+<p><strong>Alternative</strong>: Could be reflavored as cursed humans, but this is a significant stretch.</p>
+
+<h3 id="dust-goblin-"><strong>Dust Goblin</strong> 🔄</h3>
+<p><strong>Integration</strong>: Desert-adapted goblin variants</p>
+
+<p><strong>Lore Adaptation</strong>: Goblin communities that adapted to life in the post-Cataclysm wastelands and deserts. They’ve developed enhanced survival skills and resistance to harsh conditions.</p>
+
+<p><strong>Cultural Role</strong>: Often work as desert guides, scavengers, or traders specializing in wasteland survival gear.</p>
+
+<h3 id="alseid-"><strong>Alseid</strong> 🔄</h3>
+<p><strong>Integration</strong>: Grove guardians and nature protectors</p>
+
+<p><strong>Lore Adaptation</strong>: Rather than fey creatures, these are mortals who formed deep bonds with nature spirits to protect sacred groves during the Cataclysm. Their abilities come from this spiritual partnership.</p>
+
+<p><strong>Cultural Role</strong>: Serve as guardians of remaining natural sanctuaries and guides through areas where nature and magic intersect safely.</p>
+
+<hr />
+
+<h2 id="kobold-press-integration-guidelines"><strong>Kobold Press Integration Guidelines</strong></h2>
+
+<h3 id="generally-compatible-themes"><strong>Generally Compatible Themes</strong></h3>
+<ul>
+  <li><strong>Survival-focused races</strong> that emphasize adaptation and resilience</li>
+  <li><strong>Crafting/artisan races</strong> that help rebuild civilization</li>
+  <li><strong>Nature-connected races</strong> that protect against magical corruption</li>
+  <li><strong>Community-oriented races</strong> that thrive through cooperation</li>
+</ul>
+
+<h3 id="requires-careful-adaptation"><strong>Requires Careful Adaptation</strong></h3>
+<ul>
+  <li><strong>Fey-connected races</strong> - Need to be reskinned as nature-connected rather than planar</li>
+  <li><strong>Undead/cursed races</strong> - Must be reframed as remnant magic effects rather than traditional curses</li>
+  <li><strong>Technologically advanced races</strong> - Need significant power source changes to fit post-Cataclysm tech level</li>
+</ul>
+
+<h3 id="generally-incompatible"><strong>Generally Incompatible</strong></h3>
+<ul>
+  <li><strong>Evil monster races</strong> with inherent evil natures</li>
+  <li><strong>Planar natives</strong> that assume multiverse travel</li>
+  <li><strong>High-tech cyberpunk style races</strong></li>
+  <li><strong>Races requiring active undead/fiend hierarchies</strong></li>
+</ul>
+
+<h3 id="adaptation-principles-for-kobold-press-content"><strong>Adaptation Principles for Kobold Press Content</strong></h3>
+<ol>
+  <li><strong>Preserve Core Fantasy</strong>: Keep what makes each race interesting to play</li>
+  <li><strong>Ground in Post-Cataclysm Reality</strong>: Tie origins to the setting’s history</li>
+  <li><strong>Replace Planar with Natural</strong>: Convert otherworldly connections to natural or remnant magic</li>
+  <li><strong>Emphasize Survival</strong>: Show how each race adapted to the new world</li>
+  <li><strong>Create Social Niches</strong>: Give each race a valuable role in rebuilding society</li>
+</ol>
+
+<hr />
+
+<h2 id="other-3rd-party-considerations"><strong>Other 3rd Party Considerations</strong></h2>
+
+<h3 id="generally-compatible-publisherscontent"><strong>Generally Compatible Publishers/Content</strong></h3>
+<ul>
+  <li><strong>EN World EN5ider</strong>: Usually grounded, practical race options</li>
+  <li><strong>Frog God Games</strong>: Often has survival-focused, gritty options that fit well</li>
+  <li><strong>Legendary Games</strong>: Frequently creates balanced, setting-neutral content</li>
+  <li><strong>Nord Games</strong>: Tends toward practical, adventure-focused options</li>
+</ul>
+
+<h3 id="publisher-specific-guidelines"><strong>Publisher-Specific Guidelines</strong></h3>
+
+<h4 id="critical-role-content-explorers-guide-to-wildemount"><strong>Critical Role Content (Explorer’s Guide to Wildemount)</strong></h4>
+<ul>
+  <li><strong>Hollow One</strong>: ❌ → ⚙️ Could become <strong>Remnant Hollow</strong> - people killed and reanimated by remnant magic</li>
+  <li><strong>Dragonborn Variants</strong>: ✅ Work well with existing adaptations</li>
+  <li><strong>Lotusden Halflings</strong>: 🔄 Nature-connected halflings work well as grove guardians</li>
+  <li><strong>Pallid Elves</strong>: ⚙️ Could be <strong>Deep Vault Elves</strong> - communities that survived underground</li>
+</ul>
+
+<h4 id="rick-and-morty-content"><strong>Rick and Morty Content</strong></h4>
+<ul>
+  <li><strong>Generally Incompatible</strong>: Sci-fi themes don’t fit post-apocalyptic fantasy setting</li>
+</ul>
+
+<h4 id="acquisitions-incorporated"><strong>Acquisitions Incorporated</strong></h4>
+<ul>
+  <li><strong>Verdan</strong>: 🔄 Could work as <strong>Changeling Variants</strong> affected by remnant magic instability</li>
+  <li><strong>Most content focuses on modern themes</strong>: Requires significant adaptation</li>
+</ul>
+
+<h4 id="guildmasters-guide-to-ravnica"><strong>Guildmaster’s Guide to Ravnica</strong></h4>
+<ul>
+  <li><strong>Generally Incompatible</strong>: Urban high-magic civilization themes conflict with post-Cataclysm scarcity</li>
+  <li><strong>Centaurs/Minotaurs</strong>: ✅ Already covered</li>
+  <li><strong>Loxodon</strong>: ✅ Already covered</li>
+</ul>
+
+<h4 id="mythic-odysseys-of-theros"><strong>Mythic Odysseys of Theros</strong></h4>
+<ul>
+  <li><strong>Leonin</strong>: ✅ Already covered</li>
+  <li><strong>Satyr</strong>: ✅ Covered in Kobold Press section</li>
+  <li><strong>Centaurs</strong>: ✅ Already covered</li>
+  <li><strong>Triton</strong>: ❌ → 🔄 Already adapted as Depth Wardens</li>
+</ul>
+
+<h3 id="homebrew-and-community-content"><strong>Homebrew and Community Content</strong></h3>
+<ul>
+  <li><strong>D&amp;D Wiki</strong>: Extremely variable quality, evaluate case-by-case</li>
+  <li><strong>Reddit r/UnearthedArcana</strong>: Often high quality, usually adaptable</li>
+  <li><strong>DMs Guild</strong>: Wide range, focus on survival/exploration themed content</li>
+  <li><strong>Popular Homebrew Creators</strong>: Research their balance reputation</li>
+</ul>
+
+<h3 id="evaluation-criteria-for-any-3rd-party-race"><strong>Evaluation Criteria for Any 3rd Party Race</strong></h3>
+<ol>
+  <li><strong>Power Level</strong>: Does it match standard PHB races?</li>
+  <li><strong>Setting Fit</strong>: Can it be adapted to post-Cataclysm themes?</li>
+  <li><strong>Social Integration</strong>: What role would it play in rebuilding society?</li>
+  <li><strong>Magical Consistency</strong>: Do its abilities fit remnant magic rules?</li>
+  <li><strong>Survival Relevance</strong>: How does it help/hinder in a dangerous world?</li>
+</ol>
+
+<h3 id="red-flags-for-3rd-party-races"><strong>Red Flags for 3rd Party Races</strong></h3>
+<ul>
+  <li><strong>Overpowered abilities</strong> that overshadow other players</li>
+  <li><strong>Technology requirements</strong> beyond post-Cataclysm capabilities</li>
+  <li><strong>Planar travel</strong> as core racial identity</li>
+  <li><strong>Inherent evil</strong> that conflicts with heroic gameplay</li>
+  <li><strong>Modern/sci-fi themes</strong> that break fantasy immersion</li>
+  <li><strong>Joke races</strong> that undermine serious campaign tone</li>
+</ul>
+
+<hr />
+<!-- DM_START -->
+<h2 id="integration-guidelines-for-dms"><strong>Integration Guidelines for DMs</strong></h2>
+
+<h3 id="when-adapting-races"><strong>When Adapting Races</strong></h3>
+<ol>
+  <li><strong>Preserve Core Fantasy</strong>: Keep what makes the race fun to play</li>
+  <li><strong>Fit the Setting</strong>: Adapt lore to match post-Cataclysm themes</li>
+  <li><strong>Maintain Balance</strong>: Don’t make mechanical changes that alter power level</li>
+  <li><strong>Add Hooks</strong>: Create connections to Alkebulan’s history and cultures</li>
+</ol>
+
+<h3 id="regional-variations"><strong>Regional Variations</strong></h3>
+<ul>
+  <li><strong><a href="/alkebulan-wiki/the-cerulean-reach/">The Cerulean Reach</a></strong>: More accepting of magical races, cosmopolitan attitudes</li>
+  <li><strong>The Amunrai Imperium (x)</strong>: Hierarchy-focused, solar-touched races favored</li>
+  <li><strong>Rural/Remote Areas</strong>: Traditional attitudes, emphasis on practical survival skills</li>
+  <li><strong>Remnant Zones</strong>: All races may show signs of magical adaptation or mutation</li>
+</ul>
+
+<h3 id="social-dynamics"><strong>Social Dynamics</strong></h3>
+<p>Consider how each race’s abilities and appearance affect their interactions with:</p>
+<ul>
+  <li><strong>Local authorities</strong> (city guards, imperial officials)</li>
+  <li><strong>Common folk</strong> (merchants, farmers, laborers)</li>
+  <li><strong>Other adventurers</strong> (party dynamics and regional reputation)</li>
+  <li><strong>Faction representatives</strong> (Remnant Keepers, Mist Walkers, etc.)</li>
+</ul>
+
+<hr />
+<!--DM_END -->
+<h2 id="related-references"><strong>Related References</strong></h2>
+<ul>
+  <li><a href="/alkebulan-wiki/sandshapers-x/">Sandshapers (x)</a> - Setting-specific race example</li>
+  <li>Mistwalkers (x) - Setting-specific race example</li>
+  <li>Sunchildren (x) - Setting-specific race example</li>
+  <li>Crystalborn (x) - Setting-specific race example</li>
+  <li>Player Character Creation Guide (x) - Full character creation guidelines</li>
+  <li>Class Feature Modifications (x) - How classes adapt to the setting</li>
+  <li>Remnant Magic (x) - Understanding magical corruption and benefits</li>
+</ul>
+
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <h4>🧭 Navigation</h4>
+
+                        <div class="nav-level">
+                            <div class="nav-level-title">Quick Access</div>
+                            <a href="/alkebulan-wiki/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="nav-level" id="navUp" style="display: none;">
+                            <div class="nav-level-title">Up One Level</div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="contamination-warning">
+                        <strong>⚠️ WARNING</strong><br>
+                        This archive contains<br>
+                        <em>Remnant Magic traces</em><br>
+                        Access with caution
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Robert McCowan. Classified Archive System for Alkebulan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
+
+        function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
+
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Simplified navigation system
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
+
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '/alkebulan-wiki/' : '/alkebulan-wiki/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                }
+
+                // Helper function to escape HTML
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
+            } else {
+                // Default to player view
+                switchToPlayerView();
+            }
+
+            // Setup simple navigation
+            setupSimpleNavigation();
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
+        });
+    </script>
+</body>
+</html>

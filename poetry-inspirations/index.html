@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<!-- _layouts/default.html with Dynamic View Toggle -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baseurl" content="/alkebulan-wiki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetry Inspirations | Alkebulan</title>
+    <meta name="description" content="A dark fantasy continent recovering from magical apocalypse">
+
+    <!-- SEO -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Poetry Inspirations | Alkebulan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Poetry Inspirations" />
+<meta name="author" content="Robert McCowan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dark fantasy continent recovering from magical apocalypse" />
+<meta property="og:description" content="A dark fantasy continent recovering from magical apocalypse" />
+<link rel="canonical" href="https://cowcow2831.github.io/alkebulan-wiki/poetry-inspirations/" />
+<meta property="og:url" content="https://cowcow2831.github.io/alkebulan-wiki/poetry-inspirations/" />
+<meta property="og:site_name" content="Alkebulan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Poetry Inspirations" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Robert McCowan"},"dateModified":"2025-08-03T00:00:00+00:00","datePublished":"2025-08-03T00:00:00+00:00","description":"A dark fantasy continent recovering from magical apocalypse","headline":"Poetry Inspirations","mainEntityOfPage":{"@type":"WebPage","@id":"https://cowcow2831.github.io/alkebulan-wiki/poetry-inspirations/"},"url":"https://cowcow2831.github.io/alkebulan-wiki/poetry-inspirations/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/alkebulan-wiki/assets/favicon.ico">
+
+    <!-- Navigation Data -->
+    <!-- <script src="/alkebulan-wiki/assets/js/navigation.js"></script> -->
+
+    <!-- Styles -->
+    <style>
+        /* Post-Nuclear Contaminated Archive Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            /* Post-Nuclear Color Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #c0c0c0;
+            --text-secondary: #888888;
+            --text-muted: #666666;
+
+            /* Contamination Colors */
+            --toxic-green: #7cfc00;
+            --rust-orange: #d67c2a;
+            --warning-yellow: #e6e619;
+            --radiation-orange: #ff6b35;
+            --ash-gray: #4a4a4a;
+            --danger-red: #ff3333;
+
+            /* Effects */
+            --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
+            --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
+            --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+            min-height: 100vh;
+            text-shadow: var(--text-shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contamination Pulse Animation */
+        @keyframes contamination-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .contaminated {
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Header - Made more compact for mobile */
+        header {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            border-bottom: 3px solid var(--toxic-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warning-yellow);
+            text-decoration: none;
+            text-shadow: var(--text-shadow), var(--glow-orange);
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--text-shadow), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        .site-title::before {
+            content: "☢️ ";
+            color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--ash-gray);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(74, 74, 74, 0.2);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            transform: translateY(-2px);
+        }
+
+        nav a::before {
+            content: "☢️";
+            margin-right: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid var(--ash-gray);
+            position: relative;
+        }
+
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--ash-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 2px solid var(--rust-orange);
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar::before {
+            content: "⚠️ CONTAMINATED DATA";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 4px;
+            border: 1px solid var(--radiation-orange);
+        }
+
+        /* Sidebar Navigation Sections */
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--warning-yellow);
+            text-align: center;
+            border-bottom: 1px solid var(--ash-gray);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-level {
+            margin-bottom: 1rem;
+        }
+
+        .nav-level-title {
+            font-size: 0.85rem;
+            color: var(--rust-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-left-color: var(--toxic-green);
+            transform: translateX(5px);
+        }
+
+        .nav-item.current {
+            background: rgba(124, 252, 0, 0.1);
+            border-left-color: var(--toxic-green);
+            color: var(--text-primary);
+        }
+
+        .nav-item::before {
+            margin-right: 0.5rem;
+        }
+
+        .nav-up::before { content: "⬆️"; }
+        .nav-same::before { content: "↔️"; }
+        .nav-down::before { content: "⬇️"; }
+        .nav-home::before { content: "🏠"; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--warning-yellow);
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            color: var(--toxic-green);
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--rust-orange);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h6 {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--warning-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--glow-green);
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+        }
+
+        .main-content ul li::marker,
+        .sidebar us li::marker {
+            content: "☢️ ";
+            color: var(--toxic-green);
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin: 1.5rem 0;
+            border: 2px solid var(--ash-gray);
+            transition: all 0.3s ease;
+        }
+
+        img:hover {
+            border-color: var(--toxic-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--radiation-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "⚠️";
+            position: absolute;
+            top: 1rem;
+            left: -15px;
+            background: var(--radiation-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code */
+        code {
+            background: var(--bg-primary);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            border: 1px solid var(--ash-gray);
+        }
+
+        pre {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 2px solid var(--toxic-green);
+            box-shadow: var(--glow-green);
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        th {
+            background: var(--rust-orange);
+            color: white;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        tr:hover {
+            background: rgba(124, 252, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 3px solid var(--toxic-green);
+            color: var(--text-secondary);
+            box-shadow: var(--border-glow);
+        }
+
+        footer::before {
+            content: "☢️ CONTAMINATION WARNING: All materials subject to Remnant Magic exposure ☢️";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive - Compact Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+                order: 1;
+            }
+
+            .view-mode-indicator {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin: 0 0.5rem;
+                order: 2;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                order: 3;
+                width: 100%;
+            }
+
+            .view-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Special Effects */
+        .contamination-warning {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(124, 252, 0, 0.1));
+            border: 2px solid var(--radiation-orange);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hide the default Jekyll title since we'll handle it in CSS */
+        .main-content > h1:first-child {
+            display: none;
+        }
+
+        /* Custom page title styling */
+        .page-title {
+            font-size: 2.8rem;
+            color: var(--warning-yellow);
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .page-title::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        /* Mobile page title adjustment */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/alkebulan-wiki/" class="site-title">Alkebulan</a>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
+                    </button>
+                    <nav>
+                        <ul>
+                            
+                            <li><a href="/alkebulan-wiki/" class="nav-item" data-access="public">Home</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/port-zephyr/" class="nav-item" data-access="public">Port Zephyr</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/harbor-district/" class="nav-item" data-access="player">Harbor District</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/player-handout-whispers-of-the-wastes/" class="nav-item" data-access="player">Player Handout</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/dm-notes/" class="nav-item" data-access="dm">DM Notes</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/secrets/" class="nav-item" data-access="dm">Secrets</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    
+                    <h1 class="page-title">Poetry Inspirations</h1>
+                    
+
+                    <div id="content">
+                        <h1 id="poetry-inspirations-for-alkebulan">Poetry Inspirations for Alkebulan</h1>
+<p><em>Poems, Poets, and Poetic Movements to Inspire Your Dark Post-Nuclear Fantasy World</em></p>
+
+<hr />
+
+<h2 id="war--destruction-poetry">War &amp; Destruction Poetry</h2>
+
+<h3 id="world-war-i-poetry">World War I Poetry</h3>
+<ul>
+  <li><strong>Wilfred Owen</strong>
+    <ul>
+      <li><em>“Dulce et Decorum Est”</em> - Gas attacks, horror of modern warfare, institutional lies</li>
+      <li><em>“Anthem for Doomed Youth”</em> - Mass death, loss of ceremony, generational trauma</li>
+      <li><em>“Strange Meeting”</em> - Haunting encounters, enemy humanity, war’s futility</li>
+    </ul>
+  </li>
+  <li><strong>Siegfried Sassoon</strong>
+    <ul>
+      <li><em>“Suicide in the Trenches”</em> - Young lives destroyed, civilian ignorance</li>
+      <li><em>“The General”</em> - Incompetent leadership, soldiers as expendables</li>
+      <li><em>“Remorse”</em> - Survivor guilt, moral injury, memory haunting</li>
+    </ul>
+  </li>
+  <li><strong>Isaac Rosenberg</strong>
+    <ul>
+      <li><em>“Break of Day in the Trenches”</em> - Dawn in destruction, rats as witnesses</li>
+      <li><em>“Dead Man’s Dump”</em> - Bodies as landscape, mechanized death</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="nuclear-age-poetry">Nuclear Age Poetry</h3>
+<ul>
+  <li><strong>Allen Ginsberg</strong>
+    <ul>
+      <li><em>“Plutonian Ode”</em> - Nuclear materials as gods, industrial worship, contamination fear</li>
+      <li><em>“Howl”</em> - Cultural destruction, generational madness, institutional violence</li>
+    </ul>
+  </li>
+  <li><strong>Adrienne Rich</strong>
+    <ul>
+      <li><em>“The School Among the Ruins”</em> - Education amid destruction, knowledge preservation</li>
+      <li><em>“What Kind of Times Are These”</em> - Speaking truth in dangerous times</li>
+    </ul>
+  </li>
+  <li><strong>Carolyn Forché</strong>
+    <ul>
+      <li><em>“The Country Between Us”</em> - Living through political violence, witness testimony</li>
+      <li><em>“The Angel of History”</em> - Memory and trauma, historical reckoning</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="contemporary-conflict-poetry">Contemporary Conflict Poetry</h3>
+<ul>
+  <li><strong>Brian Turner</strong> (Iraq War veteran)
+    <ul>
+      <li><em>“Here, Bullet”</em> - Direct address to violence, soldier’s perspective</li>
+      <li><em>“Jundee Ameriki”</em> - Cultural collision, occupation psychology</li>
+    </ul>
+  </li>
+  <li><strong>Kevin Powers</strong>
+    <ul>
+      <li><em>“Letter Composed During a Lull in the Fighting”</em> - War letters home, emotional distance</li>
+      <li><em>“The Yellow Birds”</em> - PTSD, survivor guilt, memory fragments</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="environmental-destruction--apocalypse">Environmental Destruction &amp; Apocalypse</h2>
+
+<h3 id="romantic-apocalypse">Romantic Apocalypse</h3>
+<ul>
+  <li><strong>Lord Byron</strong>
+    <ul>
+      <li><em>“Darkness”</em> - Sun extinguished, civilizational collapse, final human</li>
+      <li><em>“The Destruction of Sennacherib”</em> - Divine judgment, imperial fall</li>
+    </ul>
+  </li>
+  <li><strong>Percy Bysshe Shelley</strong>
+    <ul>
+      <li><em>“Ozymandias”</em> - Imperial hubris, time’s erosion, forgotten power</li>
+      <li><em>“Mont Blanc”</em> - Nature’s indifference, human insignificance, sublime terror</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="modern-environmental-poetry">Modern Environmental Poetry</h3>
+<ul>
+  <li><strong>Robinson Jeffers</strong>
+    <ul>
+      <li><em>“The Purse-Seine”</em> - Humanity trapped, mass society critique, environmental perspective</li>
+      <li><em>“Shine, Perishing Republic”</em> - Imperial decline, cyclical history, natural endurance</li>
+    </ul>
+  </li>
+  <li><strong>Gary Snyder</strong>
+    <ul>
+      <li><em>“Smokey the Bear Sutra”</em> - Environmental destruction, Buddhist ecology, mythic resistance</li>
+      <li><em>“The Practice of the Wild”</em> - Reconnection with nature, survival wisdom</li>
+    </ul>
+  </li>
+  <li><strong>Adrienne Rich</strong>
+    <ul>
+      <li><em>“Storm Warnings”</em> - Environmental crisis metaphors, preparedness, vulnerability</li>
+      <li><em>“Diving into the Wreck”</em> - Exploring damage, seeking truth, personal archaeology</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="climate-change-poetry">Climate Change Poetry</h3>
+<ul>
+  <li><strong>Jorie Graham</strong>
+    <ul>
+      <li><em>“Sea Change”</em> - Ocean warming, species loss, temporal compression</li>
+      <li><em>“The Hurrying-Home Poems”</em> - Urgent environmental witness, time running out</li>
+    </ul>
+  </li>
+  <li><strong>Craig Santos Perez</strong>
+    <ul>
+      <li><em>“Praise Songs for the Mariana Islands”</em> - Pacific nuclear testing, indigenous land loss</li>
+      <li><em>“Habitat Threshold”</em> - Species extinction, environmental tipping points</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="post-disaster-recovery--resilience">Post-Disaster Recovery &amp; Resilience</h2>
+
+<h3 id="reconstruction-poetry">Reconstruction Poetry</h3>
+<ul>
+  <li><strong>Muriel Rukeyser</strong>
+    <ul>
+      <li><em>“The Book of the Dead”</em> - Industrial disaster (Hawk’s Nest Tunnel), worker exploitation</li>
+      <li><em>“Letter to the Front”</em> - War’s aftermath, rebuilding communities, sustained hope</li>
+    </ul>
+  </li>
+  <li><strong>Gwendolyn Brooks</strong>
+    <ul>
+      <li><em>“We Real Cool”</em> - Urban youth, survival strategies, community identity</li>
+      <li><em>“The Bean Eaters”</em> - Poverty with dignity, small resiliences, daily survival</li>
+    </ul>
+  </li>
+  <li><strong>Lucille Clifton</strong>
+    <ul>
+      <li><em>“won’t you celebrate with me”</em> - Self-creation after destruction, survival as triumph</li>
+      <li><em>“the lost baby poem”</em> - Grief transformation, continuing life, community support</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="diaspora--displacement">Diaspora &amp; Displacement</h3>
+<ul>
+  <li><strong>Juan Felipe Herrera</strong>
+    <ul>
+      <li><em>“Border-Crosser with a Lamborghini Dream”</em> - Migration, survival, cultural navigation</li>
+      <li><em>“Let Me Tell You What a Poem Brings”</em> - Art sustaining communities, cultural preservation</li>
+    </ul>
+  </li>
+  <li><strong>Ocean Vuong</strong>
+    <ul>
+      <li><em>“Someday I’ll Love Ocean Vuong”</em> - Intergenerational trauma, family survival stories</li>
+      <li><em>“Prayer for the Newly Damned”</em> - Finding hope in inherited damage</li>
+    </ul>
+  </li>
+  <li><strong>Warsan Shire</strong>
+    <ul>
+      <li><em>“Home”</em> - Refugee experience, forced migration, survival choices</li>
+      <li><em>“Backwards”</em> - Reversing trauma, imagining healing, temporal resistance</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="memory--historical-trauma">Memory &amp; Historical Trauma</h2>
+
+<h3 id="holocaust--genocide-poetry">Holocaust &amp; Genocide Poetry</h3>
+<ul>
+  <li><strong>Paul Celan</strong>
+    <ul>
+      <li><em>“Death Fugue”</em> - Systematic murder, language breaking down, beauty in horror</li>
+      <li><em>“Psalm”</em> - Speaking for the disappeared, bearing witness, sacred absence</li>
+    </ul>
+  </li>
+  <li><strong>Primo Levi</strong>
+    <ul>
+      <li><em>“Shema”</em> - Remembrance command, witness responsibility, human dignity</li>
+      <li><em>“If This Is a Man”</em> - Questioning humanity, survival ethics, institutional evil</li>
+    </ul>
+  </li>
+  <li><strong>Carolyn Forché</strong>
+    <ul>
+      <li><em>“The Colonel”</em> - State violence, witness testimony, political poetry</li>
+      <li><em>“Return”</em> - Post-conflict return, landscape memory, community healing</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cultural-memory">Cultural Memory</h3>
+<ul>
+  <li><strong>Joy Harjo</strong>
+    <ul>
+      <li><em>“An American Sunrise”</em> - Indigenous survival, cultural persistence, historical reckoning</li>
+      <li><em>“Perhaps the World Ends Here”</em> - Kitchen table as center, daily ritual, community continuity</li>
+    </ul>
+  </li>
+  <li><strong>Li-Young Lee</strong>
+    <ul>
+      <li><em>“The Cleaving”</em> - Family history, immigration trauma, identity formation</li>
+      <li><em>“From Blossoms”</em> - Beauty amid suffering, seasonal renewal, simple pleasures</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="resistance--underground-movements">Resistance &amp; Underground Movements</h2>
+
+<h3 id="political-resistance-poetry">Political Resistance Poetry</h3>
+<ul>
+  <li><strong>Mahmoud Darwish</strong>
+    <ul>
+      <li><em>“We Have on This Earth What Makes Life Worth Living”</em> - Resistance through beauty, cultural survival</li>
+      <li><em>“State of Siege”</em> - Living under occupation, daily resistance, hope cultivation</li>
+    </ul>
+  </li>
+  <li><strong>Audre Lorde</strong>
+    <ul>
+      <li><em>“A Litany for Survival”</em> - Speaking dangerous truths, community protection, courage cultivation</li>
+      <li><em>“Power”</em> - Systemic violence, witness responsibility, action imperative</li>
+    </ul>
+  </li>
+  <li><strong>June Jordan</strong>
+    <ul>
+      <li><em>“Poem About My Rights”</em> - Personal and political connection, resistance necessity</li>
+      <li><em>“Who Look at Me”</em> - Identity assertion, cultural visibility, self-definition</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="undergroundsamizdat-poetry">Underground/Samizdat Poetry</h3>
+<ul>
+  <li><strong>Anna Akhmatova</strong>
+    <ul>
+      <li><em>“Requiem”</em> - Stalin’s purges, memorial poetry, secret preservation</li>
+      <li><em>“The Way of All the Earth”</em> - Witness bearing, cultural memory, artistic survival</li>
+    </ul>
+  </li>
+  <li><strong>Osip Mandelstam</strong>
+    <ul>
+      <li><em>“We Live, Deaf to the Land Beneath Us”</em> - Political criticism, dangerous speech, artistic courage</li>
+      <li><em>“Stalin Epigram”</em> - Direct confrontation, artistic martyrdom, truth-telling</li>
+    </ul>
+  </li>
+  <li><strong>Václav Havel</strong>
+    <ul>
+      <li><em>“Letters to Olga”</em> - Prison correspondence, intellectual resistance, hope maintenance</li>
+      <li>Various political essays and poems - Peaceful resistance, truth and power, moral leadership</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="mysticism--spirituality-in-dark-times">Mysticism &amp; Spirituality in Dark Times</h2>
+
+<h3 id="religious-poetry-in-crisis">Religious Poetry in Crisis</h3>
+<ul>
+  <li><strong>Gerard Manley Hopkins</strong>
+    <ul>
+      <li><em>“God’s Grandeur”</em> - Divine presence in industrial world, nature’s endurance</li>
+      <li><em>“The Windhover”</em> - Beauty transcending destruction, spiritual inspiration</li>
+    </ul>
+  </li>
+  <li><strong>T.S. Eliot</strong>
+    <ul>
+      <li><em>“The Waste Land”</em> - Cultural destruction, spiritual aridity, fragmented meaning</li>
+      <li><em>“Four Quartets”</em> - Time and eternity, finding meaning in chaos, spiritual discipline</li>
+    </ul>
+  </li>
+  <li><strong>Rainer Maria Rilke</strong>
+    <ul>
+      <li><em>“Duino Elegies”</em> - Human vulnerability, spiritual transformation, beauty in suffering</li>
+      <li><em>“Letters to a Young Poet”</em> - Artistic vocation, solitude necessity, inner development</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="contemporary-spiritual-poetry">Contemporary Spiritual Poetry</h3>
+<ul>
+  <li><strong>Mary Oliver</strong>
+    <ul>
+      <li><em>“Wild Geese”</em> - Natural spirituality, belonging despite failure, redemption possibility</li>
+      <li><em>“The Summer Day”</em> - Attention as prayer, life’s preciousness, purpose questioning</li>
+    </ul>
+  </li>
+  <li><strong>Jack Gilbert</strong>
+    <ul>
+      <li><em>“A Brief for the Defense”</em> - Joy as resistance, beauty obligation, hope cultivation</li>
+      <li><em>“Refusing Heaven”</em> - Choosing difficult love, earthly commitment, human responsibility</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="oral-tradition--community-voices">Oral Tradition &amp; Community Voices</h2>
+
+<h3 id="spoken-word--performance">Spoken Word &amp; Performance</h3>
+<ul>
+  <li><strong>Maya Angelou</strong>
+    <ul>
+      <li><em>“Still I Rise”</em> - Resilience declaration, community strength, historical survival</li>
+      <li><em>“On the Pulse of Morning”</em> - National healing, inclusive vision, renewal possibility</li>
+    </ul>
+  </li>
+  <li><strong>Amiri Baraka</strong>
+    <ul>
+      <li><em>“Somebody Blew Up America”</em> - Political analysis, systemic critique, community awakening</li>
+      <li><em>“Black Art”</em> - Cultural revolution, artistic purpose, community empowerment</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="traditional-forms-adapted">Traditional Forms Adapted</h3>
+<ul>
+  <li><strong>Seamus Heaney</strong>
+    <ul>
+      <li><em>“Digging”</em> - Cultural continuity, work dignity, artistic inheritance</li>
+      <li><em>“The Cure at Troy”</em> - Classical adaptation, political allegory, hope cultivation</li>
+    </ul>
+  </li>
+  <li><strong>Derek Walcott</strong>
+    <ul>
+      <li><em>“The Schooner Flight”</em> - Caribbean identity, colonial aftermath, cultural synthesis</li>
+      <li><em>“Omeros”</em> - Epic adaptation, postcolonial narrative, community celebration</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="application-to-alkebulan-worldbuilding">Application to Alkebulan Worldbuilding</h2>
+
+<h3 id="in-world-poetry-forms">In-World Poetry Forms</h3>
+
+<h4 id="survivor-ballads">Survivor Ballads</h4>
+<ul>
+  <li><strong>Model</strong>: War poetry, folk ballads, memorial songs</li>
+  <li><strong>Theme</strong>: Cataclysm memories, hero tales, warning stories</li>
+  <li><strong>Function</strong>: Cultural memory, community identity, historical preservation</li>
+  <li><strong>Example</strong>: Songs about the last days of the empires, evacuation stories</li>
+</ul>
+
+<h4 id="remnant-chants">Remnant Chants</h4>
+<ul>
+  <li><strong>Model</strong>: Religious poetry, protective spells, work songs</li>
+  <li><strong>Theme</strong>: Magical safety, contamination warnings, purification rituals</li>
+  <li><strong>Function</strong>: Practical magic, community protection, shared knowledge</li>
+  <li><strong>Example</strong>: Rhymes for detecting magical contamination, decontamination procedures</li>
+</ul>
+
+<h4 id="resistance-verses">Resistance Verses</h4>
+<ul>
+  <li><strong>Model</strong>: Underground poetry, protest songs, coded messages</li>
+  <li><strong>Theme</strong>: Imperial criticism, secret communication, hope cultivation</li>
+  <li><strong>Function</strong>: Political organization, morale building, identity preservation</li>
+  <li><strong>Example</strong>: Coded poems about Remnant Keeper activities, anti-imperial sentiment</li>
+</ul>
+
+<h4 id="traders-tales">Trader’s Tales</h4>
+<ul>
+  <li><strong>Model</strong>: Epic poetry, travel narratives, merchant songs</li>
+  <li><strong>Theme</strong>: Trade routes, distant lands, cultural exchange</li>
+  <li><strong>Function</strong>: Information sharing, entertainment, cultural bridge-building</li>
+  <li><strong>Example</strong>: Stories of Port Zephyr’s wealth, warnings about dangerous territories</li>
+</ul>
+
+<h3 id="npcs-as-poets">NPCs as Poets</h3>
+
+<h4 id="the-memorial-keeper">The Memorial Keeper</h4>
+<ul>
+  <li><strong>Background</strong>: Survivor family, oral historian, community elder</li>
+  <li><strong>Poetry Style</strong>: Elegiac, memorial, witness testimony</li>
+  <li><strong>Role</strong>: Preserving pre-Cataclysm memory, guiding community decisions</li>
+  <li><strong>Example</strong>: Recites names of the lost, tells stories of the old world</li>
+</ul>
+
+<h4 id="the-underground-bard">The Underground Bard</h4>
+<ul>
+  <li><strong>Background</strong>: Political dissenter, traveling performer, coded communicator</li>
+  <li><strong>Poetry Style</strong>: Satirical, allegorical, cryptically political</li>
+  <li><strong>Role</strong>: Anti-imperial messaging, morale building, network communication</li>
+  <li><strong>Example</strong>: Performs “innocent” folk songs with hidden political meanings</li>
+</ul>
+
+<h4 id="the-contamination-prophet">The Contamination Prophet</h4>
+<ul>
+  <li><strong>Background</strong>: Remnant-touched, mystical experience, warning voice</li>
+  <li><strong>Poetry Style</strong>: Apocalyptic, visionary, environmental</li>
+  <li><strong>Role</strong>: Warning communities, interpreting magical signs, spiritual guidance</li>
+  <li><strong>Example</strong>: Prophetic verses about spreading contamination, magical storms</li>
+</ul>
+
+<h4 id="the-hope-singer">The Hope Singer</h4>
+<ul>
+  <li><strong>Background</strong>: Community organizer, cultural preservationist, renewal advocate</li>
+  <li><strong>Poetry Style</strong>: Uplifting, traditional, community-building</li>
+  <li><strong>Role</strong>: Maintaining morale, organizing festivals, cultural continuity</li>
+  <li><strong>Example</strong>: Songs for harvest festivals, wedding ceremonies, coming-of-age rituals</li>
+</ul>
+
+<h3 id="campaign-integration">Campaign Integration</h3>
+
+<h4 id="session-openings">Session Openings</h4>
+<ul>
+  <li>Begin sessions with in-world poetry that sets mood or foreshadows events</li>
+  <li>Use poems as cultural exposition, revealing world history and values</li>
+  <li>Let players discover poems as artifacts, clues, or cultural touchstones</li>
+</ul>
+
+<h4 id="character-development">Character Development</h4>
+<ul>
+  <li>Encourage players to write character poetry expressing their backgrounds</li>
+  <li>Use poetry writing as downtime activity, developing character voice</li>
+  <li>Allow bards and other characters to create propaganda, love songs, memorial verses</li>
+</ul>
+
+<h4 id="world-building-tools">World Building Tools</h4>
+<ul>
+  <li>Create regional poetry styles reflecting different cultures</li>
+  <li>Use meter and rhyme schemes to distinguish magical from mundane verses</li>
+  <li>Develop poetry competitions, slams, and festivals as social events</li>
+</ul>
+
+<h4 id="plot-devices">Plot Devices</h4>
+<ul>
+  <li>Hidden messages in seemingly innocent poems</li>
+  <li>Prophecies and warnings embedded in traditional verses</li>
+  <li>Cultural conflicts expressed through competing poetic traditions</li>
+  <li>Memory recovery through half-remembered childhood songs</li>
+</ul>
+
+<hr />
+
+<h2 id="recommended-reading-approach">Recommended Reading Approach</h2>
+
+<h3 id="start-with">Start With</h3>
+<ol>
+  <li><strong>Wilfred Owen</strong> - War horror and institutional critique</li>
+  <li><strong>Adrienne Rich</strong> - Environmental destruction and witness testimony</li>
+  <li><strong>Carolyn Forché</strong> - Political violence and community survival</li>
+  <li><strong>Muriel Rukeyser</strong> - Industrial disaster and worker solidarity</li>
+  <li><strong>Joy Harjo</strong> - Cultural survival and community resilience</li>
+</ol>
+
+<h3 id="for-specific-themes">For Specific Themes</h3>
+<ul>
+  <li><strong>Nuclear anxiety</strong>: Allen Ginsberg, Carolyn Forché, Craig Santos Perez</li>
+  <li><strong>Environmental collapse</strong>: Robinson Jeffers, Gary Snyder, Jorie Graham</li>
+  <li><strong>Political resistance</strong>: Mahmoud Darwish, Audre Lorde, June Jordan</li>
+  <li><strong>Community resilience</strong>: Gwendolyn Brooks, Lucille Clifton, Maya Angelou</li>
+  <li><strong>Memory and trauma</strong>: Paul Celan, Anna Akhmatova, Ocean Vuong</li>
+</ul>
+
+<h3 id="for-atmosphere-and-tone">For Atmosphere and Tone</h3>
+<ul>
+  <li><strong>Dark beauty</strong>: Rainer Maria Rilke, Gerard Manley Hopkins, Li-Young Lee</li>
+  <li><strong>Gritty realism</strong>: Philip Levine, Charles Simic, Sharon Olds</li>
+  <li><strong>Mystical hope</strong>: Mary Oliver, Jack Gilbert, Seamus Heaney</li>
+  <li><strong>Political urgency</strong>: Amiri Baraka, Juan Felipe Herrera, Warsan Shire</li>
+</ul>
+
+<p><em>Remember: Poetry in your world should serve both artistic and practical functions - preserving memory, building community, resisting oppression, and maintaining hope in dark times.</em></p>
+
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <h4>🧭 Navigation</h4>
+
+                        <div class="nav-level">
+                            <div class="nav-level-title">Quick Access</div>
+                            <a href="/alkebulan-wiki/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="nav-level" id="navUp" style="display: none;">
+                            <div class="nav-level-title">Up One Level</div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="contamination-warning">
+                        <strong>⚠️ WARNING</strong><br>
+                        This archive contains<br>
+                        <em>Remnant Magic traces</em><br>
+                        Access with caution
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Robert McCowan. Classified Archive System for Alkebulan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
+
+        function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
+
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Simplified navigation system
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
+
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '/alkebulan-wiki/' : '/alkebulan-wiki/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                }
+
+                // Helper function to escape HTML
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
+            } else {
+                // Default to player view
+                switchToPlayerView();
+            }
+
+            // Setup simple navigation
+            setupSimpleNavigation();
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
+        });
+    </script>
+</body>
+</html>

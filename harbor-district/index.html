@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<!-- _layouts/default.html with Dynamic View Toggle -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baseurl" content="/alkebulan-wiki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harbor District | Alkebulan</title>
+    <meta name="description" content="A dark fantasy continent recovering from magical apocalypse">
+
+    <!-- SEO -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Harbor District | Alkebulan</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Harbor District" />
+<meta name="author" content="Robert McCowan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dark fantasy continent recovering from magical apocalypse" />
+<meta property="og:description" content="A dark fantasy continent recovering from magical apocalypse" />
+<link rel="canonical" href="https://cowcow2831.github.io/alkebulan-wiki/harbor-district/" />
+<meta property="og:url" content="https://cowcow2831.github.io/alkebulan-wiki/harbor-district/" />
+<meta property="og:site_name" content="Alkebulan" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Harbor District" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Robert McCowan"},"dateModified":"2025-08-03T00:00:00+00:00","datePublished":"2025-08-03T00:00:00+00:00","description":"A dark fantasy continent recovering from magical apocalypse","headline":"Harbor District","mainEntityOfPage":{"@type":"WebPage","@id":"https://cowcow2831.github.io/alkebulan-wiki/harbor-district/"},"url":"https://cowcow2831.github.io/alkebulan-wiki/harbor-district/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/alkebulan-wiki/assets/favicon.ico">
+
+    <!-- Navigation Data -->
+    <!-- <script src="/alkebulan-wiki/assets/js/navigation.js"></script> -->
+
+    <!-- Styles -->
+    <style>
+        /* Post-Nuclear Contaminated Archive Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            /* Post-Nuclear Color Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #c0c0c0;
+            --text-secondary: #888888;
+            --text-muted: #666666;
+
+            /* Contamination Colors */
+            --toxic-green: #7cfc00;
+            --rust-orange: #d67c2a;
+            --warning-yellow: #e6e619;
+            --radiation-orange: #ff6b35;
+            --ash-gray: #4a4a4a;
+            --danger-red: #ff3333;
+
+            /* Effects */
+            --glow-green: 0 0 10px rgba(124, 252, 0, 0.3);
+            --glow-orange: 0 0 8px rgba(255, 107, 53, 0.4);
+            --text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            --border-glow: 0 0 5px rgba(124, 252, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1f1f1f 100%);
+            min-height: 100vh;
+            text-shadow: var(--text-shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contamination Pulse Animation */
+        @keyframes contamination-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .contaminated {
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Header - Made more compact for mobile */
+        header {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            border-bottom: 3px solid var(--toxic-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warning-yellow);
+            text-decoration: none;
+            text-shadow: var(--text-shadow), var(--glow-orange);
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--text-shadow), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        .site-title::before {
+            content: "☢️ ";
+            color: var(--radiation-orange);
+        }
+
+        /* View Toggle Button */
+        .view-toggle {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: var(--text-shadow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        .view-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4), var(--glow-orange);
+        }
+
+        .view-toggle.player-mode {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-toggle.dm-mode {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* View Mode Indicator */
+        .view-mode-indicator {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--toxic-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+            animation: contamination-pulse 2s ease-in-out infinite;
+            margin: 0 1rem;
+        }
+
+        .view-mode-player {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        .view-mode-dm {
+            background: linear-gradient(45deg, var(--radiation-orange), var(--danger-red));
+        }
+
+        /* Header Controls */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid var(--ash-gray);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(74, 74, 74, 0.2);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-color: var(--toxic-green);
+            box-shadow: var(--glow-green);
+            transform: translateY(-2px);
+        }
+
+        nav a::before {
+            content: "☢️";
+            margin-right: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Content filtering classes */
+        .dm-only {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        .player-safe {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+
+        /* Hidden in player mode */
+        .player-view .dm-only {
+            display: none;
+        }
+
+        /* Hidden content styling */
+        .content-hidden {
+            opacity: 0.3;
+            font-style: italic;
+        }
+
+        .content-hidden::before {
+            content: "[CLASSIFIED] ";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid var(--ash-gray);
+            position: relative;
+        }
+
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--toxic-green), var(--warning-yellow), var(--radiation-orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--ash-gray) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 2px solid var(--rust-orange);
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar::before {
+            content: "⚠️ CONTAMINATED DATA";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 4px;
+            border: 1px solid var(--radiation-orange);
+        }
+
+        /* Sidebar Navigation Sections */
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--warning-yellow);
+            text-align: center;
+            border-bottom: 1px solid var(--ash-gray);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-level {
+            margin-bottom: 1rem;
+        }
+
+        .nav-level-title {
+            font-size: 0.85rem;
+            color: var(--rust-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: var(--rust-orange);
+            color: var(--text-primary);
+            border-left-color: var(--toxic-green);
+            transform: translateX(5px);
+        }
+
+        .nav-item.current {
+            background: rgba(124, 252, 0, 0.1);
+            border-left-color: var(--toxic-green);
+            color: var(--text-primary);
+        }
+
+        .nav-item::before {
+            margin-right: 0.5rem;
+        }
+
+        .nav-up::before { content: "⬆️"; }
+        .nav-same::before { content: "↔️"; }
+        .nav-down::before { content: "⬇️"; }
+        .nav-home::before { content: "🏠"; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--warning-yellow);
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            color: var(--toxic-green);
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--rust-orange);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+        }
+
+        h6 {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--warning-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--toxic-green);
+            text-shadow: var(--glow-green);
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+        }
+
+        .main-content ul li::marker,
+        .sidebar us li::marker {
+            content: "☢️ ";
+            color: var(--toxic-green);
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin: 1.5rem 0;
+            border: 2px solid var(--ash-gray);
+            transition: all 0.3s ease;
+        }
+
+        img:hover {
+            border-color: var(--toxic-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6), var(--glow-green);
+            transform: scale(1.02);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 5px solid var(--radiation-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0 6px 6px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: "⚠️";
+            position: absolute;
+            top: 1rem;
+            left: -15px;
+            background: var(--radiation-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Code */
+        code {
+            background: var(--bg-primary);
+            color: var(--toxic-green);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            border: 1px solid var(--ash-gray);
+        }
+
+        pre {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 2px solid var(--toxic-green);
+            box-shadow: var(--glow-green);
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        th {
+            background: var(--rust-orange);
+            color: white;
+            font-weight: bold;
+            text-shadow: var(--text-shadow);
+        }
+
+        tr:hover {
+            background: rgba(124, 252, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--ash-gray) 50%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 3px solid var(--toxic-green);
+            color: var(--text-secondary);
+            box-shadow: var(--border-glow);
+        }
+
+        footer::before {
+            content: "☢️ CONTAMINATION WARNING: All materials subject to Remnant Magic exposure ☢️";
+            display: block;
+            color: var(--radiation-orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            animation: contamination-pulse 3s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive - Compact Header */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .site-title {
+                font-size: 1.3rem;
+                order: 1;
+            }
+
+            .view-mode-indicator {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+                margin: 0 0.5rem;
+                order: 2;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                order: 3;
+                width: 100%;
+            }
+
+            .view-toggle {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                order: -1;
+                position: static;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .header-content {
+                padding: 0.7rem 0;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Special Effects */
+        .contamination-warning {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(124, 252, 0, 0.1));
+            border: 2px solid var(--radiation-orange);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            animation: contamination-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hide the default Jekyll title since we'll handle it in CSS */
+        .main-content > h1:first-child {
+            display: none;
+        }
+
+        /* Custom page title styling */
+        .page-title {
+            font-size: 2.8rem;
+            color: var(--warning-yellow);
+            border-bottom: 3px solid var(--toxic-green);
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .page-title::before {
+            content: "☢️";
+            color: var(--radiation-orange);
+            margin-right: 1rem;
+            text-shadow: var(--glow-orange);
+        }
+
+        /* Mobile page title adjustment */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/alkebulan-wiki/" class="site-title">Alkebulan</a>
+                    <span class="view-mode-indicator view-mode-player" id="viewIndicator">PLAYER VIEW</span>
+                </div>
+                <div class="header-controls">
+                    <button class="view-toggle player-mode" id="viewToggle" onclick="toggleView()">
+                        🔓 DM ACCESS
+                    </button>
+                    <nav>
+                        <ul>
+                            
+                            <li><a href="/alkebulan-wiki/" class="nav-item" data-access="public">Home</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/port-zephyr/" class="nav-item" data-access="public">Port Zephyr</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/harbor-district/" class="nav-item" data-access="player">Harbor District</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/player-handout-whispers-of-the-wastes/" class="nav-item" data-access="player">Player Handout</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/dm-notes/" class="nav-item" data-access="dm">DM Notes</a></li>
+                            
+                            <li><a href="/alkebulan-wiki/secrets/" class="nav-item" data-access="dm">Secrets</a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <article class="main-content">
+                    
+                    <h1 class="page-title">Harbor District</h1>
+                    
+
+                    <div id="content">
+                        <h1 id="harbor-district">Harbor District</h1>
+
+<h2 id="overview">Overview</h2>
+<p><strong>Type:</strong> Industrial/Maritime Hub and Contamination Zone
+<strong>Region:</strong> <a href="/alkebulan-wiki/the-cerulean-reach/">The Cerulean Reach</a> (<a href="/alkebulan-wiki/port-zephyr/">Port Zephyr</a>)
+<strong>Population:</strong> Approximately 3,000 residents, plus 1,500+ transient workers and refugees
+<strong>Government:</strong> Overseen by Harbor Officials under direct Council control, with heavily armed City Watch Officers maintaining brutal order
+<strong>Contamination Level:</strong> Moderate to High (varies by location and tidal conditions)</p>
+
+<h2 id="description">Description</h2>
+
+<p>The Harbor District sprawls along <a href="/alkebulan-wiki/port-zephyr/">Port Zephyr</a>’s contaminated waterfront like a festering wound that the city cannot afford to heal. This industrial zone serves as both the source of the city’s wealth and the graveyard of its working class, where massive docks accommodate vessels ranging from desperate fishing boats to imperial merchant galleons and the dangerous experimental Airships that represent humanity’s reckless attempts to bypass ground-based contamination.</p>
+
+<p>The district extends from the main harbor piers through a maze of warehouses, decontamination stations, worker barracks, and businesses that profit from desperation. The architecture reflects harsh pragmatism—reinforced concrete and salvaged steel built to contain contamination as much as to shelter inhabitants. Buildings rarely exceed three stories due to foundation instability from harbor pollution, with ground floors serving as workshops and storage while upper levels house workers in cramped, poorly ventilated quarters.</p>
+
+<p>The harbor itself glows with an eerie phosphorescence after dark, a visible reminder of the magical contamination that permeates every surface. Different sections of the waterfront carry different risks: the <strong>Eastern Glow Docks</strong> are so contaminated that workers require full protective gear and rarely survive more than six months of employment, while the <strong>Western Clean Berths</strong> (a relative term) handle goods bound for the Hill Ward and require only basic decontamination protocols.</p>
+
+<p><strong>Decontamination Infrastructure</strong> dominates the district’s layout. Every major thoroughfare features mandatory washing stations, radiation detectors jury-rigged from pre-Cataclysm salvage, and disposal sites for contaminated materials. The famous <strong>Purge Gates</strong> separate the Harbor District from cleaner areas, requiring all workers to undergo painful decontamination procedures before entering other parts of the city.</p>
+
+<p>The district operates on a brutal but necessary rhythm. Dawn brings the <strong>Death Shifts</strong>—workers heading to the most contaminated areas for premium pay and short life expectancy. Midday sees the <strong>Salvage Crews</strong> returning from expeditions to underwater ruins, their hauls potentially valuable enough to justify the cancer they’ve absorbed. Evening transforms the area into a desperate social hub where workers drink away their radiation sickness in taverns that serve as much as hospitals as gathering places.</p>
+
+<h2 id="notable-features">Notable Features</h2>
+
+<p><strong>The Glow Docks (Eastern Harbor)</strong></p>
+<ul>
+  <li><strong>Contamination Level</strong>: Extreme</li>
+  <li><strong>Primary Function</strong>: Handling pre-Cataclysm artifacts and severely contaminated materials</li>
+  <li><strong>Workers</strong>: Condemned criminals, terminally ill volunteers, the desperately poor</li>
+  <li><strong>Safety Protocol</strong>: Full environmental suits required; 6-month maximum service life</li>
+  <li><strong>Economic Impact</strong>: Produces 40% of Port Zephyr’s wealth through artifact trade</li>
+</ul>
+
+<p><strong>Quarantine Pier (Northern Harbor)</strong></p>
+<ul>
+  <li><strong>Purpose</strong>: Inspection and decontamination of vessels from contaminated regions</li>
+  <li><strong>Features</strong>: Isolation chambers, emergency medical facilities, disposal incinerators</li>
+  <li><strong>Personnel</strong>: Medical staff with high turnover rates due to exposure</li>
+  <li><strong>Capacity</strong>: Up to 12 vessels in various stages of decontamination processing</li>
+</ul>
+
+<p><strong>The Bone Yards (Central Harbor)</strong></p>
+<ul>
+  <li><strong>Description</strong>: Ship breaking facility where contaminated vessels are stripped for salvage</li>
+  <li><strong>Hazards</strong>: Metal that burns flesh, toxic fumes, structural collapse</li>
+  <li><strong>Workforce</strong>: Rotating crews with mandatory health monitoring</li>
+  <li><strong>Products</strong>: Salvaged materials for construction and manufacturing</li>
+</ul>
+
+<p><strong>Skyport Terminal (Western Harbor)</strong></p>
+<ul>
+  <li><strong>Function</strong>: Experimental Airships docking and maintenance</li>
+  <li><strong>Construction</strong>: Jury-rigged from pre-Cataclysm materials of questionable stability</li>
+  <li><strong>Risks</strong>: Frequent mechanical failures, crashes, contamination leaks</li>
+  <li><strong>Innovation</strong>: Represents desperate attempts to bypass ground-based contamination routes</li>
+</ul>
+
+<p><strong>The Underdocks (Subterranean)</strong></p>
+<ul>
+  <li><strong>Location</strong>: Flooded pre-Cataclysm infrastructure beneath the harbor</li>
+  <li><strong>Access</strong>: Diving operations for artifact recovery and waste disposal</li>
+  <li><strong>Conditions</strong>: Zero visibility, extreme contamination, structural instability</li>
+  <li><strong>Economics</strong>: High-risk, high-reward salvage operations funded by merchant princes</li>
+</ul>
+
+<p><strong>Worker Medical Center</strong></p>
+<ul>
+  <li><strong>Services</strong>: Radiation treatment, amputation, palliative care</li>
+  <li><strong>Funding</strong>: Merchant guild contributions and imperial subsidies</li>
+  <li><strong>Capacity</strong>: Chronically overwhelmed by contamination cases</li>
+  <li><strong>Research</strong>: Experimental treatments using desperate volunteers</li>
+</ul>
+
+<h2 id="districts-and-neighborhoods">Districts and Neighborhoods</h2>
+
+<p><strong>The Stacks (Northern Section)</strong></p>
+<ul>
+  <li><strong>Housing</strong>: Vertical worker barracks built from shipping containers</li>
+  <li><strong>Population</strong>: Recent refugees and new workers</li>
+  <li><strong>Conditions</strong>: Overcrowded, minimal sanitation, shared decontamination facilities</li>
+  <li><strong>Community</strong>: Strong mutual aid networks born from shared desperation</li>
+</ul>
+
+<p><strong>Dock Boss Territory (Central Section)</strong></p>
+<ul>
+  <li><strong>Control</strong>: Organized labor bosses managing work assignments and protection</li>
+  <li><strong>Services</strong>: Black market goods, informal banking, dispute resolution</li>
+  <li><strong>Politics</strong>: Uneasy cooperation between worker unions and merchant interests</li>
+  <li><strong>Violence</strong>: Regular conflicts over territory and resources</li>
+</ul>
+
+<p><strong>The Clinics (Southern Section)</strong></p>
+<ul>
+  <li><strong>Medical Services</strong>: Treatment for contamination exposure and industrial injuries</li>
+  <li><strong>Practitioners</strong>: Doctors who lost licenses elsewhere, desperate healers, experimental surgeons</li>
+  <li><strong>Payment</strong>: Often in trade goods, labor commitments, or body parts for research</li>
+  <li><strong>Ethics</strong>: Medical care available to anyone, regardless of ability to pay or legal status</li>
+</ul>
+
+<p><strong>Warehouse Row (Western Section)</strong></p>
+<ul>
+  <li><strong>Function</strong>: Storage for goods awaiting decontamination or shipment</li>
+  <li><strong>Security</strong>: Private guards protecting valuable contaminated materials</li>
+  <li><strong>Smuggling</strong>: Hidden chambers for illegal artifact trade</li>
+  <li><strong>Labor</strong>: Loading crews with protective gear and rotation schedules</li>
+</ul>
+
+<h2 id="economic-activities">Economic Activities</h2>
+
+<p><strong>Contaminated Goods Handling</strong></p>
+<ul>
+  <li><strong>Artifact Processing</strong>: Cleaning and preparing pre-Cataclysm technology for sale</li>
+  <li><strong>Material Salvage</strong>: Breaking down contaminated items for reusable components</li>
+  <li><strong>Waste Management</strong>: Disposal of materials too dangerous for other settlements</li>
+  <li><strong>Risk Assessment</strong>: Testing contamination levels for insurance and pricing</li>
+</ul>
+
+<p><strong>Decontamination Services</strong></p>
+<ul>
+  <li><strong>Personal Washing</strong>: Mandatory cleaning for workers and visitors</li>
+  <li><strong>Equipment Treatment</strong>: Decontaminating tools, vehicles, and cargo</li>
+  <li><strong>Medical Screening</strong>: Health checks for contamination exposure</li>
+  <li><strong>Protective Gear</strong>: Manufacturing and maintaining safety equipment</li>
+</ul>
+
+<p><strong>Labor Brokerage</strong></p>
+<ul>
+  <li><strong>Work Assignment</strong>: Matching workers to jobs based on contamination tolerance</li>
+  <li><strong>Life Insurance</strong>: Betting pools on worker survival rates</li>
+  <li><strong>Medical Monitoring</strong>: Tracking health decline for compensation calculations</li>
+  <li><strong>Replacement Services</strong>: Recruiting new workers as others become too sick to continue</li>
+</ul>
+
+<h2 id="social-dynamics">Social Dynamics</h2>
+
+<p><strong>Worker Solidarity</strong></p>
+<ul>
+  <li><strong>Mutual Aid</strong>: Sharing resources, medical care, and survival information</li>
+  <li><strong>Union Organization</strong>: Underground labor movements demanding better safety conditions</li>
+  <li><strong>Cultural Preservation</strong>: Maintaining traditions from workers’ home communities</li>
+  <li><strong>Political Resistance</strong>: Organizing against exploitative working conditions</li>
+</ul>
+
+<p><strong>Class Conflict</strong></p>
+<ul>
+  <li><strong>Dock Boss Authority</strong>: Labor leaders wielding life-and-death power over job assignments</li>
+  <li><strong>Merchant Exploitation</strong>: Owners prioritizing profit over worker safety</li>
+  <li><strong>Government Neglect</strong>: City officials treating the district as a necessary sacrifice zone</li>
+  <li><strong>Imperial Extraction</strong>: Foreign powers profiting from local contamination tolerance</li>
+</ul>
+
+<p><strong>Survival Networks</strong></p>
+<ul>
+  <li><strong>Information Trading</strong>: Sharing knowledge about contamination levels and safe routes</li>
+  <li><strong>Black Market Economy</strong>: Informal trade in protective gear, medicine, and clean food</li>
+  <li><strong>Family Support</strong>: Sending money to relatives while workers slowly die from exposure</li>
+  <li><strong>Community Defense</strong>: Protecting each other from predators who exploit the desperate</li>
+</ul>
+
+<h2 id="current-threats-and-opportunities">Current Threats and Opportunities</h2>
+
+<p><strong>The Crimson Tide Crisis</strong></p>
+<ul>
+  <li><strong>Manifestation</strong>: Red contamination spreading from deep harbor waters</li>
+  <li><strong>Impact</strong>: Previously “safe” areas becoming dangerously contaminated</li>
+  <li><strong>Response</strong>: Emergency evacuations conflicting with economic necessities</li>
+  <li><strong>Investigation</strong>: Unknown whether natural spread or deliberate contamination</li>
+</ul>
+
+<p><strong>Worker Strike Organization</strong></p>
+<ul>
+  <li><strong>Demands</strong>: Better safety equipment, reduced exposure limits, political representation</li>
+  <li><strong>Leadership</strong>: Underground union organizers risking their lives for collective action</li>
+  <li><strong>Opposition</strong>: Merchant princes threatening to import replacement workers</li>
+  <li><strong>Stakes</strong>: Economic shutdown versus continued worker exploitation</li>
+</ul>
+
+<p><strong>Imperial Labor Inspection</strong></p>
+<ul>
+  <li><strong>Official Purpose</strong>: The Amunrai Imperium evaluating “workplace safety standards”</li>
+  <li><strong>Hidden Agenda</strong>: Justifying increased imperial control over contaminated material trade</li>
+  <li><strong>Worker Fear</strong>: Imperial labor standards may be worse than current conditions</li>
+  <li><strong>Political Response</strong>: City officials caught between worker demands and imperial pressure</li>
+</ul>
+
+<p><strong>Artifact Discovery</strong></p>
+<ul>
+  <li><strong>Location</strong>: Construction uncovered powerful pre-Cataclysm technology beneath old warehouses</li>
+  <li><strong>Danger</strong>: Item possibly responsible for increasing contamination levels</li>
+  <li><strong>Competition</strong>: Multiple factions seeking to control the discovery</li>
+  <li><strong>Secrecy</strong>: Information being suppressed to prevent panic</li>
+</ul>
+
+<h2 id="secrets--mysteries">Secrets &amp; Mysteries</h2>
+
+<p><strong>The Deep Breach</strong></p>
+<ul>
+  <li>Harbor contamination originates from a crack in pre-Cataclysm containment systems</li>
+  <li>City authorities know about the breach but lack resources to repair it</li>
+  <li>The leak is slowly accelerating, threatening to make the entire harbor uninhabitable</li>
+</ul>
+
+<p><strong>Dock Boss Confederation</strong></p>
+<ul>
+  <li>Labor leaders secretly coordinating across multiple cities for regional worker uprising</li>
+  <li>Network includes connections to resistance movements opposing imperial expansion</li>
+  <li>Plans involve shutting down contaminated material trade to force safety improvements</li>
+</ul>
+
+<p><strong>Medical Experimentation</strong></p>
+<ul>
+  <li>Worker Medical Center conducting illegal research on contamination effects</li>
+  <li>Experimental treatments being tested on desperate workers without proper consent</li>
+  <li>Research funded by imperial interests seeking to understand Remnant Magic effects</li>
+</ul>
+
+<p><strong>The Ghost Ships</strong></p>
+<ul>
+  <li>Vessels arriving at night with no living crew, carrying unknown cargo</li>
+  <li>Ships may be operating under pre-Cataclysm automation that’s still functional</li>
+  <li>Cargo includes materials that don’t match any known contamination sources</li>
+</ul>
+
+<p><strong>Smuggling Network</strong></p>
+<ul>
+  <li>Complex underground economy moving people, information, and contraband</li>
+  <li>Routes include flooded pre-Cataclysm tunnels connecting to other cities</li>
+  <li>Network may be providing escape routes for political dissidents and contamination refugees</li>
+</ul>
+
+<h2 id="adventure-considerations">Adventure Considerations</h2>
+
+<p><strong>Environmental Hazards</strong></p>
+<ul>
+  <li>Contamination exposure requiring protective gear and medical monitoring</li>
+  <li>Structural instability from corroded foundations and makeshift construction</li>
+  <li>Industrial accidents involving dangerous materials and experimental technology</li>
+  <li>Weather events that spread contamination or destroy protective infrastructure</li>
+</ul>
+
+<p><strong>Social Complexity</strong></p>
+<ul>
+  <li>Worker communities with strong solidarity but also desperate internal competition</li>
+  <li>Labor bosses wielding power through both protection and exploitation</li>
+  <li>Moral dilemmas involving survival versus exploitation of others</li>
+  <li>Political intrigue involving worker rights, merchant profits, and imperial interests</li>
+</ul>
+
+<p><strong>Economic Opportunities</strong></p>
+<ul>
+  <li>High-risk salvage operations offering substantial rewards for contaminated materials</li>
+  <li>Decontamination services essential for city survival but requiring dangerous work</li>
+  <li>Information brokerage about contamination levels, safety procedures, and political developments</li>
+  <li>Underground markets providing goods and services unavailable through official channels</li>
+</ul>
+
+<h2 id="party-history">Party History</h2>
+<ul>
+  <li></li>
+  <li></li>
+</ul>
+
+<h2 id="notes">Notes</h2>
+
+<p>The Harbor District represents the fundamental moral contradiction of post-Cataclysm survival: the necessities that keep society alive are slowly killing those who provide them. Every economic transaction involves choosing between profit and human life, every safety measure comes at the cost of reduced productivity, and every day of continued prosperity is built on the calculated sacrifice of workers who have no other options.</p>
+
+<p>The district serves as a perfect microcosm of the campaign’s core themes—environmental contamination as ongoing crisis, economic exploitation disguised as mutual benefit, and communities finding solidarity in shared suffering while being pitted against each other by systemic pressures beyond their control.</p>
+
+<hr />
+
+<p><em>In the Harbor District, the true cost of survival is always visible in the faces of those who pay it.</em></p>
+
+                    </div>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <h4>🧭 Navigation</h4>
+
+                        <div class="nav-level">
+                            <div class="nav-level-title">Quick Access</div>
+                            <a href="/alkebulan-wiki/" class="nav-item nav-home">Archive Home</a>
+                            <div id="recentPages">
+                                <!-- Recent pages will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="nav-level" id="navUp" style="display: none;">
+                            <div class="nav-level-title">Up One Level</div>
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="contamination-warning">
+                        <strong>⚠️ WARNING</strong><br>
+                        This archive contains<br>
+                        <em>Remnant Magic traces</em><br>
+                        Access with caution
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Robert McCowan. Classified Archive System for Alkebulan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // View toggle functionality
+        let currentView = 'player'; // Default to player view
+        let originalContent = ''; // Store original content
+
+        function toggleView() {
+            if (currentView === 'dm') {
+                // Switch to player view
+                switchToPlayerView();
+            } else {
+                // Attempt to switch to DM view (requires password)
+                promptForDMAccess();
+            }
+        }
+
+        function promptForDMAccess() {
+            const password = prompt("🔒 DM ACCESS REQUIRED\n\nEnter the contamination clearance code:");
+
+            if (password === null) {
+                return; // User cancelled
+            }
+
+            // Check password (you can change this to whatever you want)
+            if (password === "alkebulan2025" || password === "dm" || password === "contamination") {
+                switchToDMView();
+
+                // Store DM access temporarily (until page refresh)
+                sessionStorage.setItem('dmAccess', 'granted');
+            } else {
+                alert("🚫 ACCESS DENIED\n\nInvalid contamination clearance code.\nContact your Remnant Keeper for proper authorization.");
+            }
+        }
+
+        function switchToDMView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'dm';
+            toggle.textContent = '🔄 SWITCH TO PLAYER VIEW';
+            toggle.className = 'view-toggle dm-mode';
+            indicator.textContent = 'DM VIEW';
+            indicator.className = 'view-mode-indicator view-mode-dm';
+            body.className = 'dm-view';
+
+            // Show all content with DM highlighting
+            filterContent('dm');
+            hideNavItems('dm');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function switchToPlayerView() {
+            const toggle = document.getElementById('viewToggle');
+            const indicator = document.getElementById('viewIndicator');
+            const body = document.body;
+
+            currentView = 'player';
+            toggle.textContent = '🔓 DM ACCESS';
+            toggle.className = 'view-toggle player-mode';
+            indicator.textContent = 'PLAYER VIEW';
+            indicator.className = 'view-mode-indicator view-mode-player';
+            body.className = 'player-view';
+
+            // Hide DM-only content
+            filterContent('player');
+            hideNavItems('player');
+
+            // Clear DM session access
+            sessionStorage.removeItem('dmAccess');
+
+            // Save preference
+            localStorage.setItem('wikiView', currentView);
+        }
+
+        function filterContent(viewMode) {
+            const content = document.getElementById('content');
+
+            if (!originalContent) {
+                originalContent = content.innerHTML; // Store original on first run
+            }
+
+            let html = originalContent;
+
+            if (viewMode === 'player') {
+                // Remove DM-only sections completely
+                html = html.replace(/<!-- DM_START -->([\s\S]*?)<!-- DM_END -->/g, '');
+
+                // Remove player-safe markers but keep the content
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            } else {
+                // DM view - highlight only DM sections, leave player content normal
+                html = html.replace(/<!-- DM_START -->/g, '<div class="dm-only" style="border-left: 4px solid var(--danger-red); padding-left: 1rem; background: rgba(255, 51, 51, 0.1); margin: 1rem 0; border-radius: 0 6px 6px 0;"><strong style="color: var(--danger-red); font-size: 0.9rem;">🔒 DM ONLY:</strong><br>');
+                html = html.replace(/<!-- DM_END -->/g, '</div>');
+
+                // Remove player-safe markers but don't highlight
+                html = html.replace(/<!-- PLAYER_SAFE_START -->/g, '');
+                html = html.replace(/<!-- PLAYER_SAFE_END -->/g, '');
+
+                content.innerHTML = html;
+            }
+        }
+
+        function hideNavItems(viewMode) {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const accessLevel = item.getAttribute('data-access');
+
+                if (viewMode === 'player' && accessLevel === 'dm') {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+        }
+
+        // Simplified navigation system
+        function setupSimpleNavigation() {
+            try {
+                const currentPath = window.location.pathname;
+                const pathParts = currentPath.split('/').filter(part => part);
+                const currentPage = pathParts[pathParts.length - 1] || 'index';
+
+                // Track and display recent pages
+                trackRecentPages(currentPage);
+                displayRecentPages();
+            } catch (error) {
+                console.error('Error in setupSimpleNavigation:', error);
+            }
+        }
+
+                // Track recent pages (last 2 visited)
+                function trackRecentPages(currentPage) {
+                    try {
+                        let recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Remove current page if it's already in the list
+                        recentPages = recentPages.filter(page => page.slug !== currentPage);
+
+                        // Add current page to the beginning
+                        const pageTitle = getPageTitle(currentPage);
+                        recentPages.unshift({
+                            slug: currentPage,
+                            title: pageTitle,
+                            timestamp: Date.now()
+                        });
+
+                        // Keep only the last 3 pages (current + 2 previous)
+                        recentPages = recentPages.slice(0, 3);
+
+                        // Save to localStorage
+                        localStorage.setItem('wikiRecentPages', JSON.stringify(recentPages));
+                    } catch (error) {
+                        console.error('Error tracking recent pages:', error);
+                    }
+                }
+
+                // Display recent pages in the sidebar
+                function displayRecentPages() {
+                    try {
+                        const recentPagesContainer = document.getElementById('recentPages');
+                        if (!recentPagesContainer) return;
+
+                        const recentPages = JSON.parse(localStorage.getItem('wikiRecentPages')) || [];
+
+                        // Skip the first page (current page) and show the last 2
+                        const pagesToShow = recentPages.slice(1, 3);
+
+                        if (pagesToShow.length === 0) {
+                            recentPagesContainer.innerHTML = '<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No recent pages</div>';
+                            return;
+                        }
+
+                        let html = '';
+                        pagesToShow.forEach(page => {
+                            const url = page.slug === 'index' ? '/alkebulan-wiki/' : '/alkebulan-wiki/' + page.slug + '/';
+                            html += '<a href="' + url + '" class="nav-item nav-recent">📄 ' + escapeHtml(page.title) + '</a>';
+                        });
+
+                        recentPagesContainer.innerHTML = html;
+                    } catch (error) {
+                        console.error('Error displaying recent pages:', error);
+                    }
+                }
+
+                // Get page title based on slug
+                function getPageTitle(slug) {
+                    const pageTitles = {
+                        'index': 'Archive Home',
+                        'port-zephyr': 'Port Zephyr',
+                        'harbor-district': 'Harbor District',
+                        'player-handout-whispers-of-the-wastes': 'Player Handout'
+                    };
+
+                    return pageTitles[slug] || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                }
+
+                // Helper function to escape HTML
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original content before any modifications
+            originalContent = document.getElementById('content').innerHTML;
+
+            // Check for saved DM session access
+            const hasSessionAccess = sessionStorage.getItem('dmAccess') === 'granted';
+            const savedView = localStorage.getItem('wikiView');
+
+            if (hasSessionAccess && savedView === 'dm') {
+                // Auto-restore DM view if they had access this session
+                switchToDMView();
+            } else {
+                // Default to player view
+                switchToPlayerView();
+            }
+
+            // Setup simple navigation
+            setupSimpleNavigation();
+        });
+
+        // Clear DM access when page is closed/refreshed
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('dmAccess');
+        });
+    </script>
+</body>
+</html>
