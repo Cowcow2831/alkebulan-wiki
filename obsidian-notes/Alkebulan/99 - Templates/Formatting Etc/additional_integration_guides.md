@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Essential Integration & Style Guides Collection
 *Complete toolkit for consistent worldbuilding and campaign management*
 

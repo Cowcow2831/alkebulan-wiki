@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Post-Cataclysm Content Templates Collection
 *Comprehensive templates for all worldbuilding elements*
 

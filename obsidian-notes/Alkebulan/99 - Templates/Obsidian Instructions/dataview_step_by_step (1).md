@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Step-by-Step Dataview Implementation Guide
 *Learning to use Dataview for NPC consistency in your post-nuclear D&D world*
 

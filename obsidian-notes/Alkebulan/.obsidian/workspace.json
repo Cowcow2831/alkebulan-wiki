@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05 - Adventures & Sessions/Current Adventures/Lvl 6 Whispers of the Wastes/Lvl 6 Whispers of the Wastes.md",
+                "file": "99 - Templates/scaled_templates_collection (1).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lvl 6 Whispers of the Wastes"
+              "title": "scaled_templates_collection (1)"
             }
           }
         ]
@@ -211,6 +211,14 @@
   },
   "active": "8c62890d519e0692",
   "lastOpenFiles": [
+    "99 - Templates/Formatting Etc/additional_integration_guides.md",
+    "99 - Templates/Formatting Etc/dataview_integration_guide.md",
+    "99 - Templates/Formatting Etc/obsidian_consistency_tools.md",
+    "99 - Templates/Formatting Etc/scaled_templates_collection.md",
+    "99 - Templates/Formatting Etc/Wiki Formatting Template.md",
+    "99 - Templates/Obsidian Instructions/dataview_step_by_step (1).md",
+    "99 - Templates/Obsidian Instructions/NPC_practical_implementation_guide.md",
+    "05 - Adventures & Sessions/Current Adventures/Lvl 6 Whispers of the Wastes/Lvl 6 Whispers of the Wastes.md",
     "00 - Campaign Overview (x)/Session Notes Template.md",
     "00 - Campaign Overview (x)/Player Character Summary.md",
     "00 - Campaign Overview (x)/Campaign Timeline.md",
@@ -229,14 +237,6 @@
     "99 - Templates/scaled_templates_collection (1).md",
     "02 - Locations/The Cerulean Reach/Coral Cove.md",
     "99 - Templates/Location Template.md",
-    "02 - Locations/The Cerulean Reach/Port Zephyr/Port Zephyr.md 21-30-16-346.md",
-    "99 - Templates/NPC Template.md",
-    "04 - NPCs/Port Zephyr NPCs/Government Officials/Kaia Sunweaver.md",
-    "04 - NPCs/Port Zephyr NPCs/Government Officials/City Watch Officers.md",
-    "04 - NPCs/Regional NPCs/Traveling Merchants.md",
-    "04 - NPCs/Regional NPCs/Regional Leaders.md",
-    "04 - NPCs/Regional NPCs/Foreign Dignitaries.md",
-    "04 - NPCs/Regional NPCs/Captain Thane Goldspear.md",
     "00 - Dashboards",
     "02 - Locations/Akebulan Map Regions.jpg",
     "99 - Templates/Obsidian Instructions",

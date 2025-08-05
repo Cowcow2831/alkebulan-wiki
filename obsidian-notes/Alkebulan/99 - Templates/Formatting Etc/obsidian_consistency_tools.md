@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Obsidian Tools for Worldbuilding Consistency & Propagation
 *Specific plugins and techniques for managing your evolving campaign world*
 

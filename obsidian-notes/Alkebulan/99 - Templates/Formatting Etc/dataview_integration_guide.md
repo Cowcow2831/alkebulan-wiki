@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Dataview Integration Guide for AI and Human Use
 *Comprehensive instructions for integrating Dataview functionality into existing content templates*
 

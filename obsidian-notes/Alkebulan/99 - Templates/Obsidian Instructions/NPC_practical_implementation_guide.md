@@ -1,3 +1,7 @@
+---
+access_level: secret
+---
+
 # Practical Implementation: Your First NPC with Dataview
 *Step-by-step walkthrough of creating and querying your first character*
 
