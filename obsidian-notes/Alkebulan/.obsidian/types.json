@@ -3,7 +3,13 @@
     "aliases": "aliases",
     "cssclasses": "multitext",
     "tags": "tags",
-    "type": "multitext",
-    "habitat": "multitext"
+    "type": "text",
+    "habitat": "multitext",
+    "attitude-party": "text",
+    "status": "text",
+    "importance": "text",
+    "faction": "multitext",
+    "location": "text",
+    "remnant-exposure": "text"
   }
 }

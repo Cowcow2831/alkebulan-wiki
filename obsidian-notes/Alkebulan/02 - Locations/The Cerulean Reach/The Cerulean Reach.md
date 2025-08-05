@@ -1,10 +1,54 @@
 ---
 access_level: player
-type:
-  - location
-  - region
+type: region
+name: The Cerulean Reach
 region: Southern Alkebulan
-campaign: Alkebulan
+location-type: coastal-region
+terrain: tropical-coastal
+climate: tropical
+population: 75000
+population-category: regional
+government: Confederation of merchant city-states
+government-stability: stable
+contamination-level: high
+safety-rating: "3"
+imperial-presence: moderate
+key-npcs:
+  - "[[Regional Trade Coordinator Valdris Goldwave]]"
+  - "[[Resource Inspector Commander Keth'ran Sunblade]]"
+  - "[[Environmental Researcher Mira Cleanwater]]"
+  - "[[Assessment Specialist Dr. Theron Poisonwind]]"
+  - "[[Maritime Master Captain Coral Deepscar]]"
+connected-locations:
+  - "[[Port Zephyr]]"
+  - "[[Obsidian Spires Mining Complex]]"
+  - "[[Coral Cove Diving Station]]"
+  - "[[Mangrove Processing Hub]]"
+  - "[[Forest Logging Central]]"
+  - "[[Sapphire Bay Gem Works]]"
+  - "[[Tide's End Agricultural Platforms]]"
+major-settlements:
+  - "[[Port Zephyr]]"
+  - "[[Obsidian Spires Mining Complex]]"
+  - "[[Coral Cove Diving Station]]"
+  - "[[Sapphire Bay Gem Works]]"
+minor-settlements:
+  - "[[Mangrove Processing Hub]]"
+  - "[[Forest Logging Central]]"
+  - "[[Tide's End Agricultural Platforms]]"
+  - "[[Palm Grove]]"
+  - "[[Coral Harbor]]"
+importance: major
+status: active
+economic-focus:
+  - maritime-trade
+  - resource-extraction
+  - contamination-commerce
+environmental-status: contaminated-waters
+resistance-presence: active-underground
+campaign: 
+last-appearance: 
+last-updated: 2025-08-03
 tags:
   - location
   - region
@@ -12,8 +56,11 @@ tags:
   - contamination-trade
   - environmental-apartheid
   - merchant-confederation
+  - trading-hub
+  - tropical
+  - regional-hub
+  - campaign-major
 ---
-
 # The Cerulean Reach
 
 <!-- PLAYER_SAFE_START -->
@@ -83,19 +130,6 @@ The tropical climate provides ideal conditions for the agricultural platforms, f
 - Worker placement: 10-100 gp (employment coordination between settlements)
 - Information networks: 50-500 gp (communication between settlements)
 - Regional coordination: Variable rates (administrative services)
-
-## Adventure Opportunities
-
-- **The Regional Trade Crisis**: Economic disruptions threatening stability between settlements
-- **Worker Coordination Network**: Supporting skilled worker exchanges and improved conditions
-- **Obsidian Spires Expedition**: Valuable mining mission to retrieve rare volcanic materials
-- **Coral Cove Diving Mission**: Underwater expedition to recover valuable artifacts from marine ruins
-- **Mangrove System Investigation**: Researching the wetland processing systems and their efficiency
-- **Forest Resource Survey**: Mapping resources in the tropical forests
-- **Regional Development Planning**: Coordinating infrastructure improvements between settlements
-- **Maritime Security**: Protecting valuable cargo and trade routes
-- **Logging Camp Support**: Ensuring timber operations have adequate supplies and workers
-- **Inter-Settlement Relations**: Diplomatic missions to improve regional cooperation
 <!-- PLAYER_SAFE_END -->
 
 <!-- DM_START -->

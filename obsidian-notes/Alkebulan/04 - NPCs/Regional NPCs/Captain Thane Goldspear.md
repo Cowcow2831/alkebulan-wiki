@@ -1,9 +1,6 @@
 ---
 access_level: player
-type:
-  - npc
-  - imperial
-  - antagonist
+type: npc
 location: The Whispering Wastes
 status: alive
 campaign: Alkebulan
@@ -13,6 +10,7 @@ tags:
   - captain
   - recovery-team
   - institutional-naivety
+  - in-progress
 ---
 # Captain Thane Goldspear
 

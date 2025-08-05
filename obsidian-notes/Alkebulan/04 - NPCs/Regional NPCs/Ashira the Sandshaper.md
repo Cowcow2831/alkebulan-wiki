@@ -1,9 +1,6 @@
 ---
 access_level: player
-type:
-  - npc
-  - guide
-  - temporal-exile
+type: npc
 location: The Whispering Wastes
 status: alive
 campaign: Alkebulan
@@ -14,6 +11,7 @@ tags:
   - crystalline
   - temporal-victim
   - whispers-of-wastes
+  - in-progress
 ---
 
 # Ashira the Sandshaper
